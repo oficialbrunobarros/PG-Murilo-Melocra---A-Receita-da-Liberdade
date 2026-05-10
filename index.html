@@ -551,59 +551,24 @@
         </div>
     </section>
 
-    <!-- 4. CINEMATIC SHOWCASE (GLOW EFFECT) -->
-    <section class="h-screen w-full relative overflow-hidden flex items-center justify-center bg-stone-900">
-        <!-- Background Video -->
-        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60">
-            <source src="assets/raw_files/video.mp4" type="video/mp4">
-        </video>
-
-        <!-- Overlay Texture -->
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
-
-
-        <!-- Glowing Card -->
-        <div class="relative group z-10 reveal-zoom delay-200">
-            <!-- Glow/Beam Effect Layers -->
-            <div
-                class="absolute -inset-0.5 bg-gradient-to-r from-stone-100 to-stone-500 rounded-2xl blur opacity-20 group-hover:opacity-75 transition duration-1000 group-hover:duration-200">
-            </div>
-
-            <!-- Rotating Beam (hidden by default, reveals on hover) -->
-            <div
-                class="absolute -inset-[2px] rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 transition duration-500">
-                <div
-                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] animate-spin-slow">
-                </div>
-            </div>
-
-            <!-- Card Content -->
-            <div
-                class="relative px-12 py-16 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl flex flex-col items-center justify-center text-center shadow-2xl">
-
-                <div
-                    class="mb-8 w-20 h-20 bg-white rounded-full flex items-center justify-center text-black shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-105 transition-transform duration-700">
-                    <img src="ELOOO LOGO.png" alt="Elooo Logo" class="h-6 object-contain" style="filter: brightness(0);">
-                </div>
-
-                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">Dr. Murilo<span
-                        class="font-light text-stone-400"> Melocra</span></h2>
-                <div class="h-px w-12 bg-stone-500 my-4"></div>
-                <p class="font-mono text-xs uppercase tracking-[0.3em] text-stone-300 mb-8">O Guia Definitivo • 2026</p>
-
-                <button
-                    class="relative group/btn overflow-hidden rounded-full bg-white text-black px-8 py-3 font-medium text-sm hover:scale-105 transition-transform">
-                    <span class="relative z-10 flex items-center gap-2">
-                        Adquirir o Livro
-                        <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
-                    </span>
-                    <div
-                        class="absolute inset-0 bg-stone-200 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
-                    </div>
-                </button>
-            </div>
+    <!-- 4. AUTOR (MINIMALIST LETTERING) -->
+    <section class="h-screen w-full relative overflow-hidden bg-stone-950 flex flex-col md:flex-row">
+        <!-- Left Photo -->
+        <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group">
+            <img src="FOTO MURILO.jpeg" alt="Dr. Murilo Melocra" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125 scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out">
+            <!-- Fade into the right side -->
+            <div class="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-stone-950 to-transparent hidden md:block z-10 pointer-events-none"></div>
+            <!-- Fade into the bottom on mobile -->
+            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
         </div>
 
+        <!-- Right Text (Aligned to eyes approx 28% from top) -->
+        <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[28vh] px-8 md:px-16 lg:px-24 reveal-up delay-200 z-20">
+            <h2 class="font-sans text-2xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
+                Dr. Murilo<br>
+                Melocra
+            </h2>
+        </div>
     </section>
 
     <!-- FOOTER -->
