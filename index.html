@@ -245,25 +245,27 @@
         </div>
     </header>
 
-    <!-- 1. AUTOR (MINIMALIST LETTERING) -->
-    <section class="h-screen w-full relative overflow-hidden bg-stone-950 flex flex-col md:flex-row pt-20">
-        <!-- Left Photo -->
-        <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group">
-            <img src="FOTO MURILO.jpeg" alt="Dr. Murilo Melocra" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125 scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out">
-            <!-- Fade into the right side -->
-            <div class="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-stone-950 to-transparent hidden md:block z-10 pointer-events-none"></div>
-            <!-- Fade into the bottom on mobile -->
-            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
-        </div>
+    <!-- 1. AUTOR (MINIMALIST LETTERING / CANVAS VIDEO SCRUB) -->
+    <div class="autor-scrub-container relative bg-stone-950" style="height: 300vh;">
+        <section class="sticky top-0 h-screen w-full relative overflow-hidden flex flex-col md:flex-row pt-20">
+            <!-- Left Photo (Canvas Video) -->
+            <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group bg-stone-900">
+                <canvas id="autor-canvas" width="1280" height="720" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125"></canvas>
+                <!-- Fade into the right side -->
+                <div class="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-stone-950 to-transparent hidden md:block z-10 pointer-events-none"></div>
+                <!-- Fade into the bottom on mobile -->
+                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
+            </div>
 
-        <!-- Right Text (Aligned to eyes approx 28% from top) -->
-        <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[25vh] px-8 md:px-16 lg:px-24 reveal-up delay-200 z-20">
-            <h2 class="font-sans text-3xl md:text-5xl lg:text-6xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
-                Dr. Murilo<br>
-                Melocra
-            </h2>
-        </div>
-    </section>
+            <!-- Right Text -->
+            <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[25vh] px-8 md:px-16 lg:px-24 z-20 autor-text-reveal">
+                <h2 class="font-sans text-3xl md:text-5xl lg:text-6xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
+                    Dr. Murilo<br>
+                    Melocra
+                </h2>
+            </div>
+        </section>
+    </div>
 
     <!-- 2. O LIVRO (HERO SECTION) -->
     <main class="hero-scrub-container relative bg-[#EAEAE5]">
@@ -519,6 +521,83 @@
         gsap.registerPlugin(ScrollTrigger);
 
         document.addEventListener("DOMContentLoaded", () => {
+
+            // ==========================================
+            // AUTOR CANVAS (FOLD 1)
+            // ==========================================
+            const autorCanvas = document.getElementById("autor-canvas");
+            const autorContext = autorCanvas.getContext("2d");
+            const autorFrameCount = 192;
+            const autorCurrentFrame = { index: 0 };
+            const autorImages = [];
+
+            const preloadAutorImages = () => {
+                for (let i = 1; i <= autorFrameCount; i++) {
+                    const img = new Image();
+                    const frameNumber = i.toString().padStart(4, '0');
+                    img.src = `assets/video_frames_murilo/frame_${frameNumber}.jpg`;
+                    autorImages.push(img);
+                }
+            };
+
+            const renderAutor = () => {
+                const frameIndex = Math.floor(autorCurrentFrame.index);
+                const img = autorImages[frameIndex];
+                if (img && img.complete) {
+                    autorContext.clearRect(0, 0, autorCanvas.width, autorCanvas.height);
+                    autorContext.drawImage(img, 0, 0, autorCanvas.width, autorCanvas.height);
+                }
+            };
+
+            preloadAutorImages();
+
+            if (autorImages[0]) {
+                autorImages[0].onload = renderAutor;
+            }
+
+            gsap.to(autorCurrentFrame, {
+                index: autorFrameCount - 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".autor-scrub-container",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0,
+                    onUpdate: () => {
+                        requestAnimationFrame(renderAutor);
+                    }
+                }
+            });
+
+            ScrollTrigger.create({
+                trigger: ".autor-scrub-container",
+                start: "top 80%",
+                onEnter: () => {
+                    gsap.fromTo(autorCanvas,
+                        { opacity: 0, scale: 1.1 },
+                        { opacity: 0.8, scale: 1, duration: 1.5, ease: "power3.out" }
+                    );
+                    
+                    gsap.fromTo(".autor-scrub-container .autor-text-reveal",
+                        { opacity: 0, y: 30, filter: "blur(15px)" },
+                        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, delay: 0.2, ease: "power3.out" }
+                    );
+                },
+                once: true
+            });
+
+            gsap.to(".autor-scrub-container .autor-text-reveal", {
+                y: -60,
+                opacity: 0,
+                filter: "blur(15px)",
+                stagger: 0.05,
+                scrollTrigger: {
+                    trigger: ".autor-scrub-container",
+                    start: "10% top",
+                    end: "40% top",
+                    scrub: true
+                }
+            });
             const canvas = document.getElementById("hero-canvas");
             const context = canvas.getContext("2d");
 
