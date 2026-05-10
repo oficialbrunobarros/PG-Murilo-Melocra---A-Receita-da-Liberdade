@@ -222,26 +222,52 @@
         <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
         <div class="max-w-[1440px] mx-auto px-6 py-4 relative flex justify-between items-center">
             <!-- Logo -->
-            <div class="flex items-center group cursor-pointer">
-                <img src="ELOOO LOGO.png" alt="Elooo Logo" class="h-6 md:h-8 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+            <div class="flex items-center group cursor-pointer z-50">
+                <img src="ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
             </div>
 
-            <!-- Nav Links -->
-            <nav class="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-stone-500">
-                <a href="#" class="hover:text-stone-900 transition-colors">O Livro</a>
-                <a href="#" class="hover:text-stone-900 transition-colors">O Método</a>
-                <a href="#" class="hover:text-stone-900 transition-colors">Autor</a>
+            <!-- Nav Links (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-stone-500">
+                <a href="#" class="hover:text-stone-900 transition-colors">Home</a>
+                <a href="#" class="hover:text-stone-900 transition-colors">Autores</a>
+                <a href="#" class="hover:text-stone-900 transition-colors">Livros</a>
+                <a href="#" class="hover:text-stone-900 transition-colors">Clientes</a>
+                <a href="#" class="hover:text-stone-900 transition-colors">Universidade</a>
+                <a href="#" class="hover:text-stone-900 transition-colors">Contato</a>
             </nav>
 
-            <!-- Action -->
-            <div class="flex items-center gap-4">
-                <button
-                    class="px-5 py-2 md:px-6 md:py-2.5 bg-stone-900 text-white rounded-full text-xs font-medium tracking-wide shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
-                    Comprar Agora
+            <!-- Action & Hamburger -->
+            <div class="flex items-center gap-4 z-50">
+                <button class="hidden md:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-800 shadow-sm hover:shadow-md">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                    <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2 md:px-6 md:py-2.5 rounded-full font-medium text-xs text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                        Comprar Agora
+                    </span>
                 </button>
-                <iconify-icon icon="solar:hamburger-menu-linear"
-                    class="text-xl cursor-pointer md:hidden hover:text-stone-500 transition-colors ml-2"></iconify-icon>
+                <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
+                    <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-40 transition-transform duration-500 translate-x-full lg:hidden">
+            <nav class="flex flex-col items-center gap-8 text-sm font-mono uppercase tracking-[0.3em] text-white/70">
+                <a href="#" class="hover:text-white transition-colors mobile-link">Home</a>
+                <a href="#" class="hover:text-white transition-colors mobile-link">Autores</a>
+                <a href="#" class="hover:text-white transition-colors mobile-link">Livros</a>
+                <a href="#" class="hover:text-white transition-colors mobile-link">Clientes</a>
+                <a href="#" class="hover:text-white transition-colors mobile-link">Universidade</a>
+                <a href="#" class="hover:text-white transition-colors mobile-link">Contato</a>
+                
+                <!-- CTA on mobile -->
+                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-800 shadow-sm mt-8">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100"></span>
+                    <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-medium text-xs text-white tracking-widest uppercase">
+                        Comprar Agora
+                    </span>
+                </button>
+            </nav>
         </div>
     </header>
 
@@ -339,26 +365,20 @@
         <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 reveal-up delay-600 w-full relative z-20 px-6 max-w-[1440px] mx-auto">
             
             <!-- Button 1: Garantir o Livro -->
-            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-105 transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-xl">
-                <!-- Animated Light Beam -->
-                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500"></span>
-                
-                <!-- Button Body -->
-                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-stone-950 px-10 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase">
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
                     Garantir o Livro
-                    <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-70 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
                 </span>
             </button>
 
             <!-- Button 2: Conhecer a Mentoria -->
-            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-105 transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-xl">
-                <!-- Animated Light Beam (Offset animation) -->
-                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500" style="animation-delay: -2s;"></span>
-                
-                <!-- Button Body -->
-                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-stone-950 px-10 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase">
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
+                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
                     Conhecer a Mentoria
-                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-70 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
                 </span>
             </button>
         </div>
@@ -407,18 +427,22 @@
 
                     <!-- Buttons -->
                     <div class="flex flex-wrap gap-4 reveal-up delay-700">
-                        <!-- Black Pill Button -->
-                        <button
-                            class="group relative px-8 py-4 bg-stone-900 text-white rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
-                            <span class="relative z-10 text-sm font-medium tracking-wide">Garantir o Livro</span>
+                        <!-- Button 1: Garantir o Livro -->
+                        <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                            <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                            <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                                Garantir o Livro
+                                <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                            </span>
                         </button>
 
-                        <!-- White Pill Button -->
-                        <button
-                            class="group px-8 py-4 bg-white text-stone-900 rounded-full shadow-md hover:shadow-lg border border-transparent hover:border-stone-200 transition-all hover:-translate-y-1 flex items-center gap-2">
-                            <span class="text-sm font-medium tracking-wide">Conhecer Mais</span>
-                            <iconify-icon icon="solar:arrow-down-linear"
-                                class="group-hover:translate-y-0.5 transition-transform"></iconify-icon>
+                        <!-- Button 2: Conhecer a Mentoria -->
+                        <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                            <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
+                            <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                                Conhecer a Mentoria
+                                <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -487,7 +511,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
                 <!-- Left Visual (Breathtaking Lettering) -->
-                <div class="lg:col-span-7 relative flex items-center justify-center min-h-[500px] reveal-up delay-200">
+                <div class="lg:col-span-7 relative flex items-center justify-center min-h-[500px] metodo-left-container">
                     
                     <!-- Atmospheric Background Glow -->
                     <div class="absolute inset-0 bg-gradient-to-tr from-stone-300 via-stone-100 to-transparent blur-3xl opacity-40 mix-blend-multiply rounded-full pointer-events-none"></div>
@@ -518,7 +542,7 @@
 
                     <!-- Feature 01 -->
                     <div
-                        class="reveal-up delay-300 group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
+                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
                         <div class="flex items-baseline gap-4 mb-3">
                             <span
                                 class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">01</span>
@@ -535,7 +559,7 @@
 
                     <!-- Feature 02 -->
                     <div
-                        class="reveal-up delay-500 group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
+                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
                         <div class="flex items-baseline gap-4 mb-3">
                             <span
                                 class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">02</span>
@@ -552,7 +576,7 @@
 
                     <!-- Feature 03 -->
                     <div
-                        class="reveal-up delay-700 group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
+                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
                         <div class="flex items-baseline gap-4 mb-3">
                             <span
                                 class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">03</span>
@@ -574,26 +598,20 @@
             <div class="mt-24 flex flex-col md:flex-row items-center justify-center gap-6 reveal-up delay-400 w-full relative z-20 border-t border-stone-200 pt-16">
                 
                 <!-- Button 1: Garantir o Livro -->
-                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-105 transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-xl">
-                    <!-- Animated Light Beam -->
-                    <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500"></span>
-                    
-                    <!-- Button Body -->
-                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-stone-950 px-10 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase">
+                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
                         Garantir o Livro
-                        <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-70 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                        <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
                     </span>
                 </button>
 
                 <!-- Button 2: Conhecer a Mentoria -->
-                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-105 transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-xl">
-                    <!-- Animated Light Beam (Offset animation) -->
-                    <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] opacity-70 group-hover:opacity-100 transition-opacity duration-500" style="animation-delay: -2s;"></span>
-                    
-                    <!-- Button Body -->
-                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-stone-950 px-10 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase">
+                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
+                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
                         Conhecer a Mentoria
-                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-70 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
                     </span>
                 </button>
             </div>
@@ -804,6 +822,67 @@
                 });
             });
 
+            // ==========================================
+            // O MÉTODO SECTION (SCROLL ANIMATIONS)
+            // ==========================================
+            const metodoSection = document.getElementById("tech-specs");
+            if (metodoSection) {
+                // 1. Lettering Parallax & Blur scrub
+                const letteringWords = metodoSection.querySelectorAll('.metodo-left-container h3 span');
+                gsap.fromTo(letteringWords, 
+                    { opacity: 0, filter: "blur(20px)", y: 80, scale: 0.9, rotationX: 20 },
+                    {
+                        opacity: 1,
+                        filter: "blur(0px)",
+                        y: 0,
+                        scale: 1,
+                        rotationX: 0,
+                        stagger: 0.1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: metodoSection,
+                            start: "top 65%",
+                            end: "top 15%",
+                            scrub: 1.5 // Adds a highly premium, smooth lagging effect to the scroll
+                        }
+                    }
+                );
+
+                // 2. Right Side Features (Boxes) Glassmorphism cascade
+                const methodFeatures = metodoSection.querySelectorAll('.metodo-feature-box');
+                gsap.fromTo(methodFeatures,
+                    { opacity: 0, x: 50, filter: "blur(15px)" },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        filter: "blur(0px)",
+                        stagger: 0.2,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: metodoSection,
+                            start: "top 50%",
+                            end: "top 5%",
+                            scrub: 1.2
+                        }
+                    }
+                );
+                
+                // 3. Background Aura Parallax
+                const metodoAura = metodoSection.querySelector('.metodo-left-container .absolute.inset-0');
+                if(metodoAura) {
+                    gsap.to(metodoAura, {
+                        scale: 1.8,
+                        opacity: 0.8,
+                        scrollTrigger: {
+                            trigger: metodoSection,
+                            start: "top 80%",
+                            end: "bottom top",
+                            scrub: true
+                        }
+                    });
+                }
+            }
+
             // Flashlight Effect Function
             window.updateFlashlight = function (e, card) {
                 const rect = card.getBoundingClientRect();
@@ -811,6 +890,39 @@
                 const y = e.clientY - rect.top;
                 card.style.setProperty("--mouse-x", `${x}px`);
                 card.style.setProperty("--mouse-y", `${y}px`);
+            }
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            let menuOpen = false;
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    menuOpen = !menuOpen;
+                    if (menuOpen) {
+                        mobileMenu.classList.remove('translate-x-full');
+                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:close-circle-linear"></iconify-icon>';
+                        mobileMenuBtn.classList.add('text-white'); // Make close button white on dark bg
+                        mobileMenuBtn.classList.remove('text-stone-900');
+                    } else {
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                        mobileMenuBtn.classList.remove('text-white');
+                        mobileMenuBtn.classList.add('text-stone-900');
+                    }
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuOpen = false;
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                        mobileMenuBtn.classList.remove('text-white');
+                        mobileMenuBtn.classList.add('text-stone-900');
+                    });
+                });
             }
 
             // GSAP Scroll Animation
