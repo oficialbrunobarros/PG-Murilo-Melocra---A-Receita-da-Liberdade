@@ -223,7 +223,7 @@
         <div class="max-w-[1440px] mx-auto px-6 py-4 relative flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center group cursor-pointer z-50">
-                <img src="ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+                <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
             </div>
 
             <!-- Nav Links (Desktop) -->
@@ -251,7 +251,7 @@
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-40 transition-transform duration-500 translate-x-full lg:hidden">
+        <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
             <nav class="flex flex-col items-center gap-8 text-sm font-mono uppercase tracking-[0.3em] text-white/70">
                 <a href="#" class="hover:text-white transition-colors mobile-link">Home</a>
                 <a href="#" class="hover:text-white transition-colors mobile-link">Autores</a>
@@ -298,7 +298,7 @@
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
             
             <div class="inline-flex items-center gap-3 mb-10 px-5 py-2 border border-stone-700/50 rounded-full shadow-sm bg-stone-900/50 backdrop-blur-sm reveal-up">
-                <img src="ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
+                <img src="../static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
                 <div class="w-px h-3 bg-stone-700"></div>
                 <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Sobre o Autor</span>
             </div>
@@ -404,7 +404,7 @@
                     class="col-span-1 md:col-span-10 lg:col-span-7 h-full flex flex-col justify-center px-6 md:pl-24 text-left pointer-events-auto">
                     <!-- Badge -->
                     <div class="inline-flex items-center gap-3 mb-4 reveal-up delay-100 border border-stone-900/10 px-4 py-2 rounded-full bg-white/40 backdrop-blur-sm">
-                        <img src="ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0);">
+                        <img src="../static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0);">
                         <div class="w-px h-3 bg-stone-900/20"></div>
                         <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-700 font-medium">Lançamento
                             Exclusivo</span>
@@ -493,7 +493,7 @@
             <!-- Header -->
             <div class="mb-24 reveal-up relative z-10">
                 <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-200/50 rounded-full border border-stone-300/50">
-                    <img src="ELOOO LOGO.png" class="h-2 object-contain opacity-60" style="filter: brightness(0);">
+                    <img src="../static/images/ELOOO LOGO.png" class="h-2 object-contain opacity-60" style="filter: brightness(0);">
                     <div class="w-px h-3 bg-stone-400/50"></div>
                     <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">O Método</span>
                 </div>
@@ -627,7 +627,7 @@
         <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
 
             <div class="flex items-center group cursor-pointer">
-                <img src="ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
+                <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
             </div>
 
             <div class="text-xs font-mono uppercase tracking-widest flex gap-6">
@@ -661,7 +661,7 @@
                 for (let i = 1; i <= autorFrameCount; i++) {
                     const img = new Image();
                     const frameNumber = i.toString().padStart(4, '0');
-                    img.src = `assets/video_frames_murilo/frame_${frameNumber}.jpg`;
+                    img.src = `../static/assets/video_frames_murilo/frame_${frameNumber}.jpg`;
                     autorImages.push(img);
                 }
             };
@@ -739,7 +739,7 @@
                     const img = new Image();
                     // Pad with leading zeros: 0001, 0002...
                     const frameNumber = i.toString().padStart(4, '0');
-                    img.src = `assets/video_frames/frame_${frameNumber}.jpg`;
+                    img.src = `../static/assets/video_frames/frame_${frameNumber}.jpg`;
                     images.push(img);
                 }
             };
