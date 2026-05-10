@@ -245,7 +245,27 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- 1. AUTOR (MINIMALIST LETTERING) -->
+    <section class="h-screen w-full relative overflow-hidden bg-stone-950 flex flex-col md:flex-row pt-20">
+        <!-- Left Photo -->
+        <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group">
+            <img src="FOTO MURILO.jpeg" alt="Dr. Murilo Melocra" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125 scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out">
+            <!-- Fade into the right side -->
+            <div class="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-stone-950 to-transparent hidden md:block z-10 pointer-events-none"></div>
+            <!-- Fade into the bottom on mobile -->
+            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
+        </div>
+
+        <!-- Right Text (Aligned to eyes approx 28% from top) -->
+        <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[25vh] px-8 md:px-16 lg:px-24 reveal-up delay-200 z-20">
+            <h2 class="font-sans text-3xl md:text-5xl lg:text-6xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
+                Dr. Murilo<br>
+                Melocra
+            </h2>
+        </div>
+    </section>
+
+    <!-- 2. O LIVRO (HERO SECTION) -->
     <main class="hero-scrub-container relative bg-[#EAEAE5]">
         <div class="sticky top-0 h-screen w-full overflow-hidden">
 
@@ -466,110 +486,9 @@
         </div>
     </section>
 
-    <!-- 3. WRITING EXPERIENCE (FLASHLIGHT CARDS) -->
-    <section class="relative z-20 bg-[#EAEAE5] py-24 md:py-32 overflow-hidden border-t border-stone-300">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-24">
 
-            <div class="text-center mb-24 reveal-up flex flex-col items-center">
-                <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 bg-white rounded-full shadow-sm border border-stone-200">
-                    <img src="ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0);">
-                    <div class="w-px h-3 bg-stone-200"></div>
-                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Os Pilares da
-                    Riqueza</span>
-                </div>
-                <h2
-                    class="font-display text-5xl md:text-6xl font-medium tracking-tight text-stone-900 max-w-3xl mx-auto">
-                    O mapa completo para a<br>
-                    <span class="text-stone-400">sua liberdade financeira.</span>
-                </h2>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                <!-- Card 1 -->
-                <div class="flashlight-card h-[400px] border border-stone-300 bg-white p-8 flex flex-col justify-between rounded-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group reveal-up delay-200"
-                    onmousemove="updateFlashlight(event, this)">
-                    <div
-                        class="w-12 h-12 bg-stone-100 rounded-lg flex items-center justify-center text-stone-900 mb-6 group-hover:bg-stone-900 group-hover:text-white transition-colors duration-500">
-                        <iconify-icon icon="solar:chart-square-linear" class="text-2xl"></iconify-icon>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-medium mb-3">Renda Passiva</h3>
-                        <p class="text-stone-500 text-sm leading-relaxed">Construa fontes de renda que não dependem do
-                            seu tempo no consultório ou em plantões exaustivos.</p>
-                    </div>
-                    <div class="h-1 w-full bg-stone-100 mt-8 overflow-hidden">
-                        <div class="h-full bg-stone-900 w-0 group-hover:w-full transition-all duration-700 ease-out">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="flashlight-card h-[400px] border border-stone-300 bg-white p-8 flex flex-col justify-between rounded-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group reveal-up delay-400"
-                    onmousemove="updateFlashlight(event, this)">
-                    <div
-                        class="w-12 h-12 bg-stone-100 rounded-lg flex items-center justify-center text-stone-900 mb-6 group-hover:bg-stone-900 group-hover:text-white transition-colors duration-500">
-                        <iconify-icon icon="solar:shield-check-linear" class="text-2xl"></iconify-icon>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-medium mb-3">Proteção Patrimonial</h3>
-                        <p class="text-stone-500 text-sm leading-relaxed">Aprenda a blindar seu patrimônio e sua
-                            carreira contra imprevistos, garantindo o futuro da sua família.</p>
-                    </div>
-                    <div class="h-1 w-full bg-stone-100 mt-8 overflow-hidden">
-                        <div
-                            class="h-full bg-stone-900 w-0 group-hover:w-full transition-all duration-700 ease-out delay-100">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="flashlight-card h-[400px] border border-stone-300 bg-white p-8 flex flex-col justify-between rounded-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group reveal-up delay-600"
-                    onmousemove="updateFlashlight(event, this)">
-                    <div
-                        class="w-12 h-12 bg-stone-100 rounded-lg flex items-center justify-center text-stone-900 mb-6 group-hover:bg-stone-900 group-hover:text-white transition-colors duration-500">
-                        <iconify-icon icon="solar:hourglass-linear" class="text-2xl"></iconify-icon>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-display font-medium mb-3">Liberdade de Tempo</h3>
-                        <p class="text-stone-500 text-sm leading-relaxed">O objetivo final: ter o poder de escolha de
-                            trabalhar por paixão à medicina, e nunca mais por necessidade.</p>
-                    </div>
-                    <div class="h-1 w-full bg-stone-100 mt-8 overflow-hidden">
-                        <div
-                            class="h-full bg-stone-900 w-0 group-hover:w-full transition-all duration-700 ease-out delay-200">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Background Decor -->
-        <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-stone-200/50 rounded-full blur-3xl -z-10 animate-pulse pointer-events-none mix-blend-multiply">
-        </div>
-    </section>
-
-    <!-- 4. AUTOR (MINIMALIST LETTERING) -->
-    <section class="h-screen w-full relative overflow-hidden bg-stone-950 flex flex-col md:flex-row">
-        <!-- Left Photo -->
-        <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group">
-            <img src="FOTO MURILO.jpeg" alt="Dr. Murilo Melocra" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125 scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-out">
-            <!-- Fade into the right side -->
-            <div class="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-stone-950 to-transparent hidden md:block z-10 pointer-events-none"></div>
-            <!-- Fade into the bottom on mobile -->
-            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
-        </div>
-
-        <!-- Right Text (Aligned to eyes approx 28% from top) -->
-        <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[28vh] px-8 md:px-16 lg:px-24 reveal-up delay-200 z-20">
-            <h2 class="font-sans text-2xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
-                Dr. Murilo<br>
-                Melocra
-            </h2>
-        </div>
-    </section>
 
     <!-- FOOTER -->
     <footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
@@ -645,19 +564,27 @@
             }
 
 
-            // Initial Reveal Animation (Hero Text Only)
-            const heroReveals = document.querySelectorAll('.hero-scrub-container .reveal-up');
-            heroReveals.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('active');
-                }, 100 * index);
-            });
+            // Intro Animation for Canvas and Hero Text when scrolling into the section
+            ScrollTrigger.create({
+                trigger: ".hero-scrub-container",
+                start: "top 60%",
+                onEnter: () => {
+                    // Canvas Intro Animation
+                    gsap.fromTo(canvas,
+                        { opacity: 0, scale: 1.1 },
+                        { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" }
+                    );
 
-            // Canvas Intro Animation
-            gsap.fromTo(canvas,
-                { opacity: 0, scale: 1.1 },
-                { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" }
-            );
+                    // Hero Text Reveal
+                    const heroReveals = document.querySelectorAll('.hero-scrub-container .reveal-up');
+                    heroReveals.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.classList.add('active');
+                        }, 100 * index);
+                    });
+                },
+                once: true
+            });
 
             // Parallax Effects for Hero Text (Blur Out on Scroll)
             gsap.to(".hero-scrub-container .reveal-up", {
@@ -667,14 +594,16 @@
                 stagger: 0.05,
                 scrollTrigger: {
                     trigger: ".hero-scrub-container",
-                    start: "top top",
-                    end: "15% top",
+                    start: "10% top",
+                    end: "40% top",
                     scrub: true
                 }
             });
 
             // Reveal Animation for generic sections (Tech Specs, etc)
-            gsap.utils.toArray('section .reveal-up, section .reveal-zoom').forEach(function (elem) {
+            gsap.utils.toArray('section .reveal-up, section .reveal-zoom, main .reveal-up').forEach(function (elem) {
+                if(elem.closest('.hero-scrub-container')) return; // handled above
+
                 ScrollTrigger.create({
                     trigger: elem,
                     start: "top 85%",
