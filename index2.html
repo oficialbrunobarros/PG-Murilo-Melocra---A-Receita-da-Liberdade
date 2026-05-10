@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>A Receita da Liberdade - Dr. Murilo Melocra</title>
+    
+    <!-- Fonts from Design System -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        'gold': '#D4AF37',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* CSS reset & base */
+        body, html { 
+            margin: 0; padding: 0; overflow-x: hidden; 
+            background-color: #050505; color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            cursor: none; /* Hide default cursor */
+        }
+        
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline { 
+            position: fixed; top: 0; left: 0; 
+            transform: translate(-50%, -50%); 
+            border-radius: 50%; z-index: 9999; 
+            pointer-events: none; 
+        }
+        .cursor-dot { 
+            width: 6px; height: 6px; 
+            background-color: #D4AF37; 
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+        }
+        .cursor-outline { 
+            width: 40px; height: 40px; 
+            border: 1px solid rgba(212, 175, 55, 0.4); 
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .cursor-hover .cursor-outline {
+            width: 60px; height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.8);
+        }
+        
+        /* Spotlight */
+        .spotlight { 
+            position: fixed; top: 0; left: 0; 
+            width: 100vw; height: 100vh; pointer-events: none; 
+            background: radial-gradient(circle 600px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(212, 175, 55, 0.08), transparent 40%); 
+            z-index: 10; 
+            mix-blend-mode: screen;
+        }
+
+        /* Noise Overlay */
+        .noise {
+            position: fixed; inset: 0; width: 100%; height: 100%; 
+            opacity: 0.03; pointer-events: none; z-index: 9998;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Video Container */
+        .hero-container { 
+            position: relative; width: 100vw; height: 400vh; /* Scroll area to scrub */ 
+        }
+        .sticky-wrapper { 
+            position: sticky; top: 0; left: 0; width: 100vw; height: 100vh; 
+            overflow: hidden; display: flex; align-items: center; 
+        }
+        
+        .video-background { 
+            position: absolute; top: 0; left: 0; 
+            width: 100%; height: 100%; object-fit: cover; 
+            z-index: 1; transform: scale(1.05); /* Slight scale to allow panning */
+        }
+        .overlay { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(90deg, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 40%, rgba(5,5,5,0.2) 100%),
+                        linear-gradient(0deg, rgba(5,5,5,0.5) 0%, transparent 30%); 
+            z-index: 2; 
+        }
+        
+        /* Header */
+        header { 
+            position: fixed; top: 0; left: 0; width: 100%; padding: 2rem 4rem; 
+            z-index: 50; display: flex; justify-content: space-between; align-items: center; 
+        }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.2em; }
+        .nav-links { display: flex; gap: 3rem; }
+        .nav-link { 
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; 
+            text-transform: uppercase; letter-spacing: 0.15em; color: #d6d3d1; 
+            text-decoration: none; position: relative; padding-bottom: 4px;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 1px;
+            background-color: #D4AF37; transition: width 0.3s ease;
+        }
+        .nav-link:hover { color: #fff; }
+        .nav-link:hover::after { width: 100%; }
+        
+        .header-btn {
+            width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; background: rgba(255,255,255,0.05); backdrop-filter: blur(5px);
+        }
+        .header-btn:hover { background: rgba(212, 175, 55, 0.2); border-color: rgba(212, 175, 55, 0.5); }
+
+        /* Content Wrapper */
+        .content { 
+            position: relative; z-index: 10; width: 100%; max-width: 1440px; 
+            margin: 0 auto; padding: 0 4rem; display: flex; justify-content: space-between; 
+            align-items: center; margin-top: 2rem;
+        }
+        
+        /* Left Column */
+        .left-col { max-width: 650px; perspective: 1000px; }
+        
+        .author { 
+            font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; 
+            letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 2rem; 
+            color: #a8a29e; display: flex; gap: 8px; overflow: hidden;
+        }
+        
+        .title { 
+            font-family: 'Space Grotesk', sans-serif; font-size: 5.5rem; 
+            font-weight: 700; line-height: 1.05; margin-bottom: 2.5rem; 
+            text-transform: uppercase; position: relative;
+        }
+        .title-line-1 { display: block; color: #fff; overflow: hidden; }
+        .title-line-2 { 
+            display: block; color: transparent; 
+            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.6); 
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #8A6B1C 100%); 
+            -webkit-background-clip: text; 
+            position: relative; overflow: hidden;
+        }
+        .title-line-3 { 
+            display: block; font-size: 1.75rem; font-weight: 300; 
+            font-family: 'Inter', sans-serif; letter-spacing: 0.1em; 
+            color: #d6d3d1; margin-top: 1rem; overflow: hidden;
+        }
+        
+        .subtitle { 
+            font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 300; 
+            color: #d6d3d1; line-height: 1.6; margin-bottom: 3.5rem; 
+            max-width: 500px; overflow: hidden;
+        }
+        
+        /* Buttons */
+        .buttons { display: flex; gap: 1.5rem; }
+        .btn-wrapper { overflow: hidden; border-radius: 4px; }
+        
+        .btn-primary { 
+            position: relative; padding: 1.25rem 2.5rem; 
+            background: linear-gradient(90deg, #C5A028, #E2C76A, #C5A028); background-size: 200% auto;
+            color: #050505; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; 
+            text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; 
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            display: inline-block; border: none; cursor: none;
+        }
+        .btn-primary:hover { 
+            background-position: right center; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); 
+            transform: scale(1.02);
+        }
+        
+        .btn-secondary { 
+            position: relative; padding: 1.25rem 2.5rem; 
+            border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); backdrop-filter: blur(10px);
+            color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; 
+            text-transform: uppercase; letter-spacing: 0.1em; 
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            display: inline-block; cursor: none;
+        }
+        .btn-secondary:hover { 
+            border-color: rgba(212, 175, 55, 0.5); background: rgba(212, 175, 55, 0.05); 
+            transform: scale(1.02);
+        }
+        
+        /* Right Column Technical Details */
+        .right-col { display: flex; flex-direction: column; gap: 2.5rem; align-items: flex-end; perspective: 1000px; }
+        .tech-detail { display: flex; align-items: center; gap: 1.5rem; cursor: none; }
+        
+        .tech-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #78716c; }
+        .tech-line { width: 30px; height: 1px; background: rgba(255, 255, 255, 0.2); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .tech-text { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #d6d3d1; letter-spacing: 0.15em; text-align: right; text-transform: uppercase; transition: color 0.4s ease; }
+        
+        .tech-detail:hover .tech-line { width: 80px; background: #D4AF37; }
+        .tech-detail:hover .tech-text { color: #D4AF37; }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute; bottom: 3rem; left: 4rem; z-index: 50; display: flex; align-items: center; gap: 1rem;
+        }
+        .scroll-text { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: #a8a29e; transform: rotate(-90deg) translateX(100%); transform-origin: left bottom; }
+        .scroll-line { width: 1px; height: 60px; background: rgba(255,255,255,0.2); position: relative; overflow: hidden; }
+        .scroll-dot { position: absolute; top: 0; left: 0; width: 100%; height: 20px; background: #D4AF37; animation: scrollDown 2s infinite ease-in-out; }
+        @keyframes scrollDown { 0% { top: -20px; } 100% { top: 60px; } }
+
+        /* Loader */
+        #loader { 
+            position: fixed; inset: 0; background: #050505; z-index: 99999; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+        }
+        .loader-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.2em; color: #fff; margin-bottom: 2rem; overflow: hidden; }
+        .loader-progress { width: 200px; height: 1px; background: rgba(255,255,255,0.1); position: relative; }
+        .loader-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: #D4AF37; }
+        
+        @media (max-width: 1024px) {
+            header { padding: 1.5rem 2rem; }
+            .nav-links { display: none; }
+            .content { flex-direction: column; justify-content: center; padding: 0 2rem; text-align: left; gap: 3rem; margin-top: 4rem; }
+            .left-col { max-width: 100%; }
+            .title { font-size: 3.5rem; margin-bottom: 1.5rem; }
+            .title-line-3 { font-size: 1.25rem; }
+            .right-col { display: none; }
+            .scroll-indicator { left: 2rem; bottom: 2rem; }
+            .buttons { flex-direction: column; gap: 1rem; width: 100%; }
+            .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loader-text">CARREGANDO EXPERIÊNCIA</div>
+        <div class="loader-progress"><div class="loader-bar"></div></div>
+    </div>
+
+    <!-- Cursor & Effects -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="spotlight"></div>
+    <div class="noise"></div>
+
+    <header>
+        <div class="logo">ELOOO</div>
+        <nav class="nav-links">
+            <a href="#" class="nav-link interactive">Livro</a>
+            <a href="#" class="nav-link interactive">Autor</a>
+            <a href="#" class="nav-link interactive">Método</a>
+            <a href="#" class="nav-link interactive">Comprar</a>
+        </nav>
+        <div class="header-btn interactive">
+            <iconify-icon icon="solar:hamburger-menu-linear" style="color: white;"></iconify-icon>
+        </div>
+    </header>
+
+    <div class="hero-container">
+        <div class="sticky-wrapper">
+            <video id="hero-video" class="video-background" preload="auto" muted playsinline disablePictureInPicture>
+                <source src="assets/raw_files/video2.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+
+            <div class="content">
+                <div class="left-col parallax-target" data-speed="0.02">
+                    <div class="author">
+                        <span>DR.</span><span>MURILO</span><span>MELOCRA</span>
+                    </div>
+                    
+                    <h1 class="title">
+                        <span class="title-line-1" id="title-1">A RECEITA</span>
+                        <span class="title-line-2" id="title-2">DA LIBERDADE</span>
+                        <span class="title-line-3" id="title-3">PARA MÉDICOS</span>
+                    </h1>
+                    
+                    <p class="subtitle" id="subtitle">
+                        O guia definitivo para médicos conquistarem independência financeira com segurança, estratégia e autonomia absoluta.
+                    </p>
+                    
+                    <div class="buttons">
+                        <div class="btn-wrapper">
+                            <button class="btn-primary interactive mag-btn">Comprar agora</button>
+                        </div>
+                        <div class="btn-wrapper">
+                            <button class="btn-secondary interactive mag-btn">Conhecer o método</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-col parallax-target" data-speed="-0.03">
+                    <div class="tech-detail interactive">
+                        <span class="tech-number">01</span>
+                        <div class="tech-line"></div>
+                        <span class="tech-text">Liberdade Financeira</span>
+                    </div>
+                    <div class="tech-detail interactive">
+                        <span class="tech-number">02</span>
+                        <div class="tech-line"></div>
+                        <span class="tech-text">Segurança Patrimonial</span>
+                    </div>
+                    <div class="tech-detail interactive">
+                        <span class="tech-number">03</span>
+                        <div class="tech-line"></div>
+                        <span class="tech-text">Autonomia Médica</span>
+                    </div>
+                    <div class="tech-detail interactive">
+                        <span class="tech-number">04</span>
+                        <div class="tech-line"></div>
+                        <span class="tech-text">Estratégia</span>
+                    </div>
+                    <div class="tech-detail interactive">
+                        <span class="tech-number">05</span>
+                        <div class="tech-line"></div>
+                        <span class="tech-text">Alta Performance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span class="scroll-text">Scroll</span>
+                <div class="scroll-line"><div class="scroll-dot"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Register Plugins
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize Lenis for Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Custom Cursor & Spotlight
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const spotlight = document.querySelector('.spotlight');
+        const interactiveElements = document.querySelectorAll('.interactive');
+        const parallaxTargets = document.querySelectorAll('.parallax-target');
+        
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let outlineX = mouseX;
+        let outlineY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Spotlight update via CSS vars
+            spotlight.style.setProperty('--mouse-x', `${mouseX}px`);
+            spotlight.style.setProperty('--mouse-y', `${mouseY}px`);
+
+            // Mouse Parallax Effect
+            const xOffset = (mouseX / window.innerWidth - 0.5) * 2;
+            const yOffset = (mouseY / window.innerHeight - 0.5) * 2;
+
+            parallaxTargets.forEach(target => {
+                const speed = parseFloat(target.getAttribute('data-speed')) || 0.05;
+                gsap.to(target, {
+                    x: xOffset * 100 * speed,
+                    y: yOffset * 100 * speed,
+                    rotateX: -yOffset * 5 * Math.abs(speed),
+                    rotateY: xOffset * 5 * Math.abs(speed),
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Cursor animation loop
+        function updateCursor() {
+            // Dot follows exactly
+            gsap.set(cursorDot, { x: mouseX, y: mouseY });
+            
+            // Outline follows with lerp
+            outlineX += (mouseX - outlineX) * 0.15;
+            outlineY += (mouseY - outlineY) * 0.15;
+            gsap.set(cursorOutline, { x: outlineX, y: outlineY });
+            
+            requestAnimationFrame(updateCursor);
+        }
+        updateCursor();
+
+        // Hover effects
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('cursor-hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('cursor-hover');
+            });
+        });
+
+        // Magnetic Buttons
+        const magBtns = document.querySelectorAll('.mag-btn');
+        magBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(btn, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.6,
+                    ease: "power3.out"
+                });
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "elastic.out(1, 0.3)"
+                });
+            });
+        });
+
+        // Video Scrubbing Logic
+        const video = document.getElementById('hero-video');
+        const heroContainer = document.querySelector('.hero-container');
+        
+        let isVideoReady = false;
+
+        video.addEventListener('loadedmetadata', () => {
+            isVideoReady = true;
+            initVideoScroll();
+        });
+
+        // Force load for mobile
+        video.load();
+        
+        // Fallback if loadedmetadata doesn't fire fast enough
+        setTimeout(() => {
+            if(!isVideoReady && video.readyState >= 2) {
+                isVideoReady = true;
+                initVideoScroll();
+            }
+        }, 1000);
+
+        function initVideoScroll() {
+            const duration = video.duration || 10; // fallback duration if needed
+            
+            ScrollTrigger.create({
+                trigger: heroContainer,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1, // smooth scrubbing
+                onUpdate: (self) => {
+                    if (video.readyState >= 2) { // HAVE_CURRENT_DATA
+                        video.currentTime = self.progress * duration;
+                    }
+                }
+            });
+        }
+
+        // SplitType for Texts
+        const title1Split = new SplitType('#title-1', { types: 'chars' });
+        const title2Split = new SplitType('#title-2', { types: 'chars' });
+        const title3Split = new SplitType('#title-3', { types: 'words, chars' });
+        const subtitleSplit = new SplitType('#subtitle', { types: 'lines' });
+
+        // Initial Setup for animation
+        gsap.set(['.author span', title1Split.chars, title2Split.chars, title3Split.chars, subtitleSplit.lines, '.btn-wrapper button', '.tech-detail'], {
+            y: 50,
+            opacity: 0
+        });
+
+        gsap.set(title2Split.chars, { rotationX: -90, transformOrigin: "50% 50% -50" });
+
+        // Loader and Initial Animation
+        const tlLoader = gsap.timeline();
+        
+        tlLoader.to('.loader-bar', {
+            width: '100%',
+            duration: 2,
+            ease: "power3.inOut"
+        })
+        .to('.loader-text', {
+            opacity: 0,
+            y: -20,
+            duration: 0.5,
+            ease: "power2.in"
+        }, "-=0.5")
+        .to('#loader', {
+            yPercent: -100,
+            duration: 1,
+            ease: "power4.inOut"
+        })
+        .add(() => {
+            // Trigger Main Animation when loader is done
+            playIntroAnimation();
+        });
+
+        function playIntroAnimation() {
+            const tlIntro = gsap.timeline();
+
+            // Author entrance (cinematic blur/fade)
+            tlIntro.to('.author span', {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out",
+                filter: "blur(0px)",
+                startAt: { filter: "blur(10px)" }
+            })
+            // Title 1
+            .to(title1Split.chars, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.05,
+                ease: "back.out(1.7)"
+            }, "-=0.5")
+            // Title 2 (Golden metallic 3D reveal)
+            .to(title2Split.chars, {
+                y: 0,
+                opacity: 1,
+                rotationX: 0,
+                duration: 1.2,
+                stagger: 0.05,
+                ease: "power4.out"
+            }, "-=0.6")
+            // Title 3
+            .to(title3Split.chars, {
+                y: 0,
+                opacity: 1,
+                duration: 0.6,
+                stagger: 0.02,
+                ease: "power2.out"
+            }, "-=0.8")
+            // Subtitle
+            .to(subtitleSplit.lines, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.1,
+                ease: "power3.out"
+            }, "-=0.4")
+            // Buttons
+            .to('.btn-wrapper button', {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power3.out"
+            }, "-=0.6")
+            // Right Tech Details
+            .to('.tech-detail', {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: "power3.out"
+            }, "-=0.8");
+        }
+
+    </script>
+</body>
+</html>
