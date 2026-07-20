@@ -4,20 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>ELOOO International Group | Premium Authors & Books</title>
-
-    <!-- Fonts -->
+    <title>Universidade | ELOOO International Group</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Iconify -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
-    <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
@@ -27,23 +19,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                         display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        stone: {
-                            50: '#fafaf9',
-                            100: '#f5f5f4',
-                            200: '#e7e5e4',
-                            300: '#d6d3d1',
-                            400: '#a8a29e',
-                            500: '#78716c',
-                            600: '#57534e',
-                            700: '#44403c',
-                            800: '#292524',
-                            900: '#1c1917',
-                        },
-                        'surface-light': '#EAEAE5',
                     },
                     backgroundImage: {
                         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
@@ -52,43 +28,30 @@
             }
         }
     </script>
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #EAEAE5;
-            color: #1C1917;
+            background-color: #0c0a09;
+            color: #ffffff;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
-
-        .text-outline {
-            -webkit-text-stroke: 1px #1C1917;
-            color: transparent;
-            transition: all 0.5s ease;
-        }
-
         .reveal-up {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .reveal-up.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* FLASHLIGHT EFFECT */
         .flashlight-card {
             position: relative;
-            background: rgba(28, 25, 23, 0.02);
-            border: 1px solid rgba(28, 25, 23, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             overflow: hidden;
             transition: all 0.4s ease;
         }
-
         .flashlight-card::before {
             content: '';
             position: absolute;
@@ -96,29 +59,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(28, 25, 23, 0.04), transparent 40%);
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.04), transparent 40%);
             z-index: 1;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
-        .flashlight-card:hover::before {
-            opacity: 1;
-        }
-
-        /* SPINNING BORDER CTA */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        .flashlight-card:hover::before { opacity: 1; }
     </style>
 </head>
 
 <body>
-    <!-- NOISE OVERLAY -->
     <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
-
+    
     <!-- NAVBAR -->
 <header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
     <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
@@ -241,108 +194,57 @@
 </script>
 
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen w-full flex items-center justify-center pt-32 pb-20 bg-stone-900 text-white overflow-hidden">
-        <!-- Background decorative details -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(120,113,108,0.15),transparent_50%)]"></div>
-        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-stone-800/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <section class="py-32 min-h-screen flex flex-col justify-center relative z-10 px-6 max-w-[1440px] mx-auto md:px-24">
+        <div class="mb-20 reveal-up">
+            <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-900 border border-stone-850 rounded-full w-fit">
+                <iconify-icon icon="solar:square-academic-cap-linear" class="text-amber-500"></iconify-icon>
+                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Treinamento de Elite</span>
+            </div>
+            <h2 class="font-display text-4xl md:text-6xl font-medium tracking-tight text-white">
+                Universidade ELOOO
+            </h2>
+            <p class="mt-4 text-stone-400 max-w-xl font-light">
+                Programas avançados de mentoria, escrita de livros de autoridade e aceleração de marcas pessoais para profissionais de destaque.
+            </p>
+        </div>
 
-        <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
-            <div class="lg:col-span-8 flex flex-col justify-center text-left">
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-800/60 border border-stone-700/50 rounded-full w-fit reveal-up">
-                    <img src="static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
-                    <div class="w-px h-3 bg-stone-700"></div>
-                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">International Group</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Module 1 -->
+            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
+                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
+                    <iconify-icon icon="solar:pen-linear" class="text-white text-2xl"></iconify-icon>
                 </div>
-
-                <h1 class="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[0.9] mb-8 reveal-up delay-100">
-                    Propósito e<br>
-                    <span class="text-outline text-transparent">Liberdade para</span><br>
-                    Profissionais.
-                </h1>
-
-                <p class="text-lg md:text-xl text-stone-400 max-w-2xl leading-relaxed font-light mb-12 reveal-up delay-200">
-                    A ELOOO International Group publica os guias de maior autoridade e impacto do mercado, conectando profissionais de elite à sua liberdade de tempo, financeira e geográfica.
+                <h3 class="font-display text-xl font-semibold text-white mb-4">Escrita de Autoridade</h3>
+                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
+                    Metodologia guiada para estruturar, escrever e lançar seu livro com posicionamento premium, atraindo alto valor de marca pessoal.
                 </p>
-
-                <div class="flex flex-wrap gap-4 reveal-up delay-300">
-                    <a href="#autores" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                            Conhecer Autores
-                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80"></iconify-icon>
-                        </span>
-                    </a>
-                    <a href="#livros" class="px-8 py-4 border border-stone-700 hover:border-white rounded-full font-medium text-sm text-stone-300 hover:text-white uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
-                        Ver Livros
-                        <iconify-icon icon="solar:arrow-down-linear" class="text-lg"></iconify-icon>
-                    </a>
-                </div>
             </div>
-        </div>
-        
-        <!-- Scroll hint -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-40">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400">Explore</span>
-            <div class="w-px h-8 bg-stone-700 overflow-hidden relative">
-                <div class="absolute top-0 left-0 w-full h-full bg-white animate-scroll-line" style="animation: scroll-line 2s infinite;"></div>
+
+            <!-- Module 2 -->
+            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
+                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
+                    <iconify-icon icon="solar:graph-up-linear" class="text-white text-2xl"></iconify-icon>
+                </div>
+                <h3 class="font-display text-xl font-semibold text-white mb-4">High-Ticket Mentoring</h3>
+                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
+                    Estruture o ecossistema de vendas pós-livro. Crie mentorias, masterminds e cursos de alto ticket voltados à sua audiência de elite.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- PORTAL NAVIGATION HIGHLIGHTS -->
-    <section class="py-32 bg-stone-100 text-stone-900 relative z-10 overflow-hidden">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                
-                <!-- Authors Portal Block -->
-                <div class="flashlight-card group p-12 bg-white flex flex-col justify-between min-h-[400px] reveal-up delay-100 border border-stone-200/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500" onmousemove="updateFlashlight(event, this)">
-                    <div>
-                        <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 bg-stone-100 border border-stone-200 rounded-full">
-                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-stone-500"></iconify-icon>
-                            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Mentes Brilhantes</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 mb-6">Autores ELOOO</h3>
-                        <p class="font-sans text-stone-500 leading-relaxed mb-6 font-light">
-                            Conheça o pódio de mentores, especialistas e autores de elite que assinam as publicações exclusivas do ELOOO International Group. Acesse o Leaderboard completo e suas páginas oficiais.
-                        </p>
-                    </div>
-                    <a href="autores.html" class="mt-8 relative group/btn rounded-full p-[1px] overflow-hidden bg-stone-800 shadow-md w-fit">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.2)_50%,transparent_100%)] opacity-100 group-hover/btn:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 bg-[#0a0a0a] px-8 py-3 rounded-full font-medium text-xs text-white tracking-widest uppercase transition-colors duration-500 group-hover/btn:bg-[#111]">
-                            Ver Leaderboard de Autores
-                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                        </span>
-                    </a>
+            <!-- Module 3 -->
+            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
+                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
+                    <iconify-icon icon="solar:globus-linear" class="text-white text-2xl"></iconify-icon>
                 </div>
-
-                <!-- Books Portal Block -->
-                <div class="flashlight-card group p-12 bg-white flex flex-col justify-between min-h-[400px] reveal-up delay-200 border border-stone-200/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500" onmousemove="updateFlashlight(event, this)">
-                    <div>
-                        <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 bg-stone-100 border border-stone-200 rounded-full">
-                            <iconify-icon icon="solar:book-bookmark-linear" class="text-stone-500"></iconify-icon>
-                            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Coleções de Impacto</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 mb-6">Nossas Obras</h3>
-                        <p class="font-sans text-stone-500 leading-relaxed mb-6 font-light">
-                            Explore o catálogo de livros publicados pela editora ELOOO, focados em autonomia profissional, inteligência financeira, vitalidade e desenvolvimento de negócios.
-                        </p>
-                    </div>
-                    <a href="livros.html" class="mt-8 relative group/btn rounded-full p-[1px] overflow-hidden bg-stone-800 shadow-md w-fit">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.2)_50%,transparent_100%)] opacity-100 group-hover/btn:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 bg-[#0a0a0a] px-8 py-3 rounded-full font-medium text-xs text-white tracking-widest uppercase transition-colors duration-500 group-hover/btn:bg-[#111]">
-                            Explorar Catálogo de Livros
-                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                        </span>
-                    </a>
-                </div>
-
+                <h3 class="font-display text-xl font-semibold text-white mb-4">Escala de Vendas</h3>
+                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
+                    Sistemas automatizados de aquisição e tráfego pago desenhados para vender livros e mentorias continuamente com excelente ROI.
+                </p>
             </div>
         </div>
     </section>
-<!-- FOOTER -->
+
+    <!-- FOOTER -->
 <footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
     <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
 
@@ -365,20 +267,14 @@
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
-
         document.addEventListener("DOMContentLoaded", () => {
-            // Efeito de Revelação Genérico (Classes reveal-up)
             gsap.utils.toArray('.reveal-up').forEach(function (elem) {
                 ScrollTrigger.create({
                     trigger: elem,
                     start: "top 85%",
-                    onEnter: function () {
-                        elem.classList.add('active');
-                    }
+                    onEnter: function () { elem.classList.add('active'); }
                 });
             });
-
-            // Efeito Lanterna (Flashlight Effect)
             window.updateFlashlight = function (e, card) {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -386,10 +282,7 @@
                 card.style.setProperty("--mouse-x", `${x}px`);
                 card.style.setProperty("--mouse-y", `${y}px`);
             }
-        
-            // Leaderboard Show More / Show Less Toggle
-            });
+        });
     </script>
 </body>
-
 </html>

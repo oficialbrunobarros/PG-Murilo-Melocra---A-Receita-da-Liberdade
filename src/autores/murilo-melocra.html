@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>A Receita da Liberdade | Dr. Murilo Melocra</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        'surface-light': '#EAEAE5',
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            from: { backgroundPosition: '0 0' },
+                            to: { backgroundPosition: '-200% 0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* BASE STYLES */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #EAEAE5;
+            color: #1C1917;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* TEXT OUTLINE */
+        .text-outline {
+            -webkit-text-stroke: 1px #1C1917;
+            color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        /* BEAM BUTTON ANIMATION */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn-beam {
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .btn-beam::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            z-index: -1;
+            background: conic-gradient(from 90deg at 50% 50%, #E2E8F0 0%, #000000 50%, #E2E8F0 100%);
+            animation: spin 4s linear infinite;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-beam:hover::before {
+            opacity: 1;
+        }
+
+        .btn-beam-content {
+            background-color: #1c1917;
+            color: white;
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* NOISE Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #EAEAE5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3d1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e;
+        }
+
+        /* Reveal Animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(15px);
+            will-change: transform, opacity, filter;
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Scrubber Height */
+        .hero-scrub-container {
+            height: 300vh;
+        }
+
+        /* Zoom Reveal */
+        .reveal-zoom {
+            opacity: 0;
+            transform: scale(0.95);
+            filter: blur(10px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-zoom.active {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen relative selection:bg-stone-800 selection:text-white">
+
+    <div class="noise-overlay"></div>
+
+        <!-- INCLUDE_NAVBAR -->
+
+    <!-- 1. AUTOR (MINIMALIST LETTERING / CANVAS VIDEO SCRUB) -->
+    <div class="autor-scrub-container relative bg-stone-950" style="height: 300vh;">
+        <section class="sticky top-0 h-screen w-full relative overflow-hidden flex flex-col md:flex-row pt-20">
+            <!-- Left Photo (Canvas Video) -->
+            <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group bg-stone-900">
+                <canvas id="autor-canvas" width="1280" height="720" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125"></canvas>
+                <!-- Fade into the right side -->
+                <div class="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-stone-950 to-transparent hidden md:block z-10 pointer-events-none"></div>
+                <!-- Fade into the bottom on mobile -->
+                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
+            </div>
+
+            <!-- Right Text -->
+            <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[25vh] px-8 md:px-16 lg:px-24 z-20 autor-text-reveal">
+                <h2 class="font-sans text-3xl md:text-5xl lg:text-6xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
+                    Dr. Murilo<br>
+                    Melocra
+                </h2>
+            </div>
+        </section>
+    </div>
+
+    <!-- 1.5. SOBRE O AUTOR (TRANSIÇÃO) -->
+    <section class="relative z-10 pt-32 pb-48 md:pt-48 md:pb-64 overflow-hidden bg-gradient-to-b from-stone-950 via-stone-800 to-white">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-3 mb-10 px-5 py-2 border border-stone-700/50 rounded-full shadow-sm bg-stone-900/50 backdrop-blur-sm reveal-up">
+                <img src="static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
+                <div class="w-px h-3 bg-stone-700"></div>
+                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Sobre o Autor</span>
+            </div>
+
+            <h3 class="font-display text-3xl md:text-5xl font-light text-white leading-tight mb-8 reveal-up delay-100">
+                Ajudando médicos a conquistarem a <span class="font-medium text-stone-200">liberdade financeira</span> com segurança e autonomia absoluta.
+            </h3>
+            
+        </div>
+
+        <!-- Premium Cards Container (Efeito Espelho) -->
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 mt-20 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-200" onmousemove="updateFlashlight(event, this)">
+                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
+                    <iconify-icon icon="solar:star-fall-linear" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Dupla Expertise</h4>
+                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                    Combina anos de linha de frente na medicina com um profundo domínio analítico no mercado financeiro.
+                </p>
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-300" onmousemove="updateFlashlight(event, this)">
+                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
+                    <iconify-icon icon="solar:target-bold-duotone" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Método Exclusivo</h4>
+                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                    Estratégias financeiras desenhadas cirurgicamente para a carga horária e tributação da área da saúde.
+                </p>
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-400" onmousemove="updateFlashlight(event, this)">
+                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
+                    <iconify-icon icon="solar:shield-check-linear" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Patrimônio Inabalável</h4>
+                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                    Técnicas avançadas para transformar plantões exaustivos em construção de renda passiva sólida e blindada.
+                </p>
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-500" onmousemove="updateFlashlight(event, this)">
+                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
+                    <iconify-icon icon="solar:crown-linear" class="text-2xl"></iconify-icon>
+                </div>
+                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Autonomia Absoluta</h4>
+                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                    A liberdade para voltar a exercer a medicina por vocação e paixão, nunca mais por obrigação ou necessidade.
+                </p>
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            </div>
+        </div>
+
+        <!-- Buttons Container (Premium Animated) -->
+        <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 reveal-up delay-600 w-full relative z-20 px-6 max-w-[1440px] mx-auto">
+            
+            <!-- Button 1: Garantir o Livro -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Garantir o Livro
+                    <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                </span>
+            </button>
+
+            <!-- Button 2: Conhecer a Mentoria -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
+                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Conhecer a Mentoria
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                </span>
+            </button>
+        </div>
+    </section>
+
+    <!-- 2. O LIVRO (HERO SECTION) -->
+    <main class="hero-scrub-container relative bg-white">
+        <div class="sticky top-0 h-screen w-full overflow-hidden">
+
+            <!-- VIDEO CENTERPIECE (Canvas Background) -->
+            <div class="absolute inset-0 z-0 flex items-center justify-center bg-white">
+                <!-- Canvas for Image Sequence -->
+                <canvas id="hero-canvas" width="1280" height="720"
+                    class="w-full h-full object-cover relative z-10"></canvas>
+            </div>
+
+            <!-- OVERLAY CONTENT (Text Layer) -->
+            <div
+                class="relative z-10 w-full h-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 pointer-events-none">
+
+                <!-- Headline Group (Left aligned) -->
+                <div
+                    class="col-span-1 md:col-span-10 lg:col-span-7 h-full flex flex-col justify-center px-6 md:pl-24 text-left pointer-events-auto">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-3 mb-4 reveal-up delay-100 border border-stone-900/10 px-4 py-2 rounded-full bg-white/40 backdrop-blur-sm">
+                        <img src="static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0);">
+                        <div class="w-px h-3 bg-stone-900/20"></div>
+                        <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-700 font-medium">Lançamento
+                            Exclusivo</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1
+                        class="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[0.8] mb-5 text-stone-900 -ml-1 md:-ml-1">
+                        <div class="reveal-up delay-100 block">A receita</div>
+                        <div class="reveal-up delay-200 block text-outline text-transparent">da liberdade</div>
+                        <div class="reveal-up delay-300 block">para médicos.</div>
+                    </h1>
+
+                    <!-- Subtext -->
+                    <p
+                        class="text-lg md:text-xl text-stone-600 max-w-lg leading-relaxed reveal-up delay-500 mb-8 font-light">
+                        O guia definitivo para médicos conquistarem a liberdade financeira com segurança e autonomia
+                        absoluta.
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-wrap gap-4 reveal-up delay-700">
+                        <!-- Button 1: Garantir o Livro -->
+                        <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                            <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                            <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                                Garantir o Livro
+                                <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                            </span>
+                        </button>
+
+                        <!-- Button 2: Conhecer a Mentoria -->
+                        <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                            <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
+                            <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                                Conhecer a Mentoria
+                                <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE CONTROLS -->
+            <div
+                class="absolute right-8 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-8 z-30 mix-blend-difference text-stone-400">
+                <div class="text-xs font-mono">01</div>
+                <div class="w-px h-12 bg-stone-300"></div>
+                <!-- Controls -->
+            </div>
+
+            <!-- SCROLL HINT -->
+            <div
+                class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-60 pointer-events-none">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Scroll to Explore</span>
+                <div class="w-px h-8 bg-stone-400 overflow-hidden relative">
+                    <div class="absolute top-0 left-0 w-full h-full bg-stone-900 animate-scroll-line"></div>
+                </div>
+            </div>
+
+            <!-- Gradient Fade to Next Section -->
+            <div
+                class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-stone-50 to-transparent pointer-events-none z-10">
+            </div>
+        </div>
+    </main>
+
+    <!-- 2. TECH SPECS SECTION (LIGHT) -->
+    <section
+        class="relative z-20 bg-stone-50 text-stone-900 py-24 md:py-32 overflow-hidden border-t border-stone-200 bg-grid selection:bg-stone-900 selection:text-white"
+        id="tech-specs">
+        <!-- Noise Overlay -->
+        <div
+            class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]">
+        </div>
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10">
+
+            <!-- Watermark Text -->
+            <div
+                class="absolute top-0 right-0 -mr-24 -mt-24 pointer-events-none select-none opacity-[0.03] z-0 overflow-hidden">
+                <span class="font-display font-bold text-[15rem] leading-none text-stone-900">LIBERDADE</span>
+            </div>
+
+            <!-- Header -->
+            <div class="mb-24 reveal-up relative z-10">
+                <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-200/50 rounded-full border border-stone-300/50">
+                    <img src="static/images/ELOOO LOGO.png" class="h-2 object-contain opacity-60" style="filter: brightness(0);">
+                    <div class="w-px h-3 bg-stone-400/50"></div>
+                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">O Método</span>
+                </div>
+                <h2
+                    class="font-display text-5xl md:text-7xl font-medium tracking-tight leading-none text-stone-900 max-w-4xl mix-blend-darken">
+                    Independência Financeira.<br>
+                    <span class="text-stone-400">Autonomia Médica.</span>
+                </h2>
+                <p class="mt-8 text-lg text-stone-500 max-w-2xl font-light leading-relaxed text-balance">
+                    Descubra o passo a passo validado para construir um patrimônio sólido, proteger sua renda e alcançar
+                    a verdadeira liberdade sem depender exclusivamente de plantões ou convênios.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+                <!-- Left Visual (Breathtaking Lettering) -->
+                <div class="lg:col-span-7 relative flex items-center justify-center min-h-[500px] metodo-left-container">
+                    
+                    <!-- Atmospheric Background Glow -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-stone-300 via-stone-100 to-transparent blur-3xl opacity-40 mix-blend-multiply rounded-full pointer-events-none"></div>
+                    
+                    <div class="relative z-10 w-full flex flex-col justify-center lg:pr-12 text-center lg:text-left">
+                        <span class="font-mono text-[10px] md:text-xs uppercase tracking-[0.4em] text-stone-400 mb-6 block ml-2">A Verdadeira Riqueza</span>
+                        
+                        <h3 class="font-display text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.85] tracking-tighter text-stone-900 mb-8">
+                            <span class="block">Medicina</span>
+                            <span class="block font-light italic text-stone-500 mt-2 lg:ml-12 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">por vocação,</span>
+                            <span class="block text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] mt-6 tracking-[-0.05em]">LIBERDADE</span>
+                            <span class="block font-serif italic text-stone-400 text-[2.5rem] md:text-[4.5rem] lg:text-[5.5rem] -mt-4 lg:text-right">por escolha.</span>
+                        </h3>
+                        
+                        <div class="flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-end gap-6 mt-8">
+                            <div class="h-px w-16 bg-stone-300 hidden lg:block"></div>
+                            <span class="font-sans text-[10px] md:text-xs uppercase tracking-[0.3em] text-stone-500 font-medium">O fim dos plantões exaustivos</span>
+                        </div>
+                    </div>
+
+                    <!-- Subtle Floating Elements -->
+                    <iconify-icon icon="solar:star-fall-linear" class="absolute top-0 right-10 lg:right-20 text-stone-300 text-3xl animate-pulse opacity-60"></iconify-icon>
+                    <iconify-icon icon="solar:infinity-line-duotone" class="absolute bottom-10 left-0 lg:left-10 text-stone-200 text-5xl opacity-40"></iconify-icon>
+                </div>
+
+                <!-- Right Content (List) -->
+                <div class="lg:col-span-5 space-y-8">
+
+                    <!-- Feature 01 -->
+                    <div
+                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
+                        <div class="flex items-baseline gap-4 mb-3">
+                            <span
+                                class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">01</span>
+                            <h3
+                                class="text-2xl font-display font-medium text-stone-900 group-hover:translate-x-1 transition-transform duration-300">
+                                Mentalidade Vencedora</h3>
+                        </div>
+                        <p
+                            class="pl-8 text-stone-500 text-sm leading-relaxed group-hover:text-stone-600 transition-colors border-l border-stone-200 group-hover:border-stone-900 pl-4">
+                            Aprenda a pensar como um investidor e elimine as crenças limitantes que impedem a grande
+                            maioria dos médicos de enriquecer de verdade.
+                        </p>
+                    </div>
+
+                    <!-- Feature 02 -->
+                    <div
+                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
+                        <div class="flex items-baseline gap-4 mb-3">
+                            <span
+                                class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">02</span>
+                            <h3
+                                class="text-2xl font-display font-medium text-stone-900 group-hover:translate-x-1 transition-transform duration-300">
+                                Gestão Inteligente</h3>
+                        </div>
+                        <p
+                            class="pl-8 text-stone-500 text-sm leading-relaxed group-hover:text-stone-600 transition-colors border-l border-stone-200 group-hover:border-stone-900 pl-4">
+                            Transforme seu conhecimento médico em um negócio altamente rentável, otimizando os processos
+                            e multiplicando a sua renda.
+                        </p>
+                    </div>
+
+                    <!-- Feature 03 -->
+                    <div
+                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
+                        <div class="flex items-baseline gap-4 mb-3">
+                            <span
+                                class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">03</span>
+                            <h3
+                                class="text-2xl font-display font-medium text-stone-900 group-hover:translate-x-1 transition-transform duration-300">
+                                Investimentos Seguros</h3>
+                        </div>
+                        <p
+                            class="pl-8 text-stone-500 text-sm leading-relaxed group-hover:text-stone-600 transition-colors border-l border-stone-200 group-hover:border-stone-900 pl-4">
+                            Estratégias claras, práticas e seguras para fazer o seu dinheiro trabalhar por você,
+                            garantindo tranquilidade no seu futuro.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Buttons Container (Premium Animated) -->
+            <div class="mt-24 flex flex-col md:flex-row items-center justify-center gap-6 reveal-up delay-400 w-full relative z-20 border-t border-stone-200 pt-16">
+                
+                <!-- Button 1: Garantir o Livro -->
+                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                        Garantir o Livro
+                        <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    </span>
+                </button>
+
+                <!-- Button 2: Conhecer a Mentoria -->
+                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
+                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                        Conhecer a Mentoria
+                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+        <!-- INCLUDE_FOOTER -->
+
+    <script>
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // ==========================================
+            // AUTOR CANVAS (FOLD 1)
+            // ==========================================
+            const autorCanvas = document.getElementById("autor-canvas");
+            const autorContext = autorCanvas.getContext("2d");
+            const autorFrameCount = 192;
+            const autorCurrentFrame = { index: 0 };
+            const autorImages = [];
+
+            const preloadAutorImages = () => {
+                for (let i = 1; i <= autorFrameCount; i++) {
+                    const img = new Image();
+                    const frameNumber = i.toString().padStart(4, '0');
+                    img.src = `static/assets/video_frames_murilo/frame_${frameNumber}.jpg`;
+                    autorImages.push(img);
+                }
+            };
+
+            const renderAutor = () => {
+                const frameIndex = Math.floor(autorCurrentFrame.index);
+                const img = autorImages[frameIndex];
+                if (img && img.complete) {
+                    autorContext.clearRect(0, 0, autorCanvas.width, autorCanvas.height);
+                    autorContext.drawImage(img, 0, 0, autorCanvas.width, autorCanvas.height);
+                }
+            };
+
+            preloadAutorImages();
+
+            if (autorImages[0]) {
+                autorImages[0].onload = renderAutor;
+            }
+
+            gsap.to(autorCurrentFrame, {
+                index: autorFrameCount - 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".autor-scrub-container",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0,
+                    onUpdate: () => {
+                        requestAnimationFrame(renderAutor);
+                    }
+                }
+            });
+
+            ScrollTrigger.create({
+                trigger: ".autor-scrub-container",
+                start: "top 80%",
+                onEnter: () => {
+                    gsap.fromTo(autorCanvas,
+                        { opacity: 0, scale: 1.1 },
+                        { opacity: 0.8, scale: 1, duration: 1.5, ease: "power3.out" }
+                    );
+                    
+                    gsap.fromTo(".autor-scrub-container .autor-text-reveal",
+                        { opacity: 0, y: 30, filter: "blur(15px)" },
+                        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, delay: 0.2, ease: "power3.out" }
+                    );
+                },
+                once: true
+            });
+
+            gsap.to(".autor-scrub-container .autor-text-reveal", {
+                y: -60,
+                opacity: 0,
+                filter: "blur(15px)",
+                stagger: 0.05,
+                scrollTrigger: {
+                    trigger: ".autor-scrub-container",
+                    start: "10% top",
+                    end: "40% top",
+                    scrub: true
+                }
+            });
+            const canvas = document.getElementById("hero-canvas");
+            const context = canvas.getContext("2d");
+
+            // Configuration
+            const frameCount = 192;
+            const currentFrame = { index: 0 };
+            const images = [];
+
+            // Preload Images
+            // Uses a promise to maybe show loading state if needed, but for now just eager load
+            const preloadImages = () => {
+                for (let i = 1; i <= frameCount; i++) {
+                    const img = new Image();
+                    // Pad with leading zeros: 0001, 0002...
+                    const frameNumber = i.toString().padStart(4, '0');
+                    img.src = `static/assets/video_frames/frame_${frameNumber}.jpg`;
+                    images.push(img);
+                }
+            };
+
+            // Render function
+            const render = () => {
+                // Determine which frame to draw
+                const frameIndex = Math.floor(currentFrame.index);
+                const img = images[frameIndex];
+
+                if (img && img.complete) {
+                    // Draw image to cover canvas
+                    // Since canvas resolution is fixed (1280x720) and we use CSS object-cover,
+                    // we can just draw the image full size on the canvas coordinates.
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                }
+            };
+
+            // Start Preloading
+            preloadImages();
+
+            // Set Initial Frame
+            // Wait for the first image to load before rendering it
+            if (images[0]) {
+                images[0].onload = render;
+            }
+
+
+            // Intro Animation for Canvas and Hero Text when scrolling into the section
+            ScrollTrigger.create({
+                trigger: ".hero-scrub-container",
+                start: "top 60%",
+                onEnter: () => {
+                    // Canvas Intro Animation
+                    gsap.fromTo(canvas,
+                        { opacity: 0, scale: 1.1 },
+                        { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" }
+                    );
+
+                    // Hero Text Reveal
+                    const heroReveals = document.querySelectorAll('.hero-scrub-container .reveal-up');
+                    heroReveals.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.classList.add('active');
+                        }, 100 * index);
+                    });
+                },
+                once: true
+            });
+
+            // Parallax Effects for Hero Text (Blur Out on Scroll)
+            gsap.to(".hero-scrub-container .reveal-up", {
+                y: -60,
+                opacity: 0,
+                filter: "blur(15px)",
+                stagger: 0.05,
+                scrollTrigger: {
+                    trigger: ".hero-scrub-container",
+                    start: "10% top",
+                    end: "40% top",
+                    scrub: true
+                }
+            });
+
+            // Reveal Animation for generic sections (Tech Specs, etc)
+            gsap.utils.toArray('section .reveal-up, section .reveal-zoom, main .reveal-up').forEach(function (elem) {
+                if(elem.closest('.hero-scrub-container')) return; // handled above
+
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 85%",
+                    onEnter: function () {
+                        elem.classList.add('active');
+                    }
+                });
+            });
+
+            // ==========================================
+            // O MÉTODO SECTION (SCROLL ANIMATIONS)
+            // ==========================================
+            const metodoSection = document.getElementById("tech-specs");
+            if (metodoSection) {
+                // 1. Lettering Parallax & Blur scrub
+                const letteringWords = metodoSection.querySelectorAll('.metodo-left-container h3 span');
+                gsap.fromTo(letteringWords, 
+                    { opacity: 0, filter: "blur(20px)", y: 80, scale: 0.9, rotationX: 20 },
+                    {
+                        opacity: 1,
+                        filter: "blur(0px)",
+                        y: 0,
+                        scale: 1,
+                        rotationX: 0,
+                        stagger: 0.1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: metodoSection,
+                            start: "top 65%",
+                            end: "top 15%",
+                            scrub: 1.5 // Adds a highly premium, smooth lagging effect to the scroll
+                        }
+                    }
+                );
+
+                // 2. Right Side Features (Boxes) Glassmorphism cascade
+                const methodFeatures = metodoSection.querySelectorAll('.metodo-feature-box');
+                gsap.fromTo(methodFeatures,
+                    { opacity: 0, x: 50, filter: "blur(15px)" },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        filter: "blur(0px)",
+                        stagger: 0.2,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: metodoSection,
+                            start: "top 50%",
+                            end: "top 5%",
+                            scrub: 1.2
+                        }
+                    }
+                );
+                
+                // 3. Background Aura Parallax
+                const metodoAura = metodoSection.querySelector('.metodo-left-container .absolute.inset-0');
+                if(metodoAura) {
+                    gsap.to(metodoAura, {
+                        scale: 1.8,
+                        opacity: 0.8,
+                        scrollTrigger: {
+                            trigger: metodoSection,
+                            start: "top 80%",
+                            end: "bottom top",
+                            scrub: true
+                        }
+                    });
+                }
+            }
+
+            // Flashlight Effect Function
+            window.updateFlashlight = function (e, card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            let menuOpen = false;
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    menuOpen = !menuOpen;
+                    if (menuOpen) {
+                        mobileMenu.classList.remove('translate-x-full');
+                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:close-circle-linear"></iconify-icon>';
+                        mobileMenuBtn.classList.add('text-white'); // Make close button white on dark bg
+                        mobileMenuBtn.classList.remove('text-stone-900');
+                    } else {
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                        mobileMenuBtn.classList.remove('text-white');
+                        mobileMenuBtn.classList.add('text-stone-900');
+                    }
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuOpen = false;
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                        mobileMenuBtn.classList.remove('text-white');
+                        mobileMenuBtn.classList.add('text-stone-900');
+                    });
+                });
+            }
+
+            // GSAP Scroll Animation
+            // We animate the 'index' property of currentFrame object from 0 to 191
+            gsap.to(currentFrame, {
+                index: frameCount - 1,
+                ease: "none", // Linear scrub
+                scrollTrigger: {
+                    trigger: ".hero-scrub-container",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0, // Instant response (canvas is fast enough)
+                    onUpdate: () => {
+                        requestAnimationFrame(render);
+                    }
+                }
+            });
+        });
+
+        // Add custom keyframe for scroll line
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes scroll-line {
+                0% { transform: translateY(-100%); }
+                100% { transform: translateY(100%); }
+            }
+            .animate-scroll-line {
+                animation: scroll-line 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+
+</html>

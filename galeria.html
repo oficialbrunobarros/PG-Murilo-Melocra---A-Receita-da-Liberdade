@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Galeria & Artigos | ELOOO International Group</title>
+    <meta name="description" content="Explore os bastidores de lançamentos literários de alta performance e acesse o arquivo de artigos e insights oficiais da ELOOO.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4',
+                            300: '#d6d3d1', 400: '#a8a29e', 500: '#78716c',
+                            600: '#57534e', 700: '#44403c', 800: '#292524',
+                            900: '#1c1917',
+                        },
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Ambient glow orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            opacity: 0.12;
+        }
+
+        /* Custom scrollbar for articles list */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(214, 188, 140, 0.2);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(214, 188, 140, 0.4);
+        }
+
+        /* Gold line pulse */
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(214, 188, 140, 0.4), transparent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- NAVBAR -->
+<header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 py-3 relative flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center group cursor-pointer z-50">
+            <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-11 md:h-16 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+        </a>
+
+        <!-- Nav Links (Desktop) -->
+        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-9 text-[13px] font-sans uppercase tracking-[0.18em] text-stone-600 font-medium">
+            <a href="index.html" class="hover:text-stone-900 transition-colors">Home</a>
+            <a href="quem-somos.html" class="hover:text-stone-900 transition-colors">Quem Somos</a>
+            <a href="autores.html" class="hover:text-stone-900 transition-colors">Autores</a>
+            <a href="livros.html" class="hover:text-stone-900 transition-colors">Livros</a>
+            <a href="trilhas.html" class="hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
+            <a href="galeria.html" class="hover:text-stone-900 transition-colors">Galeria</a>
+            <a href="contato.html" class="hover:text-stone-900 transition-colors">Contato</a>
+        </nav>
+
+        <!-- Action & Hamburger -->
+        <div class="flex items-center gap-4 z-50">
+            <button class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2.5 rounded-full font-bold text-[11px] text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+            <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
+                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
+        <nav class="flex flex-col items-center gap-6 text-[13px] font-sans uppercase tracking-[0.18em] text-white/70 font-medium">
+            <a href="index.html" class="hover:text-white transition-colors mobile-link">Home</a>
+            <a href="quem-somos.html" class="hover:text-white transition-colors mobile-link">Quem Somos</a>
+            <a href="autores.html" class="hover:text-white transition-colors mobile-link">Autores</a>
+            <a href="livros.html" class="hover:text-white transition-colors mobile-link">Livros</a>
+            <a href="trilhas.html" class="hover:text-white transition-colors mobile-link">Trilhas Editoriais</a>
+            <a href="galeria.html" class="hover:text-white transition-colors mobile-link">Galeria</a>
+            <a href="contato.html" class="hover:text-white transition-colors mobile-link">Contato</a>
+            
+            <!-- CTA on mobile -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm mt-8">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-bold text-[11px] text-white tracking-widest uppercase">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav-link-active {
+        color: #0c0a09 !important;
+        background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%);
+        background-size: 200% auto;
+        border: 1px solid rgba(214, 188, 140, 0.6);
+        border-radius: 9999px;
+        padding: 6px 16px !important;
+        margin: -6px -8px;
+        box-shadow: 0 4px 20px -3px rgba(214, 188, 140, 0.5);
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em !important;
+        transition: all 0.3s ease;
+    }
+    
+    /* Brushed metallic reflection shine sweep overlay */
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.65) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes shineSweep {
+        0% { left: -100%; }
+        25% { left: 150%; }
+        100% { left: 150%; }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const path = window.location.pathname;
+        const currentPath = path.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Normalize path matching
+            const hrefFilename = href.split('/').pop();
+            const isMatch = (hrefFilename === currentPath) ||
+                            (path.includes('/autores/') && hrefFilename === 'autores.html') ||
+                            (path.includes('/livros/') && hrefFilename === 'livros.html');
+                            
+            if (isMatch) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+</script>
+
+
+    <div class="pt-20">
+        <!-- Main Section -->
+        <section class="relative min-h-screen pt-12 pb-24 overflow-hidden">
+            <!-- Orbs -->
+            <div class="glow-orb w-[500px] h-[500px] bg-[#d6bc8c] top-[-10%] left-[-10%]" style="position:absolute;"></div>
+            <div class="glow-orb w-[400px] h-[400px] bg-[#d6bc8c] bottom-[10%] right-[-10%]" style="position:absolute;"></div>
+
+            <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Left Side: Mosaic Gallery -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Heading for Gallery -->
+                        <div class="reveal-up">
+                            <div class="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-stone-900 border border-[#d6bc8c]/15 rounded-full">
+                                <div class="w-1.5 h-1.5 rounded-full bg-[#d6bc8c]"></div>
+                                <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80">Registros Exclusivos</span>
+                            </div>
+                            <h1 class="font-display text-3xl md:text-5xl font-medium tracking-tight text-white mb-4">
+                                Galeria de Lançamentos
+                            </h1>
+                            <p class="text-stone-400 text-sm font-light max-w-xl leading-relaxed">
+                                Momentos marcantes de nossos autores da Elite Autoral em lançamentos oficiais, palestras internacionais e imersões exclusivas. Clique nos registros para visualizar.
+                            </p>
+                        </div>
+
+                        <!-- Mosaic Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[160px] reveal-up delay-100">
+                            <!-- Item 1: Large Main Image (Dr. Murilo Melocra Book Launch) -->
+                            <div class="sm:col-span-2 sm:row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer border border-stone-850" onclick="openLightbox('static/images/FOTO MURILO.jpeg', 'photo', 'Lançamento Oficial: Dr. Murilo Melocra — A Receita da Liberdade')">
+                                <img src="static/images/FOTO MURILO.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Lançamento Dr. Murilo Melocra">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09]/90 via-[#0c0a09]/20 to-transparent opacity-60 group-hover:opacity-85 transition-opacity duration-500"></div>
+                                <div class="absolute bottom-0 left-0 p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest">Lançamento Oficial</span>
+                                    <h3 class="text-base font-semibold text-white mt-1">Imersão ELOOO Impulse — São Paulo</h3>
+                                </div>
+                            </div>
+
+                            <!-- Item 2: Video Thumbnail (Tatiana Fonseca) -->
+                            <div class="rounded-2xl overflow-hidden relative group cursor-pointer border border-stone-850" onclick="openLightbox('static/images/tatiana-fonseca.png', 'video', 'Depoimento Tatiana Fonseca — O Caminho para a Plenitude')">
+                                <img src="static/images/tatiana-fonseca.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Depoimento Tatiana Fonseca">
+                                <div class="absolute inset-0 bg-stone-950/40 group-hover:bg-stone-950/20 transition-all duration-500 flex items-center justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-stone-900/90 border border-[#d6bc8c]/40 flex items-center justify-center group-hover:bg-[#d6bc8c] group-hover:border-[#d6bc8c] transition-all duration-300">
+                                        <iconify-icon icon="solar:play-bold" class="text-lg text-[#d6bc8c] group-hover:text-stone-950 transition-colors"></iconify-icon>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 left-0 p-4 z-10">
+                                    <span class="text-[9px] font-mono text-stone-400 uppercase tracking-widest">Vídeo Depoimento</span>
+                                </div>
+                            </div>
+
+                            <!-- Item 3: Small Square Photo (Kenje Kambara) -->
+                            <div class="rounded-2xl overflow-hidden relative group cursor-pointer border border-stone-850" onclick="openLightbox('static/images/kenje-kambara.png', 'photo', 'Kenje Kambara — Sessão de Autógrafos')">
+                                <img src="static/images/kenje-kambara.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Kenje Kambara">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09]/80 to-transparent opacity-60 group-hover:opacity-85 transition-opacity"></div>
+                                <div class="absolute bottom-0 left-0 p-4 z-10">
+                                    <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-widest">Autógrafos</span>
+                                </div>
+                            </div>
+
+                            <!-- Item 4: Vertical Tall Image (Carine Aparecida) -->
+                            <div class="sm:row-span-2 rounded-2xl overflow-hidden relative group cursor-pointer border border-stone-850" onclick="openLightbox('static/images/carine-aparecida.png', 'photo', 'Carine Aparecida — Além da Beleza')">
+                                <img src="static/images/carine-aparecida.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Carine Aparecida">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09]/90 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+                                <div class="absolute bottom-0 left-0 p-4 z-10">
+                                    <span class="text-[9px] font-mono text-stone-400 uppercase tracking-widest">Encontro de Autoras</span>
+                                </div>
+                            </div>
+
+                            <!-- Item 5: Wide Horizontal Photo (Dra. Vanessa Rodrigues) -->
+                            <div class="sm:col-span-2 rounded-2xl overflow-hidden relative group cursor-pointer border border-stone-850" onclick="openLightbox('static/images/vanessa-rodrigues.png', 'photo', 'Dra. Vanessa Rodrigues — Emagrecimento Saudável')">
+                                <img src="static/images/vanessa-rodrigues.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Dra. Vanessa Rodrigues">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09]/80 to-transparent opacity-60 group-hover:opacity-85 transition-opacity"></div>
+                                <div class="absolute bottom-0 left-0 p-5 z-10">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest">Painel Científico</span>
+                                    <h4 class="text-sm font-semibold text-white mt-1">Palestra de Posicionamento e Saúde</h4>
+                                </div>
+                            </div>
+
+                            <!-- Item 6: Video Thumbnail (Dr. Fernando Merlos) -->
+                            <div class="rounded-2xl overflow-hidden relative group cursor-pointer border border-stone-850" onclick="openLightbox('static/images/fernando-merlos.png', 'video', 'Dr. Fernando Merlos — A Essência da Alma Médica')">
+                                <img src="static/images/fernando-merlos.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Dr. Fernando Merlos">
+                                <div class="absolute inset-0 bg-stone-950/40 group-hover:bg-stone-950/20 transition-all duration-500 flex items-center justify-center">
+                                    <div class="w-10 h-10 rounded-full bg-stone-900/90 border border-[#d6bc8c]/40 flex items-center justify-center group-hover:bg-[#d6bc8c] group-hover:border-[#d6bc8c] transition-all duration-300">
+                                        <iconify-icon icon="solar:play-bold" class="text-sm text-[#d6bc8c] group-hover:text-stone-950 transition-colors"></iconify-icon>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 left-0 p-4 z-10">
+                                    <span class="text-[9px] font-mono text-stone-400 uppercase tracking-widest">Bastidores</span>
+                                </div>
+                            </div>
+
+                            <!-- Item 7: Square Photo (Sávio Cardoso) -->
+                            <div class="rounded-2xl overflow-hidden relative group cursor-pointer border border-stone-850" onclick="openLightbox('static/images/savio-cardoso.png', 'photo', 'Dr. Sávio Cardoso — Evento de Lançamento em Portugal')">
+                                <img src="static/images/savio-cardoso.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Dr. Sávio Cardoso">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09]/80 to-transparent opacity-60 group-hover:opacity-85 transition-opacity"></div>
+                                <div class="absolute bottom-0 left-0 p-4 z-10">
+                                    <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-widest">Europa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Newsletter Published Articles Archive -->
+                    <div class="lg:col-span-5 relative lg:sticky lg:top-24">
+                        <div class="relative rounded-[32px] overflow-hidden p-[1.5px] bg-stone-900/40 border border-stone-850 shadow-2xl">
+                            <!-- Rotating light border sweep -->
+                            <span class="absolute inset-[-1000%] animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.2)_50%,transparent_100%)] pointer-events-none"></span>
+
+                            <!-- Form Inner Container -->
+                            <div class="relative z-10 bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-8" id="newsletter-card" onmousemove="updateFlashlight(event, this)">
+                                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-stone-900 border border-[#d6bc8c]/15 rounded-full">
+                                    <iconify-icon icon="solar:folder-with-files-linear" class="text-xs text-[#d6bc8c]"></iconify-icon>
+                                    <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80">Arquivo Editorial</span>
+                                </div>
+                                <h2 class="font-display text-2xl font-semibold text-white tracking-tight mb-2">
+                                    Artigos Publicados
+                                </h2>
+                                <p class="text-stone-400 text-xs font-light leading-relaxed mb-6">
+                                    Explore o histórico de nossas análises de posicionamento intelectual, bastidores editoriais e insights de escrita literária de elite publicados na Conexão Elite.
+                                </p>
+
+                                <!-- Articles Scrollable Feed -->
+                                <div class="space-y-4 max-h-[460px] overflow-y-auto pr-2 custom-scrollbar">
+                                    
+                                    <!-- Article 1 -->
+                                    <div class="p-4 rounded-2xl bg-stone-900/40 border border-stone-850 hover:border-[#d6bc8c]/35 transition-all duration-300 group cursor-pointer" onclick="openArticle('A Receita da Liberdade Editorial', '15 Jul 2026', 'Bastidores', 'O livro físico é o maior ativo de autoridade que um profissional pode possuir. Analisamos detalhadamente a jornada de lançamento do best-seller do Dr. Murilo Melocra e como ele utilizou a obra como ferramenta central de conversão para mentorias premium e aquisição de clientes de alto valor, gerando autoridade inquestionável em seu setor. Para médicos e mentores, o livro físico abre as portas de congressos e palestras corporativas de elite.')">
+                                        <div class="flex items-center justify-between gap-2 mb-2">
+                                            <span class="text-[9px] font-mono text-stone-500">Edição #12 · 15 Jul 2026</span>
+                                            <span class="px-2 py-0.5 rounded-full bg-[#d6bc8c]/10 text-[#d6bc8c] text-[8px] font-mono uppercase">Bastidores</span>
+                                        </div>
+                                        <h3 class="text-xs sm:text-sm font-semibold text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                            A Receita da Liberdade Editorial
+                                        </h3>
+                                        <p class="text-[10px] text-stone-500 font-light mt-1.5 leading-normal line-clamp-2">
+                                            Como estruturar a sua autoridade e utilizá-la para conversões exclusivas de mentorias e consultoria.
+                                        </p>
+                                        <div class="flex items-center gap-1.5 text-[9px] text-[#d6bc8c]/80 font-mono mt-3 uppercase tracking-wider group-hover:text-[#d6bc8c]">
+                                            <span>Ler Artigo</span>
+                                            <iconify-icon icon="solar:arrow-right-linear" class="text-[9px] transition-transform group-hover:translate-x-0.5"></iconify-icon>
+                                        </div>
+                                    </div>
+
+                                    <!-- Article 2 -->
+                                    <div class="p-4 rounded-2xl bg-stone-900/40 border border-stone-850 hover:border-[#d6bc8c]/35 transition-all duration-300 group cursor-pointer" onclick="openArticle('O Código do Livro Best-Seller', '08 Jul 2026', 'Estratégia', 'Escrever um livro não é apenas sobre o texto, mas sobre a arquitetura da informação. Neste artigo revelamos o código por trás do design e sequenciamento de capítulos que engajam o leitor, resolvem problemas complexos em pequenos blocos e deixam o leitor sedento para dar o próximo passo em sua jornada comercial com o autor.')">
+                                        <div class="flex items-center justify-between gap-2 mb-2">
+                                            <span class="text-[9px] font-mono text-stone-500">Edição #11 · 08 Jul 2026</span>
+                                            <span class="px-2 py-0.5 rounded-full bg-[#d6bc8c]/10 text-[#d6bc8c] text-[8px] font-mono uppercase">Estratégia</span>
+                                        </div>
+                                        <h3 class="text-xs sm:text-sm font-semibold text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                            O Código do Livro Best-Seller
+                                        </h3>
+                                        <p class="text-[10px] text-stone-500 font-light mt-1.5 leading-normal line-clamp-2">
+                                            Descubra como estruturar capítulos magnéticos que convertem leitores frios em clientes premium.
+                                        </p>
+                                        <div class="flex items-center gap-1.5 text-[9px] text-[#d6bc8c]/80 font-mono mt-3 uppercase tracking-wider group-hover:text-[#d6bc8c]">
+                                            <span>Ler Artigo</span>
+                                            <iconify-icon icon="solar:arrow-right-linear" class="text-[9px] transition-transform group-hover:translate-x-0.5"></iconify-icon>
+                                        </div>
+                                    </div>
+
+                                    <!-- Article 3 -->
+                                    <div class="p-4 rounded-2xl bg-stone-900/40 border border-stone-850 hover:border-[#d6bc8c]/35 transition-all duration-300 group cursor-pointer" onclick="openArticle('Networking e Autoridade Intelectual', '01 Jul 2026', 'Branding', 'A literatura de negócios tem o poder de abrir portas inalcançáveis por mídias tradicionais. O livro físico atua como a ferramenta de quebra de barreiras e início de conexões de alto nível com empresários, players de mercado e investidores internacionais.')">
+                                        <div class="flex items-center justify-between gap-2 mb-2">
+                                            <span class="text-[9px] font-mono text-stone-500">Edição #10 · 01 Jul 2026</span>
+                                            <span class="px-2 py-0.5 rounded-full bg-[#d6bc8c]/10 text-[#d6bc8c] text-[8px] font-mono uppercase">Branding</span>
+                                        </div>
+                                        <h3 class="text-xs sm:text-sm font-semibold text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                            Networking e Autoridade Intelectual
+                                        </h3>
+                                        <p class="text-[10px] text-stone-500 font-light mt-1.5 leading-normal line-clamp-2">
+                                            O livro físico como o maior cartão de visitas corporativo para parcerias e conexões milionárias.
+                                        </p>
+                                        <div class="flex items-center gap-1.5 text-[9px] text-[#d6bc8c]/80 font-mono mt-3 uppercase tracking-wider group-hover:text-[#d6bc8c]">
+                                            <span>Ler Artigo</span>
+                                            <iconify-icon icon="solar:arrow-right-linear" class="text-[9px] transition-transform group-hover:translate-x-0.5"></iconify-icon>
+                                        </div>
+                                    </div>
+
+                                    <!-- Article 4 -->
+                                    <div class="p-4 rounded-2xl bg-stone-900/40 border border-stone-850 hover:border-[#d6bc8c]/35 transition-all duration-300 group cursor-pointer" onclick="openArticle('Internacionalização Editorial', '24 Jun 2026', 'Escala', 'Para mentores e palestrantes que buscam ampliar sua voz, a publicação transfronteiriça é indispensável. Analisamos a escalabilidade e a logística por trás de obras de autores brasileiros distribuídas e comercializadas na Europa.')">
+                                        <div class="flex items-center justify-between gap-2 mb-2">
+                                            <span class="text-[9px] font-mono text-stone-500">Edição #09 · 24 Jun 2026</span>
+                                            <span class="px-2 py-0.5 rounded-full bg-[#d6bc8c]/10 text-[#d6bc8c] text-[8px] font-mono uppercase">Escala</span>
+                                        </div>
+                                        <h3 class="text-xs sm:text-sm font-semibold text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                            Internacionalização Editorial
+                                        </h3>
+                                        <p class="text-[10px] text-stone-500 font-light mt-1.5 leading-normal line-clamp-2">
+                                            Os desafios e estratégias para distribuir e vender livros físicos nos mercados de Portugal e Espanha.
+                                        </p>
+                                        <div class="flex items-center gap-1.5 text-[9px] text-[#d6bc8c]/80 font-mono mt-3 uppercase tracking-wider group-hover:text-[#d6bc8c]">
+                                            <span>Ler Artigo</span>
+                                            <iconify-icon icon="solar:arrow-right-linear" class="text-[9px] transition-transform group-hover:translate-x-0.5"></iconify-icon>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-stone-950/95 flex items-center justify-center p-6 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="absolute inset-0 cursor-pointer" onclick="closeLightbox()"></div>
+        <div class="relative max-w-4xl w-full bg-stone-900 rounded-3xl overflow-hidden border border-stone-850 z-10 flex flex-col shadow-2xl">
+            <!-- Close Button -->
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-stone-950/80 border border-stone-800 flex items-center justify-center text-white hover:text-[#d6bc8c] hover:border-[#d6bc8c] transition-colors z-20">
+                <iconify-icon icon="solar:close-circle-linear" class="text-xl"></iconify-icon>
+            </button>
+            
+            <!-- Content Area -->
+            <div id="lightbox-content" class="w-full bg-black flex items-center justify-center">
+                <!-- Dynamic Content Injection -->
+            </div>
+            
+            <!-- Description -->
+            <div class="p-6 bg-[#0c0a09] border-t border-stone-900">
+                <span id="lightbox-tag" class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest">Tag</span>
+                <h3 id="lightbox-title" class="text-lg font-semibold text-white mt-1">Title</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+<footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+
+        <div class="flex items-center group cursor-pointer">
+            <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
+        </div>
+
+        <div class="text-xs font-mono uppercase tracking-widest flex gap-6">
+            <a href="#" class="hover:text-white transition-colors">Termos</a>
+            <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-white transition-colors">Suporte</a>
+        </div>
+
+        <div class="text-xs text-stone-600 font-mono tracking-widest uppercase">
+            &copy; 2026 ELOOO International Group.<br class="md:hidden"> Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        document.addEventListener("DOMContentLoaded", () => {
+            // Scroll Trigger Reveals
+            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 88%",
+                    onEnter: function () { elem.classList.add('active'); }
+                });
+            });
+
+            // Card mouse move flashlight
+            const card = document.getElementById('newsletter-card');
+            if (card) {
+                window.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty("--mouse-x", (e.clientX - rect.left) + "px");
+                    card.style.setProperty("--mouse-y", (e.clientY - rect.top) + "px");
+                });
+            }
+
+            // Navbar scroll style (matching authors page)
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.querySelector('.absolute').classList.replace('bg-white/70', 'bg-white/95');
+                    } else {
+                        navbar.querySelector('.absolute').classList.replace('bg-white/95', 'bg-white/70');
+                    }
+                });
+            }
+
+            // Mobile menu logic
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('translate-x-full');
+                    mobileMenu.classList.toggle('translate-x-0');
+                    const isOpen = mobileMenu.classList.contains('translate-x-0');
+                    menuBtn.innerHTML = isOpen 
+                        ? '<iconify-icon icon="solar:close-circle-linear"></iconify-icon>' 
+                        : '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                    if (isOpen) menuBtn.style.color = '#fff';
+                    else menuBtn.style.color = '';
+                });
+                mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileMenu.classList.remove('translate-x-0');
+                        menuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                    });
+                });
+            }
+        });
+
+        // Lightbox Functions
+        function openLightbox(src, type, title) {
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightbox-content');
+            const tag = document.getElementById('lightbox-tag');
+            const lTitle = document.getElementById('lightbox-title');
+            
+            content.className = "w-full aspect-video bg-black flex items-center justify-center";
+            
+            if (type === 'video') {
+                tag.innerText = 'Vídeo Bastidores';
+                content.innerHTML = `
+                    <div class="relative w-full h-full flex flex-col items-center justify-center p-8 text-center bg-stone-950">
+                        <div class="w-16 h-16 rounded-full bg-[#d6bc8c]/10 border border-[#d6bc8c]/30 flex items-center justify-center mb-6 animate-pulse">
+                            <iconify-icon icon="solar:play-bold" class="text-2xl text-[#d6bc8c]"></iconify-icon>
+                        </div>
+                        <h4 class="text-white text-base font-medium mb-2">Simulação de Reprodução de Vídeo</h4>
+                        <p class="text-stone-500 text-xs font-light max-w-sm">O player de vídeo em alta definição seria carregado aqui para exibir os bastidores do lançamento oficial de nossos autores.</p>
+                    </div>
+                `;
+            } else {
+                tag.innerText = 'Foto Registro';
+                content.innerHTML = `<img src="${src}" class="w-full h-full object-contain" alt="${title}">`;
+            }
+            
+            lTitle.innerText = title;
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        // Open article detailed view inside lightbox modal
+        function openArticle(title, date, category, text) {
+            const lightbox = document.getElementById('lightbox');
+            const content = document.getElementById('lightbox-content');
+            const tag = document.getElementById('lightbox-tag');
+            const lTitle = document.getElementById('lightbox-title');
+            
+            content.className = "w-full h-[65vh] max-h-[500px] bg-stone-950 flex items-center justify-center";
+            tag.innerText = `Edição Especial · ${category}`;
+            lTitle.innerText = title;
+            
+            content.innerHTML = `
+                <div class="w-full h-full p-8 md:p-12 overflow-y-auto text-left bg-stone-950 font-sans custom-scrollbar select-text">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-xs font-mono text-stone-500">${date}</span>
+                        <div class="w-1.5 h-1.5 rounded-full bg-[#d6bc8c]"></div>
+                        <span class="text-xs font-mono text-[#d6bc8c] uppercase tracking-wider">${category}</span>
+                    </div>
+                    <h2 class="text-xl md:text-3xl font-display font-medium text-white mb-6 leading-tight">${title}</h2>
+                    <div class="gold-line max-w-[120px] mb-8"></div>
+                    <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed mb-6 whitespace-pre-line">
+                        ${text}
+                    </p>
+                    <p class="text-stone-400 text-sm md:text-base font-light leading-relaxed mb-6">
+                        Para mais análises aprofundadas como esta, acompanhe as publicações semanais em nossos canais de imersão e mentoria.
+                    </p>
+                    <div class="mt-12 pt-6 border-t border-stone-900 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase text-stone-600">ELOOO International Group</span>
+                        <img src="static/images/ELOOO LOGO.png" class="h-3 object-contain opacity-40" style="filter: brightness(0) invert(1);">
+                    </div>
+                </div>
+            `;
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                document.getElementById('lightbox-content').innerHTML = '';
+            }, 500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Autores | ELOOO International Group</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flashlight-card {
+            position: relative;
+            background: rgba(28, 25, 23, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            overflow: hidden;
+            transition: border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .flashlight-card-inner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 31px;
+            width: 100%;
+            height: 100%;
+            background: rgba(28, 25, 23, 0.35);
+            transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .flashlight-card-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(214, 188, 140, 0.45), transparent 60%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Gold Gloss Shine Sweep Effect */
+        .flashlight-card-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(214, 188, 140, 0.08), transparent);
+            transform: skewX(-25deg);
+            z-index: 2;
+            pointer-events: none;
+            transition: none;
+        }
+
+        .flashlight-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: transparent;
+            background-color: rgba(28, 25, 23, 0.75);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(214, 188, 140, 0.2);
+        }
+
+        .flashlight-card:hover .flashlight-card-inner {
+            background-color: rgba(28, 25, 23, 0.85);
+        }
+
+        .flashlight-card:hover .flashlight-card-inner::before {
+            opacity: 1;
+        }
+
+        .flashlight-card:hover .flashlight-card-inner::after {
+            left: 150%;
+            transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        /* Optimize CPU/GPU by disabling spin animation on non-hovered cards */
+        .flashlight-card span.absolute {
+            animation: none !important;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        .flashlight-card:hover span.absolute {
+            animation: spin 4s linear infinite !important;
+        }
+        .flashlight-card {
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+    
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        /* Gold name hover glow and color */
+        .flashlight-card:hover h3 {
+            color: #d6bc8c !important;
+            text-shadow: 0 0 10px rgba(214, 188, 140, 0.6), 0 0 2px rgba(214, 188, 140, 0.8);
+        }
+        /* Continuous shimmering liquid gold text sweep effect */
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldSweep 6s linear infinite;
+        }
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- NAVBAR -->
+<header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 py-3 relative flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center group cursor-pointer z-50">
+            <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-11 md:h-16 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+        </a>
+
+        <!-- Nav Links (Desktop) -->
+        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-9 text-[13px] font-sans uppercase tracking-[0.18em] text-stone-600 font-medium">
+            <a href="index.html" class="hover:text-stone-900 transition-colors">Home</a>
+            <a href="quem-somos.html" class="hover:text-stone-900 transition-colors">Quem Somos</a>
+            <a href="autores.html" class="hover:text-stone-900 transition-colors">Autores</a>
+            <a href="livros.html" class="hover:text-stone-900 transition-colors">Livros</a>
+            <a href="trilhas.html" class="hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
+            <a href="galeria.html" class="hover:text-stone-900 transition-colors">Galeria</a>
+            <a href="contato.html" class="hover:text-stone-900 transition-colors">Contato</a>
+        </nav>
+
+        <!-- Action & Hamburger -->
+        <div class="flex items-center gap-4 z-50">
+            <button class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2.5 rounded-full font-bold text-[11px] text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+            <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
+                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
+        <nav class="flex flex-col items-center gap-6 text-[13px] font-sans uppercase tracking-[0.18em] text-white/70 font-medium">
+            <a href="index.html" class="hover:text-white transition-colors mobile-link">Home</a>
+            <a href="quem-somos.html" class="hover:text-white transition-colors mobile-link">Quem Somos</a>
+            <a href="autores.html" class="hover:text-white transition-colors mobile-link">Autores</a>
+            <a href="livros.html" class="hover:text-white transition-colors mobile-link">Livros</a>
+            <a href="trilhas.html" class="hover:text-white transition-colors mobile-link">Trilhas Editoriais</a>
+            <a href="galeria.html" class="hover:text-white transition-colors mobile-link">Galeria</a>
+            <a href="contato.html" class="hover:text-white transition-colors mobile-link">Contato</a>
+            
+            <!-- CTA on mobile -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm mt-8">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-bold text-[11px] text-white tracking-widest uppercase">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav-link-active {
+        color: #0c0a09 !important;
+        background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%);
+        background-size: 200% auto;
+        border: 1px solid rgba(214, 188, 140, 0.6);
+        border-radius: 9999px;
+        padding: 6px 16px !important;
+        margin: -6px -8px;
+        box-shadow: 0 4px 20px -3px rgba(214, 188, 140, 0.5);
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em !important;
+        transition: all 0.3s ease;
+    }
+    
+    /* Brushed metallic reflection shine sweep overlay */
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.65) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes shineSweep {
+        0% { left: -100%; }
+        25% { left: 150%; }
+        100% { left: 150%; }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const path = window.location.pathname;
+        const currentPath = path.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Normalize path matching
+            const hrefFilename = href.split('/').pop();
+            const isMatch = (hrefFilename === currentPath) ||
+                            (path.includes('/autores/') && hrefFilename === 'autores.html') ||
+                            (path.includes('/livros/') && hrefFilename === 'livros.html');
+                            
+            if (isMatch) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+</script>
+
+
+    <div class="pt-16">
+        <!-- AUTORES SHOWCASE SECTION -->
+    <section id="autores" class="pt-10 pb-20 bg-stone-950 text-white min-h-screen relative z-10 overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10">
+            
+            
+            
+            
+            
+            
+            <!-- Ellipse Masked Backdrop Carousel (Auto-scroll + GSAP Parallax) -->
+            <div class="marquee-container relative w-full h-[220px] sm:h-[280px] md:h-[360px] lg:h-[420px] mt-2 mb-0 select-none overflow-hidden">
+                <!-- Title Overlay in the middle of the Carousel -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20 reveal-up -translate-y-[130px] sm:-translate-y-[195px] md:-translate-y-[265px] lg:-translate-y-[340px]">
+                    <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[0.15em] uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] gold-text-sweep">
+                        Elite Autoral
+                    </h1>
+                </div>
+                <!-- Ellipse Mask handles horizontal and vertical fades -->
+                <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0" style="mask-image: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%, transparent 95%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%, transparent 95%);">
+                    <div class="flex gap-10 whitespace-nowrap animate-[marquee_50s_linear_infinite] w-max items-center h-full">
+                        <div class="flex gap-10 shrink-0 items-center">
+                            <img src="static/images/tatiana-fonseca.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/kenje-kambara.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/berenice-duarte-borba.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/vanessa-rodrigues.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/berg-junior.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/carine-aparecida.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/franklyn-fuck.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/fernando-merlos.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/dimas-neto.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/anildo-silva.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/savio-cardoso.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/hewandro-entringer.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/claudio-dutra.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/marcio-lira.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/diego-arcas.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/rafael-cavalcanti.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/gabriela-mendes.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/herick-pereira.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/gustavo-da-silva.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/douglas-vacilotto.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/edson-fabiano.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/FOTO MURILO.jpeg" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';">
+                        </div>
+                        <div class="flex gap-10 shrink-0 items-center">
+                            <img src="static/images/tatiana-fonseca.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/kenje-kambara.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/berenice-duarte-borba.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/vanessa-rodrigues.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/berg-junior.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/carine-aparecida.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/franklyn-fuck.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/fernando-merlos.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/dimas-neto.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/anildo-silva.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/savio-cardoso.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/hewandro-entringer.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/claudio-dutra.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/marcio-lira.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/diego-arcas.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/rafael-cavalcanti.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/gabriela-mendes.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/herick-pereira.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/gustavo-da-silva.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/douglas-vacilotto.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/edson-fabiano.png" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';"><img src="static/images/FOTO MURILO.jpeg" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-[32px] object-cover grayscale opacity-55 hover:scale-[1.02] transition-transform duration-700 shrink-0 shadow-2xl" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 relative z-20 -mt-16 sm:-mt-28 md:-mt-36 lg:-mt-52 pb-20">
+            <!-- Author Card: Tatiana Fonseca -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/tatiana-fonseca.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Tatiana Fonseca" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Tatiana Fonseca
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Tatiana Fonseca">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Permaneça - O Caminho para a Plenitude</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Mentora de desenvolvimento pessoal, ajuda mulheres a alcançarem a plenitude espiritual e inteligência emocional em suas jornadas.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/tatiana-fonseca.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Kenje Kambara -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/kenje-kambara.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Kenje Kambara" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Kenje Kambara
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Kenje Kambara">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Os Segredos do Lojista B2B & Mercado Automotivo</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Especialista em escala comercial e negócios B2B/B2C, mentorando lojistas e empresários do setor automotivo.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/kenje-kambara.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Berenice Duarte Borba -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/berenice-duarte-borba.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Berenice Duarte Borba" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Berenice Duarte Borba
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Berenice Duarte Borba">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">De Ateu ao Encontro com Deus Pai</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Escritora e mentora espiritual, dedica sua vida a guiar pessoas no caminho do autoconhecimento e conexão com a fé.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/berenice-duarte-borba.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dr. Murilo Melocra -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/FOTO MURILO.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dr. Murilo Melocra" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dr. Murilo Melocra
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dr. Murilo Melocra">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">A Receita da Liberdade</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Médico de alta performance e fundador da ELOOO. Especialista em gestão patrimonial, investimentos e liberdade profissional.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/murilo-melocra.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dra. Vanessa Rodrigues -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/vanessa-rodrigues.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dra. Vanessa Rodrigues" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dra. Vanessa Rodrigues
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dra. Vanessa Rodrigues">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Emagreça Saudável e Feliz</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Médica integrativa especialista em emagrecimento saudável, promovendo reprogramação metabólica e bem-estar.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/vanessa-rodrigues.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Berg Junior -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/berg-junior.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Berg Junior" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Berg Junior
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Berg Junior">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Recalculando a Rota</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Estrategista de negócios e mentor de carreira, focado em ajudar profissionais a recalcularem suas rotas rumo ao sucesso.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/berg-junior.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Carine Aparecida -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/carine-aparecida.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Carine Aparecida" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Carine Aparecida
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Carine Aparecida">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Além da Beleza</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Especialista em estética de alta autoridade e desenvolvimento pessoal, revelando a beleza que transcende o espelho.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/carine-aparecida.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Franklyn Fuck -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/franklyn-fuck.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Franklyn Fuck" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Franklyn Fuck
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Franklyn Fuck">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">O Maná do Vendedor</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Treinador de vendas e mentor de times comerciais, especialista em negociação de alto impacto e fechamento de contratos.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/franklyn-fuck.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dr. Fernando Merlos -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/fernando-merlos.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dr. Fernando Merlos" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dr. Fernando Merlos
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dr. Fernando Merlos">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Alma Médica</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Médico humanista, mentor e palestrante focado na essência da medicina e no resgate da Alma Médica.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/fernando-merlos.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dimas Neto -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/dimas-neto.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dimas Neto" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dimas Neto
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dimas Neto">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">A Arte da Persistência</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Empresário e palestrante motivacional, ensina os segredos da persistência e superação de limites no empreendedorismo.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/dimas-neto.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Anildo Silva -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/anildo-silva.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Anildo Silva" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Anildo Silva
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Anildo Silva">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">A Missão do Fundador</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Fundador de grandes marcas, mentor de liderança executiva especializado em governança corporativa e sucessão.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/anildo-silva.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dr. Sávio Cardoso -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/savio-cardoso.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dr. Sávio Cardoso" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dr. Sávio Cardoso
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dr. Sávio Cardoso">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:pt" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">O Código da Vitalidade Masculina</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Médico andrologista e mentor em saúde masculina na Europa, focado em alta performance, longevidade e vigor biológico.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/savio-cardoso.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Hewandro Entringer -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/hewandro-entringer.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Hewandro Entringer" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Hewandro Entringer
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Hewandro Entringer">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Os Códigos do Networking</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Especialista em parcerias estratégicas e networking de elite, mentorando profissionais a construírem conexões milionárias.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/hewandro-entringer.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Cláudio Dutra -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/claudio-dutra.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Cláudio Dutra" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Cláudio Dutra
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Cláudio Dutra">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Profissional Inquestionável</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Consultor de alta performance e mentor de executivos, especialista no desenvolvimento de profissionais inquestionáveis.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/claudio-dutra.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Márcio Lira -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/marcio-lira.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Márcio Lira" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Márcio Lira
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Márcio Lira">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Liderança Inquestionável</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Mentor de líderes e empresários, especializado em desenvolvimento de equipes e posicionamento profissional inquestionável.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/marcio-lira.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Diego Arcas -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/diego-arcas.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Diego Arcas" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Diego Arcas
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Diego Arcas">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Despertando os Propósitos de Deus</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Teólogo, mentor espiritual e palestrante especializado em guiar pessoas no despertar do propósito divino de vida.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/diego-arcas.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Rafael Cavalcanti -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/rafael-cavalcanti.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Rafael Cavalcanti" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Rafael Cavalcanti
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Rafael Cavalcanti">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Os Códigos da Lucratividade</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Estrategista financeiro e mentor de negócios, focado em escala de lucros e otimização de fluxo de caixa.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/rafael-cavalcanti.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dra. Gabriela Mendes -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/gabriela-mendes.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dra. Gabriela Mendes" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dra. Gabriela Mendes
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dra. Gabriela Mendes">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Segredos da Saúde Integrativa</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Especialista em saúde integrativa e longevidade saudável, mentoreando profissionais a alcançarem alta performance física.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/gabriela-mendes.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Herick Pereira -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/herick-pereira.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Herick Pereira" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Herick Pereira
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Herick Pereira">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">O Código do Campeão</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Atleta profissional e mentor esportivo, especialista no desenvolvimento de mentalidade vencedora e foco absoluto.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/herick-pereira.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dr. Gustavo da Silva -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/gustavo-da-silva.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dr. Gustavo da Silva" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dr. Gustavo da Silva
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dr. Gustavo da Silva">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Segredos da Ortopedia Esportiva</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Médico especialista em medicina esportiva e ortopedia, focado em reabilitação de alta performance e performance física.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/gustavo-da-silva.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Douglas Vacilotto -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/douglas-vacilotto.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Douglas Vacilotto" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Douglas Vacilotto
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Douglas Vacilotto">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:es" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Rompendo Fronteiras</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Empresário com atuação internacional, mentor de internacionalização de negócios e atração de capital na Europa.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/douglas-vacilotto.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Edson Fabiano -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/edson-fabiano.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Edson Fabiano" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Edson Fabiano
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Edson Fabiano">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Shammah - O Deus que Ouve</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Pastor, escritor e mentor espiritual focado em liderança eclesiástica, cura emocional e maturidade cristã.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/edson-fabiano.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <!-- FOOTER -->
+<footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+
+        <div class="flex items-center group cursor-pointer">
+            <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
+        </div>
+
+        <div class="text-xs font-mono uppercase tracking-widest flex gap-6">
+            <a href="#" class="hover:text-white transition-colors">Termos</a>
+            <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-white transition-colors">Suporte</a>
+        </div>
+
+        <div class="text-xs text-stone-600 font-mono tracking-widest uppercase">
+            &copy; 2026 ELOOO International Group.<br class="md:hidden"> Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Efeito de Revelação Genérico
+            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 85%",
+                    onEnter: function () {
+                        elem.classList.add('active');
+                    }
+                });
+            });
+
+            // Efeito Lanterna (Flashlight Effect)
+            window.updateFlashlight = function (e, card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+
+
+            // Parallax Vertical Scroll-Following for the horizontal auto-scrolling backdrop
+            const container = document.querySelector('.marquee-container');
+            if (container) {
+                gsap.to(container, {
+                    y: () => window.innerWidth > 768 ? 500 : 200, // Slowly moves down as we scroll down to follow the page movement
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: "body",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 1.2
+                    }
+                });
+            }
+
+            // Leaderboard Show More / Show Less Toggle
+            const toggleBtn = document.getElementById('toggle-leaderboard');
+            const hiddenRows = document.querySelectorAll('.leaderboard-hidden');
+            const toggleIcon = document.getElementById('toggle-icon');
+            let isExpanded = false;
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    isExpanded = !isExpanded;
+                    if (isExpanded) {
+                        hiddenRows.forEach(row => {
+                            row.classList.remove('hidden');
+                            gsap.fromTo(row, 
+                                { height: 0, opacity: 0, padding: 0, margin: 0 },
+                                { height: 'auto', opacity: 1, padding: '1rem', ease: 'power2.out', duration: 0.5 }
+                            );
+                        });
+                        toggleBtn.querySelector('span').textContent = 'Mostrar Menos';
+                        toggleIcon.classList.add('rotate-180');
+                    } else {
+                        hiddenRows.forEach(row => {
+                            gsap.to(row, {
+                                height: 0,
+                                opacity: 0,
+                                padding: 0,
+                                duration: 0.4,
+                                ease: 'power2.inOut',
+                                onComplete: () => {
+                                    row.classList.add('hidden');
+                                }
+                            });
+                        });
+                        toggleBtn.querySelector('span').textContent = 'Ver Classificação Completa';
+                        toggleIcon.classList.remove('rotate-180');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

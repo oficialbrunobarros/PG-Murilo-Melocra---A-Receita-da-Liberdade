@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contato | ELOOO International Group</title>
+    <meta name="description" content="Entre em contato com a ELOOO International Group. Publique seu livro com a editora premium de maior impacto no mercado editorial.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4',
+                            300: '#d6d3d1', 400: '#a8a29e', 500: '#78716c',
+                            600: '#57534e', 700: '#44403c', 800: '#292524',
+                            900: '#1c1917',
+                        },
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating gold particles */
+        .gold-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #d6bc8c;
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 7s ease-in-out infinite;
+        }
+        @keyframes floatParticle {
+            0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
+            20% { opacity: 0.7; transform: translateY(-30px) scale(1); }
+            85% { opacity: 0.2; transform: translateY(-100px) scale(0.5); }
+        }
+
+        /* Floating mesh orbs */
+        @keyframes floatOrb1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, -50px) scale(1.1); }
+        }
+        @keyframes floatOrb2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-30px, 40px) scale(1.15); }
+        }
+        @keyframes floatOrb3 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 30px) scale(0.9); }
+        }
+
+        /* Glowing input focus */
+        .luxury-input {
+            background: rgba(20, 18, 17, 0.75);
+            border: 1px solid rgba(214, 188, 140, 0.08);
+            border-radius: 16px;
+            padding: 16px 20px;
+            color: #fff;
+            font-size: 14px;
+            width: 100%;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+            backdrop-filter: blur(10px);
+        }
+        .luxury-input::placeholder {
+            color: rgba(168, 162, 158, 0.45);
+        }
+        .luxury-input:focus {
+            border-color: rgba(214, 188, 140, 0.45);
+            box-shadow: 0 0 25px rgba(214, 188, 140, 0.06), inset 0 0 10px rgba(214, 188, 140, 0.02);
+            background: rgba(28, 25, 23, 0.9);
+        }
+
+        /* Luxury social cards */
+        .social-card {
+            background: rgba(28, 25, 23, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 24px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+        .social-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(214, 188, 140, 0.05), transparent);
+            transform: skewX(-20deg);
+            transition: none;
+        }
+        .social-card:hover::after {
+            left: 150%;
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .social-card:hover {
+            border-color: rgba(214, 188, 140, 0.25);
+            background-color: rgba(28, 25, 23, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(214, 188, 140, 0.04);
+        }
+        .social-card:hover .social-icon {
+            color: #d6bc8c;
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(214, 188, 140, 0.4);
+        }
+
+        /* Form card rotating border layout */
+        .form-border-container {
+            position: relative;
+            background: rgba(28, 25, 23, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 36px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(20px);
+        }
+        .form-border-container:hover {
+            border-color: transparent;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.95), 0 0 35px rgba(214, 188, 140, 0.15);
+        }
+        .form-border-container:hover span.sweep-light {
+            opacity: 1;
+            animation: spin 5s linear infinite !important;
+        }
+        .form-border-container span.sweep-light {
+            position: absolute;
+            inset: -1000%;
+            pointer-events: none;
+            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.6) 50%, transparent 100%);
+            animation: none !important;
+            opacity: 0.15;
+            transition: opacity 0.5s ease;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Ambient glow orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            pointer-events: none;
+            opacity: 0.15;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- INCLUDE_NAVBAR -->
+
+    <div class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen pt-12 pb-24 overflow-hidden">
+            <!-- Animated background glowing blobs -->
+            <div class="glow-orb w-[600px] h-[600px] bg-[#d6bc8c]/20 top-[-10%] left-[-15%] animate-[floatOrb1_20s_infinite_alternate]" style="position:absolute;"></div>
+            <div class="glow-orb w-[500px] h-[500px] bg-[#d6bc8c]/15 bottom-[-10%] right-[-10%] animate-[floatOrb2_25s_infinite_alternate]" style="position:absolute;"></div>
+            <div class="glow-orb w-[400px] h-[400px] bg-[#d6bc8c]/8 top-[35%] left-[30%] animate-[floatOrb3_18s_infinite_alternate]" style="position:absolute;"></div>
+
+            <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10 w-full" id="contact-container">
+                
+                <!-- Page Heading -->
+                <div class="text-center mb-16 reveal-up">
+                    <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-white mb-6">
+                        Conecte-se Conosco
+                    </h1>
+                </div>
+
+                <!-- Main Layout Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
+                    
+                    <!-- Left Column: Premium Social Grid & Direct Channels -->
+                    <div class="lg:col-span-5 space-y-6 reveal-up">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-1 h-6 rounded-full bg-[#d6bc8c]"></div>
+                            <h2 class="font-display text-lg font-medium text-white tracking-wide">Canais de Atendimento</h2>
+                        </div>
+
+                        <!-- Direct Whatsapp Card -->
+                        <a href="https://wa.me/5511999999999" target="_blank" class="social-card flex items-start gap-5 cursor-pointer block">
+                            <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/10 flex items-center justify-center shrink-0 transition-transform duration-500">
+                                <iconify-icon icon="ic:baseline-whatsapp" class="text-2xl text-stone-400 social-icon transition-all duration-500"></iconify-icon>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h3 class="text-sm font-semibold text-white tracking-wide">Fale com o Concierge</h3>
+                                    <div class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[8px] font-mono uppercase tracking-wider">Online agora</div>
+                                </div>
+                                <p class="text-stone-300 text-xs font-mono font-medium mb-1.5">+55 11 99999-9999</p>
+                                <p class="text-[11px] text-stone-500 font-light leading-relaxed">Atendimento executivo ágil para novos projetos, dúvidas e agendamento de reuniões editoriais.</p>
+                            </div>
+                        </a>
+
+                        <!-- Direct Email Card -->
+                        <a href="mailto:contato@elooo.com" class="social-card flex items-start gap-5 cursor-pointer block">
+                            <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/10 flex items-center justify-center shrink-0 transition-transform duration-500">
+                                <iconify-icon icon="solar:letter-bold-duotone" class="text-2xl text-stone-400 social-icon transition-all duration-500"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-white tracking-wide mb-1">Submissão de Originais</h3>
+                                <p class="text-stone-300 text-xs font-mono font-medium mb-1.5">contato@elooo.com</p>
+                                <p class="text-[11px] text-stone-500 font-light leading-relaxed">Envie sua sinopse ou manuscrito parcial diretamente para análise do nosso comitê editorial.</p>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-3 pt-4 mb-2">
+                            <div class="w-1 h-6 rounded-full bg-[#d6bc8c]"></div>
+                            <h2 class="font-display text-lg font-medium text-white tracking-wide">Conexão Digital</h2>
+                        </div>
+
+                        <!-- Instagram Profile Link -->
+                        <a href="https://instagram.com/" target="_blank" class="social-card flex items-center justify-between cursor-pointer block">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/10 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="mdi:instagram" class="text-2xl text-stone-400 social-icon transition-all duration-500"></iconify-icon>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-white tracking-wide mb-0.5">Instagram</h3>
+                                    <p class="text-stone-500 text-[10px] font-mono">@elooo.group</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] font-mono text-stone-500 uppercase tracking-widest group-hover:text-white transition-colors">Seguir</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-[#d6bc8c] text-sm"></iconify-icon>
+                            </div>
+                        </a>
+
+                        <!-- LinkedIn profile link -->
+                        <a href="https://linkedin.com/" target="_blank" class="social-card flex items-center justify-between cursor-pointer block">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/10 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="mdi:linkedin" class="text-2xl text-stone-400 social-icon transition-all duration-500"></iconify-icon>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-white tracking-wide mb-0.5">LinkedIn</h3>
+                                    <p class="text-stone-500 text-[10px] font-mono">ELOOO International Group</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] font-mono text-stone-500 uppercase tracking-widest group-hover:text-white transition-colors">Conectar</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-[#d6bc8c] text-sm"></iconify-icon>
+                            </div>
+                        </a>
+
+                        <!-- YouTube Profile Link -->
+                        <a href="https://youtube.com/" target="_blank" class="social-card flex items-center justify-between cursor-pointer block">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/10 flex items-center justify-center shrink-0">
+                                    <iconify-icon icon="mdi:youtube" class="text-2xl text-stone-400 social-icon transition-all duration-500"></iconify-icon>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-white tracking-wide mb-0.5">YouTube</h3>
+                                    <p class="text-stone-500 text-[10px] font-mono">ELOOO TV</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] font-mono text-stone-500 uppercase tracking-widest group-hover:text-white transition-colors">Inscrever</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-[#d6bc8c] text-sm"></iconify-icon>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <!-- Right Column: Luxury Form with Sweep Border Light -->
+                    <div class="lg:col-span-7 reveal-up" style="transition-delay: 150ms;">
+                        <div class="form-border-container p-[1.5px]">
+                            <!-- Spin Sweep Conic Gradient Light -->
+                            <span class="sweep-light"></span>
+
+                            <!-- Inner Glass Content Form -->
+                            <div class="relative z-10 bg-[#0c0a09]/95 backdrop-blur-md rounded-[34.5px] p-8 md:p-10" onmousemove="updateFlashlight(event, this)">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="w-1.5 h-7 rounded-full bg-gradient-to-b from-[#d6bc8c] to-transparent"></div>
+                                    <div>
+                                        <h2 class="font-display text-xl md:text-2xl font-medium text-white tracking-tight">Formulário de Aplicação</h2>
+                                        <p class="text-[10px] font-mono text-stone-500 uppercase tracking-widest mt-1">Tempo estimado de preenchimento: 3 minutos</p>
+                                    </div>
+                                </div>
+
+                                <form class="space-y-6" id="contactForm">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500 mb-2.5">Nome Completo</label>
+                                            <input type="text" placeholder="Seu nome completo" class="luxury-input" id="contact-name" required>
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500 mb-2.5">E-mail Corporativo</label>
+                                            <input type="email" placeholder="nome@exemplo.com" class="luxury-input" id="contact-email" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500 mb-2.5">Telefone / WhatsApp</label>
+                                            <input type="tel" placeholder="+55 (00) 00000-0000" class="luxury-input" id="contact-phone" required>
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500 mb-2.5">Profissão / Especialidade</label>
+                                            <input type="text" placeholder="Ex: Advogado Tributarista / CEO" class="luxury-input" id="contact-profession" required>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500 mb-2.5">Interesse Principal</label>
+                                        <div class="relative">
+                                            <select class="luxury-input appearance-none cursor-pointer pr-12" id="contact-interest" style="color: rgba(168, 162, 158, 0.45);" onfocus="this.style.color='#fff'" onchange="this.style.color='#fff'" required>
+                                                <option value="" disabled selected>Selecione seu interesse principal</option>
+                                                <option value="individual">Publicar um Livro Individual Autoral</option>
+                                                <option value="coautoria">Participar de um Livro em Coautoria</option>
+                                                <option value="institucional">Desenvolver um Livro Institucional Corporativo</option>
+                                                <option value="mentoria">Mentoria Estratégica Premium</option>
+                                                <option value="parceria">Parceria / Outros Assuntos</option>
+                                            </select>
+                                            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-stone-500 flex items-center">
+                                                <iconify-icon icon="solar:alt-arrow-down-linear" class="text-lg"></iconify-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500 mb-2.5">Conte-nos sobre o seu projeto / sua visão</label>
+                                        <textarea rows="5" placeholder="Compartilhe suas ideias sobre a obra. Qual é o grande propósito do seu livro? Que transformação você deseja transmitir para os leitores?" class="luxury-input resize-none" id="contact-message" style="border-radius: 20px;" required></textarea>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button type="submit" id="contact-submit" class="relative group rounded-full p-[1.5px] overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 w-full mt-4 select-none">
+                                        <!-- Glow rotation sweep -->
+                                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-80 group-hover:opacity-100 transition-opacity"></span>
+                                        
+                                        <!-- Button Inner -->
+                                        <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0c0a09] px-8 py-4 rounded-full transition-all duration-500 group-hover:bg-[#12100f]">
+                                            <span class="font-medium text-xs text-white tracking-[0.2em] uppercase">Enviar Solicitação</span>
+                                            <iconify-icon icon="solar:arrow-right-linear" class="text-[#d6bc8c] text-base group-hover:translate-x-1 transition-transform duration-300"></iconify-icon>
+                                        </span>
+                                    </button>
+
+                                    <p class="text-center text-[10px] text-stone-600 mt-4 font-mono tracking-wider">
+                                        Suas informações são confidenciais e protegidas por sigilo profissional.
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Grid: International Coordinates -->
+                <div class="mt-24 reveal-up">
+                    <div class="flex items-center gap-3 mb-10 justify-center">
+                        <div class="w-6 h-[1px] bg-[#d6bc8c]/40"></div>
+                        <h2 class="font-display text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c]">Presença Internacional</h2>
+                        <div class="w-6 h-[1px] bg-[#d6bc8c]/40"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        
+                        <!-- Office 1 -->
+                        <div class="p-8 rounded-[24px] border border-stone-900/80 bg-stone-900/10 backdrop-blur-sm relative group hover:border-[#d6bc8c]/20 transition-all duration-500">
+                            <span class="text-[9px] font-mono text-[#d6bc8c]/50 uppercase tracking-widest block mb-2">América Latina</span>
+                            <h3 class="font-display text-lg font-semibold text-white tracking-wide mb-3 flex items-center gap-2">
+                                <iconify-icon icon="circle-flags:br" class="text-sm rounded-full shadow-sm"></iconify-icon>
+                                São Paulo, Brasil
+                            </h3>
+                            <p class="text-stone-500 text-[11px] font-mono tracking-wider leading-relaxed">
+                                Av. Brigadeiro Faria Lima, 3477
+                                <br>
+                                Itaim Bibi · CEP 04538-133
+                            </p>
+                        </div>
+
+                        <!-- Office 2 -->
+                        <div class="p-8 rounded-[24px] border border-stone-900/80 bg-stone-900/10 backdrop-blur-sm relative group hover:border-[#d6bc8c]/20 transition-all duration-500">
+                            <span class="text-[9px] font-mono text-[#d6bc8c]/50 uppercase tracking-widest block mb-2">Europa Central</span>
+                            <h3 class="font-display text-lg font-semibold text-white tracking-wide mb-3 flex items-center gap-2">
+                                <iconify-icon icon="circle-flags:pt" class="text-sm rounded-full shadow-sm"></iconify-icon>
+                                Lisboa, Portugal
+                            </h3>
+                            <p class="text-stone-500 text-[11px] font-mono tracking-wider leading-relaxed">
+                                Avenida da Liberdade, 110
+                                <br>
+                                Coração de Jesus · 1250-146
+                            </p>
+                        </div>
+
+                        <!-- Office 3 -->
+                        <div class="p-8 rounded-[24px] border border-stone-900/80 bg-stone-900/10 backdrop-blur-sm relative group hover:border-[#d6bc8c]/20 transition-all duration-500">
+                            <span class="text-[9px] font-mono text-[#d6bc8c]/50 uppercase tracking-widest block mb-2">Península Ibérica</span>
+                            <h3 class="font-display text-lg font-semibold text-white tracking-wide mb-3 flex items-center gap-2">
+                                <iconify-icon icon="circle-flags:es" class="text-sm rounded-full shadow-sm"></iconify-icon>
+                                Madrid, Espanha
+                            </h3>
+                            <p class="text-stone-500 text-[11px] font-mono tracking-wider leading-relaxed">
+                                Paseo de la Castellana, 95
+                                <br>
+                                AZCA · 28046 Madrid
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- INCLUDE_FOOTER -->
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        document.addEventListener("DOMContentLoaded", () => {
+            // Reveal animations
+            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 88%",
+                    onEnter: function () { elem.classList.add('active'); }
+                });
+            });
+
+            // Flashlight effect for the form container
+            window.updateFlashlight = function (e, card) {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty("--mouse-x", (e.clientX - rect.left) + "px");
+                card.style.setProperty("--mouse-y", (e.clientY - rect.top) + "px");
+            }
+
+            // Generate floating gold particles
+            const section = document.querySelector('section');
+            if (section) {
+                for (let i = 0; i < 20; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'gold-particle';
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.top = Math.random() * 100 + '%';
+                    p.style.animationDelay = Math.random() * 7 + 's';
+                    p.style.animationDuration = (5 + Math.random() * 5) + 's';
+                    section.appendChild(p);
+                }
+            }
+
+            // Navbar scroll style (matching authors page)
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (navbar.querySelector('.absolute')) {
+                        if (window.scrollY > 50) {
+                            navbar.querySelector('.absolute').classList.replace('bg-white/70', 'bg-white/95');
+                        } else {
+                            navbar.querySelector('.absolute').classList.replace('bg-white/95', 'bg-white/70');
+                        }
+                    }
+                });
+            }
+
+            // Mobile menu
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('translate-x-full');
+                    mobileMenu.classList.toggle('translate-x-0');
+                    const isOpen = mobileMenu.classList.contains('translate-x-0');
+                    menuBtn.innerHTML = isOpen 
+                        ? '<iconify-icon icon="solar:close-circle-linear"></iconify-icon>' 
+                        : '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                    if (isOpen) menuBtn.style.color = '#fff';
+                    else menuBtn.style.color = '';
+                });
+                mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileMenu.classList.remove('translate-x-0');
+                        menuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

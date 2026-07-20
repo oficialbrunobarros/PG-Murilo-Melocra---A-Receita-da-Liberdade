@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Trilhas Editoriais | ELOOO International Group</title>
+    <meta name="description" content="Explore as 4 Trilhas Editoriais, 12 Perfis de Autoridade e os 3 Formatos de Publicação da ELOOO. Consolide seu posicionamento estratégico de alto impacto.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4',
+                            300: '#d6d3d1', 400: '#a8a29e', 500: '#78716c',
+                            600: '#57534e', 700: '#44403c', 800: '#292524',
+                            900: '#1c1917',
+                        },
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(28, 25, 23, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            transition: border-color 0.5s ease, background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease, opacity 0.4s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Card Hover Effects matching Authors */
+        .tipo-card:hover .card-title, 
+        .persona-card:hover .card-title,
+        .trilha-card:hover .card-title,
+        .tipo-card.active-selected .card-title,
+        .persona-card.active-selected .card-title,
+        .trilha-card.active-selected .card-title {
+            color: #d6bc8c !important;
+            text-shadow: 0 0 15px rgba(214, 188, 140, 0.6);
+        }
+
+        .tipo-card:hover .card-divider,
+        .persona-card:hover .card-divider,
+        .trilha-card:hover .card-divider,
+        .tipo-card.active-selected .card-divider,
+        .persona-card.active-selected .card-divider,
+        .trilha-card.active-selected .card-divider {
+            width: 56px;
+            background-color: #d6bc8c !important;
+            box-shadow: 0 0 8px rgba(214, 188, 140, 0.8);
+        }
+
+        .tipo-card, .persona-card, .trilha-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-divider {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Collapsible card description - safe max-height to avoid text cutoff */
+        .card-desc-container {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        margin-top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 0;
+        }
+
+        /* Hover or Active Selected states expand description */
+        .tipo-card:hover .card-desc-container,
+        .persona-card:hover .card-desc-container,
+        .trilha-card:hover .card-desc-container,
+        .tipo-card.active-selected .card-desc-container,
+        .persona-card.active-selected .card-desc-container,
+        .trilha-card.active-selected .card-desc-container {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 12px;
+        }
+
+        /* SVG Line Glowing Animation */
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -40;
+            }
+        }
+        .connection-line {
+            stroke: rgba(214, 188, 140, 0.05) !important;
+            stroke-width: 1.2px !important;
+            fill: none !important;
+            transition: stroke 0.4s ease, stroke-width 0.4s ease, opacity 0.4s ease;
+            will-change: stroke, stroke-width, opacity;
+        }
+        .connection-line.active {
+            stroke: #d6bc8c !important;
+            stroke-width: 2.5px !important;
+            stroke-dasharray: 8, 6;
+            animation: dash 1.6s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(214, 188, 140, 0.9));
+            opacity: 1 !important;
+        }
+
+        /* Type Cards Rotating Glow Border */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .tipo-card {
+            position: relative;
+            background: rgba(28, 25, 23, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: border-color 0.5s ease, background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease, opacity 0.4s ease;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        .tipo-card:hover,
+        .tipo-card.active-selected {
+            border-color: transparent !important;
+            background: transparent !important;
+        }
+        .tipo-card.active-selected {
+            box-shadow: 0 0 35px rgba(214, 188, 140, 0.35) !important;
+        }
+        .tipo-card:hover span.border-sweep,
+        .tipo-card.active-selected span.border-sweep {
+            opacity: 1 !important;
+            animation: spin 4s linear infinite !important;
+        }
+        .tipo-card:hover, .persona-card:hover, .trilha-card:hover {
+            transform: translateY(-4px);
+        }
+        .persona-card, .trilha-card {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        .border-sweep {
+            animation: none !important;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        .glow-orb {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        /* Ambient glow orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            opacity: 0.12;
+        }
+
+        .gold-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(214, 188, 140, 0.4), transparent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- NAVBAR -->
+<header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 py-3 relative flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center group cursor-pointer z-50">
+            <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-11 md:h-16 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+        </a>
+
+        <!-- Nav Links (Desktop) -->
+        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-9 text-[13px] font-sans uppercase tracking-[0.18em] text-stone-600 font-medium">
+            <a href="index.html" class="hover:text-stone-900 transition-colors">Home</a>
+            <a href="quem-somos.html" class="hover:text-stone-900 transition-colors">Quem Somos</a>
+            <a href="autores.html" class="hover:text-stone-900 transition-colors">Autores</a>
+            <a href="livros.html" class="hover:text-stone-900 transition-colors">Livros</a>
+            <a href="trilhas.html" class="hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
+            <a href="galeria.html" class="hover:text-stone-900 transition-colors">Galeria</a>
+            <a href="contato.html" class="hover:text-stone-900 transition-colors">Contato</a>
+        </nav>
+
+        <!-- Action & Hamburger -->
+        <div class="flex items-center gap-4 z-50">
+            <button class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2.5 rounded-full font-bold text-[11px] text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+            <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
+                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
+        <nav class="flex flex-col items-center gap-6 text-[13px] font-sans uppercase tracking-[0.18em] text-white/70 font-medium">
+            <a href="index.html" class="hover:text-white transition-colors mobile-link">Home</a>
+            <a href="quem-somos.html" class="hover:text-white transition-colors mobile-link">Quem Somos</a>
+            <a href="autores.html" class="hover:text-white transition-colors mobile-link">Autores</a>
+            <a href="livros.html" class="hover:text-white transition-colors mobile-link">Livros</a>
+            <a href="trilhas.html" class="hover:text-white transition-colors mobile-link">Trilhas Editoriais</a>
+            <a href="galeria.html" class="hover:text-white transition-colors mobile-link">Galeria</a>
+            <a href="contato.html" class="hover:text-white transition-colors mobile-link">Contato</a>
+            
+            <!-- CTA on mobile -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm mt-8">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-bold text-[11px] text-white tracking-widest uppercase">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav-link-active {
+        color: #0c0a09 !important;
+        background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%);
+        background-size: 200% auto;
+        border: 1px solid rgba(214, 188, 140, 0.6);
+        border-radius: 9999px;
+        padding: 6px 16px !important;
+        margin: -6px -8px;
+        box-shadow: 0 4px 20px -3px rgba(214, 188, 140, 0.5);
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em !important;
+        transition: all 0.3s ease;
+    }
+    
+    /* Brushed metallic reflection shine sweep overlay */
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.65) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes shineSweep {
+        0% { left: -100%; }
+        25% { left: 150%; }
+        100% { left: 150%; }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const path = window.location.pathname;
+        const currentPath = path.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Normalize path matching
+            const hrefFilename = href.split('/').pop();
+            const isMatch = (hrefFilename === currentPath) ||
+                            (path.includes('/autores/') && hrefFilename === 'autores.html') ||
+                            (path.includes('/livros/') && hrefFilename === 'livros.html');
+                            
+            if (isMatch) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+</script>
+
+
+    <div class="pt-20">
+        <!-- Interactive Dashboard Section -->
+        <section class="relative min-h-screen pt-12 pb-24 overflow-hidden">
+            <!-- Glow Orbs -->
+            <div class="glow-orb w-[600px] h-[600px] bg-[#d6bc8c] top-[-10%] right-[-5%]" style="position:absolute;"></div>
+            <div class="glow-orb w-[500px] h-[500px] bg-[#d6bc8c] bottom-[-10%] left-[-5%]" style="position:absolute;"></div>
+
+            <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10 w-full" id="interactive-container">
+                
+                <!-- Page Heading -->
+                <div class="text-center mb-16 reveal-up">
+                    <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-white">
+                        Trilhas & Formatos <span class="bg-gradient-to-r from-[#d6bc8c] via-[#e8d5b0] to-[#d6bc8c] bg-clip-text text-transparent">Editoriais</span>
+                    </h1>
+                </div>
+
+                <!-- connection svg layout overlay -->
+                <svg id="connection-svg" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-80"></svg>
+
+                <!-- SECTION 1: 3 FORMATOS (Top Grid) -->
+                <div class="relative z-10 mb-20">
+                    <div class="flex items-center justify-between mb-8 reveal-up">
+                        <h2 class="text-xs font-mono uppercase tracking-[0.2em] text-[#d6bc8c]">1 - DEFINA O TIPO DE PUBLICAÇÃO</h2>
+                        <span class="text-[10px] font-mono text-stone-600 hidden sm:inline">Clique para fixar o formato</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                                            <!-- Tipo 1: Individual -->
+                        <div id="tipo-individual" class="tipo-card group/tipo p-[1.5px] relative overflow-hidden rounded-[28px] flex flex-col justify-between cursor-pointer select-none reveal-up delay-100">
+                            <!-- Rotating light border sweep -->
+                            <span class="border-sweep absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 transition-opacity duration-500 pointer-events-none"></span>
+                            
+                            <!-- Inner Content Container -->
+                            <div class="rounded-[27px] p-8 flex flex-col justify-between h-full bg-[#0c0a09]/95 backdrop-blur-md relative z-10 border border-transparent">
+                                <div>
+                                    <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80 block mb-2">01 · Obra Autoral</span>
+                                    <h3 class="font-display text-2xl font-semibold text-white tracking-wide card-title">Individual</h3>
+                                    <div class="w-10 h-[1px] bg-stone-700 my-4 card-divider"></div>
+                                    <div class="card-desc-container">
+                                        <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                            Publique uma obra autoral em nome próprio para consolidar sua autoridade máxima. Com um livro individual, você documenta sua bagagem de forma exclusiva, abrindo caminhos para escalar treinamentos, atrair clientes qualificados e eternizar seu legado no mercado.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Tipo 2: Coautoria -->
+                        <div id="tipo-coautoria" class="tipo-card group/tipo p-[1.5px] relative overflow-hidden rounded-[28px] flex flex-col justify-between cursor-pointer select-none reveal-up delay-200">
+                            <!-- Rotating light border sweep -->
+                            <span class="border-sweep absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 transition-opacity duration-500 pointer-events-none"></span>
+                            
+                            <!-- Inner Content Container -->
+                            <div class="rounded-[27px] p-8 flex flex-col justify-between h-full bg-[#0c0a09]/95 backdrop-blur-md relative z-10 border border-transparent">
+                                <div>
+                                    <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80 block mb-2">02 · Escrita Compartilhada</span>
+                                    <h3 class="font-display text-2xl font-semibold text-white tracking-wide card-title">Coautoria</h3>
+                                    <div class="w-10 h-[1px] bg-stone-700 my-4 card-divider"></div>
+                                    <div class="card-desc-container">
+                                        <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                            Escreva em parceria com outros especialistas e divida os holofotes com grandes players. A coautoria permite assinar um capítulo estratégico focado em sua tese de maior sucesso, ampliando seu alcance de rede e reduzindo custos editoriais.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Tipo 3: Institucional -->
+                        <div id="tipo-institucional" class="tipo-card group/tipo p-[1.5px] relative overflow-hidden rounded-[28px] flex flex-col justify-between cursor-pointer select-none reveal-up delay-300">
+                            <!-- Rotating light border sweep -->
+                            <span class="border-sweep absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 transition-opacity duration-500 pointer-events-none"></span>
+                            
+                            <!-- Inner Content Container -->
+                            <div class="rounded-[27px] p-8 flex flex-col justify-between h-full bg-[#0c0a09]/95 backdrop-blur-md relative z-10 border border-transparent">
+                                <div>
+                                    <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80 block mb-2">03 · Sem Protagonista Único</span>
+                                    <h3 class="font-display text-2xl font-semibold text-white tracking-wide card-title">Institucional</h3>
+                                    <div class="w-10 h-[1px] bg-stone-700 my-4 card-divider"></div>
+                                    <div class="card-desc-container">
+                                        <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                            Materialize o legado e a cultura do seu negócio em um livro oficial corporativo. O formato institucional projeta a solidez da sua marca perante o mercado, servindo como ferramenta de treinamento de equipes, relacionamento com investidores ou chancela de prestígio B2B.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: 12 PERSONAS (Middle Grid) -->
+                <div class="relative z-10 mb-20">
+                    <div class="flex items-center justify-between mb-8 reveal-up">
+                        <h2 class="text-xs font-mono uppercase tracking-[0.2em] text-[#d6bc8c]">2 - SELECIONE SEU PERFIL</h2>
+                        <span class="text-[10px] font-mono text-stone-600 hidden sm:inline">Selecione seu perfil profissional</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-[1280px] mx-auto">
+                        
+                        <!-- Persona 1 -->
+                        <div id="persona-1" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-75 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">01 · Corporativo</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Empresários</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Fortaleça o valor de mercado de sua empresa e atraia parcerias estratégicas.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 2 -->
+                        <div id="persona-2" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-100 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">02 · Medicina</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Médicos</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Diferencie seu consultório da concorrência e atraia pacientes particulares.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 3 -->
+                        <div id="persona-3" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-125 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">03 · Direito</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Advogados</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Chancele sua expertise em teses complexas e atraia contas corporativas de alto ticket.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 4 -->
+                        <div id="persona-4" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-150 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">04 · Odontologia</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Dentistas</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Eternize suas técnicas de reabilitação oral e atraia tratamentos de alto valor.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 5 -->
+                        <div id="persona-5" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-175 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">05 · Estética</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Esteticistas</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Valorize seus métodos de rejuvenescimento e multiplique o faturamento da sua clínica.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 6 -->
+                        <div id="persona-6" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-200 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">06 · Imóveis</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Corretores</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Diferencie-se no mercado de imóveis premium e conquiste a confiança de clientes de alto padrão.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 7 -->
+                        <div id="persona-7" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-225 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">07 · Mentoria</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Mentores</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Aumente a conversão de seus eventos de vendas e encha suas salas de mentoria.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 8 -->
+                        <div id="persona-8" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-250 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">08 · Nutrição</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Nutricionistas</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Valide sua metodologia clínica de emagrecimento e tenha fila de espera em seu consultório.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 9 -->
+                        <div id="persona-9" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-275 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">09 · Design</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Arquitetos</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Publique seus portfólios autorais premium e conquiste projetos de alto padrão.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 10 -->
+                        <div id="persona-10" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-300 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">10 · Finanças</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Investidores</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Gere credibilidade institucional para gerir patrimônios e atrair famílias High-Net-Worth.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 11 -->
+                        <div id="persona-11" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-325 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">11 · Assessorias</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Consultores</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Valide sua metodologia proprietária e comercialize assessorias estratégicas B2B.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Persona 12 -->
+                        <div id="persona-12" class="persona-card glass-card rounded-[20px] p-5 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-350 select-none">
+                            <div>
+                                <span class="persona-tag text-[8px] font-mono uppercase tracking-[0.15em] text-[#d6bc8c]/75 block mb-1">12 · Ensino</span>
+                                <h4 class="font-display text-sm font-semibold text-white tracking-wide card-title">Educadores</h4>
+                                <div class="w-8 h-[1px] bg-stone-700 my-3 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="persona-desc text-[10px] text-stone-400 font-light leading-relaxed">
+                                        Transforme seus cursos em materiais didáticos e manuais de referência nacional.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SECTION 3: 4 TRILHAS (Bottom Grid) -->
+                <div class="relative z-10 pt-8">
+                    <div class="flex items-center justify-between mb-8 reveal-up">
+                        <h2 class="text-xs font-mono uppercase tracking-[0.2em] text-[#d6bc8c]">3 - DEFINA SEU OBJETIVO</h2>
+                        <span class="text-[10px] font-mono text-stone-600 hidden sm:inline">Modelos estratégicos de posicionamento</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Trilha 1: Propósito -->
+                        <div id="trilha-proposito" class="trilha-card glass-card rounded-[24px] p-6 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-100 select-none">
+                            <div>
+                                <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80 block mb-2">Trilha 01 · Legado & Impacto</span>
+                                <h3 class="font-display text-xl font-semibold text-white tracking-wide card-title">Propósito</h3>
+                                <div class="w-10 h-[1px] bg-stone-700 my-4 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="trilha-desc text-xs text-stone-400 font-light leading-relaxed">
+                                        Eternize seu legado de vida e marque a história. Transforme suas experiências, superações e princípios fundamentais em uma obra que transborda impacto real e inspira gerações.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trilha 2: Educação -->
+                        <div id="trilha-educacao" class="trilha-card glass-card rounded-[24px] p-6 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-200 select-none">
+                            <div>
+                                <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80 block mb-2">Trilha 02 · Ensino & Vendas</span>
+                                <h3 class="font-display text-xl font-semibold text-white tracking-wide card-title">Educação</h3>
+                                <div class="w-10 h-[1px] bg-stone-700 my-4 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="trilha-desc text-xs text-stone-400 font-light leading-relaxed">
+                                        Monetize seu conhecimento e escale seu negócio de ensino. Posicione seu livro como a ferramenta de conversão definitiva para lotar mentorias de alto ticket, vender cursos e validar seu método autoral.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trilha 3: Clientes -->
+                        <div id="trilha-clientes" class="trilha-card glass-card rounded-[24px] p-6 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-300 select-none">
+                            <div>
+                                <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80 block mb-2">Trilha 03 · Atração & Ticket</span>
+                                <h3 class="font-display text-xl font-semibold text-white tracking-wide card-title">Clientes</h3>
+                                <div class="w-10 h-[1px] bg-stone-700 my-4 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="trilha-desc text-xs text-stone-400 font-light leading-relaxed">
+                                        Atraia clientes de alto valor e multiplique seus ganhos. Utilize sua obra como um imã estratégico para aumentar o ticket médio, elevar o valor percebido dos seus serviços e fechar contratos premium.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trilha 4: Reconhecimento -->
+                        <div id="trilha-reconhecimento" class="trilha-card glass-card rounded-[24px] p-6 flex flex-col justify-between cursor-pointer border border-stone-850 reveal-up delay-400 select-none">
+                            <div>
+                                <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c]/80 block mb-2">Trilha 04 · Elite & Prestígio</span>
+                                <h3 class="font-display text-xl font-semibold text-white tracking-wide card-title">Reconhecimento</h3>
+                                <div class="w-10 h-[1px] bg-stone-700 my-4 card-divider"></div>
+                                <div class="card-desc-container">
+                                    <p class="trilha-desc text-xs text-stone-400 font-light leading-relaxed">
+                                        Chancele sua relevância e pertença ao grupo dos autores mais influentes do país. Um livro de alto padrão para consolidar seu nome na mídia de elite e registrar conquistas que exigem o máximo respeito do mercado.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="mt-20 text-center reveal-up">
+                    <a href="contato.html" class="relative group rounded-full p-[1.5px] overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 inline-flex">
+                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-80 group-hover:opacity-100 transition-opacity"></span>
+                        <span class="relative flex items-center justify-center gap-2.5 h-full w-full bg-[#0c0a09] px-10 py-4.5 rounded-full transition-colors group-hover:bg-[#111]">
+                            <span class="font-medium text-[10px] text-white tracking-widest uppercase">Iniciar Minha Obra-Prima</span>
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-[#d6bc8c] text-xs group-hover:translate-x-0.5 transition-transform"></iconify-icon>
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+<footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+
+        <div class="flex items-center group cursor-pointer">
+            <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
+        </div>
+
+        <div class="text-xs font-mono uppercase tracking-widest flex gap-6">
+            <a href="#" class="hover:text-white transition-colors">Termos</a>
+            <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-white transition-colors">Suporte</a>
+        </div>
+
+        <div class="text-xs text-stone-600 font-mono tracking-widest uppercase">
+            &copy; 2026 ELOOO International Group.<br class="md:hidden"> Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Connections mapping configuration
+        const formats = ['tipo-individual', 'tipo-coautoria', 'tipo-institucional'];
+        
+        const personas = [
+            'persona-1', 'persona-2', 'persona-3', 'persona-4',
+            'persona-5', 'persona-6', 'persona-7', 'persona-8',
+            'persona-9', 'persona-10', 'persona-11', 'persona-12'
+        ];
+
+        const trilhas = ['trilha-proposito', 'trilha-educacao', 'trilha-clientes', 'trilha-reconhecimento'];
+
+        // Active States variables
+        let selectedTipoId = null;
+        let selectedPersonaId = null;
+        let selectedTrilhaId = null;
+
+        // 12 Personas data dynamic dictionary based on Selected Format
+        const personaTexts = {
+            'default': [
+                { tag: '01 · Corporativo', title: 'Empresários', desc: 'Fortaleça o valor de mercado de sua empresa, aumentando as chances de atrair parcerias estratégicas.' },
+                { tag: '02 · Medicina', title: 'Médicos', desc: 'Diferencie seu consultório da concorrência, facilitando a atração de pacientes particulares recorrentes.' },
+                { tag: '03 · Direito', title: 'Advogados', desc: 'Chancele sua expertise em teses complexas, auxiliando a atrair contas corporativas de ticket elevado.' },
+                { tag: '04 · Odontologia', title: 'Dentistas', desc: 'Eternize suas técnicas de reabilitação oral, ampliando a possibilidade de fechar tratamentos de alto valor.' },
+                { tag: '05 · Estética', title: 'Esteticistas', desc: 'Valorize seus métodos de rejuvenescimento, abrindo caminhos para elevar o faturamento da sua clínica.' },
+                { tag: '06 · Imóveis', title: 'Corretores', desc: 'Diferencie-se no mercado de imóveis premium, buscando conquistar a confiança de clientes de alto padrão.' },
+                { tag: '07 · Mentoria', title: 'Mentores', desc: 'Aproveite para elevar o valor percebido de seus eventos de vendas, com potencial para lotar salas de mentoria.' },
+                { tag: '08 · Nutrição', title: 'Nutricionistas', desc: 'Valide sua metodologia clínica de emagrecimento, aumentando as chances de gerar fila de espera em seu consultório.' },
+                { tag: '09 · Design', title: 'Arquitetos', desc: 'Publique seus portfólios autorais premium, facilitando o fechamento de projetos de alto padrão.' },
+                { tag: '10 · Finanças', title: 'Investidores', desc: 'Gere credibilidade institucional, visando gerir patrimônios e atrair famílias de alto poder aquisivo.' },
+                { tag: '11 · Assessorias', title: 'Consultores', desc: 'Valide sua metodologia proprietária, auxiliando na comercialização de assessorias estratégicas B2B.' },
+                { tag: '12 · Ensino', title: 'Educadores', desc: 'Transforme seus cursos em materiais didáticos, buscando torná-los manuais de referência nacional.' }
+            ],
+            'tipo-individual': [
+                { tag: '01 · Corporativo', title: 'Empresários', desc: 'Fortaleça o valor de mercado de sua empresa, aumentando as chances de atrair parcerias estratégicas.' },
+                { tag: '02 · Medicina', title: 'Médicos', desc: 'Diferencie seu consultório da concorrência, facilitando a atração de pacientes particulares recorrentes.' },
+                { tag: '03 · Direito', title: 'Advogados', desc: 'Chancele sua expertise em teses complexas, auxiliando a atrair contas corporativas de ticket elevado.' },
+                { tag: '04 · Odontologia', title: 'Dentistas', desc: 'Eternize suas técnicas de reabilitação oral, ampliando a possibilidade de fechar tratamentos de alto valor.' },
+                { tag: '05 · Estética', title: 'Esteticistas', desc: 'Valorize seus métodos de rejuvenescimento, abrindo caminhos para elevar o faturamento da sua clínica.' },
+                { tag: '06 · Imóveis', title: 'Corretores', desc: 'Diferencie-se no mercado de imóveis premium, buscando conquistar a confiança de clientes de alto padrão.' },
+                { tag: '07 · Mentoria', title: 'Mentores', desc: 'Aproveite para elevar o valor percebido de seus eventos de vendas, com potencial para lotar salas de mentoria.' },
+                { tag: '08 · Nutrição', title: 'Nutricionistas', desc: 'Valide sua metodologia clínica de emagrecimento, aumentando as chances de gerar fila de espera em seu consultório.' },
+                { tag: '09 · Design', title: 'Arquitetos', desc: 'Publique seus portfólios autorais premium, facilitando o fechamento de projetos de alto padrão.' },
+                { tag: '10 · Finanças', title: 'Investidores', desc: 'Gere credibilidade institucional, visando gerir patrimônios e atrair famílias de alto poder aquisivo.' },
+                { tag: '11 · Assessorias', title: 'Consultores', desc: 'Valide sua metodologia proprietária, auxiliando na comercialização de assessorias estratégicas B2B.' },
+                { tag: '12 · Ensino', title: 'Educadores', desc: 'Transforme seus cursos em materiais didáticos, buscando torná-los manuais de referência nacional.' }
+            ],
+            'tipo-coautoria': [
+                { tag: '01 · Geral', title: 'Seu Nicho Atual', desc: 'Escreva sobre sua área de atuação em um capítulo estratégico, dividindo a autoria com outros grandes especialistas.' },
+                { tag: '02 · Liderança Feminina', title: 'Mulheres de Negócios', desc: 'Celebre a força feminina nos negócios, compartilhando lições de liderança, superação e gestão prática.' },
+                { tag: '03 · Alta Liderança', title: 'Liderança & Gestão', desc: 'Una-se a grandes executivos e CEOs para publicar capítulos focados em alta performance, cultura e governança.' },
+                { tag: '04 · Medicina', title: 'Médicos & Saúde', desc: 'Assine um capítulo especializado sobre inovações clínicas e abordagens integrativas de saúde.' },
+                { tag: '05 · Odontologia', title: 'Dentistas & Ortodontia', desc: 'Compartilhe casos clínicos de reabilitação e inovações estéticas ao lado de outros cirurgiões-dentistas.' },
+                { tag: '06 · Direito & Estratégia', title: 'Advogados & Consultores', desc: 'Publique análises jurídicas aplicadas e teses de direito empresarial em guias de inteligência corporativa.' },
+                { tag: '07 · Desenvolvimento', title: 'Mentores & Treinadores', desc: 'Escreva capítulos focados em metodologias de aceleração pessoal, vendas e desenvolvimento humano.' },
+                { tag: '08 · Wealth & Capital', title: 'Finanças & Investimentos', desc: 'Colabore em antologias focadas em educação financeira, investimentos estruturados e proteção de patrimônio.' },
+                { tag: '09 · Estética Avançada', title: 'Experts em Estética', desc: 'Apresente técnicas e protocolos de rejuvenescimento e bem-estar integrativo em uma obra coletiva premium.' },
+                { tag: '10 · Estilo & Espaço', title: 'Arquitetura & Design', desc: 'Apresente conceitos de design de interiores, paisagismo ou sustentabilidade com outros renomados arquitetos.' },
+                { tag: '11 · Scaleups & Growth', title: 'Empreendedores & Founders', desc: 'Compartilhe as dores e glórias de escalar novos modelos de negócios ao lado de fundadores de alto crescimento.' },
+                { tag: '12 · Saúde Mental', title: 'Terapeutas & Psicólogos', desc: 'Escreva sobre inteligência emocional, psicologia positiva e equilíbrio mental em uma publicação voltada ao bem-estar.' }
+            ],
+            'tipo-institucional': [
+                { tag: '01 · Negócios', title: 'Redes de Franquias', desc: 'Eternize a história da marca e busque encantar franqueados com o playbook oficial de sucesso.' },
+                { tag: '02 · Representação', title: 'Associações de Classe', desc: 'Celebre marcos históricos e reforce a relevância institucional de sua entidade.' },
+                { tag: '03 · Corporate', title: 'Holdings & Grupos', desc: 'Integre a cultura corporativa de suas subsidiárias e potencialize o posicionamento da holding.' },
+                { tag: '04 · Parcerias', title: 'Escritórios Corporativos', desc: 'Destaque a reputação e o histórico de conquistas da sua banca de advocacia ou consultoria.' },
+                { tag: '05 · Venture Capital', title: 'Startups em Escala', desc: 'Documente a cultura de hiper-crescimento, visando atrair investimentos estratégicos.' },
+                { tag: '06 · Saúde Grupo', title: 'Hospitais & Clínicas', desc: 'Publique manuais de excelência clínica, auxiliando no prestígio de sua rede hospitalar.' },
+                { tag: '07 · Heritage', title: 'Indústrias Nacionais', desc: 'Comemore jubileus industriais e documente o patrimônio histórico de sua fabricação.' },
+                { tag: '08 · Ensino Médio', title: 'Instituições de Ensino', desc: 'Reforce a tradição de colégios e faculdades através de publicações históricas de alto padrão.' },
+                { tag: '09 · Private Wealth', title: 'Family Offices', desc: 'Desenvolva um livro comemorativo de alto prestígio como presente para clientes VIP.' },
+                { tag: '10 · Grife', title: 'Marcas Premium', desc: 'Narre a herança e o design de suas coleções em edições históricas limitadas de colecionador.' },
+                { tag: '11 · Real Estate', title: 'Incorporadoras', desc: 'Registre grandes marcos urbanísticos e arquitetônicos de seus empreendimentos premium.' },
+                { tag: '12 · Philanthropy', title: 'Fundações Sociais', desc: 'Apresente relatórios de impacto socioambiental com estética editorial premium.' }
+            ]
+        };
+
+        const svg = document.getElementById('connection-svg');
+        const container = document.getElementById('interactive-container');
+
+        // Update the textual contents of the 12 Persona cards dynamically based on selected Format
+        function updatePersonaCardsText(tipoId) {
+            const key = tipoId || 'default';
+            const data = personaTexts[key];
+            
+            personas.forEach((pId, idx) => {
+                const cardEl = document.getElementById(pId);
+                if (cardEl) {
+                    const tagEl = cardEl.querySelector('.persona-tag');
+                    const titleEl = cardEl.querySelector('.card-title');
+                    const descEl = cardEl.querySelector('.persona-desc');
+                    
+                    const item = data[idx];
+                    if (tagEl) tagEl.innerText = item.tag;
+                    if (titleEl) titleEl.innerText = item.title;
+                    if (descEl) descEl.innerText = item.desc;
+                }
+            });
+        }
+
+        // Create paths once on initialization: format-to-persona (36 paths) & persona-to-trilha (48 paths) -> 84 total paths
+        function initConnections() {
+            svg.innerHTML = '';
+            
+            // 1. Format to Persona paths
+            formats.forEach(fId => {
+                personas.forEach(pId => {
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('id', `path-${fId}-${pId}`);
+                    path.setAttribute('class', `connection-line ${fId}-line ${pId}-line`);
+                    path.style.stroke = 'rgba(214, 188, 140, 0.04)';
+                    path.style.strokeWidth = '1.2';
+                    path.style.fill = 'none';
+                    path.style.transition = 'stroke 0.4s ease, stroke-width 0.4s ease, opacity 0.4s ease';
+                    svg.appendChild(path);
+                });
+            });
+
+            // 2. Persona to Trilha paths
+            personas.forEach(pId => {
+                trilhas.forEach(tId => {
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('id', `path-${pId}-${tId}`);
+                    path.setAttribute('class', `connection-line ${pId}-line ${tId}-line`);
+                    path.style.stroke = 'rgba(214, 188, 140, 0.04)';
+                    path.style.strokeWidth = '1.2';
+                    path.style.fill = 'none';
+                    path.style.transition = 'stroke 0.4s ease, stroke-width 0.4s ease, opacity 0.4s ease';
+                    svg.appendChild(path);
+                });
+            });
+        }
+
+        // Draw connections updates the coordinates (d attributes) of existing path nodes
+        function drawConnections() {
+            const containerRect = container.getBoundingClientRect();
+
+            // Read phase: cache all bounding rects in one batch to avoid layout thrashing
+            const fRects = {};
+            formats.forEach(fId => {
+                const el = document.getElementById(fId);
+                if (el) fRects[fId] = el.getBoundingClientRect();
+            });
+
+            const pRects = {};
+            personas.forEach(pId => {
+                const el = document.getElementById(pId);
+                if (el) pRects[pId] = el.getBoundingClientRect();
+            });
+
+            const tRects = {};
+            trilhas.forEach(tId => {
+                const el = document.getElementById(tId);
+                if (el) tRects[tId] = el.getBoundingClientRect();
+            });
+
+            // Write phase: calculate coordinates and modify DOM attributes
+            // 1. Draw Format to Persona paths
+            formats.forEach(fId => {
+                const fRect = fRects[fId];
+                if (!fRect) return;
+                const x1 = (fRect.left + fRect.width / 2) - containerRect.left;
+                const y1 = fRect.bottom - containerRect.top;
+
+                personas.forEach(pId => {
+                    const pRect = pRects[pId];
+                    if (!pRect) return;
+                    const x2 = (pRect.left + pRect.width / 2) - containerRect.left;
+                    const y2 = pRect.top - containerRect.top;
+
+                    const controlY1 = y1 + 55;
+                    const controlY2 = y2 - 55;
+                    const d = `M ${x1} ${y1} C ${x1} ${controlY1}, ${x2} ${controlY2}, ${x2} ${y2}`;
+
+                    const path = document.getElementById(`path-${fId}-${pId}`);
+                    if (path) path.setAttribute('d', d);
+                });
+            });
+
+            // 2. Draw Persona to Trilha paths
+            personas.forEach(pId => {
+                const pRect = pRects[pId];
+                if (!pRect) return;
+                const x3 = (pRect.left + pRect.width / 2) - containerRect.left;
+                const y3 = pRect.bottom - containerRect.top;
+
+                trilhas.forEach(tId => {
+                    const tRect = tRects[tId];
+                    if (!tRect) return;
+                    const x4 = (tRect.left + tRect.width / 2) - containerRect.left;
+                    const y4 = tRect.top - containerRect.top;
+
+                    const controlY3 = y3 + 55;
+                    const controlY4 = y4 - 55;
+                    const d = `M ${x3} ${y3} C ${x3} ${controlY3}, ${x4} ${controlY4}, ${x4} ${y4}`;
+
+                    const path = document.getElementById(`path-${pId}-${tId}`);
+                    if (path) path.setAttribute('d', d);
+                });
+            });
+        }
+
+        // Animation frame loop to follow expanding cards
+        let animFrameId = null;
+        function animateConnections() {
+            drawConnections();
+animFrameId = requestAnimationFrame(animateConnections);
+        }
+        function startConnectionsAnimation() {
+            if (animFrameId) cancelAnimationFrame(animFrameId);
+            animFrameId = requestAnimationFrame(animateConnections);
+            setTimeout(() => {
+                if (animFrameId) cancelAnimationFrame(animFrameId);
+                drawConnections();
+            }, 450);
+        }
+
+        // Dynamic text construction engine (100% custom bespoke copywriting deck)
+        function getDynamicText(trilhaId, tipoId, personaId) {
+            // 48 Bespoke Copywriting paragraphs for Individual format (100% customized - Softened Promises)
+            const individualBespoke = {
+                'persona-1': { // Empresários
+                    'trilha-proposito': "Registre sua trajetória empresarial, desafios superados e valores de governança. Um livro autoral que documenta o crescimento da sua empresa serve como um patrimônio moral inspirador, transmitindo sua filosofia de negócios para colaboradores, familiares e futuros líderes.",
+                    'trilha-educacao': "Transforme seu modelo de negócios e mentalidade corporativa em um método educacional de destaque. Ao publicar um livro com sua metodologia de gestão, você facilita a validação da sua marca, com potencial para vender programas de mentoria empresarial ou Masterminds de alto ticket.",
+                    'trilha-clientes': "Posicione seu livro de negócios como a ferramenta definitiva de prospecção corporativa. Apresentar um livro físico de sua autoria para decisores e acionistas pode auxiliar a diminuir objeções de valor e acelerar a negociação de contratos estratégicos, demonstrando solidez.",
+                    'trilha-reconhecimento': "Chancele seu nome na mídia de negócios e lidere debates de mercado. Ao assinar uma obra autoral premium, você amplia as oportunidades para entrevistas em veículos financeiros de prestígio e convites para palestras magnas em fóruns de elite."
+                },
+                'persona-2': { // Médicos
+                    'trilha-proposito': "Eternize seus princípios na medicina, suas descobertas clínicas e sua dedicação à saúde. Um livro autoral médico compartilha sua jornada de cuidado com os pacientes, humanizando sua prática e deixando um legado ético inspirador para a comunidade de saúde.",
+                    'trilha-educacao': "Valide seu protocolo ou técnica cirúrgica especializada em um manual didático de referência médica. Ao documentar sua metodologia em livro próprio, você estabelece um canal de indicação profissional, atraindo outros médicos interessados em seus cursos e congressos.",
+                    'trilha-clientes': "Diferencie seu consultório no mercado particular de alta renda. Apresentar um livro impresso autoral sobre qualidade de vida ou prevenção atua como prova física de sua expertise, auxiliando na captação orgânica de consultas particulares fora de convênios.",
+                    'trilha-reconhecimento': "Consolide sua reputação científica nacional e lidere opiniões de saúde na mídia. Escrever uma obra médica premium pode abrir caminhos para convites para conselhos especializados e espaço para colunas em grandes portais de notícias."
+                },
+                'persona-3': { // Advogados
+                    'trilha-proposito': "Registre suas teses jurídicas fundamentais, lutas constitucionais e valores de justiça. Um livro autoral de memórias ou análises éticas documenta sua contribuição acadêmica e profissional, servindo como uma herança intelectual para estudantes e jovens advogados.",
+                    'trilha-educacao': "Estruture suas soluções jurídicas especializadas em um livro de referência doutrinária ou de negócios. Ao publicar um livro com suas análises, você abre caminhos para capitanear pós-graduações, cursos e palestras corporativas no mercado de direito.",
+                    'trilha-clientes': "Conquiste contas corporativas de alto padrão demonstrando autoridade inquestionável. Entregar um livro técnico de sua autoria a tomadores de decisão em grandes empresas pode auxiliar a reduzir o ciclo de contratação de assessorias jurídicas preventivas e pareceres de alto valor.",
+                    'trilha-reconhecimento': "Chancele sua reputação como jurista de destaque nos tribunais e na mídia especializada. Assinar uma obra jurídica de alto padrão auxilia na busca por convites para pareceres em grandes julgamentos corporativos e entrevistas em veículos de economia."
+                },
+                'persona-4': { // Dentistas
+                    'trilha-proposito': "Documente sua visão sobre a transformação de sorrisos e a reabilitação da autoestima de seus pacientes. Um livro autoral sobre a sua filosofia clínica eterniza sua paixão pela odontologia e a importância de devolver a confiança social e a saúde bucal.",
+                    'trilha-educacao': "Sistematize suas técnicas de odontologia estética ou cirurgia maxilofacial em um manual técnico ilustrado. Seu livro autoral atua como chancela científica de referência nacional, com potencial para alavancar as vendas de seus cursos de imersão e residências clínicas.",
+                    'trilha-clientes': "Justifique o valor de tratamentos de reabilitação oral e estética dental com menor esforço de vendas. Apresentar seu livro autoral na sala de espera ou na consulta de avaliação aumenta o valor percebido da sua clínica, auxiliando na aceitação de orçamentos de alto padrão.",
+                    'trilha-reconhecimento': "Posicione-se como a principal referência em estética orofacial e odontologia premium do país. Publicar um livro autoral pode gerar convites para palestras em congressos odontológicos de prestígio e abre portas na mídia regional de alto padrão."
+                },
+                'persona-5': { // Esteticistas
+                    'trilha-proposito': "Eternize sua missão de cuidar do rejuvenescimento, bem-estar e da saúde integrativa da pele. Um livro autoral focado em sua abordagem de beleza serve como um manifesto inspirador sobre o autocuidado consciente e o resgate da autoestima pessoal.",
+                    'trilha-educacao': "Registre seus protocolos de estética facial ou corporal em um manual de treinamento profissional. Ao assinar uma publicação autoral didática, você auxilia no processo de escala de cursos de certificação de marca e atrai esteticistas interessadas em suas franquias.",
+                    'trilha-clientes': "Busque elevar o faturamento da sua clínica de estética de alto padrão. Oferecer um livro autoral sobre cuidados com a pele atua como prova de conceito, auxiliando a mitigar objeções de preço de tratamentos e pacotes de rejuvenescimento de ticket elevado.",
+                    'trilha-reconhecimento': "Consolide sua imagem como a maior autoridade de rejuvenescimento estético do país. Assinar uma obra premium voltada a cuidados de alto padrão pode gerar convites para assessorar grandes marcas e participar de pautas sobre autocuidado na imprensa."
+                },
+                'persona-6': { // Corretores
+                    'trilha-proposito': "Registre sua visão sobre o desenvolvimento urbano, a evolução do mercado de alto padrão e as histórias de conquistas familiares. Um livro autoral eterniza sua paixão por conectar pessoas a patrimônios, gerando conexões humanas duradouras.",
+                    'trilha-educacao': "Compile suas estratégias de negociação imobiliária de alto padrão em um guia prático de formação. Publicar um livro com sua metodologia auxilia na captação de corretores qualificados para sua equipe e a contratação de palestras corporativas.",
+                    'trilha-clientes': "Conquiste exclusividade e parcerias com proprietários e investidores High-Net-Worth. Presentear o proprietário com seu livro autoral sobre investimentos imobiliários auxilia a gerar segurança, com potencial para otimizar o tempo de fechamento de vendas.",
+                    'trilha-reconhecimento': "Posicione seu nome no topo do mercado imobiliário premium do país. Assinar uma publicação premium sobre tendências de investimento em real estate pode abrir portas para coberturas na mídia econômica e convites para palestras no setor."
+                },
+                'persona-7': { // Mentores
+                    'trilha-proposito': "Transborde sua jornada de vida, filosofias de mentoria e princípios de liderança. Um livro autoral que narra sua caminhada eterniza seu propósito e cria um canal imediato de conexão profunda e identificação emocional com seus futuros mentorados.",
+                    'trilha-educacao': "Materialize sua metodologia proprietária de escala em um livro didático de referência. Seu livro autoral atua como um importante apoio para impulsionar a venda de mentorias individuais ou coletivas de alto ticket durante aberturas de carrinho ou pitchs no palco.",
+                    'trilha-clientes': "Busque atrair alunos qualificados e otimizar a qualificação comercial de leads. Usar seu livro autoral como o primeiro passo da sua esteira de produtos eleva o valor percebido da sua entrega, auxiliando a mitigar barreiras na aceitação do valor de suas mentorias exclusivas.",
+                    'trilha-reconhecimento': "Consolide seu posicionamento como o principal mentor do seu segmento nacional. Publicar uma obra autoral premium aumenta as chances de convite para palcos concorridos e reportagens exclusivas na grande imprensa."
+                },
+                'persona-8': { // Nutricionistas
+                    'trilha-proposito': "Documente sua filosofia sobre nutrição integrativa, emagrecimento consciente e saúde preventiva. Um livro autoral com sua abordagem eterniza seu compromisso de reeducação alimentar, ajudando a transformar a saúde física e mental de seus leitores de forma profunda.",
+                    'trilha-educacao': "Sistematize seus protocolos dietéticos e científicos em um manual prático de conduta nutricional. Ao assinar uma publicação de referência técnica, você auxilia na autoridade pedagógica, com potencial para impulsionar a venda de cursos para profissionais de saúde.",
+                    'trilha-clientes': "Aumente as possibilidades de lotar seu consultório com pacientes qualificados e dispostos a seguir seu método. Utilizar seu livro autoral como introdução à sua consulta auxilia na construção de confiança, facilitando a atração de fila de espera em seu consultório particular.",
+                    'trilha-reconhecimento': "Seja reconhecido como a maior autoridade em nutrição clínica ou esportiva do país. Publicar um livro próprio premium de alto padrão pode abrir portas para convites para colunas de saúde e palestras em congressos de nutrologia."
+                },
+                'persona-9': { // Arquitetos
+                    'trilha-proposito': "Registre sua filosofia projetual, a busca pela harmonia e o legado de suas obras na paisagem urbana. Um livro autoral de arquitetura eterniza sua paixão por materializar espaços humanos com conforto técnico, estética apurada e sustentabilidade.",
+                    'trilha-educacao': "Compile seus conceitos volumétricos ou de design de interiores em um livro conceitual de referência. Ao publicar sua metodologia e portfólio em um livro didático, você valida sua autoridade acadêmica, estimulando convites para palestras em universidades.",
+                    'trilha-clientes': "Potencialize a venda de projetos residenciais e corporativos premium de alto valor com menor atrito de preço. Presentear clientes qualificados com um livro autoral que exibe seu portfólio físico gera impacto estético, auxiliando a demonstrar segurança técnica.",
+                    'trilha-reconhecimento': "Destaque seu escritório na mídia de design de interiores e arquitetura nacional. Assinar uma publicação premium de alto padrão auxilia no destaque de seus projetos nas principais revistas de decoração e prêmios de arquitetura."
+                },
+                'persona-10': { // Investidores
+                    'trilha-proposito': "Registre sua filosofia de investimentos, análise de mercado e teses de preservação de capital. Um livro autoral eterniza seu legado de inteligência financeira e governança familiar, gerando clareza e segurança patrimonial para gerações.",
+                    'trilha-educacao': "Estruture seus métodos de alocação de ativos e inteligência de mercado em um livro educativo de referência. Publicar seu método de gestão de carteiras chancela sua didática, com potencial para atrair cotistas e alunos para seus cursos financeiros.",
+                    'trilha-clientes': "Busque transmitir a solidez necessária para a captação de grandes patrimônios privados. Utilizar um livro autoral sobre preservação de riqueza em reuniões de private banking ajuda a mitigar a desconfiança, facilitando a captação de recursos com famílias de alto poder aquisivo.",
+                    'trilha-reconhecimento': "Consolide sua imagem como analista ou gestor financeiro de referência nacional. Assinar uma publicação sobre investimentos premium abre caminhos para entrevistas regulares na mídia de negócios e convites para palestrar em painéis econômicos."
+                },
+                'persona-11': { // Consultores
+                    'trilha-proposito': "Documente seus aprendizados em reestruturação de empresas, eficiência operacional e governança. Um livro autoral de consultoria eterniza suas metodologias de gestão, ajudando empresários a reescreverem a história de seus negócios com solidez.",
+                    'trilha-educacao': "Sistematize seu método proprietário de diagnóstico empresarial em um manual de referência gerencial. Ao publicar seu método em livro, você chancela sua autoridade de ensino, com potencial para impulsionar a venda de treinamentos corporativos de alta liderança.",
+                    'trilha-clientes': "Apoie o fechamento de contratos de assessoria corporativa B2B de longo prazo com menor esforço de prospecção. Apresentar seu livro autoral para CEOs e conselhos de administração em reuniões de negócios auxilia a reduzir a desconfiança sobre a eficácia de sua metodologia.",
+                    'trilha-reconhecimento': "Consolide sua reputação nacional como o principal consultor estratégico de grandes marcas. Assinar uma publicação premium de negócios pode aproximar você de convites para conselhos consultivos de grandes holdings e colunas de economia."
+                },
+                'persona-12': { // Educadores
+                    'trilha-proposito': "Registre sua missão de educar, transformar mentalidades e formar profissionais de excelência. Um livro autoral de pedagogia ou liderança de ensino eterniza suas contribuições educacionais e o impacto social das suas salas de aula.",
+                    'trilha-educacao': "Transforme suas teorias e dinâmicas pedagógicas em um manual didático de referência nacional. Publicar um livro educativo de sua autoria valida seu método de ensino, atraindo parcerias institucionais com redes escolares e universidades.",
+                    'trilha-clientes': "Busque contratos de consultoria pedagógica e treinamento educacional com grandes instituições. Utilizar seu livro autoral como portfólio físico corrobora a solidez da sua didática, auxiliando na aceitação de suas propostas de assessoria.",
+                    'trilha-reconhecimento': "Seja reconhecido como referência máxima em inovação educacional do país. Assinar uma obra acadêmica premium aumenta as oportunidades de convite para participar de conselhos de educação e palcos de congressos."
+                }
+            };
+
+            // 48 Bespoke Copywriting paragraphs for Institucional format (100% customized - Softened Promises)
+            const institucionalBespoke = {
+                'persona-1': { // Redes de Franquias
+                    'trilha-proposito': "Registre o manifesto histórico de fundação e os pilares de cultura da rede. Um livro institucional que narra o início de tudo atua como um valioso patrimônio de orgulho de marca, inspirando franqueados e estreitando a conexão de toda a rede.",
+                    'trilha-educacao': "Padronize a excelência operacional e a cultura comercial da rede em um playbook de referência física. Um livro didático de franquia auxilia na homogeneização do atendimento, otimizando o tempo de treinamento de novos parceiros e funcionários.",
+                    'trilha-clientes': "Acelere a expansão de unidades demonstrando a solidez e o sucesso do modelo. Presentear novos investidores qualificados com o livro oficial de sucesso da franquia ajuda a reduzir a desconfiança, apoiando a tomada de decisão comercial.",
+                    'trilha-reconhecimento': "Chancele a relevância da rede de franquias no mercado corporativo. Assinar um livro institucional premium atua como um diferencial de credibilidade na mídia e em fóruns do setor, destacando de forma clara o crescimento da marca."
+                },
+                'persona-2': { // Associações de Classe
+                    'trilha-proposito': "Eternize os marcos históricos de luta da categoria e a trajetória de seus líderes fundadores. O livro institucional serve como um patrimônio moral de união da classe, valorizando a trajetória de cada profissional associado.",
+                    'trilha-educacao': "Sistematize as diretrizes éticas e os manuais técnicos da profissão em uma publicação oficial de excelência. Este material didático serve como bússola de boas práticas para novos profissionais e estudantes ingressantes na área.",
+                    'trilha-clientes': "Fortaleça a percepção de relevância da associação perante parceiros e órgãos reguladores. Apresentar um livro institucional de alto padrão auxilia a fundamentar propostas coletivas, minimizando barreiras em negociações.",
+                    'trilha-reconhecimento': "Consolide a respeitabilidade científica e a representatividade nacional da sua entidade. A publicação de uma obra premium de referência facilita a busca por assento em comitês regulatórios e reportagens na grande imprensa."
+                },
+                'persona-3': { // Holdings & Grupos
+                    'trilha-proposito': "Registre a governança, as teses de aquisição e a filosofia empreendedora dos fundadores do grupo. Um livro corporativo oficial eterniza os valores do ecossistema, alinhando de forma duradoura a cultura de todas as empresas e subsidiárias.",
+                    'trilha-educacao': "Compile as metodologias operacionais e de liderança do grupo em um guia oficial de referência executiva. Esse material serve como base intelectual para o onboarding de executivos de alta performance e líderes do portfólio.",
+                    'trilha-clientes': "Apoie a captação de parcerias estratégicas e rodadas de fusões e aquisições (M&A). Entregar a obra do grupo a potenciais acionistas e investidores atua como um sólido atestado físico de robustez, facilitando as negociações.",
+                    'trilha-reconhecimento': "Chancele a imagem do grupo como player de destaque na economia e no mercado de investimentos. A publicação de uma obra premium de negócios apoia a presença em relatórios e abre caminhos para matérias exclusivas."
+                },
+                'persona-4': { // Escritórios Corporativos
+                    'trilha-proposito': "Registre as maiores causas, vitórias corporativas e os princípios éticos que definem o escritório. O livro comemorativo consolida o legado da banca e serve como fonte de orgulho para sócios, associados e parceiros de longo prazo.",
+                    'trilha-educacao': "Sistematize pareceres, análises regulatórias e metodologias de assessoria B2B em um guia doutrinário de referência. O livro de alto padrão posiciona o escritório no topo do ensino técnico, auxiliando na formação de novos talentos.",
+                    'trilha-clientes': "Facilite a atração de grandes clientes corporativos e contratos de honorários diferenciados. Presentear decisores e diretores jurídicos com seu livro técnico e portfólio físico de cases ajuda a reduzir objeções nas avaliações do escritório.",
+                    'trilha-reconhecimento': "Destaque a reputação da banca de advocacia ou da firma de consultoria em anuários de excelência. Uma publicação premium de alto padrão facilita a indicação para premiações e convites para colunas de destaque na imprensa."
+                },
+                'persona-5': { // Startups em Escala
+                    'trilha-proposito': "Documente a jornada de inovação, pivotagens e a cultura de crescimento acelerado. O livro institucional serve como um forte manifesto inspirador para os colaboradores (employer branding) e um registro histórico da startup.",
+                    'trilha-educacao': "Estruture a cultura de produto, engenharia ou metodologias ágeis do ecossistema em um livro educativo. Ao organizar o conhecimento prático da startup, você valida o seu modelo operacional perante o mercado de tecnologia.",
+                    'trilha-clientes': "Auxilie na atração de contas enterprise B2B demonstrando solidez e modernidade. Usar um livro impresso autoral da marca nas apresentações a diretores de tecnologia ajuda a mitigar a desconfiança sobre a estabilidade do negócio.",
+                    'trilha-reconhecimento': "Posicione a startup no radar de grandes fundos de Venture Capital e na mídia de tecnologia. Assinar uma publicação premium ajuda a chanceler a autoridade da empresa, facilitando a captação de investimentos."
+                },
+                'persona-6': { // Hospitais & Clínicas
+                    'trilha-proposito': "Documente a evolução da infraestrutura, pioneirismos clínicos e a dedicação ao cuidado da vida. O livro institucional do hospital humaniza a instituição perante a comunidade e eterniza o esforço de seu corpo clínico.",
+                    'trilha-educacao': "Estruture os protocolos de biossegurança, atendimento humanizado e rotinas médicas da rede em um guia oficial. O livro serve como base didática para o treinamento e a integração de residentes e novos profissionais.",
+                    'trilha-clientes': "Atraia pacientes particulares que buscam o topo da excelência médica. Um livro impresso de alto padrão na sala de espera atua como prova física de credibilidade técnica, valorizando os investimentos na estrutura do hospital.",
+                    'trilha-reconhecimento': "Consolide a referência acadêmica e científica do hospital perante sociedades médicas e comitês de saúde. A publicação de uma obra técnica premium de alto padrão auxilia a obter acreditações e convites no setor."
+                },
+                'persona-7': { // Indústrias Nacionais
+                    'trilha-proposito': "Registre os marcos industriais, o desenvolvimento de fábricas e a evolução da cadeia produtiva do país. O livro comemorativo serve como patrimônio histórico de valor social, valorizando o trabalho de gerações de colaboradores.",
+                    'trilha-educacao': "Estruture os manuais de segurança, engenharia ou qualidade de produção em livros de processos. Esse manual técnico auxilia no alinhamento de processos industriais e no onboarding de novos engenheiros e técnicos.",
+                    'trilha-clientes': "Apoie a abertura de novos mercados de exportação e a prospecção de distribuidores B2B. Presentear potenciais compradores com seu livro institucional demonstra robustez física e seriedade industrial imediatas.",
+                    'trilha-reconhecimento': "Posicione a indústria como pilar estratégico do crescimento do país. A publicação de uma obra comemorativa premium de alto padrão facilita o relacionamento com órgãos de fomento econômico e financeiro."
+                },
+                'persona-8': { // Instituições de Ensino
+                    'trilha-proposito': "Registre a tradição pedagógica, as conquistas de alunos e as transformações sociais lideradas pela escola ou faculdade. O livro comemorativo serve como marco de orgulho para docentes, ex-alunos e a comunidade escolar.",
+                    'trilha-educacao': "Estruture a proposta pedagógica e a filosofia metodológica da instituição de forma clara e sistematizada. Este livro de referência serve como guia de onboarding, garantindo o alinhamento pedagógico de novos professores.",
+                    'trilha-clientes': "Atraia novas matrículas de famílias que buscam tradição e solidez de ensino. Apresentar um livro institucional premium aos pais durante as visitas à escola eleva o valor percebido da infraestrutura, auxiliando na matrícula.",
+                    'trilha-reconhecimento': "Posicione a instituição de ensino como centro de excelência e inovação educacional. Assinar uma obra de alto padrão de ensino ajuda a atrair parcerias acadêmicas nacionais e internacionais."
+                },
+                'persona-9': { // Family Offices
+                    'trilha-proposito': "Documente os princípios de governança, preservação de patrimônio e a história de resiliência de grandes dinastias familiares. O livro institucional serve como um guia geracional inspirador para os herdeiros do patrimônio.",
+                    'trilha-educacao': "Compile teses de investimento estruturadas e análises macroeconômicas de preservação de capital em um manual de referência. O livro didático valida o rigor conceitual do escritório perante o mercado de private wealth.",
+                    'trilha-clientes': "Estreite o relacionamento de longo prazo com famílias ultra-wealthy. Presentear parceiros em potencial com seu livro sobre sucessão familiar gera segurança, auxiliando na atração de grandes fortunas para o Family Office.",
+                    'trilha-reconhecimento': "Posicione seu Family Office como referência na alocação e proteção de ativos. Escrever uma publicação premium de alto padrão facilita convites para colunas de economia e participações em fóruns de investimentos."
+                },
+                'persona-10': { // Marcas Premium
+                    'trilha-proposito': "Eternize a herança do design, a filosofia de produto e os processos de fabricação artesanal da marca. O livro institucional atua como um manifesto estético memorável, compartilhando a essência da marca com seus clientes.",
+                    'trilha-educacao': "Estruture a história do estilo, padrões estéticos e a cultura de atendimento de alto padrão em um manual institucional. O livro serve como o principal guia didático para treinar o time de vendas e gerentes de boutiques.",
+                    'trilha-clientes': "Reforce a fidelidade e a valorização por parte dos clientes VIP. Oferecer um livro de portfólio físico premium como um presente de edição limitada em eventos exclusivos atua como um refinado ponto de relacionamento com a marca.",
+                    'trilha-reconhecimento': "Chancele a presença e relevância da marca no universo do design de alto padrão. A publicação de uma obra comemorativa premium de alto padrão facilita coberturas exclusivas em veículos de estilo de vida e artes."
+                },
+                'persona-11': { // Incorporadoras
+                    'trilha-proposito': "Registre os marcos arquitetônicos, inovações urbanísticas e as transformações na paisagem urbana promovidas pela empresa. O livro serve como um portfólio físico de orgulho corporativo e governança de engenharia.",
+                    'trilha-educacao': "Estruture os métodos construtivos, sistemas de sustentabilidade e normas de engenharia em manuais técnicos. O livro de processos apoia a capacitação de equipes de engenharia de campo e a padronização das obras.",
+                    'trilha-clientes': "Facilite as vendas de empreendimentos corporativos e de alto padrão. Presentear investidores com o livro histórico e portfólio físico da incorporadora transmite credibilidade e auxilia a otimizar o tempo de negociação.",
+                    'trilha-reconhecimento': "Destaque a marca no mercado imobiliário premium e na mídia de arquitetura. A publicação de um livro premium de construtora apoia a indicação de projetos a prêmios e reportagens de urbanismo na imprensa."
+                },
+                'persona-12': { // Fundações Sociais
+                    'trilha-proposito': "Eternize o impacto humanitário, as histórias de transformação das comunidades e os valores socioambientais da entidade. O livro serve como um manifesto de agradecimento a apoiadores, beneficiários e fundadores.",
+                    'trilha-educacao': "Compile as metodologias de intervenção social e políticas públicas em um livro de boas práticas. A publicação didática auxilia no treinamento de novos voluntários e parceiros operacionais no terceiro setor.",
+                    'trilha-clientes': "Apoie a captação de recursos corporativos e doações de patrocinadores. Apresentar um livro institucional premium que documenta os projetos e auditorias em reuniões de ESG ajuda a mitigar objeções nas parcerias.",
+                    'trilha-reconhecimento': "Fortaleça a visibilidade da entidade perante a sociedade civil e agências internacionais. A publicação de uma obra socioambiental premium facilita a indicação para editais de fomento e parcerias públicas."
+                }
+            };
+
+            // 48 Bespoke Copywriting paragraphs for Coautoria format (100% customized - Softened Promises)
+            const coautoriaBespoke = {
+                'persona-1': { // Seu Nicho Atual
+                    'trilha-proposito': "Compartilhe sua visão de mundo e filosofia profissional em um capítulo especial de uma obra coletiva. Escrever ao lado de outros expoentes do seu setor eterniza sua contribuição, criando um patrimônio de superação inspirador para sua audiência e herdeiros.",
+                    'trilha-educacao': "Apresente sua metodologia ou caso de sucesso prático em um capítulo educativo. Ao participar de um livro técnico compartilhado, você valida sua autoridade pedagógica, facilitando a prospecção de novos alunos para seus cursos.",
+                    'trilha-clientes': "Atraia clientes qualificados dividindo o prestígio de um livro corporativo com outros líderes. Oferecer um capítulo assinado por você em um livro físico serve como uma excelente carta de apresentação, facilitando o fechamento de propostas premium.",
+                    'trilha-reconhecimento': "Posicione-se rapidamente no topo do seu mercado associando sua marca a outros renomados profissionais. Participar de uma publicação premium facilita o agendamento de palestras e abre oportunidades de destaque na imprensa."
+                },
+                'persona-2': { // Mulheres de Negócios
+                    'trilha-proposito': "Registre sua jornada de superação, desafios no ambiente corporativo e conquistas de liderança feminina. Seu capítulo em uma obra com outras mulheres inspiradoras eterniza seu legado de resiliência e atua como forte inspiração social.",
+                    'trilha-educacao': "Sistematize suas estratégias de liderança ou metodologias de gestão em um capítulo prático direcionado a novos talentos. A publicação coletiva chancela sua expertise de ensino, gerando interesse por suas mentorias e treinamentos.",
+                    'trilha-clientes': "Gere novos negócios estreitando conexões com outras líderes e leitoras qualificadas da obra. Apresentar seu capítulo corporativo atua como um quebra-gelo eficiente em reuniões comerciais, auxiliando a fundamentar o valor das suas propostas.",
+                    'trilha-reconhecimento': "Fortaleça sua presença como referência de liderança feminina na mídia e em fóruns executivos. Fazer parte de um livro de prestígio focado em mulheres de negócios facilita convites para colunas de opinião e painéis de liderança."
+                },
+                'persona-3': { // Liderança & Gestão
+                    'trilha-proposito': "Documente seus princípios de alta gestão, desenvolvimento de equipes e governança corporativa. Compartilhar um livro com grandes diretores e executivos eterniza sua trajetória profissional como um valioso patrimônio moral.",
+                    'trilha-educacao': "Sistematize metodologias de eficácia operacional ou cases corporativos reais em um manual executivo de referência. Sua contribuição de valor em uma publicação técnica valida seu conhecimento prático perante o ecossistema de negócios.",
+                    'trilha-clientes': "Facilite a atração de parcerias estratégicas B2B e contratos corporativos. Entregar o livro oficial do ecossistema de líderes com seu capítulo assinado em reuniões estratégicas ajuda a mitigar objeções e acelerar a negociação com decisores.",
+                    'trilha-reconhecimento': "Consolide sua imagem como referência de gestão no cenário nacional de negócios. Participar de uma obra premium ao lado de CEOs aumenta as chances de convites para conselhos empresariais e matérias especiais de gestão."
+                },
+                'persona-4': { // Médicos & Saúde
+                    'trilha-proposito': "Compartilhe sua filosofia de cuidado integrativo e dedicação ao bem-estar do paciente. Seu capítulo em uma obra com outros especialistas em saúde eterniza seus valores médicos, servindo como patrimônio ético para a comunidade.",
+                    'trilha-educacao': "Estruture uma tese clínica ou novos protocolos de tratamento em um capítulo didático e científico. Colaborar em uma obra médica coletiva valida sua didática, com potencial para atrair novos profissionais de saúde para seus cursos.",
+                    'trilha-clientes': "Eleve a segurança de potenciais pacientes em seu consultório particular. Disponibilizar uma obra médica coletiva com sua participação na recepção atua como prova física de sua autoridade clínica, facilitando a adesão a tratamentos.",
+                    'trilha-reconhecimento': "Chancele seu nome entre as referências de saúde e medicina integrativa do país. Assinar um capítulo técnico premium facilita convites para palestras em congressos científicos e consultas em portais jornalísticos de saúde."
+                },
+                'persona-5': { // Dentistas & Ortodontia
+                    'trilha-proposito': "Registre sua abordagem sobre a reconstrução da estética facial e o impacto da saúde oral no bem-estar dos pacientes. Seu capítulo eterniza sua dedicação técnica e paixão profissional em uma bela publicação comemorativa.",
+                    'trilha-educacao': "Estruture seus casos clínicos de sucesso ou técnicas cirúrgicas em um capítulo didático ilustrado. Seu artigo em um livro especializado serve como prova acadêmica de autoridade, auxiliando na venda de seus cursos de imersão.",
+                    'trilha-clientes': "Justifique o valor de tratamentos odontológicos avançados e de alto padrão. Apresentar aos pacientes em avaliação um livro de reabilitação com seu capítulo publicado atua como forte chancela, auxiliando no fechamento de orçamentos.",
+                    'trilha-reconhecimento': "Fortaleça sua reputação clínica no setor de odontologia estética premium. Publicar um capítulo em uma antologia de dentistas de destaque facilita o convite para palestras e eventos científicos regionais."
+                },
+                'persona-6': { // Advogados & Consultores
+                    'trilha-proposito': "Registre sua visão sobre a ética legal, defesa de direitos e transformações doutrinárias. Seu capítulo em uma publicação com juristas selecionados eterniza sua linha de pensamento jurídico como herança intelectual de valor.",
+                    'trilha-educacao': "Sistematize análises regulatórias ou teses de direito empresarial aplicada a negócios em um capítulo conceitual. Publicar sua visão técnica em uma obra de referência apoia sua didática no mercado de cursos jurídicos.",
+                    'trilha-clientes': "Apoie a captação de clientes corporativos e contratos de consultoria de longo prazo. Entregar o livro oficial de inteligência corporativa com seu capítulo a diretores e acionistas ajuda a quebrar objeções jurídicas e de valor.",
+                    'trilha-reconhecimento': "Destaque sua marca no mercado jurídico corporativo perante tribunais e associações setoriais. Assinar um capítulo doutrinário premium auxilia no agendamento de pareceres e no destaque em portais de economia."
+                },
+                'persona-7': { // Mentores & Treinadores
+                    'trilha-proposito': "Transborde seus princípios de desenvolvimento humano e técnicas de ativação mental. Seu capítulo em uma antologia com grandes mentores nacionais eterniza sua missão, criando conexão direta de valores com novos mentorados.",
+                    'trilha-educacao': "Materialize um dos pilares da sua metodologia de mentoria em um capítulo estratégico e educativo. Participar de um livro coletivo serve como porta de entrada didática para atrair alunos para sua esteira de produtos de alto ticket.",
+                    'trilha-clientes': "Reduza o ciclo de fechamento de mentorias exclusivas e assessorias de liderança. Oferecer um livro coletivo físico com seu capítulo assinado eleva a percepção de valor dos seus processos de aceleração comercial.",
+                    'trilha-reconhecimento': "Posicione seu nome nos palcos e fóruns de desenvolvimento pessoal mais concorridos. Escrever em coautoria com grandes nomes do desenvolvimento humano aumenta a autoridade percebida e facilita convites para entrevistas."
+                },
+                'persona-8': { // Finanças & Investimentos
+                    'trilha-proposito': "Documente suas filosofias sobre preservação familiar, inteligência de mercado e governança de investimentos. Seu capítulo em uma obra coletiva com investidores eterniza seu legado de inteligência de capital.",
+                    'trilha-educacao': "Estruture suas teses de alocação ou estratégias macroeconômicas em um capítulo didático e conciso. Publicar em livro especializado chancela sua didática financeira, auxiliando na captação de alunos para seus cursos.",
+                    'trilha-clientes': "Transmita a solidez necessária para a atração e gestão de recursos qualificados. Presentear potenciais cotistas e investidores com o livro de finanças contendo seu capítulo ajuda a reduzir a desconfiança e quebrar objeções patrimoniais.",
+                    'trilha-reconhecimento': "Seja reconhecido como analista ou gestor de referência nacional de mercado. A publicação de seu capítulo técnico premium abre caminhos para participação em colunas econômicas e painéis em fóruns de finanças."
+                },
+                'persona-9': { // Experts em Estética
+                    'trilha-proposito': "Documente sua visão sobre rejuvenescimento natural, autocuidado integrativo e resgate da autoimagem. Seu capítulo em uma obra voltada ao bem-estar estético eterniza seus valores de cuidado pessoal e beleza consciente.",
+                    'trilha-educacao': "Apresente protocols de tratamento estético facial ou corporal em um capítulo didático especializado. Colaborar em uma publicação coletiva de estética valida seu conhecimento técnico para esteticistas interessadas em sua mentoria.",
+                    'trilha-clientes': "Gere segurança para a venda de pacotes estéticos e tratamentos clínicos de alto ticket. Apresentar um livro de estética física contendo seu capítulo publicado ajuda a mitigar dúvidas sobre os resultados clínicos e valoriza o atendimento.",
+                    'trilha-reconhecimento': "Posicione-se como autoridade em procedimentos estéticos inovadores no cenário nacional. Assinar uma publicação de estética premium facilita convites para ministrar aulas em congressos e palestras corporativas."
+                },
+                'persona-10': { // Arquitetura & Design
+                    'trilha-proposito': "Registre sua abordagem conceitual sobre habitação humana, estética espacial e sustentabilidade construtiva. Seu capítulo em uma obra com renomados arquitetos eterniza sua expressão artística e legado de design.",
+                    'trilha-educacao': "Sistematize soluções de layout, volumetria ou design de interiores em um capítulo de referência teórica. O artigo publicado em livro coletivo valida sua autoridade pedagógica, facilitando convites para palestras em universidades.",
+                    'trilha-clientes': "Feche projetos residenciais e corporativos de alto valor com menor negociação de orçamento. Entregar um livro físico coletivo de portfólio de arquitetura com seu capítulo gera forte impacto visual, auxiliando a demonstrar segurança técnica.",
+                    'trilha-reconhecimento': "Ganhe destaque na mídia de decoração de alto padrão e anuários de design. Assinar uma publicação premium coletiva auxilia na indicação de seus projetos residenciais a prêmios e coberturas de revistas conceituadas."
+                },
+                'persona-11': { // Empreendedores & Founders
+                    'trilha-proposito': "Registre as lições de inovação, resiliência e escala de negócios aprendidas na fundação de sua empresa. Seu capítulo em uma obra com CEOs e fundadores de startups serve como registro histórico da sua jornada corporativa.",
+                    'trilha-educacao': "Sistematize metodologias ágeis, eficiência comercial ou cultura organizacional em um capítulo corporativo. A publicação em livro coletivo chancela sua tese operacional perante o mercado e acelera programas de capacitação.",
+                    'trilha-clientes': "Destaque a solidez e dinamismo da sua empresa em reuniões enterprise B2B. Presentear tomadores de decisão com um livro sobre inovação corporativa assinado por founders ajuda a diminuir barreiras comerciais e acelerar contratos.",
+                    'trilha-reconhecimento': "Posicione sua scaleup no radar de fundos de Venture Capital e na imprensa setorial de inovação. Participar de uma obra premium de negócios apoia a presença em fóruns de tecnologia e reportagens de empreendedorismo."
+                },
+                'persona-12': { // Terapeutas & Psicólogos
+                    'trilha-proposito': "Compartilhe sua abordagem sobre saúde mental, inteligência emocional e superação de dores psíquicas. Seu capítulo em uma obra coletiva sobre equilíbrio emocional eterniza seu compromisso no cuidado com a mente humana.",
+                    'trilha-educacao': "Sistematize ferramentas de desenvolvimento emocional ou dinâmicas clínicas em um capítulo didático de referência. O artigo em livro especializado chancela sua autoridade pedagógica, impulsionando a venda de seus cursos.",
+                    'trilha-clientes': "Aumente as possibilidades de preenchimento de horários de consultas particulares. Disponibilizar um livro focado em bem-estar com seu capítulo na recepção gera segurança, auxiliando a atração orgânica de pacientes qualificados.",
+                    'trilha-reconhecimento': "Seja reconhecido como referência em saúde mental e psicologia positiva. Publicar seu capítulo técnico premium facilita o convite para palestras magnas e participações em pautas de saúde da grande imprensa."
+                }
+            };
+
+            const formatKey = tipoId || 'tipo-individual';
+
+            // 1. If Individual format and persona is selected, route to 100% custom copywriting deck
+            if (formatKey === 'tipo-individual' && personaId) {
+                if (individualBespoke[personaId] && individualBespoke[personaId][trilhaId]) {
+                    return individualBespoke[personaId][trilhaId];
+                }
+            }
+
+            // 1.1 If Institucional format and persona is selected, route to 100% custom copywriting deck
+            if (formatKey === 'tipo-institucional' && personaId) {
+                if (institucionalBespoke[personaId] && institucionalBespoke[personaId][trilhaId]) {
+                    return institucionalBespoke[personaId][trilhaId];
+                }
+            }
+
+            // 1.2 If Coautoria format and persona is selected, route to 100% custom copywriting deck
+            if (formatKey === 'tipo-coautoria' && personaId) {
+                if (coautoriaBespoke[personaId] && coautoriaBespoke[personaId][trilhaId]) {
+                    return coautoriaBespoke[personaId][trilhaId];
+                }
+            }
+
+            // 2. Default/Fallback copy matrix
+            const copyMatrix = {
+                'tipo-individual': {
+                    'trilha-proposito': "Escreva um livro autoral para registrar sua história de superação e valores pessoais. Ao eternizar seu legado em uma obra individual de prestígio, você cria um canal direto de conexão emocional com os leitores, servindo como fonte de inspiração para as próximas gerações.",
+                    'trilha-educacao': "Gere autoridade acadêmica transformando seu conhecimento especializado em um manual de referência. Ao documentar seu método passo a passo em um livro com sua assinatura, você facilita a validação da sua didática, com potencial para acelerar a venda de mentorias e cursos.",
+                    'trilha-clientes': "Eleve o posicionamento dos seus serviços e aumente seu faturamento. Utilizar um livro individual autoral como ferramenta de prospecção ajuda a quebrar objeções de preço e aumentar o ticket médio, pois a obra atua como prova física imediata de sua alta competência.",
+                    'trilha-reconhecimento': "Conquiste prestígio máximo e lidere discussões importantes no seu setor. Publicar um livro em nome próprio facilita o acesso a convites para palestras e coberturas na grande mídia, posicionando você como a principal voz a ser ouvida no mercado."
+                },
+                'tipo-coautoria': {
+                    'trilha-proposito': "Compartilhe sua história ao lado de outros líderes renomados. Escreva um capítulo focado no seu propósito de vida e multiplique o alcance da sua mensagem de superação através da rede de contatos e do público de todos os coautores participantes.",
+                    'trilha-educacao': "Apresente seu método em um capítulo estratégico de um guia prático de referência. Divida o livro com grandes especialistas do seu nicho para atrair novos alunos e vender suas mentorias e treinamentos aproveitando a força do grupo.",
+                    'trilha-clientes': "Gere novos clientes através do marketing compartilhado. Ao publicar seu capítulo estratégico com outros grandes players, você entra no radar de novos leads qualificados e eleva seu ticket médio ao ser indicado por parceiros de alto nível.",
+                    'trilha-reconhecimento': "Chancele sua autoridade imediata associando sua imagem aos maiores nomes do mercado. Fazer parte de um livro coletivo premium posiciona você como referência nacional de forma rápida, abrindo portas para grupos seletos de negócios."
+                },
+                'tipo-institucional': {
+                    'trilha-proposito': "Eternize a história, os valores e a cultura da sua empresa. Crie um livro corporativo oficial que documenta a fundação, a superação de crises e o impacto social da marca, servindo como um patrimônio de orgulho para colaboradores e investidores.",
+                    'trilha-educacao': "Estruture o manual oficial de processos e a cultura de vendas da sua empresa. Transforme a metodologia operacional do seu negócio em um playbook claro de treinamento, facilitando o onboarding de equipes e padronizando a excelência técnica.",
+                    'trilha-clientes': "Acelere o fechamento de grandes contratos B2B. Presenteie os tomadores de decisão de grandes contas com um livro institucional premium do seu negócio, quebrando o gelo nas reuniões de vendas e demonstrando credibilidade inquestionável.",
+                    'trilha-reconhecimento': "Destaque a solidez e a reputação da sua marca no mercado. Comemore marcos importantes ou aniversários da empresa com um livro oficial premium, elevando a imagem corporativa perante a concorrência, acionistas e a mídia especializada."
+                }
+            };
+
+            const fallbackBases = {
+                'trilha-proposito': "Eternize seu legado de vida e marque a história. Transforme suas experiências, superações e princípios fundamentais em uma obra que transborda impacto real e inspira gerações.",
+                'trilha-educacao': "Monetize seu conhecimento e escale seu negócio de ensino. Posicione seu livro como a ferramenta de conversão definitiva para lotar mentorias de alto ticket, vender cursos e validar seu método autoral.",
+                'trilha-clientes': "Atraia clientes de alto valor e multiplique seus ganhos. Utilize sua obra como um imã estratégico para aumentar o ticket médio, elevar o valor percebido dos seus serviços e fechar contratos premium.",
+                'trilha-reconhecimento': "Chancele sua relevância e pertença ao grupo dos autores mais influentes do país. Um livro de alto padrão para consolidar seu nome na mídia de elite e registrar conquistas que exigem o máximo respeito do mercado."
+            };
+
+            const baseText = copyMatrix[formatKey] ? copyMatrix[formatKey][trilhaId] : fallbackBases[trilhaId];
+
+            // Resolve Persona dynamic conversion hook
+            let hook = "";
+            if (personaId) {
+                const personaHooks = {
+                    'tipo-individual': {
+                        'persona-1': " Para você, empresário, isso atrai novos sócios e grandes investidores para o seu negócio.",
+                        'persona-2': " Para você, médico, isso atrai pacientes particulares que valorizam sua consulta e pagam o seu valor sem reclamar.",
+                        'persona-3': " Para você, advogado, isso atrai clientes corporativos dispostos a fechar contratos de honorários de alto ticket.",
+                        'persona-4': " Para você, dentista, isso justifica o preço de tratamentos estéticos e de implantes, destacando sua clínica dos concorrentes locais.",
+                        'persona-5': " Para você, esteticista, isso cria autoridade para vender seus protocolos exclusivos e multiplicar o faturamento das suas clínicas.",
+                        'persona-6': " Para você, corretor de imóveis, isso atrai clientes de alto padrão para comprar imóveis de alto valor, aumentando suas comissões.",
+                        'persona-7': " Para você, mentor, isso valida o seu método de ensino, facilitando a venda de mentorias de alto ticket no palco.",
+                        'persona-8': " Para você, nutricionista, isso lota a sua agenda de consultório com pacientes interessados na sua metodologia clínica.",
+                        'persona-9': " Para você, arquiteto, isso ajuda a fechar projetos residenciais e comerciais premium de alto valor.",
+                        'persona-10': " Para você, investidor, isso transmite a segurança necessária para captar fundos e gerir o patrimônio de famílias ricas.",
+                        'persona-11': " Para você, consultor, isso comprova seus resultados para fechar assessorias corporativas de longo prazo.",
+                        'persona-12': " Para você, educador, isso posiciona seus treinamentos como a principal referência de ensino no país."
+                    },
+                    'tipo-coautoria': {
+                        'persona-1': " Para seu grupo de mentores, isso amplia o alcance da sua marca e valida a competência técnica de todos os autores.",
+                        'persona-2': " Para o grupo de empreendedoras, isso atrai novos parceiros de negócios e investidores para suas empresas.",
+                        'persona-3': " Para o grupo de finanças, isso atrai novos investidores e cotistas interessados no método de investimentos do grupo.",
+                        'persona-4': " Para os profissionais de estética, isso atrai novos pacientes de estética clínica e vende cursos de formação.",
+                        'persona-5': " Para os fundadores de startups, isso atrai a atenção de grandes fundos de Venture Capital para sua escala de negócios.",
+                        'persona-6': " Para os mentores de carreira, isso atrai profissionais de RH e tomadores de decisão para fechar parcerias corporativas.",
+                        'persona-7': " Para os especialistas tech, isso atrai clientes corporativos interessados em soluções de inteligência artificial aplicadas.",
+                        'persona-8': " Para os oradores, isso serve como material didático excelente para vender ao final de suas palestras e congressos.",
+                        'persona-9': " Para os terapeutas, isso atrai novos pacientes para suas sessões particulares e cursos de inteligência emocional.",
+                        'persona-10': " Para os escritores de hobby, isso cria um livro lindo para noites de autógrafo e celebrações com a família.",
+                        'persona-11': " Para os líderes do terceiro setor, isso atrai novos doadores e parceiros institucionais para suas causas sociais.",
+                        'persona-12': " Para os facilitadores de treinamento, isso ajuda a fechar contratos de capacitação com grandes departamentos de RH."
+                    },
+                    'tipo-institucional': {
+                        'persona-1': " Para sua franquia, isso padroniza o treinamento operacional dos novos franqueados e atrai novos investidores de unidades.",
+                        'persona-2': " Para sua associação de classe, isso comemora marcos importantes da entidade e reforça a autoridade da categoria no mercado.",
+                        'persona-3': " Para sua holding, isso integra a cultura corporativa de todas as suas marcas e atrai novos investidores.",
+                        'persona-4': " Para seu escritório de advocacia ou consultoria, isso documenta seus maiores casos de sucesso para fechar grandes contratos B2B.",
+                        'persona-5': " Para sua scaleup, isso fortalece a marca empregadora para atrair talentos e encanta fundos de Venture Capital.",
+                        'persona-6': " Para seu hospital ou rede de clínicas, isso documenta suas conquistas médicas e infraestrutura cirúrgica de ponta.",
+                        'persona-7': " Para sua indústria, isso celebra o aniversário de fabricação nacional e reforça o valor de mercado da sua marca.",
+                        'persona-8': " Para sua escola ou faculdade, isso chancela o prestígio pedagógico da instituição perante pais e alunos em edições premium.",
+                        'persona-9': " Para sua gestora de fortunas, isso serve como um presente premium para estreitar o relacionamento com clientes VIP.",
+                        'persona-10': " Para sua marca premium, isso eterniza a herança do design de suas coleções em edições históricas exclusivas.",
+                        'persona-11': " Para sua construtora, isso documenta os marcos de engenharia e os edifícios entregues, servindo como portfólio de vendas definitivo.",
+                        'persona-12': " Para sua fundação, isso ilustra relatórios de impacto socioambiental com estética e redação de alto padrão corporativo."
+                    }
+                };
+
+                const hookGroup = personaHooks[formatKey] || personaHooks['tipo-individual'];
+                hook = hookGroup[personaId] || "";
+            }
+
+            return baseText + hook;
+        }
+
+        // Update highlights, active lines, and description texts
+        function updateState(tipoId, personaId, trilhaId) {
+            selectedTipoId = tipoId;
+            selectedPersonaId = personaId;
+            selectedTrilhaId = trilhaId;
+
+            // 0. Update Persona cards content if Format changed
+            updatePersonaCardsText(selectedTipoId);
+
+            const tCards = document.querySelectorAll('.tipo-card');
+            const pCards = document.querySelectorAll('.persona-card');
+            const trCards = document.querySelectorAll('.trilha-card');
+            const lines = document.querySelectorAll('.connection-line');
+
+            // 1. Swapping descriptions
+            trilhas.forEach(tId => {
+                const trCard = document.getElementById(tId);
+                if (trCard) {
+                    const descEl = trCard.querySelector('.trilha-desc');
+                    if (descEl) {
+                        descEl.innerText = getDynamicText(tId, selectedTipoId, selectedPersonaId);
+                    }
+                }
+            });
+
+            // 2. Clear all highlights & dims
+            tCards.forEach(c => {
+                c.classList.remove('active-selected', 'border-[#d6bc8c]/80', 'border-[#d6bc8c]/40', 'border-[#d6bc8c]/35', 'bg-stone-900/60', 'opacity-15', 'shadow-[0_0_30px_rgba(214,188,140,0.25)]');
+                c.style.opacity = '1';
+            });
+            pCards.forEach(c => {
+                c.classList.remove('active-selected', 'border-[#d6bc8c]/80', 'border-[#d6bc8c]/40', 'border-[#d6bc8c]/35', 'bg-stone-900/60', 'opacity-15', 'shadow-[0_0_30px_rgba(214,188,140,0.25)]');
+                c.style.opacity = '1';
+            });
+            trCards.forEach(c => {
+                c.classList.remove('active-selected', 'border-[#d6bc8c]/80', 'border-[#d6bc8c]/40', 'border-[#d6bc8c]/35', 'bg-stone-900/60', 'opacity-15', 'shadow-[0_0_30px_rgba(214,188,140,0.25)]');
+                c.style.opacity = '1';
+            });
+            lines.forEach(l => {
+                l.classList.remove('active', 'alive-idle');
+                l.style.opacity = '';
+            });
+
+            // If no active selection, stop
+            if (!selectedTipoId && !selectedPersonaId && !selectedTrilhaId) {
+                return;
+            }
+
+            // 3. Highlight cards based on selection state
+            if (selectedTipoId) {
+                document.getElementById(selectedTipoId).classList.add('active-selected', 'border-[#d6bc8c]/80', 'bg-stone-900/80', 'shadow-[0_0_30px_rgba(214,188,140,0.25)]');
+                tCards.forEach(c => { if (c.id !== selectedTipoId) c.style.opacity = '0.15'; });
+            }
+            if (selectedPersonaId) {
+                document.getElementById(selectedPersonaId).classList.add('active-selected', 'border-[#d6bc8c]/80', 'bg-stone-900/80', 'shadow-[0_0_30px_rgba(214,188,140,0.25)]');
+                pCards.forEach(c => { if (c.id !== selectedPersonaId) c.style.opacity = '0.15'; });
+            }
+            if (selectedTrilhaId) {
+                document.getElementById(selectedTrilhaId).classList.add('active-selected', 'border-[#d6bc8c]/80', 'bg-stone-900/80', 'shadow-[0_0_30px_rgba(214,188,140,0.25)]');
+                trCards.forEach(c => { if (c.id !== selectedTrilhaId) c.style.opacity = '0.15'; });
+            }
+
+            // If some selection is active, dim unselected card layers
+            if (!selectedTipoId) tCards.forEach(c => c.classList.add('border-[#d6bc8c]/35', 'bg-stone-900/40'));
+            if (!selectedPersonaId) pCards.forEach(c => c.classList.add('border-[#d6bc8c]/35', 'bg-stone-900/40'));
+            if (!selectedTrilhaId) trCards.forEach(c => c.classList.add('border-[#d6bc8c]/35', 'bg-stone-900/40'));
+
+            // 4. Activate connection lines mapping the choices exactly (solving substring overlap bugs)
+            lines.forEach(l => {
+                const lineId = l.id;
+                let active = false;
+
+                // For Formato -> Persona lines
+                if (lineId.startsWith('path-tipo-')) {
+                    const core = lineId.substring(5); // e.g. "tipo-individual-persona-1"
+                    const personaIndex = core.indexOf('-persona-');
+                    const lineTipoId = core.substring(0, personaIndex); // e.g. "tipo-individual"
+                    const linePersonaId = core.substring(personaIndex + 1); // e.g. "persona-1"
+
+                    const matchTipo = (selectedTipoId === lineTipoId);
+                    const matchPersona = (selectedPersonaId === linePersonaId);
+
+                    if (selectedTipoId && selectedPersonaId) {
+                        active = matchTipo && matchPersona;
+                    } else if (selectedTipoId) {
+                        active = matchTipo;
+                    } else if (selectedPersonaId) {
+                        active = matchPersona;
+                    }
+                }
+                
+                // For Persona -> Trilha lines
+                if (lineId.startsWith('path-persona-')) {
+                    const core = lineId.substring(5); // e.g. "persona-1-trilha-proposito"
+                    const trilhaIndex = core.indexOf('-trilha-');
+                    const linePersonaId = core.substring(0, trilhaIndex); // e.g. "persona-1"
+                    const lineTrilhaId = core.substring(trilhaIndex + 1); // e.g. "trilha-proposito"
+
+                    const matchPersona = (selectedPersonaId === linePersonaId);
+                    const matchTrilha = (selectedTrilhaId === lineTrilhaId);
+
+                    if (selectedPersonaId && selectedTrilhaId) {
+                        active = matchPersona && matchTrilha;
+                    } else if (selectedPersonaId) {
+                        active = matchPersona;
+                    } else if (selectedTrilhaId) {
+                        active = matchTrilha;
+                    }
+                }
+
+                if (active) {
+                    l.classList.add('active');
+                    l.style.opacity = '1';
+                } else {
+                    l.style.opacity = '0.02';
+                }
+            });
+        }
+
+        // Preview highlights on hover
+        function tempHighlight(hoverId) {
+            const tCards = document.querySelectorAll('.tipo-card');
+            const pCards = document.querySelectorAll('.persona-card');
+            const trCards = document.querySelectorAll('.trilha-card');
+            const lines = document.querySelectorAll('.connection-line');
+
+            const isTipo = hoverId.startsWith('tipo');
+            const isPersona = hoverId.startsWith('persona');
+            const isTrilha = hoverId.startsWith('trilha');
+
+            // Apply card hover highlight
+            const hoverEl = document.getElementById(hoverId);
+            hoverEl.classList.add('border-[#d6bc8c]/60', 'bg-stone-900/60');
+
+            if (isTipo) {
+                // Instantly update persona descriptions on hover for dynamic preview context
+                updatePersonaCardsText(hoverId);
+
+                tCards.forEach(c => { if (c.id !== hoverId) c.style.opacity = '0.3'; });
+                pCards.forEach(c => c.classList.add('border-[#d6bc8c]/35'));
+                lines.forEach(l => {
+                    let active = false;
+                    if (l.id.startsWith('path-tipo-')) {
+                        const core = l.id.substring(5);
+                        const personaIndex = core.indexOf('-persona-');
+                        const lineTipoId = core.substring(0, personaIndex);
+                        active = (lineTipoId === hoverId);
+                    }
+                    if (active) {
+                        l.classList.add('active');
+                        l.style.opacity = '1';
+                    } else {
+                        l.style.opacity = '0.05';
+                    }
+                });
+                // Swap preview text in trilhas using this tipo
+                trilhas.forEach(tId => {
+                    const descEl = document.getElementById(tId).querySelector('.trilha-desc');
+                    if (descEl) descEl.innerText = getDynamicText(tId, hoverId, selectedPersonaId);
+                });
+            } else if (isPersona) {
+                pCards.forEach(c => { if (c.id !== hoverId) c.style.opacity = '0.3'; });
+                tCards.forEach(c => c.classList.add('border-[#d6bc8c]/35'));
+                trCards.forEach(c => c.classList.add('border-[#d6bc8c]/35'));
+                lines.forEach(l => {
+                    let active = false;
+                    if (l.id.startsWith('path-tipo-')) {
+                        const core = l.id.substring(5);
+                        const personaIndex = core.indexOf('-persona-');
+                        const linePersonaId = core.substring(personaIndex + 1);
+                        active = (linePersonaId === hoverId);
+                    } else if (l.id.startsWith('path-persona-')) {
+                        const core = l.id.substring(5);
+                        const trilhaIndex = core.indexOf('-trilha-');
+                        const linePersonaId = core.substring(0, trilhaIndex);
+                        active = (linePersonaId === hoverId);
+                    }
+                    if (active) {
+                        l.classList.add('active');
+                        l.style.opacity = '1';
+                    } else {
+                        l.style.opacity = '0.05';
+                    }
+                });
+                // Swap preview text in trilhas using this persona
+                trilhas.forEach(tId => {
+                    const descEl = document.getElementById(tId).querySelector('.trilha-desc');
+                    if (descEl) descEl.innerText = getDynamicText(tId, selectedTipoId, hoverId);
+                });
+            } else if (isTrilha) {
+                trCards.forEach(c => { if (c.id !== hoverId) c.style.opacity = '0.3'; });
+                pCards.forEach(c => c.classList.add('border-[#d6bc8c]/35'));
+                lines.forEach(l => {
+                    let active = false;
+                    if (l.id.startsWith('path-persona-')) {
+                        const core = l.id.substring(5);
+                        const trilhaIndex = core.indexOf('-trilha-');
+                        const lineTrilhaId = core.substring(trilhaIndex + 1);
+                        active = (lineTrilhaId === hoverId);
+                    }
+                    if (active) {
+                        l.classList.add('active');
+                        l.style.opacity = '1';
+                    } else {
+                        l.style.opacity = '0.05';
+                    }
+                });
+            }
+        }
+
+        // Bind interactive event listeners
+        function initInteractivity() {
+            const allCards = document.querySelectorAll('.tipo-card, .persona-card, .trilha-card');
+
+            allCards.forEach(card => {
+                const cardId = card.id;
+                const isTipo = cardId.startsWith('tipo');
+                const isPersona = cardId.startsWith('persona');
+                const isTrilha = cardId.startsWith('trilha');
+
+                // Click event (Selection lock)
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+
+                    if (isTipo) {
+                        if (selectedTipoId === cardId) updateState(null, selectedPersonaId, selectedTrilhaId);
+                        else updateState(cardId, selectedPersonaId, selectedTrilhaId);
+                    } else if (isPersona) {
+                        if (selectedPersonaId === cardId) updateState(selectedTipoId, null, selectedTrilhaId);
+                        else updateState(selectedTipoId, cardId, selectedTrilhaId);
+                    } else if (isTrilha) {
+                        if (selectedTrilhaId === cardId) updateState(selectedTipoId, selectedPersonaId, null);
+                        else updateState(selectedTipoId, selectedPersonaId, cardId);
+                    }
+                    
+                    startConnectionsAnimation();
+                });
+
+                // Hover events
+                card.addEventListener('mouseenter', () => {
+                    // Only trigger hover highlights if the respective level is not currently locked
+                    if (isTipo && !selectedTipoId) {
+                        tempHighlight(cardId);
+                        startConnectionsAnimation();
+                    } else if (isPersona && !selectedPersonaId) {
+                        tempHighlight(cardId);
+                        startConnectionsAnimation();
+                    } else if (isTrilha && !selectedTrilhaId) {
+                        tempHighlight(cardId);
+                        startConnectionsAnimation();
+                    }
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    if ((isTipo && !selectedTipoId) || (isPersona && !selectedPersonaId) || (isTrilha && !selectedTrilhaId)) {
+                        updateState(selectedTipoId, selectedPersonaId, selectedTrilhaId);
+                        startConnectionsAnimation();
+                    }
+                });
+            });
+
+            // Click outside resets dashboard selections
+            document.addEventListener('click', () => {
+                updateState(null, null, null);
+                startConnectionsAnimation();
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // GSAP Scroll Trigger reveals
+            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 88%",
+                    onEnter: function () { 
+                        elem.classList.add('active'); 
+                        // Instantly redraw connections on reveal
+                        drawConnections();
+                    }
+                });
+            });
+
+            // Navbar scroll style (matching authors page)
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.querySelector('.absolute').classList.replace('bg-white/70', 'bg-white/95');
+                    } else {
+                        navbar.querySelector('.absolute').classList.replace('bg-white/95', 'bg-white/70');
+                    }
+                });
+            }
+
+            // Mobile menu logic
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('translate-x-full');
+                    mobileMenu.classList.toggle('translate-x-0');
+                    const isOpen = mobileMenu.classList.contains('translate-x-0');
+                    menuBtn.innerHTML = isOpen 
+                        ? '<iconify-icon icon="solar:close-circle-linear"></iconify-icon>' 
+                        : '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                    if (isOpen) menuBtn.style.color = '#fff';
+                    else menuBtn.style.color = '';
+                });
+                mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('translate-x-full');
+                        mobileMenu.classList.remove('translate-x-0');
+                        menuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
+                    });
+                });
+            }
+
+            // Draw SVG paths and bind events after short timeout to ensure correct positions
+            setTimeout(() => {
+                initConnections();
+                drawConnections();
+                initInteractivity();
+            }, 600);
+
+            // Poll to keep connections perfectly aligned while layout and animations settle (3 seconds)
+            let loadPollCount = 0;
+            const loadPollInterval = setInterval(() => {
+                drawConnections();
+                loadPollCount++;
+                if (loadPollCount > 60) {
+                    clearInterval(loadPollInterval);
+                }
+            }, 50);
+        });
+
+        // Redraw SVG connections on window resizing
+        window.addEventListener('resize', () => {
+            drawConnections();
+            updateState(selectedTipoId, selectedPersonaId, selectedTrilhaId);
+        });
+    </script>
+</body>
+</html>

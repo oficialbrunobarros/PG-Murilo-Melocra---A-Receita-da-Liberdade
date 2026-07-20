@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dr. Fernando Merlos | ELOOO International Group</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        'surface-light': '#EAEAE5',
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            from: { backgroundPosition: '0 0' },
+                            to: { backgroundPosition: '-200% 0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* BASE STYLES */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #EAEAE5;
+            color: #1C1917;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* TEXT OUTLINE */
+        .text-outline {
+            -webkit-text-stroke: 1px #1C1917;
+            color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        /* BEAM BUTTON ANIMATION */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* REVEAL TRANSITIONS */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FLASHLIGHT EFFECT */
+        .flashlight-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .flashlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.06), transparent 40%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .flashlight-card:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NOISE OVERLAY -->
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- NAVBAR -->
+<header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 py-3 relative flex justify-between items-center">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center group cursor-pointer z-50">
+            <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-11 md:h-16 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+        </a>
+
+        <!-- Nav Links (Desktop) -->
+        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-9 text-[13px] font-sans uppercase tracking-[0.18em] text-stone-600 font-medium">
+            <a href="../index.html" class="hover:text-stone-900 transition-colors">Home</a>
+            <a href="../quem-somos.html" class="hover:text-stone-900 transition-colors">Quem Somos</a>
+            <a href="../autores.html" class="hover:text-stone-900 transition-colors">Autores</a>
+            <a href="../livros.html" class="hover:text-stone-900 transition-colors">Livros</a>
+            <a href="../trilhas.html" class="hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
+            <a href="../galeria.html" class="hover:text-stone-900 transition-colors">Galeria</a>
+            <a href="../contato.html" class="hover:text-stone-900 transition-colors">Contato</a>
+        </nav>
+
+        <!-- Action & Hamburger -->
+        <div class="flex items-center gap-4 z-50">
+            <button class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2.5 rounded-full font-bold text-[11px] text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+            <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
+                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
+        <nav class="flex flex-col items-center gap-6 text-[13px] font-sans uppercase tracking-[0.18em] text-white/70 font-medium">
+            <a href="../index.html" class="hover:text-white transition-colors mobile-link">Home</a>
+            <a href="../quem-somos.html" class="hover:text-white transition-colors mobile-link">Quem Somos</a>
+            <a href="../autores.html" class="hover:text-white transition-colors mobile-link">Autores</a>
+            <a href="../livros.html" class="hover:text-white transition-colors mobile-link">Livros</a>
+            <a href="../trilhas.html" class="hover:text-white transition-colors mobile-link">Trilhas Editoriais</a>
+            <a href="../galeria.html" class="hover:text-white transition-colors mobile-link">Galeria</a>
+            <a href="../contato.html" class="hover:text-white transition-colors mobile-link">Contato</a>
+            
+            <!-- CTA on mobile -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm mt-8">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-bold text-[11px] text-white tracking-widest uppercase">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav-link-active {
+        color: #0c0a09 !important;
+        background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%);
+        background-size: 200% auto;
+        border: 1px solid rgba(214, 188, 140, 0.6);
+        border-radius: 9999px;
+        padding: 6px 16px !important;
+        margin: -6px -8px;
+        box-shadow: 0 4px 20px -3px rgba(214, 188, 140, 0.5);
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em !important;
+        transition: all 0.3s ease;
+    }
+    
+    /* Brushed metallic reflection shine sweep overlay */
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.65) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes shineSweep {
+        0% { left: -100%; }
+        25% { left: 150%; }
+        100% { left: 150%; }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const path = window.location.pathname;
+        const currentPath = path.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Normalize path matching
+            const hrefFilename = href.split('/').pop();
+            const isMatch = (hrefFilename === currentPath) ||
+                            (path.includes('/autores/') && hrefFilename === 'autores.html') ||
+                            (path.includes('/livros/') && hrefFilename === 'livros.html');
+                            
+            if (isMatch) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+</script>
+
+
+    <!-- 1. AUTOR (MINIMALIST LETTERING / CANVAS VIDEO SCRUB) -->
+    <!-- ALTURA: 300vh para permitir rolagem e controle do vídeo pelo scroll -->
+    <div class="autor-scrub-container relative bg-stone-950" style="height: 300vh;">
+        <section class="sticky top-0 h-screen w-full overflow-hidden flex flex-col md:flex-row pt-20">
+            <!-- Left Photo (Canvas Video) -->
+            <!-- Altere a cor do fundo ou propriedades aqui se necessário -->
+            <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group bg-stone-900">
+                <canvas id="autor-canvas" width="1280" height="720" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125"></canvas>
+                
+                <!-- Sombra suave inferior no mobile -->
+                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
+            </div>
+
+            <!-- Right Text -->
+            <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[25vh] px-8 md:px-16 lg:px-24 z-20 autor-text-reveal">
+                <h2 class="font-sans text-3xl md:text-5xl lg:text-6xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
+                    <!-- NOME DO AUTOR -->
+                    Dr. Fernando<br>Merlos
+                </h2>
+            </div>
+        </section>
+    </div>
+
+    <!-- 1.5. SOBRE O AUTOR (TRANSIÇÃO) -->
+    <!-- Seção que suaviza a passagem do fundo preto para o fundo branco -->
+    <section class="relative z-10 pt-32 pb-48 md:pt-48 md:pb-64 overflow-hidden bg-gradient-to-b from-stone-950 via-stone-800 to-white">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-3 mb-10 px-5 py-2 border border-stone-700/50 rounded-full shadow-sm bg-stone-900/50 backdrop-blur-sm reveal-up">
+                <img src="../static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
+                <div class="w-px h-3 bg-stone-700"></div>
+                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Sobre o Autor</span>
+            </div>
+
+            <h3 class="font-display text-3xl md:text-5xl font-light text-white leading-tight mb-8 reveal-up delay-100">
+                <!-- Frase de Impacto Principal -->
+                Autor do livro <span class="font-medium text-stone-200">Alma Médica</span>. Mentor e palestrante oficial do ELOOO International Group.
+            </h3>
+            
+        </div>
+
+        <!-- Premium Cards Container (Efeito Espelho) -->
+        <!-- Substitua os títulos e textos abaixo para representar a autoridade do autor -->
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 mt-20 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Card 01 -->
+            <div class="flashlight-card group p-8 flex flex-col justify-between min-h-[320px] reveal-up delay-100 cursor-crosshair border border-stone-800/80 bg-stone-900/40 backdrop-blur-md" onmousemove="updateFlashlight(event, this)">
+                <div class="z-10">
+                    <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <iconify-icon icon="solar:star-linear" class="text-white text-2xl opacity-70"></iconify-icon>
+                    </div>
+                    <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Autoridade 1</h4>
+                    <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                        Explicação breve e impactante sobre o primeiro pilar de autoridade do autor.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 02 -->
+            <div class="flashlight-card group p-8 flex flex-col justify-between min-h-[320px] reveal-up delay-200 cursor-crosshair border border-stone-800/80 bg-stone-900/40 backdrop-blur-md" onmousemove="updateFlashlight(event, this)">
+                <div class="z-10">
+                    <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <iconify-icon icon="solar:medal-ribbon-linear" class="text-white text-2xl opacity-70"></iconify-icon>
+                    </div>
+                    <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Autoridade 2</h4>
+                    <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                        Explicação breve e impactante sobre o segundo pilar de autoridade do autor.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 03 -->
+            <div class="flashlight-card group p-8 flex flex-col justify-between min-h-[320px] reveal-up delay-300 cursor-crosshair border border-stone-800/80 bg-stone-900/40 backdrop-blur-md" onmousemove="updateFlashlight(event, this)">
+                <div class="z-10">
+                    <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <iconify-icon icon="solar:cup-first-linear" class="text-white text-2xl opacity-70"></iconify-icon>
+                    </div>
+                    <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Autoridade 3</h4>
+                    <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                        Explicação breve e impactante sobre o terceiro pilar de autoridade do autor.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 04 -->
+            <div class="flashlight-card group p-8 flex flex-col justify-between min-h-[320px] reveal-up delay-400 cursor-crosshair border border-stone-800/80 bg-stone-900/40 backdrop-blur-md" onmousemove="updateFlashlight(event, this)">
+                <div class="z-10">
+                    <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <iconify-icon icon="solar:user-speak-rounded-linear" class="text-white text-2xl opacity-70"></iconify-icon>
+                    </div>
+                    <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Autoridade 4</h4>
+                    <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
+                        Explicação breve e impactante sobre o quarto pilar de autoridade do autor.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons Container (Premium Animated) -->
+        <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 reveal-up delay-600 w-full relative z-20 px-6 max-w-[1440px] mx-auto">
+            <!-- Button 1: Garantir o Livro -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Garantir o Livro
+                    <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                </span>
+            </button>
+
+            <!-- Button 2: Conhecer a Mentoria -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
+                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Conhecer a Mentoria
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                </span>
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+
+        <div class="flex items-center group cursor-pointer">
+            <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
+        </div>
+
+        <div class="text-xs font-mono uppercase tracking-widest flex gap-6">
+            <a href="#" class="hover:text-white transition-colors">Termos</a>
+            <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-white transition-colors">Suporte</a>
+        </div>
+
+        <div class="text-xs text-stone-600 font-mono tracking-widest uppercase">
+            &copy; 2026 ELOOO International Group.<br class="md:hidden"> Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        // Registrar ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // ==========================================
+            // AUTOR CANVAS (FOLD 1)
+            // ==========================================
+            const autorCanvas = document.getElementById("autor-canvas");
+            const autorContext = autorCanvas.getContext("2d");
+            
+            // CONFIGURAÇÕES DO AUTOR
+            // Altere o número de frames e a pasta correspondente a este autor
+            const autorFrameCount = 192;
+            const autorCurrentFrame = { index: 0 };
+            const autorImages = [];
+            const autorFramesFolder = "static/assets/video_frames_fernando-merlos"; // Caminho da pasta de frames do autor
+
+            const preloadAutorImages = () => {
+                for (let i = 1; i <= autorFrameCount; i++) {
+                    const img = new Image();
+                    const frameNumber = i.toString().padStart(4, '0');
+                    img.src = `${autorFramesFolder}/frame_${frameNumber}.jpg`;
+                    autorImages.push(img);
+                }
+            };
+
+            const renderAutor = () => {
+                const frameIndex = Math.floor(autorCurrentFrame.index);
+                const img = autorImages[frameIndex];
+                if (img && img.complete) {
+                    autorContext.clearRect(0, 0, autorCanvas.width, autorCanvas.height);
+                    autorContext.drawImage(img, 0, 0, autorCanvas.width, autorCanvas.height);
+                }
+            };
+
+            preloadAutorImages();
+
+            if (autorImages[0]) {
+                autorImages[0].onload = renderAutor;
+            }
+
+            gsap.to(autorCurrentFrame, {
+                index: autorFrameCount - 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".autor-scrub-container",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0,
+                    onUpdate: () => {
+                        requestAnimationFrame(renderAutor);
+                    }
+                }
+            });
+
+            // Animação de entrada do Canvas
+            ScrollTrigger.create({
+                trigger: ".autor-scrub-container",
+                start: "top 80%",
+                onEnter: () => {
+                    gsap.fromTo(autorCanvas,
+                        { opacity: 0, scale: 1.1 },
+                        { opacity: 0.8, scale: 1, duration: 1.5, ease: "power3.out" }
+                    );
+                    
+                    gsap.fromTo(".autor-scrub-container .autor-text-reveal",
+                        { opacity: 0, y: 30, filter: "blur(15px)" },
+                        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, delay: 0.2, ease: "power3.out" }
+                    );
+                },
+                once: true
+            });
+
+            // Efeito de desfoque e saída do texto do autor no scroll
+            gsap.to(".autor-scrub-container .autor-text-reveal", {
+                y: -60,
+                opacity: 0,
+                filter: "blur(15px)",
+                stagger: 0.05,
+                scrollTrigger: {
+                    trigger: ".autor-scrub-container",
+                    start: "10% top",
+                    end: "40% top",
+                    scrub: true
+                }
+            });
+
+            // Efeito de Revelação Genérico (Classes reveal-up)
+            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 85%",
+                    onEnter: function () {
+                        elem.classList.add('active');
+                    }
+                });
+            });
+
+            // Efeito Lanterna (Flashlight Effect)
+            window.updateFlashlight = function (e, card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+        });
+    </script>
+</body>
+
+</html>

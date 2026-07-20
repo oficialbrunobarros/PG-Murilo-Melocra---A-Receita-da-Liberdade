@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quem Somos | ELOOO International Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            850: '#211f1d',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        }
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0a09;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glowing Background Orbs */
+        .ambient-glow-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214,188,140,0.06) 0%, transparent 70%);
+            top: -5%;
+            left: -10%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 25s infinite alternate ease-in-out;
+        }
+        .ambient-glow-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214,188,140,0.04) 0%, transparent 70%);
+            bottom: 15%;
+            right: -10%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 30s infinite alternate-reverse ease-in-out;
+        }
+        @keyframes floatOrb {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(30px, -50px) scale(1.05); }
+            100% { transform: translate(-15px, 25px) scale(0.95); }
+        }
+
+        /* Smooth scroll reveal */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Liquid Gold Shimmer Text Sweep */
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldSweep 6s linear infinite;
+        }
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(15, 13, 12, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-panel:hover {
+            border-color: rgba(214, 188, 140, 0.25);
+            background: rgba(20, 18, 16, 0.8);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+        }
+
+        /* Timeline Dot Pulsing */
+        .glow-dot-ring {
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        .glow-dot-ring::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(214, 188, 140, 0.25);
+            animation: pulseRing 2s infinite ease-in-out;
+            pointer-events: none;
+            opacity: 0.3;
+            transition: all 0.4s ease;
+        }
+        .timeline-node-container:hover .glow-dot-ring::before,
+        .timeline-node-container.active-node .glow-dot-ring::before {
+            background: rgba(214, 188, 140, 0.6);
+            width: 32px;
+            height: 32px;
+            top: -10px;
+            left: -10px;
+            opacity: 1;
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.85); opacity: 0.8; }
+            50% { transform: scale(1.3); opacity: 0; }
+            100% { transform: scale(0.85); opacity: 0.8; }
+        }
+
+        /* Premium Tech Tab Cards */
+        .tech-tab-card {
+            position: relative;
+            background: rgba(18, 16, 15, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .tech-tab-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+        .tech-tab-card:hover {
+            background: rgba(26, 23, 21, 0.5);
+            border-color: rgba(214, 188, 140, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        .tech-tab-card.active-tech-tab {
+            background: rgba(22, 19, 17, 0.65);
+            border-color: rgba(214, 188, 140, 0.35);
+            box-shadow: 0 16px 45px rgba(214, 188, 140, 0.06), inset 0 0 15px rgba(214, 188, 140, 0.02);
+            transform: translateY(-2px);
+        }
+        .tech-tab-card.active-tech-tab::before {
+            background: #d6bc8c;
+            box-shadow: 0 0 12px #d6bc8c;
+        }
+
+        /* Tech Card Large Number Indicator */
+        .tech-tab-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 300;
+            color: rgba(214, 188, 140, 0.04);
+            line-height: 1;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tech-tab-card.active-tech-tab .tech-tab-num {
+            color: rgba(214, 188, 140, 0.18);
+            text-shadow: 0 0 15px rgba(214, 188, 140, 0.15);
+            transform: scale(1.08) translateZ(10px);
+        }
+
+        /* High-speed glowing laser pulse effects */
+        .tech-pulse-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f6e3c5;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #d6bc8c, 0 0 20px #d6bc8c, 0 0 35px #d6bc8c;
+            pointer-events: none;
+            z-index: 45;
+            transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1), top 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+            will-change: left, top, transform, opacity;
+        }
+        .tech-pulse-trail {
+            position: absolute;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent 10%, rgba(214,188,140,0.45) 50%, #f6e3c5 90%);
+            pointer-events: none;
+            z-index: 44;
+            transform-origin: left center;
+            transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+            will-change: width, opacity;
+        }
+
+        /* Dynamic Mockup Image Layers */
+        .tech-mockup-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.98);
+        }
+        .tech-mockup-layer.active-mockup {
+            opacity: 0.85;
+            transform: scale(1);
+        }
+
+        /* Dynamic Background Proof Styles */
+        .proof-bg-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            filter: grayscale(100%) brightness(0.5) blur(3px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+            pointer-events: none;
+            z-index: 0;
+            transform: scale(0.96);
+        }
+        .proof-bg-layer.active-bg {
+            opacity: 0.22;
+            filter: grayscale(20%) brightness(0.9) blur(0px);
+            transform: scale(1);
+        }
+
+        .timeline-text-block {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        /* Semi-transparent blur stats cards */
+        .glass-stat-card {
+            background: rgba(12, 10, 9, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 20px;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0.5;
+            transform: scale(0.97);
+        }
+        .glass-stat-card.active-card {
+            opacity: 1;
+            transform: scale(1.03);
+            border-color: rgba(214, 188, 140, 0.45);
+            box-shadow: 0 0 25px rgba(214, 188, 140, 0.25);
+            background: rgba(22, 18, 16, 0.75);
+        }
+    </style>
+</head>
+<body class="relative">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- INCLUDE_NAVBAR -->
+
+    <div class="pt-20">
+
+    <!-- ============================================ -->
+    <!-- HERO / INTRO STATEMENT                       -->
+    <!-- ============================================ -->
+    <section class="relative pt-12 pb-1 overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 text-center">
+            <!-- Main Heading: Uma Década: Do Rascunho à Realidade Intercontinental -->
+            <!-- Adjusted: font-light, text-lg to [30px], uppercase, wide letter spacing, single line layout -->
+            <h1 class="reveal-up font-display text-[15px] sm:text-xl md:text-2xl lg:text-[30px] font-light tracking-[0.15em] uppercase text-white leading-none max-w-7xl mx-auto">
+                Uma Década: Do Rascunho à Realidade Intercontinental
+            </h1>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- INTERACTIVE TIMELINE: PROPÓSITO TO LEGADO    -->
+    <!-- ============================================ -->
+    <section id="timeline" class="relative py-2 overflow-hidden min-h-[600px] md:min-h-[680px] flex items-center justify-center">
+        
+        <!-- ============================================ -->
+        <!-- DYNAMIC BACKGROUND PROOF (9:6 / 3:2 ASPECT)  -->
+        <!-- ============================================ -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+            <div class="relative w-full max-w-5xl aspect-[3/2] mx-4 overflow-hidden rounded-3xl" style="mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%); -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);">
+                <!-- 2016 Proof -->
+                <img id="bg-proof-2016" src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?q=80&w=900&auto=format&fit=crop" class="proof-bg-layer active-bg" alt="2016">
+                <!-- 2021 Proof -->
+                <img id="bg-proof-2021" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=900&auto=format&fit=crop" class="proof-bg-layer" alt="2021">
+                <!-- 2024 Proof -->
+                <img id="bg-proof-2024" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=900&auto=format&fit=crop" class="proof-bg-layer" alt="2024">
+                <!-- 2025 Proof -->
+                <img id="bg-proof-2025" src="https://images.unsplash.com/photo-1521791136368-1a9b82753043?q=80&w=900&auto=format&fit=crop" class="proof-bg-layer" alt="2025">
+                <!-- 2026 Proof -->
+                <img id="bg-proof-2026" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=900&auto=format&fit=crop" class="proof-bg-layer" alt="2026">
+            </div>
+        </div>
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10 w-full">
+            
+            <!-- Horizontal swipe wrapper on mobile, static full-width container on desktop -->
+            <div class="reveal-up overflow-x-auto w-full scrollbar-none scroll-smooth">
+                <div class="relative w-[1000px] md:w-full h-[580px] md:h-[600px] mx-auto">
+                    
+                    <!-- ============================================ -->
+                    <!-- GLOWING SINUOUS WAVY PATH (SVG CONNECTION)   -->
+                    <!-- ============================================ -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <!-- Sinuous Path Base line - 25% Opacity as requested, extending to bottom behind cards -->
+                        <path id="sinuous-path" d="M 10 20 C 20 20, 20 48, 30 48 C 40 48, 40 20, 50 20 C 60 20, 60 48, 70 48 C 80 48, 80 20, 90 20 C 97 20, 97 45, 90 55 C 80 70, 20 70, 10 70 C 5 70, 5 84, 10 84 C 20 84, 80 84, 90 84" fill="none" stroke="url(#goldGradient)" stroke-width="0.35" stroke-opacity="0.25"></path>
+                        <!-- Single Glowing traveling point of light -->
+                        <circle id="traveling-light" r="0.75" fill="#f6e3c5" cx="10" cy="20" style="filter: drop-shadow(0 0 4px #d6bc8c) drop-shadow(0 0 8px #d6bc8c); transition: none;"></circle>
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#d6bc8c" stop-opacity="0.35"></stop>
+                                <stop offset="50%" stop-color="#f6e3c5" stop-opacity="0.9"></stop>
+                                <stop offset="100%" stop-color="#d6bc8c" stop-opacity="0.35"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <!-- 2016: ABOVE THE RAIL (y = 20%) -->
+                    <div data-year="2016" onmouseenter="window.manualActive(2016)" onmouseleave="window.resumeAutoplay()" class="timeline-node-container active-node absolute left-[10%] top-[20%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-20 w-[190px] h-[190px]">
+                        <!-- Year (Floats above the dot) -->
+                        <div class="absolute bottom-[105px] text-center w-full timeline-text-block">
+                            <span class="font-display text-3xl font-bold gold-text-sweep block">2016</span>
+                        </div>
+                        <!-- Dot (Exactly on the curve peak) -->
+                        <div class="w-3.5 h-3.5 rounded-full bg-stone-950 border-2 border-[#d6bc8c] glow-dot-ring relative z-20"></div>
+                        <!-- Title & Description (Float below the dot) -->
+                        <div class="absolute top-[105px] text-center select-none w-full timeline-text-block">
+                            <h4 class="font-display text-xs font-semibold text-white mb-1.5">A Gênese</h4>
+                            <p class="text-stone-400 text-[11px] font-light leading-relaxed">Primeiro manuscrito estruturado. O início prático da escrita e a consolidação de metodologias autorais.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2021: BELOW THE RAIL (y = 48%) -->
+                    <div data-year="2021" onmouseenter="window.manualActive(2021)" onmouseleave="window.resumeAutoplay()" class="timeline-node-container absolute left-[30%] top-[48%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-20 w-[190px] h-[190px]">
+                        <!-- Year (Floats above the dot) -->
+                        <div class="absolute bottom-[105px] text-center w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <span class="font-display text-3xl font-bold gold-text-sweep block">2021</span>
+                        </div>
+                        <!-- Dot (Exactly on the curve valley) -->
+                        <div class="w-3.5 h-3.5 rounded-full bg-stone-950 border-2 border-[#d6bc8c] glow-dot-ring relative z-20"></div>
+                        <!-- Title & Description (Float below the dot) -->
+                        <div class="absolute top-[105px] text-center select-none w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <h4 class="font-display text-xs font-semibold text-white mb-1.5">A Editora Nasce</h4>
+                            <p class="text-stone-455 text-[11px] font-light leading-relaxed">Fundação formal da ELOOO. Transição oficial de uma prática individual de consultoria para um ecossistema completo.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2024: ABOVE THE RAIL (y = 20%) -->
+                    <div data-year="2024" onmouseenter="window.manualActive(2024)" onmouseleave="window.resumeAutoplay()" class="timeline-node-container absolute left-[50%] top-[20%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-20 w-[190px] h-[190px]">
+                        <!-- Year (Floats above the dot) -->
+                        <div class="absolute bottom-[105px] text-center w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <span class="font-display text-3xl font-bold gold-text-sweep block">2024</span>
+                        </div>
+                        <!-- Dot (Exactly on the curve peak) -->
+                        <div class="w-3.5 h-3.5 rounded-full bg-stone-950 border-2 border-[#d6bc8c] glow-dot-ring relative z-20"></div>
+                        <!-- Title & Description (Float below the dot) -->
+                        <div class="absolute top-[105px] text-center select-none w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <h4 class="font-display text-xs font-semibold text-white mb-1.5">Vida Nova</h4>
+                            <p class="text-stone-455 text-[11px] font-light leading-relaxed">Lançamento do livro Vida Nova, validando nossa estrutura gráfica luxuosa e funis de captação digital high-ticket.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2025: BELOW THE RAIL (y = 48%) -->
+                    <div data-year="2025" onmouseenter="window.manualActive(2025)" onmouseleave="window.resumeAutoplay()" class="timeline-node-container absolute left-[70%] top-[48%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-20 w-[190px] h-[190px]">
+                        <!-- Year (Floats above the dot) -->
+                        <div class="absolute bottom-[105px] text-center w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <span class="font-display text-3xl font-bold gold-text-sweep block">2025</span>
+                        </div>
+                        <!-- Dot (Exactly on the curve valley) -->
+                        <div class="w-3.5 h-3.5 rounded-full bg-stone-950 border-2 border-[#d6bc8c] glow-dot-ring relative z-20"></div>
+                        <!-- Title & Description (Float below the dot) -->
+                        <div class="absolute top-[105px] text-center select-none w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <h4 class="font-display text-xs font-semibold text-white mb-1.5">Primeiro Autor</h4>
+                            <p class="text-stone-455 text-[11px] font-light leading-relaxed">Ingresso do primeiro autor de destaque do mercado externo, iniciando a atração e conversão de mentores.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2026: ABOVE THE RAIL (y = 20%) -->
+                    <div data-year="2026" onmouseenter="window.manualActive(2026)" onmouseleave="window.resumeAutoplay()" class="timeline-node-container absolute left-[90%] top-[20%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-20 w-[190px] h-[190px]">
+                        <!-- Year (Floats above the dot) -->
+                        <div class="absolute bottom-[105px] text-center w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <span class="font-display text-3xl font-bold gold-text-sweep block">2026</span>
+                        </div>
+                        <!-- Dot (Exactly on the curve peak) -->
+                        <div class="w-3.5 h-3.5 rounded-full bg-stone-950 border-2 border-[#d6bc8c] glow-dot-ring relative z-20"></div>
+                        <!-- Title & Description (Float below the dot) -->
+                        <div class="absolute top-[105px] text-center select-none w-full timeline-text-block opacity-[0.3] scale-[0.95]">
+                            <h4 class="font-display text-xs font-semibold text-white mb-1.5">Aceleração</h4>
+                            <p class="text-stone-455 text-[11px] font-light leading-relaxed">Presença física em Lisboa e Madrid. Mais de 20 grandes autores de elite, universidade proprietária e expansão global.</p>
+                        </div>
+                    </div>
+
+                    <!-- ============================================ -->
+                    <!-- LABEL AND THREE COUNTER CARDS (AT THE BOTTOM)-->
+                    <!-- ============================================ -->
+                    
+                    <!-- Projection Header Label placed above the projection cards (Adjusted size and transitions) -->
+                    <div id="projection-label" class="absolute left-1/2 top-[72%] -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none select-none z-35 transition-all duration-700 opacity-40">
+                        <span class="text-[11px] md:text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c]">Projeção até DEZ/2026</span>
+                    </div>
+
+                    <!-- Card 1: Autores -->
+                    <div id="stat-card-1" onmouseenter="window.manualActiveCard(1)" onmouseleave="window.resumeAutoplay()" class="glass-stat-card absolute left-[25%] top-[84%] -translate-x-1/2 -translate-y-1/2 w-[210px] py-4 px-6 flex flex-col items-center justify-center z-30 cursor-pointer">
+                        <span id="counter-val-1" class="font-display text-3xl md:text-4xl font-bold gold-text-sweep">0</span>
+                        <p class="text-stone-400 text-[10px] font-mono uppercase tracking-widest mt-1">Autores</p>
+                    </div>
+
+                    <!-- Card 2: Países -->
+                    <div id="stat-card-2" onmouseenter="window.manualActiveCard(2)" onmouseleave="window.resumeAutoplay()" class="glass-stat-card absolute left-[50%] top-[84%] -translate-x-1/2 -translate-y-1/2 w-[210px] py-4 px-6 flex flex-col items-center justify-center z-30 cursor-pointer">
+                        <span id="counter-val-2" class="font-display text-3xl md:text-4xl font-bold gold-text-sweep">0</span>
+                        <p class="text-stone-400 text-[10px] font-mono uppercase tracking-widest mt-1">Países</p>
+                    </div>
+
+                    <!-- Card 3: Livros Impressos -->
+                    <div id="stat-card-3" onmouseenter="window.manualActiveCard(3)" onmouseleave="window.resumeAutoplay()" class="glass-stat-card absolute left-[75%] top-[84%] -translate-x-1/2 -translate-y-1/2 w-[210px] py-4 px-6 flex flex-col items-center justify-center z-30 cursor-pointer">
+                        <span id="counter-val-3" class="font-display text-3xl md:text-4xl font-bold gold-text-sweep">0</span>
+                        <p class="text-stone-400 text-[10px] font-mono uppercase tracking-widest mt-1">Livros Impressos</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PHILOSOPHICAL MANIFESTO / QUOTE STATEMENT    -->
+    <!-- ============================================ -->
+    <section class="relative py-12 overflow-hidden border-t border-stone-900/50">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10">
+            <div class="text-center reveal-up">
+                <blockquote class="font-display text-xl sm:text-2xl md:text-3xl font-medium text-white leading-snug tracking-tight mb-4">
+                    "Não publicamos livros.<br>
+                    <span class="gold-text-sweep">Construímos legados.</span>"
+                </blockquote>
+                <p class="text-stone-500 text-xs font-mono uppercase tracking-[0.2em]">— Bruno Barros, Fundador da ELOOO</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TECH ECOSYSTEM SHOWCASE SECTION (FINAL TAB)  -->
+    <!-- ============================================ -->
+    <section id="tech-section" class="relative pb-24 pt-12 overflow-hidden border-t border-stone-900/50" onmouseenter="window.stopTechAutoplay()" onmouseleave="window.startTechAutoplay()">
+        <!-- Effects overlay layer -->
+        <div id="tech-effects-container" class="absolute inset-0 pointer-events-none z-30 overflow-visible"></div>
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10">
+            
+            <!-- Section Header: Tecnologia Própria & Ecossistema -->
+            <div class="text-center mb-16 reveal-up max-w-4xl mx-auto">
+                <span class="text-[9px] font-mono uppercase tracking-[0.25em] text-[#d6bc8c] block mb-3">Tecnologia Exclusiva</span>
+                <h2 class="font-display text-xl sm:text-2xl md:text-3xl font-light tracking-wide text-white uppercase leading-snug">
+                    Muito mais que uma editora...<br>
+                    <span class="gold-text-sweep font-semibold">Somos um ecossistema completo com tecnologia própria</span>
+                </h2>
+                <p class="text-stone-400 text-xs mt-3 max-w-2xl mx-auto font-light leading-relaxed">
+                    Acompanhe cada etapa da sua jornada editorial através do nosso portal privado. Gerencie seus prazos, acompanhe sua posição no ranking e acesse benefícios do Club.
+                </p>
+            </div>
+
+            <!-- Tab Selector & Mockup Display Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Selectors (5 cols) - Rebuilt into premium glassmorphic tech console cards -->
+                <div class="lg:col-span-5 flex flex-col gap-4 reveal-up">
+                    
+                    <!-- Tab 1 -->
+                    <button onclick="window.selectTechTab('gestao', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none active-tech-tab group">
+                        <div class="max-w-[76%]">
+                            <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-[#d6bc8c] uppercase transition-colors duration-300">Gestão de Projetos</h4>
+                            <p class="text-stone-300 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Acompanhamento em tempo real de cada fase editorial, do rascunho ao design físico final.</p>
+                        </div>
+                        <span class="tech-tab-num select-none">01</span>
+                        <!-- Border anim SVG -->
+                        <svg class="tech-border-svg absolute inset-0 w-full h-full pointer-events-none rounded-[20px]" style="z-index: 20;">
+                            <circle class="tech-border-dot" r="2.5" fill="#f6e3c5" style="filter: drop-shadow(0 0 3px #d6bc8c); opacity: 0;"></circle>
+                        </svg>
+                    </button>
+
+                    <!-- Tab 2 -->
+                    <button onclick="window.selectTechTab('ranking', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
+                        <div class="max-w-[76%]">
+                            <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">Ranking de Autores</h4>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Placar interativo de performance, vendas e impacto de mercado da elite de mentores.</p>
+                        </div>
+                        <span class="tech-tab-num select-none">02</span>
+                        <!-- Border anim SVG -->
+                        <svg class="tech-border-svg absolute inset-0 w-full h-full pointer-events-none rounded-[20px]" style="z-index: 20;">
+                            <circle class="tech-border-dot" r="2.5" fill="#f6e3c5" style="filter: drop-shadow(0 0 3px #d6bc8c); opacity: 0;"></circle>
+                        </svg>
+                    </button>
+
+                    <!-- Tab 3 -->
+                    <button onclick="window.selectTechTab('club', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
+                        <div class="max-w-[76%]">
+                            <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">ELOOO Club</h4>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Área exclusiva de networking, convites a conselhos privados e eventos de luxo intercontinentais.</p>
+                        </div>
+                        <span class="tech-tab-num select-none">03</span>
+                        <!-- Border anim SVG -->
+                        <svg class="tech-border-svg absolute inset-0 w-full h-full pointer-events-none rounded-[20px]" style="z-index: 20;">
+                            <circle class="tech-border-dot" r="2.5" fill="#f6e3c5" style="filter: drop-shadow(0 0 3px #d6bc8c); opacity: 0;"></circle>
+                        </svg>
+                    </button>
+
+                    <!-- Tab 4 -->
+                    <button onclick="window.selectTechTab('universidade', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
+                        <div class="max-w-[76%]">
+                            <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">Universidade Corporativa</h4>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Módulos de treinamento e capacitação para monetização e aplicação comercial do livro.</p>
+                        </div>
+                        <span class="tech-tab-num select-none">04</span>
+                        <!-- Border anim SVG -->
+                        <svg class="tech-border-svg absolute inset-0 w-full h-full pointer-events-none rounded-[20px]" style="z-index: 20;">
+                            <circle class="tech-border-dot" r="2.5" fill="#f6e3c5" style="filter: drop-shadow(0 0 3px #d6bc8c); opacity: 0;"></circle>
+                        </svg>
+                    </button>
+
+                    <!-- Tab 5 -->
+                    <button onclick="window.selectTechTab('distribuicao', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
+                        <div class="max-w-[76%]">
+                            <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">Distribuição Global</h4>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Status de envio internacional, estoque físico e pontos de venda em Lisboa, Madrid e Brasil.</p>
+                        </div>
+                        <span class="tech-tab-num select-none">05</span>
+                        <!-- Border anim SVG -->
+                        <svg class="tech-border-svg absolute inset-0 w-full h-full pointer-events-none rounded-[20px]" style="z-index: 20;">
+                            <circle class="tech-border-dot" r="2.5" fill="#f6e3c5" style="filter: drop-shadow(0 0 3px #d6bc8c); opacity: 0;"></circle>
+                        </svg>
+                    </button>
+
+                </div>
+
+                <!-- Display Screen (7 cols) - Rebuilt with 3D Tilt Hover and Floating Glass Widgets -->
+                <div class="lg:col-span-7 reveal-up flex items-center justify-center pt-8 lg:pt-0">
+                    <!-- 3D Tilt perspective wrapper -->
+                    <div id="tech-tilt-wrapper" class="relative w-full max-w-xl aspect-[16/10] cursor-pointer" style="perspective: 1200px;">
+                        
+                        <!-- Background Ambient Glow behind the mockup -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-[#d6bc8c]/10 to-transparent rounded-3xl blur-2xl opacity-50 transition-opacity duration-500"></div>
+                        
+                        <!-- Abstract "Atom" Orbits Background Layer (Expanded size, more visible lines, 4 orbits) -->
+                        <div id="tech-atom-container" class="absolute -inset-y-28 -inset-x-12 sm:-inset-y-36 sm:-inset-x-20 md:-inset-y-44 md:-inset-x-24 pointer-events-none z-0 overflow-visible transition-transform duration-500 ease-out" style="transform: translate3d(0px, 0px, -20px); will-change: transform;">
+                            <svg class="w-full h-full" viewBox="0 0 200 200" style="overflow: visible;">
+                                <!-- Orbit 1 (skewed) -->
+                                <ellipse cx="100" cy="100" rx="88" ry="24" fill="none" stroke="#d6bc8c" stroke-width="0.45" stroke-opacity="0.30" transform="rotate(-30 100 100)"></ellipse>
+                                <!-- Orbit 2 (skewed) -->
+                                <ellipse cx="100" cy="100" rx="84" ry="28" fill="none" stroke="#d6bc8c" stroke-width="0.45" stroke-opacity="0.25" transform="rotate(35 100 100)"></ellipse>
+                                <!-- Orbit 3 (skewed vertical-ish) -->
+                                <ellipse cx="100" cy="100" rx="92" ry="18" fill="none" stroke="#d6bc8c" stroke-width="0.45" stroke-opacity="0.20" transform="rotate(110 100 100)"></ellipse>
+                                <!-- Orbit 4 (orthogonal orbit) -->
+                                <ellipse cx="100" cy="100" rx="80" ry="32" fill="none" stroke="#d6bc8c" stroke-width="0.45" stroke-opacity="0.22" transform="rotate(-75 100 100)"></ellipse>
+
+                                <!-- 4 Glowing particles moving along the orbits -->
+                                <circle id="atom-dot-1" r="1.5" fill="#f6e3c5" style="filter: drop-shadow(0 0 3px #d6bc8c); opacity: 0.90;"></circle>
+                                <circle id="atom-dot-2" r="1.3" fill="#f6e3c5" style="filter: drop-shadow(0 0 2.5px #d6bc8c); opacity: 0.85;"></circle>
+                                <circle id="atom-dot-3" r="1.4" fill="#f6e3c5" style="filter: drop-shadow(0 0 3px #d6bc8c); opacity: 0.88;"></circle>
+                                <circle id="atom-dot-4" r="1.2" fill="#f6e3c5" style="filter: drop-shadow(0 0 2.5px #d6bc8c); opacity: 0.82;"></circle>
+                            </svg>
+                        </div>
+
+                        <!-- Tilt Target (The actual Card) -->
+                        <div id="tech-tilt-card" class="relative w-full h-full bg-stone-950/40 rounded-3xl border border-stone-850 overflow-visible shadow-[0_30px_60px_rgba(0,0,0,0.8)] p-1 transition-transform duration-500 ease-out" style="transform-style: preserve-3d; will-change: transform;">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(214,188,140,0.06),transparent_50%)] pointer-events-none rounded-3xl"></div>
+                            
+                            <!-- Base Mockup Frame -->
+                            <div class="relative w-full h-full rounded-2xl overflow-hidden bg-stone-950" style="transform: translateZ(10px);">
+                                <!-- Gestão Mockup -->
+                                <img id="tech-mockup-gestao" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer active-mockup" alt="Gestão de Projetos">
+                                <!-- Ranking Mockup -->
+                                <img id="tech-mockup-ranking" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="Ranking de Autores">
+                                <!-- Club Mockup -->
+                                <img id="tech-mockup-club" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="ELOOO Club">
+                                <!-- Universidade Mockup -->
+                                <img id="tech-mockup-universidade" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="Universidade Corporativa">
+                                <!-- Distribuição Mockup -->
+                                <img id="tech-mockup-distribuicao" src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="Distribuição Global">
+                            </div>
+
+                            <!-- 3D FLOATING GLASS WIDGETS -->
+                            <!-- Widget 1: Top Left -->
+                            <div id="tech-widget-1" class="absolute -top-6 -left-6 bg-[#0c0a09]/80 border border-[#d6bc8c]/30 rounded-2xl p-4 shadow-[0_15px_30px_rgba(0,0,0,0.5)] backdrop-filter backdrop-blur-md flex items-center gap-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-40 select-none pointer-events-none" style="transform: translateZ(45px); will-change: transform, opacity;">
+                                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                                <div class="flex flex-col">
+                                    <span id="tech-widget-1-lbl" class="text-[9px] font-mono uppercase tracking-widest text-[#d6bc8c]">Fase Editorial</span>
+                                    <span id="tech-widget-1-val" class="text-[11px] font-semibold text-white mt-0.5">Diagramação de Capa</span>
+                                </div>
+                            </div>
+
+                            <!-- Widget 2: Bottom Right -->
+                            <div id="tech-widget-2" class="absolute -bottom-6 -right-6 bg-[#0c0a09]/80 border border-[#d6bc8c]/30 rounded-2xl p-4 shadow-[0_15px_30px_rgba(0,0,0,0.5)] backdrop-filter backdrop-blur-md flex items-center gap-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-40 select-none pointer-events-none" style="transform: translateZ(55px); will-change: transform, opacity;">
+                                <iconify-icon icon="solar:checklist-minimalistic-linear" class="text-xl text-[#d6bc8c]"></iconify-icon>
+                                <div class="flex flex-col">
+                                    <span id="tech-widget-2-lbl" class="text-[9px] font-mono uppercase tracking-widest text-[#d6bc8c]">Cronograma</span>
+                                    <span id="tech-widget-2-val" class="text-[11px] font-semibold text-white mt-0.5">Dentro do Prazo</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    </div>
+
+    <!-- INCLUDE_FOOTER -->
+
+    <script>
+        // Tech tab config data
+        const techWidgetData = {
+            gestao: {
+                w1_lbl: "Fase Editorial",
+                w1_val: "Diagramação de Capa",
+                w2_lbl: "Cronograma",
+                w2_val: "Dentro do Prazo",
+                w2_icon: "solar:checklist-minimalistic-linear"
+            },
+            ranking: {
+                w1_lbl: "Performance",
+                w1_val: "TOP 10 Geral",
+                w2_lbl: "Impacto Anual",
+                w2_val: "+15k Livros Enviados",
+                w2_icon: "solar:graph-up-linear"
+            },
+            club: {
+                w1_lbl: "Status de Membro",
+                w1_val: "Conselho Convidado",
+                w2_lbl: "Próximo Encontro",
+                w2_val: "Lisboa, Out/2026",
+                w2_icon: "solar:star-ring-linear"
+            },
+            universidade: {
+                w1_lbl: "Módulos",
+                w1_val: "Posicionamento Comercial",
+                w2_lbl: "Conclusão",
+                w2_val: "76% Concluído",
+                w2_icon: "solar:notebook-linear"
+            },
+            distribuicao: {
+                w1_lbl: "Status de Envio",
+                w1_val: "Lote de Portugal: OK",
+                w2_lbl: "Rotas de Entrega",
+                w2_val: "Lisboa • Madrid • BR",
+                w2_icon: "solar:global-linear"
+            }
+        };
+
+        // Energy laser beam effect function
+        function shootEnergyPulse(btnElement, targetElement) {
+            const container = document.getElementById('tech-effects-container');
+            if (!container || !btnElement || !targetElement) return;
+
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = btnElement.getBoundingClientRect();
+            const targetRect = targetElement.getBoundingClientRect();
+
+            // Spawn from the right edge, vertically centered
+            const x1 = btnRect.right - containerRect.left;
+            const y1 = (btnRect.top + btnRect.bottom) / 2 - containerRect.top;
+
+            // Travel to the left edge of the mockup, vertically centered
+            const x2 = targetRect.left - containerRect.left;
+            const y2 = (targetRect.top + targetRect.bottom) / 2 - containerRect.top;
+
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+            // Create Trail Line
+            const trail = document.createElement('div');
+            trail.className = 'tech-pulse-trail';
+            trail.style.left = `${x1}px`;
+            trail.style.top = `${y1}px`;
+            trail.style.width = '0px';
+            trail.style.transform = `rotate(${angle}deg)`;
+            container.appendChild(trail);
+
+            // Create Particle Seed
+            const seed = document.createElement('div');
+            seed.className = 'tech-pulse-particle';
+            seed.style.left = `${x1}px`;
+            seed.style.top = `${y1}px`;
+            seed.style.transform = 'translate(-50%, -50%) scale(1)';
+            container.appendChild(seed);
+
+            // Trigger animations
+            requestAnimationFrame(() => {
+                trail.style.width = `${dist}px`;
+                seed.style.left = `${x2}px`;
+                seed.style.top = `${y2}px`;
+                seed.style.transform = 'translate(-50%, -50%) scale(1.3)';
+            });
+
+            // Target hit splash feedback
+            setTimeout(() => {
+                const tiltCard = document.getElementById('tech-tilt-card');
+                if (tiltCard) {
+                    tiltCard.style.boxShadow = '0 0 45px rgba(214, 188, 140, 0.45), 0 30px 60px rgba(0,0,0,0.8)';
+                    setTimeout(() => {
+                        tiltCard.style.boxShadow = '';
+                    }, 400);
+                }
+            }, 320);
+
+            // Element cleanup
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                seed.style.opacity = '0';
+                setTimeout(() => {
+                    trail.remove();
+                    seed.remove();
+                }, 300);
+            }, 600);
+        }
+
+        // Card border point path calculation
+        function getBorderPoint(w, h, p) {
+            const margin = 1;
+            const W = w - 2 * margin;
+            const H = h - 2 * margin;
+            const L = 2 * W + 2 * H;
+
+            // Start at middle-right: (W, H/2) -> distance d0 = H/2
+            const d0 = H / 2;
+            const d = (d0 + p * L) % L;
+
+            let x = 0;
+            let y = 0;
+
+            if (d < H) {
+                // Right edge moving down
+                x = W;
+                y = d;
+            } else if (d < H + W) {
+                // Bottom edge moving left
+                x = W - (d - H);
+                y = H;
+            } else if (d < 2 * H + W) {
+                // Left edge moving up
+                x = 0;
+                y = H - (d - H - W);
+            } else {
+                // Top edge moving right
+                x = d - (2 * H + W);
+                y = 0;
+            }
+
+            return { x: x + margin, y: y + margin };
+        }
+
+        let activeTechIndex = 0;
+        const techTabs = ['gestao', 'ranking', 'club', 'universidade', 'distribuicao'];
+        let techAutoplayTimer = null;
+        let borderAnimId = null;
+        let borderAnimStart = 0;
+        let borderAnimDuration = 2800; // Snappy 2.8 seconds loop as requested
+
+        // Frame by frame border dot loop path drawing
+        function animateBorderDot() {
+            if (!techAutoplayTimer) {
+                const activeCard = document.querySelector('.tech-tab-card.active-tech-tab');
+                if (activeCard) {
+                    const dot = activeCard.querySelector('.tech-border-dot');
+                    if (dot) {
+                        const rect = activeCard.getBoundingClientRect();
+                        const pt = getBorderPoint(rect.width, rect.height, 0);
+                        dot.setAttribute('cx', pt.x);
+                        dot.setAttribute('cy', pt.y);
+                        dot.style.opacity = '1'; // stays visible at nozzle trigger
+                    }
+                }
+                return;
+            }
+
+            const activeCard = document.querySelector('.tech-tab-card.active-tech-tab');
+            if (!activeCard) return;
+
+            const dot = activeCard.querySelector('.tech-border-dot');
+            if (!dot) return;
+
+            const rect = activeCard.getBoundingClientRect();
+            const w = rect.width;
+            const h = rect.height;
+
+            const now = Date.now();
+            let p = (now - borderAnimStart) / borderAnimDuration;
+
+            if (p >= 1) {
+                p = 1;
+                // Auto trigger laser shoot & next slide shift on completion!
+                activeTechIndex = (activeTechIndex + 1) % techTabs.length;
+                const nextTabId = techTabs[activeTechIndex];
+                const cards = document.querySelectorAll('.tech-tab-card');
+                if (cards.length > activeTechIndex) {
+                    window.selectTechTab(nextTabId, cards[activeTechIndex], true);
+                }
+                borderAnimStart = Date.now();
+                p = 0;
+            }
+
+            const pt = getBorderPoint(w, h, p);
+            dot.setAttribute('cx', pt.x);
+            dot.setAttribute('cy', pt.y);
+            dot.style.opacity = '1';
+
+            borderAnimId = requestAnimationFrame(animateBorderDot);
+        }
+
+        // Tech tab selection function
+        window.selectTechTab = function(id, btn, triggerPulse = true) {
+            const newIndex = techTabs.indexOf(id);
+            if (newIndex === -1) return;
+            
+            const previousActive = document.querySelector('.tech-tab-card.active-tech-tab');
+            activeTechIndex = newIndex;
+
+            document.querySelectorAll('.tech-tab-card').forEach(b => {
+                b.classList.remove('active-tech-tab');
+                b.querySelector('h4').classList.remove('text-[#d6bc8c]');
+                b.querySelector('h4').classList.add('text-stone-400');
+                
+                const p = b.querySelector('p');
+                p.classList.remove('text-stone-300');
+                p.classList.add('text-stone-500');
+            });
+            btn.classList.add('active-tech-tab');
+            btn.querySelector('h4').classList.remove('text-stone-400');
+            btn.querySelector('h4').classList.add('text-[#d6bc8c]');
+            
+            const activeP = btn.querySelector('p');
+            activeP.classList.remove('text-stone-500');
+            activeP.classList.add('text-stone-300');
+
+            // Hide all border dots first, new one starts at p=0
+            document.querySelectorAll('.tech-border-dot').forEach(d => {
+                d.style.opacity = '0';
+            });
+
+            // Align start time for the next loop
+            borderAnimStart = Date.now();
+
+            // Trigger flying laser pulse effect
+            if (triggerPulse && previousActive && previousActive !== btn) {
+                const targetWrapper = document.getElementById('tech-tilt-wrapper');
+                shootEnergyPulse(btn, targetWrapper);
+            }
+
+            // Fade mockup layer
+            document.querySelectorAll('.tech-mockup-layer').forEach(layer => {
+                layer.classList.remove('active-mockup');
+            });
+            const activeMockup = document.getElementById('tech-mockup-' + id);
+            if (activeMockup) {
+                activeMockup.classList.add('active-mockup');
+            }
+
+            // Update float widgets texts
+            const widgetData = techWidgetData[id];
+            if (widgetData) {
+                const w1 = document.getElementById('tech-widget-1');
+                const w2 = document.getElementById('tech-widget-2');
+                if (w1 && w2) {
+                    w1.style.opacity = '0';
+                    w2.style.opacity = '0';
+                    w1.style.transform = 'translateZ(45px) scale(0.9)';
+                    w2.style.transform = 'translateZ(55px) scale(0.9)';
+                    
+                    setTimeout(() => {
+                        document.getElementById('tech-widget-1-lbl').innerText = widgetData.w1_lbl;
+                        document.getElementById('tech-widget-1-val').innerText = widgetData.w1_val;
+                        document.getElementById('tech-widget-2-lbl').innerText = widgetData.w2_lbl;
+                        document.getElementById('tech-widget-2-val').innerText = widgetData.w2_val;
+                        
+                        const icon = w2.querySelector('iconify-icon');
+                        if (icon) {
+                            icon.setAttribute('icon', widgetData.w2_icon);
+                        }
+                        
+                        w1.style.opacity = '1';
+                        w2.style.opacity = '1';
+                        w1.style.transform = 'translateZ(45px) scale(1)';
+                        w2.style.transform = 'translateZ(55px) scale(1)';
+                    }, 200);
+                }
+            }
+        }
+
+        // Tech Autoplay functions (now runs border dots animation loop synchronizer)
+        window.startTechAutoplay = function() {
+            window.stopTechAutoplay();
+            document.querySelectorAll('.tech-border-dot').forEach(d => d.style.opacity = '0');
+            
+            borderAnimStart = Date.now();
+            techAutoplayTimer = true;
+            animateBorderDot();
+        }
+
+        window.stopTechAutoplay = function() {
+            techAutoplayTimer = false;
+            if (borderAnimId) {
+                cancelAnimationFrame(borderAnimId);
+                borderAnimId = null;
+            }
+            
+            // Return dot to starting trigger nozzle position (p=0)
+            const activeCard = document.querySelector('.tech-tab-card.active-tech-tab');
+            if (activeCard) {
+                const dot = activeCard.querySelector('.tech-border-dot');
+                if (dot) {
+                    const rect = activeCard.getBoundingClientRect();
+                    const pt = getBorderPoint(rect.width, rect.height, 0);
+                    dot.setAttribute('cx', pt.x);
+                    dot.setAttribute('cy', pt.y);
+                    dot.style.opacity = '1';
+                }
+            }
+        }
+
+        // Background Atom orbital particle animation loop (4 particles)
+        let atomTheta1 = 0;
+        let atomTheta2 = Math.PI * 0.6;
+        let atomTheta3 = Math.PI * 1.3;
+        let atomTheta4 = Math.PI * 0.2;
+
+        function updateAtomParticles() {
+            atomTheta1 += 0.008;
+            atomTheta2 -= 0.010;
+            atomTheta3 += 0.007;
+            atomTheta4 -= 0.009;
+
+            // Orbit 1: rx=88, ry=24, rotate=-30
+            const dot1 = document.getElementById('atom-dot-1');
+            if (dot1) {
+                const rx = 88, ry = 24, phi = -30 * Math.PI / 180;
+                const xp = rx * Math.cos(atomTheta1);
+                const yp = ry * Math.sin(atomTheta1);
+                const x = 100 + xp * Math.cos(phi) - yp * Math.sin(phi);
+                const y = 100 + xp * Math.sin(phi) + yp * Math.cos(phi);
+                dot1.setAttribute('cx', x);
+                dot1.setAttribute('cy', y);
+            }
+
+            // Orbit 2: rx=84, ry=28, rotate=35
+            const dot2 = document.getElementById('atom-dot-2');
+            if (dot2) {
+                const rx = 84, ry = 28, phi = 35 * Math.PI / 180;
+                const xp = rx * Math.cos(atomTheta2);
+                const yp = ry * Math.sin(atomTheta2);
+                const x = 100 + xp * Math.cos(phi) - yp * Math.sin(phi);
+                const y = 100 + xp * Math.sin(phi) + yp * Math.cos(phi);
+                dot2.setAttribute('cx', x);
+                dot2.setAttribute('cy', y);
+            }
+
+            // Orbit 3: rx=92, ry=18, rotate=110
+            const dot3 = document.getElementById('atom-dot-3');
+            if (dot3) {
+                const rx = 92, ry = 18, phi = 110 * Math.PI / 180;
+                const xp = rx * Math.cos(atomTheta3);
+                const yp = ry * Math.sin(atomTheta3);
+                const x = 100 + xp * Math.cos(phi) - yp * Math.sin(phi);
+                const y = 100 + xp * Math.sin(phi) + yp * Math.cos(phi);
+                dot3.setAttribute('cx', x);
+                dot3.setAttribute('cy', y);
+            }
+
+            // Orbit 4: rx=80, ry=32, rotate=-75
+            const dot4 = document.getElementById('atom-dot-4');
+            if (dot4) {
+                const rx = 80, ry = 32, phi = -75 * Math.PI / 180;
+                const xp = rx * Math.cos(atomTheta4);
+                const yp = ry * Math.sin(atomTheta4);
+                const x = 100 + xp * Math.cos(phi) - yp * Math.sin(phi);
+                const y = 100 + xp * Math.sin(phi) + yp * Math.cos(phi);
+                dot4.setAttribute('cx', x);
+                dot4.setAttribute('cy', y);
+            }
+
+            requestAnimationFrame(updateAtomParticles);
+        }
+
+        // ============================================
+        // AUTOPLAY TIMELINE SEQUENCE CAROUSEL          
+        // ============================================
+        const years = [2016, 2021, 2024, 2025, 2026];
+        const xCoordinates = [10, 30, 50, 70, 90];
+        let targetLengths = [];
+        let currentYearIndex = 0;
+        let currentLengthPosition = 0;
+        let autoplayTimer = null;
+        let isUserInteracting = false;
+        let lightAnimationRequest = null;
+
+        // Cumulative Trajectory Growth Metrics data for years + projection
+        const statsData = {
+            2016: { autores: 0, paises: 0, livros: 0, prefixA: '', prefixL: '', suffixA: '', suffixL: '' },
+            2021: { autores: 0, paises: 0, livros: 0, prefixA: '', prefixL: '', suffixA: '', suffixL: '' },
+            2024: { autores: 1, paises: 1, livros: 2000, prefixA: '', prefixL: '', suffixA: '', suffixL: '' },
+            2025: { autores: 3, paises: 1, livros: 2000, prefixA: '', prefixL: '', suffixA: '', suffixL: '' },
+            2026: { autores: 24, paises: 3, livros: 2500, prefixA: '', prefixL: '', suffixA: '', suffixL: '' },
+            projection: { autores: 100, paises: 8, livros: 100000, prefixA: '+', prefixL: '+', suffixA: '', suffixL: '' }
+        };
+
+        let currentStats = { autores: 0, countries: 0, books: 0 };
+
+        // Calibrate lengths along the sinuous curve for pixel-perfect coordinates
+        function calibrateLengths() {
+            const path = document.getElementById('sinuous-path');
+            if (!path) return;
+            
+            const totalLength = path.getTotalLength();
+            const steps = 600;
+            targetLengths = [];
+            
+            const samples = [];
+            for (let j = 0; j <= steps; j++) {
+                const len = (j / steps) * totalLength;
+                const pt = path.getPointAtLength(len);
+                samples.push({ len, x: pt.x, y: pt.y });
+            }
+            
+            // Find length for years (y < 60)
+            targetLengths.push(findClosestLen(samples, 10, y => y < 60)); // 2016
+            targetLengths.push(findClosestLen(samples, 30, y => y < 60)); // 2021
+            targetLengths.push(findClosestLen(samples, 50, y => y < 60)); // 2024
+            targetLengths.push(findClosestLen(samples, 70, y => y < 60)); // 2025
+            targetLengths.push(findClosestLen(samples, 90, y => y < 60)); // 2026
+            
+            // Find lengths for bottom cards (y > 80)
+            targetLengths.push(findClosestLen(samples, 25, y => y > 80)); // Card 1 (Autores)
+            targetLengths.push(findClosestLen(samples, 50, y => y > 80)); // Card 2 (Países)
+            targetLengths.push(findClosestLen(samples, 75, y => y > 80)); // Card 3 (Livros Impressos)
+            targetLengths.push(findClosestLen(samples, 90, y => y > 80)); // End of track
+        }
+
+        function findClosestLen(samples, targetX, yCondition) {
+            let bestLen = 0;
+            let minDiff = 99999;
+            for (const s of samples) {
+                if (yCondition(s.y)) {
+                    const diff = Math.abs(s.x - targetX);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        bestLen = s.len;
+                    }
+                }
+            }
+            return bestLen;
+        }
+
+        // Realtime progressive counters update
+        window.updateStats = function(stageKey) {
+            const data = statsData[stageKey];
+            if (!data) return;
+            
+            const label = document.getElementById('projection-label');
+            if (stageKey === 'projection') {
+                if (label) {
+                    label.style.opacity = '1';
+                    label.style.textShadow = '0 0 10px rgba(214, 188, 140, 0.7)';
+                    label.style.transform = 'scale(1.06) translate(-50%, -50%)';
+                }
+                document.querySelectorAll('.glass-stat-card').forEach(card => {
+                    card.classList.add('active-card');
+                });
+            } else {
+                if (label) {
+                    label.style.opacity = '0.4';
+                    label.style.textShadow = 'none';
+                    label.style.transform = 'scale(1) translate(-50%, -50%)';
+                }
+                document.querySelectorAll('.glass-stat-card').forEach(card => {
+                    card.classList.remove('active-card');
+                    card.style.opacity = '0.5';
+                });
+            }
+
+            animateCounter('counter-val-1', currentStats.autores, data.autores, data.prefixA, data.suffixA);
+            animateCounter('counter-val-2', currentStats.countries, data.paises, '', '');
+            animateCounter('counter-val-3', currentStats.books, data.livros, data.prefixL, data.suffixL);
+            
+            currentStats.autores = data.autores;
+            currentStats.countries = data.paises;
+            currentStats.books = data.livros;
+        }
+
+        // Animate counter from startVal to endVal
+        function animateCounter(elementId, startVal, endVal, prefix = '', suffix = '', duration = 850) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            let start = null;
+            function step(timestamp) {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const current = Math.floor(startVal + progress * (endVal - startVal));
+                
+                let formatted = current.toLocaleString('pt-BR');
+                if (endVal === 100000 && progress >= 0.98) {
+                    formatted = '100.000';
+                }
+                el.innerText = prefix + formatted + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.innerText = prefix + endVal.toLocaleString('pt-BR') + suffix;
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        window.activateYear = function(year) {
+            currentYearIndex = years.indexOf(year);
+            
+            // Trigger trajectories update
+            window.updateStats(year);
+
+            // Loop through all nodes
+            document.querySelectorAll('.timeline-node-container').forEach(node => {
+                const nodeYear = parseInt(node.getAttribute('data-year'));
+                const textBlocks = node.querySelectorAll('.timeline-text-block');
+                
+                if (nodeYear === year) {
+                    node.classList.add('active-node');
+                    textBlocks.forEach(tb => {
+                        tb.style.opacity = '1';
+                        tb.style.transform = 'scale(1.05)';
+                    });
+                } else {
+                    node.classList.remove('active-node');
+                    textBlocks.forEach(tb => {
+                        tb.style.opacity = '0.30';
+                        tb.style.transform = 'scale(0.95)';
+                    });
+                }
+            });
+
+            // Fade proof background layers
+            document.querySelectorAll('.proof-bg-layer').forEach(layer => {
+                layer.classList.remove('active-bg');
+            });
+            const activeBg = document.getElementById('bg-proof-' + year);
+            if (activeBg) {
+                activeBg.classList.add('active-bg');
+            }
+        }
+
+        window.resetCards = function() {
+            currentStats = { autores: 0, countries: 0, books: 0 };
+            window.updateStats(2016);
+        }
+
+        // Animate traveling point of light along the path in JS
+        window.moveLightToLengthIndex = function(index, callback) {
+            const path = document.getElementById('sinuous-path');
+            const light = document.getElementById('traveling-light');
+            if (!path || !light || targetLengths.length === 0) return;
+
+            const targetLength = targetLengths[index];
+            const startLength = currentLengthPosition;
+            let start = null;
+            const duration = 650; // Snappy 0.65s transition travel speed
+
+            if (lightAnimationRequest) {
+                cancelAnimationFrame(lightAnimationRequest);
+            }
+
+            function animate(timestamp) {
+                if (!start) start = timestamp;
+                const elapsed = timestamp - start;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // EaseInOutCubic Formula
+                const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                
+                const currentPos = startLength + (targetLength - startLength) * ease;
+                const pt = path.getPointAtLength(currentPos);
+                
+                light.setAttribute('cx', pt.x);
+                light.setAttribute('cy', pt.y);
+                
+                if (progress < 1) {
+                    lightAnimationRequest = requestAnimationFrame(animate);
+                } else {
+                    currentLengthPosition = targetLength;
+                    if (callback) callback();
+                }
+            }
+            lightAnimationRequest = requestAnimationFrame(animate);
+        }
+
+        window.moveLightToYear = function(index, callback) {
+            window.moveLightToLengthIndex(index, callback);
+        }
+
+        window.manualActive = function(year) {
+            isUserInteracting = true;
+            window.stopAutoplay();
+            const index = years.indexOf(year);
+            window.moveLightToYear(index, () => {
+                window.activateYear(year);
+            });
+        }
+
+        // Allow manual activation of projection cards by mouse hover
+        window.manualActiveCard = function(num) {
+            isUserInteracting = true;
+            window.stopAutoplay();
+            
+            // Dim years text
+            document.querySelectorAll('.timeline-node-container').forEach(node => {
+                const textBlocks = node.querySelectorAll('.timeline-text-block');
+                textBlocks.forEach(tb => {
+                    tb.style.opacity = '0.15';
+                    tb.style.transform = 'scale(0.95)';
+                });
+            });
+            
+            // Travel path index for Card 1 (5), Card 2 (6), Card 3 (7)
+            const targetIndex = 4 + num; 
+            window.moveLightToLengthIndex(targetIndex, () => {
+                window.updateStats('projection');
+            });
+        }
+
+        // Return manually to auto-loop
+        window.resumeAutoplay = function() {
+            isUserInteracting = false;
+            window.startAutoplay();
+        }
+
+        window.startAutoplay = function() {
+            window.stopAutoplay();
+            autoplayTimer = setInterval(() => {
+                if (!isUserInteracting) {
+                    if (currentYearIndex < 4) {
+                        currentYearIndex++;
+                        window.moveLightToYear(currentYearIndex, () => {
+                            window.activateYear(years[currentYearIndex]);
+                        });
+                    } else if (currentYearIndex === 4) {
+                        currentYearIndex = 5;
+                        
+                        document.querySelectorAll('.timeline-node-container').forEach(node => {
+                            const textBlocks = node.querySelectorAll('.timeline-text-block');
+                            textBlocks.forEach(tb => {
+                                tb.style.opacity = '0.15';
+                                tb.style.transform = 'scale(0.95)';
+                            });
+                        });
+                        
+                        // Move to Card 1
+                        window.moveLightToLengthIndex(5, () => {
+                            animateCounter('counter-val-1', currentStats.autores, statsData.projection.autores, '+', '');
+                            currentStats.autores = statsData.projection.autores;
+                            
+                            // Move to Card 2
+                            window.moveLightToLengthIndex(6, () => {
+                                animateCounter('counter-val-2', currentStats.countries, statsData.projection.paises, '', '');
+                                currentStats.countries = statsData.projection.paises;
+                                
+                                // Move to Card 3
+                                window.moveLightToLengthIndex(7, () => {
+                                    animateCounter('counter-val-3', currentStats.books, statsData.projection.livros, '+', '');
+                                    currentStats.books = statsData.projection.livros;
+                                    window.updateStats('projection');
+                                    
+                                    // Move to end of curve path
+                                    window.moveLightToLengthIndex(8, () => {
+                                        setTimeout(() => {
+                                            if (!isUserInteracting && currentYearIndex === 5) {
+                                                window.resetCards();
+                                                currentYearIndex = 0;
+                                                window.moveLightToYear(0, () => {
+                                                    window.activateYear(2016);
+                                                });
+                                            }
+                                        }, 3200);
+                                    });
+                                });
+                            });
+                        });
+                    }
+                }
+            }, 2600);
+        }
+
+        window.stopAutoplay = function() {
+            if (autoplayTimer) {
+                clearInterval(autoplayTimer);
+                autoplayTimer = null;
+            }
+        }
+
+        // Native IntersectionObserver for scroll reveals (ensures instant rendering)
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                calibrateLengths();
+                
+                const path = document.getElementById('sinuous-path');
+                const light = document.getElementById('traveling-light');
+                if (path && light && targetLengths.length > 0) {
+                    const pt = path.getPointAtLength(targetLengths[0]);
+                    light.setAttribute('cx', pt.x);
+                    light.setAttribute('cy', pt.y);
+                    currentLengthPosition = targetLengths[0];
+                }
+
+                window.activateYear(2016);
+                window.startAutoplay();
+                
+                // Start technology console autoplay loop
+                window.startTechAutoplay();
+
+                // Start background atom particle animations
+                updateAtomParticles();
+            }, 150);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -5% 0px"
+            });
+
+            document.querySelectorAll('.reveal-up').forEach(elem => {
+                observer.observe(elem);
+            });
+            
+            setTimeout(() => {
+                document.querySelectorAll('.reveal-up').forEach(elem => {
+                    const rect = elem.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        elem.classList.add('active');
+                    }
+                });
+            }, 600);
+
+            // =======================================================
+            // 3D TILT EFFECT & PARALLAX ATOM/WIDGETS IN JAVASCRIPT
+            // =======================================================
+            const tiltWrapper = document.getElementById('tech-tilt-wrapper');
+            const tiltCard = document.getElementById('tech-tilt-card');
+            const atomContainer = document.getElementById('tech-atom-container');
+            
+            if (tiltWrapper && tiltCard) {
+                tiltWrapper.addEventListener('mousemove', (e) => {
+                    const rect = tiltWrapper.getBoundingClientRect();
+                    const x = e.clientX - rect.left; 
+                    const y = e.clientY - rect.top;  
+                    
+                    const xc = rect.width / 2;
+                    const yc = rect.height / 2;
+                    
+                    const tiltX = (yc - y) / 10;
+                    const tiltY = (x - xc) / 10;
+                    
+                    // Tilt the main mockup card
+                    tiltCard.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+                    
+                    // Parallax slide & tilt the background atom orbits
+                    if (atomContainer) {
+                        const px = (x - xc) / 4; 
+                        const py = (y - yc) / 4;
+                        atomContainer.style.transform = `translate3d(${px}px, ${py}px, -20px) rotateX(${tiltX * 0.4}deg) rotateY(${tiltY * 0.4}deg)`;
+                    }
+                });
+                
+                tiltWrapper.addEventListener('mouseleave', () => {
+                    tiltCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+                    if (atomContainer) {
+                        atomContainer.style.transform = 'translate3d(0px, 0px, -20px) rotateX(0deg) rotateY(0deg)';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

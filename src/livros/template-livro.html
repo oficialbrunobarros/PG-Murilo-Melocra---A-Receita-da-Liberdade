@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Título do Livro | ELOOO International Group</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf9;
+            color: #1C1917;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px #1C1917;
+            color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- INCLUDE_NAVBAR -->
+
+    <!-- 2. O LIVRO (HERO SECTION) -->
+    <!-- ALTURA: 300vh para permitir rolagem e controle do vídeo pelo scroll -->
+    <main class="hero-scrub-container relative bg-white" style="height: 300vh;">
+        <div class="sticky top-0 h-screen w-full overflow-hidden">
+            <!-- Canvas para animação de scroll do livro -->
+            <canvas id="hero-canvas" width="1280" height="720" class="absolute inset-0 w-full h-full object-cover opacity-0 grayscale contrast-125 transition-opacity duration-500"></canvas>
+
+            <div class="relative z-10 w-full h-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 pointer-events-none">
+
+                <!-- Headline Group -->
+                <div class="col-span-1 md:col-span-10 lg:col-span-7 h-full flex flex-col justify-center px-6 md:pl-24 text-left pointer-events-auto">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-3 mb-4 reveal-up delay-100 border border-stone-900/10 px-4 py-2 rounded-full bg-white/40 backdrop-blur-sm">
+                        <img src="static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0);">
+                        <div class="w-px h-3 bg-stone-900/20"></div>
+                        <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-700 font-medium">Lançamento Exclusivo</span>
+                    </div>
+
+                    <!-- Título do Livro -->
+                    <h1 class="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[0.8] mb-5 text-stone-900 -ml-1">
+                        <div class="reveal-up delay-100 block">Título do</div>
+                        <div class="reveal-up delay-200 block text-outline text-transparent">Seu Livro</div>
+                        <div class="reveal-up delay-300 block">Aqui.</div>
+                    </h1>
+
+                    <!-- Subtexto -->
+                    <p class="text-lg md:text-xl text-stone-600 max-w-lg leading-relaxed reveal-up delay-500 mb-8 font-light">
+                        Uma breve descrição do livro explicando a proposta de valor, público-alvo e transformação oferecida pela leitura.
+                    </p>
+
+                    <!-- Botões CTA -->
+                    <div class="flex flex-wrap gap-4 reveal-up delay-700">
+                        <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
+                            <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                            <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                                Garantir o Livro
+                                <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fade inferior para a próxima dobra -->
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-stone-50 to-transparent pointer-events-none z-10"></div>
+        </div>
+    </main>
+
+    <!-- INCLUDE_FOOTER -->
+
+    <script>
+        // Registrar GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvas = document.getElementById("hero-canvas");
+            const context = canvas.getContext("2d");
+
+            // Configuração dos Frames do Livro
+            const frameCount = 192;
+            const currentFrame = { index: 0 };
+            const images = [];
+            const framesFolder = "static/assets/video_frames"; // Caminho da pasta de frames do livro
+
+            const preloadImages = () => {
+                for (let i = 1; i <= frameCount; i++) {
+                    const img = new Image();
+                    const frameNumber = i.toString().padStart(4, '0');
+                    img.src = `${framesFolder}/frame_${frameNumber}.jpg`;
+                    images.push(img);
+                }
+            };
+
+            const render = () => {
+                const frameIndex = Math.floor(currentFrame.index);
+                const img = images[frameIndex];
+                if (img && img.complete) {
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                }
+            };
+
+            preloadImages();
+
+            if (images[0]) {
+                images[0].onload = render;
+            }
+
+            // Animação de Scroll do Livro
+            gsap.to(currentFrame, {
+                index: frameCount - 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".hero-scrub-container",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0,
+                    onUpdate: () => {
+                        requestAnimationFrame(render);
+                    }
+                }
+            });
+
+            // Efeito de Entrada do Canvas
+            ScrollTrigger.create({
+                trigger: ".hero-scrub-container",
+                start: "top 60%",
+                onEnter: () => {
+                    gsap.fromTo(canvas,
+                        { opacity: 0, scale: 1.1 },
+                        { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" }
+                    );
+
+                    const heroReveals = document.querySelectorAll('.hero-scrub-container .reveal-up');
+                    heroReveals.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.classList.add('active');
+                        }, 100 * index);
+                    });
+                },
+                once: true
+            });
+
+            // Parallax e Desfoque no Scroll do Título
+            gsap.to(".hero-scrub-container .reveal-up", {
+                y: -60,
+                opacity: 0,
+                filter: "blur(15px)",
+                stagger: 0.05,
+                scrollTrigger: {
+                    trigger: ".hero-scrub-container",
+                    start: "10% top",
+                    end: "40% top",
+                    scrub: true
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

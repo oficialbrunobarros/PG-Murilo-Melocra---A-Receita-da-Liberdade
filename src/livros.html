@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Livros | ELOOO International Group</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.ajax.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.ajax.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .reveal-up {
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flashlight-card {
+            position: relative;
+            background: rgba(28, 25, 23, 0.02);
+            border: 1px solid rgba(28, 25, 23, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .flashlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(28, 25, 23, 0.04), transparent 40%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .flashlight-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- INCLUDE_NAVBAR -->
+
+    <div class="pt-20">
+        <!-- LIVROS SHOWCASE SECTION -->
+    <section id="livros" class="relative pt-12 pb-24 bg-stone-950 text-white min-h-screen z-10 overflow-hidden">
+        <!-- Radial dark background representing infinite space -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center_top,rgba(28,25,23,0.4)_0%,rgba(12,10,9,1)_80%)]"></div>
+        <div class="absolute inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10">
+            
+            <!-- Page Heading -->
+            <div class="text-center mb-16 reveal-up">
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-white">
+                    Obras Construídas
+                </h1>
+            </div>
+
+            <!-- Shelf Structure Container -->
+            <div class="w-full max-w-5xl mx-auto">
+                
+            <!-- SHELF ROW -->
+            <div class="relative mb-36 reveal-up">
+                <!-- Books Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-16 relative z-10 px-4 md:px-12">
+                    
+                <!-- Book: Permaneça -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-[#2b90b1]/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1a1c23] to-[#0d0e12]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Permaneça</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">O Caminho para a Plenitude</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Tatiana Fonseca</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Permaneça</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Tatiana Fonseca</p>
+                        <a href="autores/tatiana-fonseca.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Os Segredos do Lojista -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-amber-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#231d17] to-[#120e0a]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Os Segredos do Lojista</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Fora da Curva (B2B)</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Kenje Kambara</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Os Segredos do Lojista</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Kenje Kambara</p>
+                        <a href="autores/kenje-kambara.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: De Ateu ao Encontro -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-blue-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#141a29] to-[#0a0d14]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">De Ateu ao Encontro</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Com Deus Pai</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Berenice Duarte Borba</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">De Ateu ao Encontro</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Berenice Duarte Borba</p>
+                        <a href="autores/berenice-duarte-borba.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: A Receita da Liberdade -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-stone-700/50 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1c1c1c] to-[#0a0a0a]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">A Receita da Liberdade</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Guia Prático para Médicos</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Dr. Murilo Melocra</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">A Receita da Liberdade</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Dr. Murilo Melocra</p>
+                        <a href="autores/murilo-melocra.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Floating Shelf Base (Luxury metal/wood horizontal bar) -->
+                <div class="absolute bottom-[-20px] left-0 w-full h-[12px] bg-gradient-to-b from-[#2e2620] to-[#1c1714] border-t border-[#4a3e35]/30 rounded-full shadow-[0_12px_24px_rgba(0,0,0,0.9),0_1px_2px_rgba(255,255,255,0.06)_inset] z-0"></div>
+            </div>
+            <!-- SHELF ROW -->
+            <div class="relative mb-36 reveal-up">
+                <!-- Books Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-16 relative z-10 px-4 md:px-12">
+                    
+                <!-- Book: Emagreça Saudável -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-rose-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#29171b] to-[#140b0d]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Emagreça Saudável</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">E Feliz</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Dra. Vanessa Rodrigues</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Emagreça Saudável</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Dra. Vanessa Rodrigues</p>
+                        <a href="autores/vanessa-rodrigues.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Recalculando -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-emerald-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1c221e] to-[#0e110f]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Recalculando</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">A Rota</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Berg Junior</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Recalculando</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Berg Junior</p>
+                        <a href="autores/berg-junior.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Além da Beleza -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-purple-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#281829] to-[#140c14]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Além da Beleza</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Estética & Essência</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Carine Aparecida</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Além da Beleza</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Carine Aparecida</p>
+                        <a href="autores/carine-aparecida.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: O Maná do Vendedor -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-yellow-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#24241c] to-[#12120e]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">O Maná do Vendedor</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Códigos de Venda</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Franklyn Fuck</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">O Maná do Vendedor</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Franklyn Fuck</p>
+                        <a href="autores/franklyn-fuck.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Floating Shelf Base (Luxury metal/wood horizontal bar) -->
+                <div class="absolute bottom-[-20px] left-0 w-full h-[12px] bg-gradient-to-b from-[#2e2620] to-[#1c1714] border-t border-[#4a3e35]/30 rounded-full shadow-[0_12px_24px_rgba(0,0,0,0.9),0_1px_2px_rgba(255,255,255,0.06)_inset] z-0"></div>
+            </div>
+            <!-- SHELF ROW -->
+            <div class="relative mb-36 reveal-up">
+                <!-- Books Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-16 relative z-10 px-4 md:px-12">
+                    
+                <!-- Book: Alma Médica -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-cyan-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1b2329] to-[#0d1114]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Alma Médica</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">O Propósito da Medicina</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Dr. Fernando Merlos</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Alma Médica</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Dr. Fernando Merlos</p>
+                        <a href="autores/fernando-merlos.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: A Arte da Persistência -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-fuchsia-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#211b24] to-[#100d12]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">A Arte da Persistência</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Mentalidade Inabalável</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Dimas Neto</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">A Arte da Persistência</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Dimas Neto</p>
+                        <a href="autores/dimas-neto.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: A Missão do Fundador -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-stone-600/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1b1b1b] to-[#0a0a0a]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">A Missão do Fundador</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Legado de Negócios</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Anildo Silva</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">A Missão do Fundador</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Anildo Silva</p>
+                        <a href="autores/anildo-silva.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: O Código da Vitalidade -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-sky-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#162024] to-[#0b1012]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">O Código da Vitalidade</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Masculina</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Dr. Sávio Cardoso</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">O Código da Vitalidade</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Dr. Sávio Cardoso</p>
+                        <a href="autores/savio-cardoso.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Floating Shelf Base (Luxury metal/wood horizontal bar) -->
+                <div class="absolute bottom-[-20px] left-0 w-full h-[12px] bg-gradient-to-b from-[#2e2620] to-[#1c1714] border-t border-[#4a3e35]/30 rounded-full shadow-[0_12px_24px_rgba(0,0,0,0.9),0_1px_2px_rgba(255,255,255,0.06)_inset] z-0"></div>
+            </div>
+            <!-- SHELF ROW -->
+            <div class="relative mb-36 reveal-up">
+                <!-- Books Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-16 relative z-10 px-4 md:px-12">
+                    
+                <!-- Book: Códigos do Networking -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-amber-600/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#292219] to-[#14110c]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Códigos do Networking</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Conexões de Valor</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Hewandro Entringer</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Códigos do Networking</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Hewandro Entringer</p>
+                        <a href="autores/hewandro-entringer.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Profissional -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-teal-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1c2921] to-[#0e1410]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Profissional</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Inquestionável</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Cláudio Dutra</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Profissional</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Cláudio Dutra</p>
+                        <a href="autores/claudio-dutra.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Despertando Propósitos -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-red-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#241a1a] to-[#120d0d]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Despertando Propósitos</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Caminho de Deus</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Diego Arcas</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Despertando Propósitos</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Diego Arcas</p>
+                        <a href="autores/diego-arcas.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Códigos da Lucratividade -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-indigo-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1d1d29] to-[#0e0e14]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Códigos da Lucratividade</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Finanças e Negócios</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Rafael Cavalcanti</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Códigos da Lucratividade</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Rafael Cavalcanti</p>
+                        <a href="autores/rafael-cavalcanti.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Floating Shelf Base (Luxury metal/wood horizontal bar) -->
+                <div class="absolute bottom-[-20px] left-0 w-full h-[12px] bg-gradient-to-b from-[#2e2620] to-[#1c1714] border-t border-[#4a3e35]/30 rounded-full shadow-[0_12px_24px_rgba(0,0,0,0.9),0_1px_2px_rgba(255,255,255,0.06)_inset] z-0"></div>
+            </div>
+            <!-- SHELF ROW -->
+            <div class="relative mb-36 reveal-up">
+                <!-- Books Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-16 relative z-10 px-4 md:px-12">
+                    
+                <!-- Book: O Código do Campeão -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-violet-500/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#241a29] to-[#120d14]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">O Código do Campeão</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Mentalidade Vencedora</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Herick Pereira</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">O Código do Campeão</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Herick Pereira</p>
+                        <a href="autores/herick-pereira.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Rompendo Fronteiras -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-emerald-600/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#1a2924] to-[#0d1412]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Rompendo Fronteiras</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">Escala Internacional</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Douglas Vacilotto</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Rompendo Fronteiras</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Douglas Vacilotto</p>
+                        <a href="autores/douglas-vacilotto.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book: Shammah -->
+                <div class="relative group flex flex-col items-center">
+                    <!-- Spotlight Beam (Acende no hover) -->
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.18)_0%,transparent_70%)] opacity-35 group-hover:opacity-100 group-hover:bg-[radial-gradient(ellipse_at_top,rgba(214,188,140,0.55)_0%,transparent_75%)] transition-all duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- 3D Book Cover -->
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] rounded-lg overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.75)] group-hover:shadow-[0_20px_45px_rgba(214,188,140,0.2)] border border-yellow-600/30 group-hover:border-[#d6bc8c]/40 group-hover:-translate-y-5 group-hover:scale-[1.03] transition-all duration-500 z-10 bg-gradient-to-br from-[#29241b] to-[#14120d]">
+                        <!-- Spine shadow & light shine -->
+                        <div class="absolute inset-y-0 left-0 w-3 bg-white/5 border-r border-black/20 z-20"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/15 z-10 pointer-events-none group-hover:opacity-60 transition-opacity"></div>
+                        
+                        <!-- Book Cover Content -->
+                        <div class="absolute inset-0 p-5 flex flex-col justify-between text-left select-none">
+                            <span class="text-[7px] font-mono uppercase tracking-[0.25em] text-stone-400">ELOOO PUBLISHING</span>
+                            
+                            <div class="my-auto">
+                                <h3 class="font-display text-base md:text-lg font-bold leading-tight text-white tracking-tight">Shammah</h3>
+                                <p class="text-[9px] text-stone-400 font-mono mt-1 font-light leading-normal">O Deus que Ouve</p>
+                            </div>
+                            
+                            <div class="flex items-center justify-between border-t border-white/10 pt-3 mt-2">
+                                <span class="text-[8px] text-stone-300 font-mono truncate max-w-[100px]">Edson Fabiano</span>
+                                <div class="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    <img src="static/images/ELOOO LOGO.png" class="h-1 object-contain" style="filter: brightness(0) invert(1);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Book Footer / Details -->
+                    <div class="mt-6 text-center z-10">
+                        <h4 class="font-display text-sm font-semibold text-stone-200 tracking-wide group-hover:text-amber-400 transition-colors duration-300">Shammah</h4>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase tracking-widest">Edson Fabiano</p>
+                        <a href="autores/edson-fabiano.html" class="mt-3 inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-stone-400 hover:text-white transition-colors">
+                            Conhecer Obra
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+                <!-- Book Placeholder: Próximo Lançamento -->
+                <div class="relative group flex flex-col items-center">
+                    <div class="absolute top-[-70px] w-[180px] h-[250px] bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.05)_0%,transparent_70%)] opacity-35 pointer-events-none z-0"></div>
+                    
+                    <div class="relative w-[170px] sm:w-[185px] aspect-[3/4] border-2 border-dashed border-stone-800 rounded-lg flex flex-col items-center justify-center text-stone-600 p-6 text-center z-10 hover:border-stone-700 hover:text-stone-400 transition-colors duration-500">
+                        <iconify-icon icon="solar:book-bookmark-linear" class="text-3xl opacity-40 mb-3"></iconify-icon>
+                        <span class="text-[9px] font-mono uppercase tracking-widest opacity-60">Próximo<br>Lançamento</span>
+                    </div>
+                    
+                    <div class="mt-6 text-center z-10 opacity-40">
+                        <h4 class="font-display text-sm font-semibold text-stone-600">Novas Obras</h4>
+                        <p class="text-[10px] text-stone-700 font-mono mt-1 uppercase tracking-widest">ELOOO Editora</p>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Floating Shelf Base (Luxury metal/wood horizontal bar) -->
+                <div class="absolute bottom-[-20px] left-0 w-full h-[12px] bg-gradient-to-b from-[#2e2620] to-[#1c1714] border-t border-[#4a3e35]/30 rounded-full shadow-[0_12px_24px_rgba(0,0,0,0.9),0_1px_2px_rgba(255,255,255,0.06)_inset] z-0"></div>
+            </div>
+            </div>
+
+        </div>
+    </section>
+    
+    </div> <!-- Close pt-20 -->
+    
+    <!-- INCLUDE_FOOTER -->
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Efeito de Revelação Genérico (Com fallback imediato para o que já está na tela)
+            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
+                // Se o elemento já está na tela ao carregar, exibe imediatamente
+                const rect = elem.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    elem.classList.add('active');
+                }
+                
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 85%",
+                    onEnter: function () {
+                        elem.classList.add('active');
+                    }
+                });
+            });
+
+            // Efeito Lanterna (Flashlight Effect)
+            window.updateFlashlight = function (e, card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+        });
+    </script>
+</body>
+
+</html>
