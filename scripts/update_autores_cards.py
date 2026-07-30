@@ -9,7 +9,7 @@ authors_data = [
         "book": "Permaneça - O Caminho para a Plenitude",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/tatiana.vfonseca/",
-        "bio": "Tatiana Fonseca é escritora, mentora e palestrante. Transforma experiências, aprendizados e princípios em mensagens que incentivam pessoas a reconhecerem seu valor, desenvolverem seu potencial e construírem uma vida com mais propósito."
+        "bio": "Escritora, mentora e palestrante. Transforma experiências, aprendizados e princípios em mensagens que incentivam pessoas a reconhecerem seu valor, desenvolverem seu potencial e construírem uma vida com mais propósito."
     },
     {
         "slug": "savio-cardoso",
@@ -17,7 +17,7 @@ authors_data = [
         "book": "O Código da Vitalidade Masculina",
         "flag": "circle-flags:pt",
         "instagram": "https://www.instagram.com/drsaviocardoso/",
-        "bio": "Dr. Sávio Cardoso é médico com atuação no Brasil e em Portugal nas áreas de longevidade, performance e reposição hormonal. Direciona seu trabalho a quem busca envelhecer com saúde, vigor, disposição e qualidade de vida."
+        "bio": "Médico com atuação no Brasil e em Portugal nas áreas de longevidade, performance e reposição hormonal. Direciona seu trabalho a quem busca envelhecer com saúde, vigor, disposição e qualidade de vida."
     }, # Position 2 (Portugal)
     {
         "slug": "kenje-kambara",
@@ -25,7 +25,7 @@ authors_data = [
         "book": "Os Segredos do Lojista B2B & Mercado Automotivo",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/kenjekambara/",
-        "bio": "Kenje Kambara é empresário e fundador da ZS Autos, especializada em veículos premium em Recife. Com vasta experiência no setor de compra e venda, compartilha conhecimentos para negócios mais seguros no mercado automotivo."
+        "bio": "Empresário e fundador da ZS Autos, especializada em veículos premium em Recife. Com vasta experiência no setor de compra e venda, compartilha conhecimentos para negócios mais seguros no mercado automotivo."
     },
     {
         "slug": "berenice-duarte-borba",
@@ -33,7 +33,7 @@ authors_data = [
         "book": "De Ateu ao Encontro com Deus Pai",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/bereniceduartte/",
-        "bio": "Berenice Duarte é pastora, empresária e diretora da Cia Florestal, de soluções ambientais. Sua trajetória une fé, liderança e sustentabilidade, compartilhando ensinamentos sobre propósito, crescimento e serviço."
+        "bio": "Pastora, empresária e diretora da Cia Florestal, de soluções ambientais. Sua trajetória une fé, liderança e sustentabilidade, compartilhando ensinamentos sobre propósito, crescimento e serviço."
     },
     # Row 2
     {
@@ -42,7 +42,7 @@ authors_data = [
         "book": "O Poder de Um Sorriso",
         "flag": "circle-flags:pt",
         "instagram": "https://www.instagram.com/drsergiocanico/",
-        "bio": "Dr. Sérgio Caniço é médico-dentista e diretor clínico da Clínica Caniço em Braga, Portugal, com atuação também em Genebra. Especialista em implantologia e estética avançada, resgata a saúde e a beleza do sorriso."
+        "bio": "Médico-dentista e diretor clínico da Clínica Caniço em Braga, Portugal, com atuação também em Genebra. Especialista em implantologia e estética avançada, resgata a saúde e a beleza do sorriso."
     }, # Position 5 (Portugal)
     {
         "slug": "murilo-melocra",
@@ -50,7 +50,7 @@ authors_data = [
         "book": "A Receita da Liberdade",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/murilomelocra/",
-        "bio": "Dr. Murilo Melocra é médico, investidor e fundador da ELOOO. Ensina profissionais da saúde a investirem em Bitcoin e construírem patrimônio sólido, gerando segurança e liberdade financeira além dos plantões."
+        "bio": "Médico, investidor e fundador da ELOOO. Ensina profissionais da saúde a investirem em Bitcoin e construírem patrimônio sólido, gerando segurança e liberdade financeira além dos plantões."
     },
     {
         "slug": "vanessa-rodrigues",
@@ -58,7 +58,7 @@ authors_data = [
         "book": "Emagreça Saudável e Feliz",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/dravanessarodriguess/",
-        "bio": "Dra. Vanessa Rodrigues é médica especialista no cuidado da saúde feminina. Seu trabalho une acompanhamento médico, mudança de hábitos e uma visão integral da mulher, considerando saúde, qualidade de vida, identidade e propósito."
+        "bio": "Médica especialista no cuidado da saúde feminina. Seu trabalho une acompanhamento médico, mudança de hábitos e uma visão integral da mulher, considerando saúde, qualidade de vida, identidade e propósito."
     },
     {
         "slug": "berg-junior",
@@ -66,7 +66,7 @@ authors_data = [
         "book": "Recalculando a Rota",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/bergjunior6/",
-        "bio": "Berg Júnior é empresário e fundador da Quarteiro, do setor de alimentação. Sua trajetória é marcada pelo empreendedorismo, liderança e fé, compartilhando aprendizados de quem constrói negócios sobre valores fortes."
+        "bio": "Empresário e fundador da Quarteiro, do setor de alimentação. Sua trajetória é marcada pelo empreendedorismo, liderança e fé, compartilhando aprendizados de quem constrói negócios sobre valores fortes."
     },
     # Row 3
     {
@@ -75,7 +75,7 @@ authors_data = [
         "book": "Além da Beleza",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/carineaparecida/",
-        "bio": "Carine Aparecida é empresária, especialista em visagismo e fundadora da Confidera em Joinville. Ajuda mulheres a valorizarem sua beleza individual, respeitando suas características físicas, identidade e essência."
+        "bio": "Empresária, especialista em visagismo e fundadora da Confidera em Joinville. Ajuda mulheres a valorizarem sua beleza individual, respeitando suas características físicas, identidade e essência."
     },
     {
         "slug": "franklyn-fuck",
@@ -83,7 +83,7 @@ authors_data = [
         "book": "O Maná do Vendedor",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/franklynfuck/",
-        "bio": "Franklyn Rafael Fuck é empresário e franqueado da Impacto Prime, rede de serviços automotivos. Sua trajetória reúne liderança, fé e superação, compartilhando lições de quem decidiu romper limites."
+        "bio": "Empresário e franqueado da Impacto Prime, rede de serviços automotivos. Sua trajetória reúne liderança, fé e superação, compartilhando lições de quem decidiu romper limites."
     },
     {
         "slug": "fernando-merlos",
@@ -91,7 +91,7 @@ authors_data = [
         "book": "Alma Médica",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/merlos.fernando/",
-        "bio": "Dr. Fernando Merlos é médico especialista em comunicação na saúde. Ajuda profissionais a desenvolverem habilidades para conduzir conversas difíceis, comunicar decisões com clareza e humanizar o atendimento."
+        "bio": "Médico especialista em comunicação na saúde. Ajuda profissionais a desenvolverem habilidades para conduzir conversas difíceis, comunicar decisões com clareza e humanizar o atendimento."
     },
     {
         "slug": "douglas-vacilotto",
@@ -99,7 +99,7 @@ authors_data = [
         "book": "Rompendo Fronteiras",
         "flag": "circle-flags:es",
         "instagram": "https://www.instagram.com/vacilo77o/",
-        "bio": "Douglas Vacilotto é empresário em Madrid no ramo de móveis de luxo e mentor de desenvolvimento. Incentiva homens a romperem padrões limitantes, desenvolverem disciplina e assumirem responsabilidades."
+        "bio": "Empresário em Madrid no ramo de móveis de luxo e mentor de desenvolvimento. Incentiva homens a romperem padrões limitantes, desenvolverem disciplina e assumirem responsabilidades."
     }, # Position 12 (Spain)
     # Row 4+
     {
@@ -108,7 +108,7 @@ authors_data = [
         "book": "A Arte da Persistência",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/dimais.neto/",
-        "bio": "Dimas Neto é empresário e fundador da Dimas Móveis Sob Medida, de marcenaria fina de alto padrão. Compartilha desafios, decisões e aprendizados na construção de uma empresa focada em excelência e confiança."
+        "bio": "Empresário e fundador da Dimas Móveis Sob Medida, de marcenaria fina de alto padrão. Compartilha desafios, decisões and aprendizados na construção de uma empresa focada em excelência e confiança."
     },
     {
         "slug": "anildo-silva",
@@ -116,7 +116,7 @@ authors_data = [
         "book": "A Missão do Fundador",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/anildosilvabr/",
-        "bio": "Anildo Silva é empresário, mentor, palestrante e fundador do Itália Cucina Tradizionale. Ajuda empreendedores a organizarem suas operações, aumentarem a lucratividade e reduzirem a dependência do proprietário no dia a dia."
+        "bio": "Empresário, mentor, palestrante e fundador do Itália Cucina Tradizionale. Ajuda empreendedores a organizarem suas operações, aumentarem a lucratividade e reduzirem a dependência do proprietário no dia a dia."
     },
     {
         "slug": "hewandro-entringer",
@@ -124,7 +124,7 @@ authors_data = [
         "book": "Os Códigos do Networking",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/hewandroentringer/",
-        "bio": "Hewandro Entringer é empresário, especialista em vendas e fundador do Empreendegol. Ajuda empreendedores a ampliarem suas conexões estratégicas e transformarem networking em grandes oportunidades comerciais."
+        "bio": "Empresário, especialista em vendas e fundador do Empreendegol. Ajuda empreendedores a ampliarem suas conexões estratégicas e transformarem networking em grandes oportunidades comerciais."
     },
     {
         "slug": "claudio-dutra",
@@ -132,7 +132,7 @@ authors_data = [
         "book": "Profissional Inquestionável",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/claudiodutra.partner/",
-        "bio": "Claudio Dutra é empresário e fundador da Partner PSE e da CredPartner. Atua com soluções corporativas e comerciais no mercado imobiliário, com vasta experiência em liderança, crédito e vendas."
+        "bio": "Empresário e fundador da Partner PSE e da CredPartner. Atua com soluções corporativas e comerciais no mercado imobiliário, com vasta experiência em liderança, crédito e vendas."
     },
     {
         "slug": "marcio-lira",
@@ -140,7 +140,7 @@ authors_data = [
         "book": "Liderança Inquestionável",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/eusoumarciolira/",
-        "bio": "Marcio Lira é empresário, diretor de operações e sócio da Partner PSE. Focado no desenvolvimento de negócios e processos comerciais, capacita líderes e equipes a evoluírem de forma contínua e responsável."
+        "bio": "Empresário, diretor de operações e sócio da Partner PSE. Focado no desenvolvimento de negócios e processos comerciais, capacita líderes e equipes a evoluírem de forma contínua e responsável."
     },
     {
         "slug": "diego-arcas",
@@ -148,7 +148,7 @@ authors_data = [
         "book": "Despertando os Propósitos de Deus",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/diego.arcas/",
-        "bio": "Diego Arcas é administrador, empresário, jogador de poker e fundador da In Festa Buffet Kids em Joinville. Utiliza estratégia, disciplina e controle emocional como fundamentos para tomada de decisões nos negócios."
+        "bio": "Administrador, empresário, jogador de poker e fundador da In Festa Buffet Kids em Joinville. Utiliza estratégia, disciplina e controle emocional como fundamentos para tomada de decisões nos negócios."
     },
     {
         "slug": "rafael-cavalcanti",
@@ -156,7 +156,7 @@ authors_data = [
         "book": "Os Códigos da Lucratividade",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/rafael.cavalcanti1/",
-        "bio": "Rafael Cavalcanti é empresário e fundador da VITA 24h, rede de hospitais veterinários. Atua com medicina veterinária integrada a tecnologia, processos eficientes, automação e gestão humanizada."
+        "bio": "Empresário e fundador da VITA 24h, rede de hospitais veterinários. Atua com medicina veterinária integrada a tecnologia, processos eficientes, automação e gestão humanizada."
     },
     {
         "slug": "gabriela-mendes",
@@ -164,7 +164,7 @@ authors_data = [
         "book": "Segredos da Saúde Integrativa",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/gabrielamendes.oficial/",
-        "bio": "Dra. Gabriela Mendes é médica-veterinária, empresária e sócia da VITA 24h. Cofundou e gerencia a estrutura hospitalar voltada ao cuidado animal, unindo conhecimento técnico, sensibilidade e liderança."
+        "bio": "Médica-veterinária, empresária e sócia da VITA 24h. Cofundou e gerencia a estrutura hospitalar voltada ao cuidado animal, unindo conhecimento técnico, sensibilidade e liderança."
     },
     {
         "slug": "herick-pereira",
@@ -172,7 +172,7 @@ authors_data = [
         "book": "O Código do Campeão",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/herickpereirafutsal/",
-        "bio": "Herick Pereira é treinador, campeão mundial de futsal e mentor de alta performance. Utiliza disciplina, mentalidade e responsabilidade para formar campeões tanto nas quadras quanto na vida."
+        "bio": "Treinador, campeão mundial de futsal e mentor de alta performance. Utiliza disciplina, mentalidade e responsabilidade para formar campeões tanto nas quadras quanto na vida."
     },
     {
         "slug": "gustavo-da-silva",
@@ -180,7 +180,7 @@ authors_data = [
         "book": "Segredos da Ortopedia Esportiva",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/drgustavo.silva/",
-        "bio": "Dr. Gustavo Silva é médico com atuação na área de saúde mental. Aborda de forma humana e acessível temas como ansiedade, depressão, pânico e insônia, orientando sobre a importância do cuidado profissional."
+        "bio": "Médico com atuação na área de saúde mental. Aborda de forma humana e acessível temas como ansiedade, depressão, pânico e insônia, orientando sobre a importância do cuidado profissional."
     },
     {
         "slug": "edson-fabiano",
@@ -188,7 +188,7 @@ authors_data = [
         "book": "Shammah - O Deus que Ouve",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/fabinho01/",
-        "bio": "Edson Fabiano é cristão, empresário e especialista em tecnologia. Aplica inovação prática para aprimorar processos e, como escritor, compartilha reflexões de fé e revelações sobre a Palavra de Deus."
+        "bio": "Cristão, empresário e especialista em tecnologia. Aplica inovação prática para aprimorar processos e, como escritor, compartilha reflexões de fé e revelações sobre a Palavra de Deus."
     },
     {
         "slug": "manoel-alvino",
@@ -196,7 +196,7 @@ authors_data = [
         "book": "Odonto Business",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/manoelalvino/",
-        "bio": "Manoel Alvino é empresário, gestor e fundador da Rede Ortoestética. Especialista em gestão e lucratividade na odontologia, ajuda profissionais a transformarem clínicas em negócios organizados e rentáveis."
+        "bio": "Empresário, gestor e fundador da Rede Ortoestética. Especialista em gestão e lucratividade na odontologia, ajuda profissionais a transformarem clínicas em negócios organizados e rentáveis."
     },
     {
         "slug": "romulo-costa",
@@ -204,7 +204,7 @@ authors_data = [
         "book": "Comercial de Alta Performance",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/costarom/",
-        "bio": "Rômulo Costa é especialista em vendas e fundador da R&G Soluções Comerciais. Com vasta experiência em representação comercial, ajuda empresas a estruturarem processos e reverterem relações em resultados."
+        "bio": "Especialista em vendas e fundador da R&G Soluções Comerciais. Com vasta experiência em representação comercial, ajuda empresas a estruturarem processos e reverterem relações em resultados."
     },
     {
         "slug": "gislaine-costa",
@@ -212,7 +212,7 @@ authors_data = [
         "book": "Comercial de Alta Performance",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/gislainecpc/",
-        "bio": "Gislaine da Costa é empresária e sócia da R&G Soluções Comerciais. Especialista em vendas e gestão comercial, atua no aprimoramento de processos comerciais, liderança de equipes e relações de confiança."
+        "bio": "Empresária e sócia da R&G Soluções Comerciais. Especialista em vendas e gestão comercial, atua no aprimoramento de processos comerciais, liderança de equipes e relações de confiança."
     },
     {
         "slug": "bruno-barros",
@@ -220,7 +220,7 @@ authors_data = [
         "book": "VIDANOVA & Autoralidade",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/oficialbrunobarros/",
-        "bio": "Bruno Barros é escritor, palestrante, mentor e fundador da Elooo Editora. Autor de VIDANOVA e Autoralidade e criador do ATL System, orienta líderes a transformarem suas trajetórias em livros e autoridade."
+        "bio": "Escritor, palestrante, mentor e fundador da Elooo Editora. Autor de VIDANOVA e Autoralidade e criador do ATL System, orienta líderes a transformarem suas trajetórias em livros e autoridade."
     }
 ]
 
@@ -288,7 +288,7 @@ for author in authors_data:
                         <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">{author['book']}</p>
                         
                         <!-- Small Biography (Centered) -->
-                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">{author['bio']}</p>
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed text-center">{author['bio']}</p>
                     </div>
                     
                     <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
