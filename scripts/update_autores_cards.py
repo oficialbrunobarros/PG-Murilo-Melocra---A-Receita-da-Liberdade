@@ -155,6 +155,41 @@ authors_data = [
         "book": "Shammah - O Deus que Ouve",
         "flag": "circle-flags:br",
         "bio": "Pastor, escritor e mentor espiritual focado em liderança eclesiástica, cura emocional e maturidade cristã."
+    },
+    {
+        "slug": "sergio-canico",
+        "name": "Dr. Sérgio Caniço",
+        "book": "O Poder de Um Sorriso",
+        "flag": "circle-flags:pt",
+        "bio": "Especialista em implantodontia e reabilitação oral, mentoreando profissionais sobre o impacto e o poder de um sorriso."
+    },
+    {
+        "slug": "manoel-alvino",
+        "name": "Manoel Alvino",
+        "book": "Odonto Business",
+        "flag": "circle-flags:br",
+        "bio": "Empresário e cirurgião-dentista, mentor de negócios focado em gestão, marketing e escala financeira para consultórios odontológicos."
+    },
+    {
+        "slug": "romulo-costa",
+        "name": "Rômulo Costa",
+        "book": "Comercial de Alta Performance",
+        "flag": "circle-flags:br",
+        "bio": "Estrategista de vendas e mentor de líderes, especialista em inteligência comercial e fechamento de grandes contas."
+    },
+    {
+        "slug": "gislaine-costa",
+        "name": "Gislaine Costa",
+        "book": "Comercial de Alta Performance",
+        "flag": "circle-flags:br",
+        "bio": "Mentora de alta performance comercial e treinadora corporativa, focada em desenvolvimento humano e escala de vendas."
+    },
+    {
+        "slug": "bruno-barros",
+        "name": "Bruno Barros",
+        "book": "VIDANOVA & Autoralidade",
+        "flag": "circle-flags:br",
+        "bio": "Fundador da ELOOO International Group, estrategista editorial e mentor de posicionamento high-ticket para a elite de líderes e autores."
     }
 ]
 

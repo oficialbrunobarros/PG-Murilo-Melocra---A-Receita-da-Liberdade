@@ -169,6 +169,46 @@ authors = [
         "book": "Shammah - O Deus que Ouve",
         "category": "VIP",
         "points": "310"
+    },
+    {
+        "slug": "sergio-canico",
+        "name": "Dr. Sérgio Caniço",
+        "title_br": "Dr. Sérgio<br>Caniço",
+        "book": "O Poder de Um Sorriso",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
+        "slug": "manoel-alvino",
+        "name": "Manoel Alvino",
+        "title_br": "Manoel<br>Alvino",
+        "book": "Odonto Business",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
+        "slug": "romulo-costa",
+        "name": "Rômulo Costa",
+        "title_br": "Rômulo<br>Costa",
+        "book": "Comercial de Alta Performance",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
+        "slug": "gislaine-costa",
+        "name": "Gislaine Costa",
+        "title_br": "Gislaine<br>Costa",
+        "book": "Comercial de Alta Performance",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
+        "slug": "bruno-barros",
+        "name": "Bruno Barros",
+        "title_br": "Bruno<br>Barros",
+        "book": "VIDANOVA & Autoralidade",
+        "category": "DIAMOND",
+        "points": "2.100"
     }
 ]
 

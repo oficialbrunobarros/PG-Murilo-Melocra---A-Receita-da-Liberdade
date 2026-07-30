@@ -181,6 +181,11 @@
             0% { background-position: 0% center; }
             100% { background-position: -200% center; }
         }
+        /* Gold name hover glow and color */
+        .flashlight-card:hover h3 {
+            color: #d6bc8c !important;
+            text-shadow: 0 0 10px rgba(214, 188, 140, 0.6), 0 0 2px rgba(214, 188, 140, 0.8);
+        }
     </style>
 </head>
 
@@ -1073,6 +1078,201 @@
                     <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
                         <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
                         <a href="autores/edson-fabiano.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Dr. Sérgio Caniço -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/sergio-canico.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Dr. Sérgio Caniço" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Dr. Sérgio Caniço
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Dr. Sérgio Caniço">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:pt" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">O Poder de Um Sorriso</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Especialista em implantodontia e reabilitação oral, mentoreando profissionais sobre o impacto e o poder de um sorriso.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/sergio-canico.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Manoel Alvino -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/manoel-alvino.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Manoel Alvino" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Manoel Alvino
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Manoel Alvino">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Odonto Business</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Empresário e cirurgião-dentista, mentor de negócios focado em gestão, marketing e escala financeira para consultórios odontológicos.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/manoel-alvino.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Rômulo Costa -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/romulo-costa.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Rômulo Costa" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Rômulo Costa
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Rômulo Costa">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Comercial de Alta Performance</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Estrategista de vendas e mentor de líderes, especialista em inteligência comercial e fechamento de grandes contas.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/romulo-costa.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Gislaine Costa -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/gislaine-costa.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Gislaine Costa" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Gislaine Costa
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Gislaine Costa">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">Comercial de Alta Performance</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Mentora de alta performance comercial e treinadora corporativa, focada em desenvolvimento humano e escala de vendas.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/gislaine-costa.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Author Card: Bruno Barros -->
+            <div class="flashlight-card group p-[1.5px] relative overflow-hidden rounded-[32px] transition-all duration-500 bg-stone-900/40">
+                <!-- Rotating light border sweep -->
+                <span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></span>
+                
+                <!-- Inner Container (Holds flashlight and content) -->
+                <div class="flashlight-card-inner relative z-10 w-full h-full bg-[#0c0a09]/95 backdrop-blur-md rounded-[31px] p-6 flex flex-col justify-between" onmousemove="updateFlashlight(event, this)">
+                    <div class="z-10">
+                        <!-- Photo Container -->
+                        <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
+                            <img src="static/images/bruno-barros.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Bruno Barros" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                        </div>
+                        
+                        <!-- Name & Flag & Instagram (Centered & Elevated) -->
+                        <div class="flex items-center justify-center gap-1.5 mb-1">
+                            <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
+                                Bruno Barros
+                            </h3>
+                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de Bruno Barros">
+                                <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
+                            </a>
+                            <iconify-icon icon="circle-flags:br" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
+                        </div>
+                        
+                        <!-- Book Title (Gold & Centered) -->
+                        <p class="font-sans text-xs text-[#d6bc8c] font-medium mt-1 leading-snug text-center">VIDANOVA & Autoralidade</p>
+                        
+                        <!-- Small Biography (Centered) -->
+                        <p class="font-sans text-[11px] text-stone-400 font-light mt-2 leading-relaxed line-clamp-3 min-h-[50px] text-center">Fundador da ELOOO International Group, estrategista editorial e mentor de posicionamento high-ticket para a elite de líderes e autores.</p>
+                    </div>
+                    
+                    <div class="z-10 mt-4 pt-4 border-t border-stone-800/60 flex items-center justify-between">
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 group-hover:text-stone-300 transition-colors">Acessar Perfil</span>
+                        <a href="autores/bruno-barros.html" class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center bg-stone-950 text-stone-400 group-hover:bg-[#d6bc8c] group-hover:text-stone-950 group-hover:border-[#d6bc8c] transition-all duration-300 relative z-20">
                             <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
                         </a>
                     </div>
