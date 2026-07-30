@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>O Jeito Billy Graham de Pregar | ELOOO Editora</title>
+
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Descubra a anatomia da pregação que comoveu nações e levou mais de 3 milhões de pessoas a Cristo. O guia definitivo para pregar com poder, autoridade e simplicidade." />
+    <meta name="keywords" content="Billy Graham, pregação, evangelismo, homilética, liderança cristã, teologia, livros evangélicos" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #fafaf9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+
+        .text-outline-gold {
+            -webkit-text-stroke: 1px #d6bc8c;
+            color: transparent;
+        }
+
+        .gold-glow {
+            text-shadow: 0 0 12px rgba(214, 188, 140, 0.4);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism background details */
+        .ambient-glow-1 {
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.1) 0%, transparent 70%);
+        }
+
+        .ambient-glow-2 {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+        }
+
+        /* Premium flash border sweep */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body class="relative">
+    <!-- NAVBAR -->
+<header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 py-3 relative flex justify-between items-center">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center group cursor-pointer z-50">
+            <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-11 md:h-16 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+        </a>
+
+        <!-- Nav Links (Desktop) -->
+        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-9 text-[13px] font-sans uppercase tracking-[0.18em] text-stone-600 font-medium">
+            <a href="../index.html" class="hover:text-stone-900 transition-colors">Home</a>
+            <a href="../quem-somos.html" class="hover:text-stone-900 transition-colors">Quem Somos</a>
+            <a href="../autores.html" class="hover:text-stone-900 transition-colors">Autores</a>
+            <a href="../livros.html" class="hover:text-stone-900 transition-colors">Livros</a>
+            <a href="../trilhas.html" class="hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
+            <a href="../galeria.html" class="hover:text-stone-900 transition-colors">Galeria</a>
+            <a href="../contato.html" class="hover:text-stone-900 transition-colors">Contato</a>
+        </nav>
+
+        <!-- Action & Hamburger -->
+        <div class="flex items-center gap-4 z-50">
+            <button class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2.5 rounded-full font-bold text-[11px] text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+            <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
+                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
+        <nav class="flex flex-col items-center gap-6 text-[13px] font-sans uppercase tracking-[0.18em] text-white/70 font-medium">
+            <a href="../index.html" class="hover:text-white transition-colors mobile-link">Home</a>
+            <a href="../quem-somos.html" class="hover:text-white transition-colors mobile-link">Quem Somos</a>
+            <a href="../autores.html" class="hover:text-white transition-colors mobile-link">Autores</a>
+            <a href="../livros.html" class="hover:text-white transition-colors mobile-link">Livros</a>
+            <a href="../trilhas.html" class="hover:text-white transition-colors mobile-link">Trilhas Editoriais</a>
+            <a href="../galeria.html" class="hover:text-white transition-colors mobile-link">Galeria</a>
+            <a href="../contato.html" class="hover:text-white transition-colors mobile-link">Contato</a>
+            
+            <!-- CTA on mobile -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm mt-8">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-bold text-[11px] text-white tracking-widest uppercase">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav-link-active {
+        color: #0c0a09 !important;
+        background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%);
+        background-size: 200% auto;
+        border: 1px solid rgba(214, 188, 140, 0.6);
+        border-radius: 9999px;
+        padding: 6px 16px !important;
+        margin: -6px -8px;
+        box-shadow: 0 4px 20px -3px rgba(214, 188, 140, 0.5);
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em !important;
+        transition: all 0.3s ease;
+    }
+    
+    /* Brushed metallic reflection shine sweep overlay */
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.65) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes shineSweep {
+        0% { left: -100%; }
+        25% { left: 150%; }
+        100% { left: 150%; }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const path = window.location.pathname;
+        const currentPath = path.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Normalize path matching
+            const hrefFilename = href.split('/').pop();
+            const isMatch = (hrefFilename === currentPath) ||
+                            (path.includes('/autores/') && hrefFilename === 'autores.html') ||
+                            (path.includes('/livros/') && hrefFilename === 'livros.html');
+                            
+            if (isMatch) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+</script>
+
+
+    <!-- Ambient background glows -->
+    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] ambient-glow-1 pointer-events-none z-0"></div>
+    <div class="absolute top-[120vh] right-1/4 w-[800px] h-[800px] ambient-glow-2 pointer-events-none z-0"></div>
+    <div class="absolute bottom-1/4 left-10 w-[700px] h-[700px] ambient-glow-1 pointer-events-none z-0"></div>
+
+    <!-- 1. HERO SECTION (A Revelação do Segredo) -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 overflow-hidden z-10">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Headline & Copy (Left) -->
+            <div class="lg:col-span-7 flex flex-col justify-center text-left">
+                <!-- Premium Badge -->
+                <div class="inline-flex items-center gap-3 mb-6 border border-stone-800/80 px-4 py-2 rounded-full bg-stone-900/60 backdrop-blur-md w-fit">
+                    <img src="../static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
+                    <div class="w-px h-3 bg-stone-700"></div>
+                    <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-[#d6bc8c] font-medium">Lançamento Exclusivo</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold tracking-tight leading-[1.05] mb-6 text-white">
+                    Como Pregar com <br class="hidden sm:inline">
+                    <span class="text-[#d6bc8c] gold-glow">Poder, Simplicidade</span> <br>
+                    e Autoridade.
+                </h1>
+
+                <!-- Sub-headline / Persuasive hook -->
+                <p class="text-base sm:text-lg md:text-xl text-stone-300 max-w-2xl leading-relaxed mb-8 font-light">
+                    Descubra a anatomia da pregação de Billy Graham, o evangelista que comoveu nações, quebrou a resistência de corações endurecidos e liderou o maior movimento de fé do século XX. O livro que vai transformar sua comunicação no púlpito para sempre.
+                </p>
+
+                <!-- CTA & Trust -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-6">
+                    <a href="#oferta" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.03] transition-all duration-500 shadow-lg hover:shadow-[#d6bc8c]/25 w-full sm:w-auto text-center">
+                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-100"></span>
+                        <span class="relative flex items-center justify-center gap-3 h-full w-full bg-stone-950 px-8 py-4 rounded-full font-medium text-xs sm:text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-stone-900">
+                            Garantir Meu Exemplar
+                            <iconify-icon icon="solar:book-bookmark-bold" class="text-lg text-[#d6bc8c]"></iconify-icon>
+                        </span>
+                    </a>
+                    
+                    <!-- Secure transaction / fast shipping badge -->
+                    <div class="flex items-center gap-3 justify-center sm:justify-start">
+                        <div class="flex -space-x-1">
+                            <iconify-icon icon="ri:shield-check-fill" class="text-2xl text-[#d6bc8c]"></iconify-icon>
+                        </div>
+                        <span class="text-xs text-stone-400 font-mono tracking-wider uppercase">Compra 100% Segura</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Cover (Right) -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <!-- Decorative background elements -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#d6bc8c]/10 to-transparent blur-[120px] rounded-full"></div>
+                
+                <!-- Premium mockup container -->
+                <div class="relative group rounded-[2rem] overflow-hidden border border-stone-800 bg-stone-900/40 p-4 backdrop-blur-sm max-w-[340px] md:max-w-[380px] shadow-2xl transition-all duration-700 hover:border-[#d6bc8c]/40 hover:shadow-[#d6bc8c]/5">
+                    <img src="../static/images/billy-graham-cover.jpg" class="w-full h-auto rounded-2xl shadow-xl transition-all duration-700 group-hover:scale-[1.01] grayscale-[20%] group-hover:grayscale-0" alt="Capa do Livro O Jeito Billy Graham de Pregar">
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 2. OS 3 PILARES OCULTOS DO IMPACTO -->
+    <section class="relative py-24 bg-stone-950/60 border-y border-stone-900 z-10 overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-[#d6bc8c] font-mono text-xs uppercase tracking-[0.25em] block mb-3">O Segredo das Multidões</span>
+                <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight">
+                    O que tornava a voz de Billy Graham <br class="hidden sm:inline">
+                    <span class="font-medium text-[#d6bc8c]">irresistível</span> para milhões?
+                </h2>
+                <p class="text-stone-400 font-light mt-4 text-base sm:text-lg">
+                    Não era apenas carisma natural. Era um método espiritual e técnico rigoroso. Conheça os três pilares que sustentavam cada palavra proclamada por ele.
+                </p>
+            </div>
+
+            <!-- Grid of Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="group relative rounded-[2.5rem] border border-stone-800/80 bg-stone-900/20 p-8 flex flex-col justify-between min-h-[340px] transition-all duration-500 hover:border-[#d6bc8c]/30 hover:bg-stone-900/40">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/5 border border-stone-800 flex items-center justify-center mb-6 group-hover:bg-[#d6bc8c]/10 group-hover:border-[#d6bc8c]/20 transition-all duration-500">
+                            <iconify-icon icon="solar:volume-loud-linear" class="text-white text-2xl group-hover:text-[#d6bc8c] transition-colors"></iconify-icon>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-white mb-3 tracking-wide">A Simplicidade Cortante</h3>
+                        <p class="text-stone-400 font-light text-sm leading-relaxed group-hover:text-stone-300 transition-colors">
+                            Graham não discursava para intelectuais, mas falava ao coração do homem comum. Aprenda a arte de traduzir verdades bíblicas profundas em mensagens simples, claras e comoventes que geram reflexão e despertamento imediato.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative rounded-[2.5rem] border border-stone-800/80 bg-stone-900/20 p-8 flex flex-col justify-between min-h-[340px] transition-all duration-500 hover:border-[#d6bc8c]/30 hover:bg-stone-900/40">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/5 border border-stone-800 flex items-center justify-center mb-6 group-hover:bg-[#d6bc8c]/10 group-hover:border-[#d6bc8c]/20 transition-all duration-500">
+                            <iconify-icon icon="solar:bookmark-opened-linear" class="text-white text-2xl group-hover:text-[#d6bc8c] transition-colors"></iconify-icon>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-white mb-3 tracking-wide">A Autoridade Bíblica</h3>
+                        <p class="text-stone-400 font-light text-sm leading-relaxed group-hover:text-stone-300 transition-colors">
+                            Ele nunca baseava seus discursos em especulações, opiniões pessoais ou teorias vazias, mas apoiava cada argumento na rocha eterna das Escrituras ("A Bíblia diz..."). Saiba como injetar autoridade inabalável e respeito em sua pregação.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative rounded-[2.5rem] border border-stone-800/80 bg-stone-900/20 p-8 flex flex-col justify-between min-h-[340px] transition-all duration-500 hover:border-[#d6bc8c]/30 hover:bg-stone-900/40">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/5 border border-stone-800 flex items-center justify-center mb-6 group-hover:bg-[#d6bc8c]/10 group-hover:border-[#d6bc8c]/20 transition-all duration-500">
+                            <iconify-icon icon="solar:compass-linear" class="text-white text-2xl group-hover:text-[#d6bc8c] transition-colors"></iconify-icon>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-white mb-3 tracking-wide">O Apelo Inevitável</h3>
+                        <p class="text-stone-400 font-light text-sm leading-relaxed group-hover:text-stone-300 transition-colors">
+                            Uma pregação sem convite é apenas uma palestra. Aprenda o método de transição psicológica e espiritual que conduzia os ouvintes com leveza do sermão ao arrependimento, gerando decisões sinceras e conversões reais ao final.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. A ANATOMIA DA OBRA (O que você vai dominar) -->
+    <section class="relative py-24 z-10">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Content Left -->
+                <div class="lg:col-span-5">
+                    <span class="text-[#d6bc8c] font-mono text-xs uppercase tracking-[0.25em] block mb-3">Conteúdo Detalhado</span>
+                    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6">
+                        O roteiro prático <br>
+                        para transformar <br>
+                        <span class="font-medium text-[#d6bc8c]">seus sermões</span>
+                    </h2>
+                    <p class="text-stone-400 font-light mb-8">
+                        Mais do que uma análise histórica, este livro é um manual de ativação ministerial. Cada capítulo contém ferramentas práticas aplicáveis no próximo domingo.
+                    </p>
+
+                    <!-- Trust Stats -->
+                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-stone-800/80">
+                        <div>
+                            <div class="font-display text-3xl font-bold text-white mb-1">200+</div>
+                            <div class="text-xs text-stone-500 font-mono uppercase tracking-wider">Páginas de Sabedoria</div>
+                        </div>
+                        <div>
+                            <div class="font-display text-3xl font-bold text-[#d6bc8c] mb-1">100%</div>
+                            <div class="text-xs text-stone-500 font-mono uppercase tracking-wider">Foco Prático & Bíblico</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline / Accordion Right -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Item 1 -->
+                    <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60">
+                        <div class="flex items-start gap-4">
+                            <div class="font-mono text-xs text-[#d6bc8c] bg-[#d6bc8c]/10 border border-[#d6bc8c]/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">I</div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-white mb-2">O Altar da Preparação</h4>
+                                <p class="text-stone-400 font-light text-sm leading-relaxed">
+                                    Desvende o preparo de Billy Graham nos bastidores. Como a vida devocional, a oração sistemática e o estudo aprofundado se conectam para gerar a unção do orador no púlpito.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60">
+                        <div class="flex items-start gap-4">
+                            <div class="font-mono text-xs text-[#d6bc8c] bg-[#d6bc8c]/10 border border-[#d6bc8c]/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">II</div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-white mb-2">O Design do Sermão</h4>
+                                <p class="text-stone-400 font-light text-sm leading-relaxed">
+                                    Uma estrutura simples que captura a atenção nos primeiros 180 segundos. Como organizar pontos homiléticos lógicos, usar ilustrações marcantes e guiar o público em um crescendo emocional.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60">
+                        <div class="flex items-start gap-4">
+                            <div class="font-mono text-xs text-[#d6bc8c] bg-[#d6bc8c]/10 border border-[#d6bc8c]/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">III</div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-white mb-2">A Linguagem do Espírito</h4>
+                                <p class="text-stone-400 font-light text-sm leading-relaxed">
+                                    A técnica vocal, a postura, o uso da pausa (o silêncio ensurdecedor) e o olhar de compaixão. Domine a linguagem verbal e corporal que traduz sinceridade e gera profunda identificação.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60">
+                        <div class="flex items-start gap-4">
+                            <div class="font-mono text-xs text-[#d6bc8c] bg-[#d6bc8c]/10 border border-[#d6bc8c]/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">IV</div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-white mb-2">Vencendo a Resistência</h4>
+                                <p class="text-stone-400 font-light text-sm leading-relaxed">
+                                    Como desarmar o ceticismo, o cansaço mental e as barreiras intelectuais do ouvinte moderno. Estratégias para conduzir a mensagem de forma persuasiva até o inevitável convite ao altar.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 4. OFERTA IRRECUSÁVEL (Garantia & Fechamento) -->
+    <section id="oferta" class="relative py-24 bg-gradient-to-b from-stone-950/20 to-stone-950 z-10 border-t border-stone-900 overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            
+            <div class="relative rounded-[3rem] border border-stone-800 bg-[#0d0a09]/80 p-8 md:p-16 backdrop-blur-md overflow-hidden">
+                <!-- Background decor -->
+                <div class="absolute -right-20 -top-20 w-[400px] h-[400px] bg-[#d6bc8c]/10 blur-[100px] rounded-full pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-[300px] h-[300px] bg-white/5 blur-[80px] rounded-full pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                    
+                    <!-- Left: Offer Copy -->
+                    <div class="lg:col-span-7">
+                        <span class="text-[#d6bc8c] font-mono text-xs uppercase tracking-[0.25em] block mb-3">Oferta Especial de Lançamento</span>
+                        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6">
+                            O Púlpito te espera. <br>
+                            Sua mensagem <span class="font-medium text-[#d6bc8c]">nunca mais</span> será a mesma.
+                        </h2>
+                        
+                        <p class="text-stone-400 font-light text-base leading-relaxed mb-8">
+                            Aproveite as condições exclusivas de lançamento oficial do ELOOO Editora. Adquira agora o livro físico em edição de luxo com capa dura e receba bônus exclusivos preparados para impulsionar seu ministério de pregação.
+                        </p>
+
+                        <!-- Highlights List -->
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center gap-3 text-stone-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-xl text-[#d6bc8c]"></iconify-icon>
+                                <span class="text-sm font-light">Edição de luxo exclusiva em capa dura e papel de alta gramatura</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-stone-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-xl text-[#d6bc8c]"></iconify-icon>
+                                <span class="text-sm font-light">Frete Grátis para todo o Brasil (apenas esta semana)</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-stone-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-xl text-[#d6bc8c]"></iconify-icon>
+                                <span class="text-sm font-light">Bônus: PDF complementar com o roteiro de sermões esboçados por Graham</span>
+                            </li>
+                        </ul>
+
+                        <!-- Unconditional Guarantee Badge -->
+                        <div class="flex items-start gap-4 p-5 rounded-2xl bg-stone-900/60 border border-stone-800 max-w-lg">
+                            <iconify-icon icon="solar:medal-ribbon-bold-duotone" class="text-4xl text-[#d6bc8c] shrink-0"></iconify-icon>
+                            <div>
+                                <h5 class="text-sm font-bold text-white mb-1">Garantia Incondicional de 7 Dias</h5>
+                                <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                    Leia o livro. Se você achar que a metodologia de Billy Graham não acrescentou poder e simplicidade à sua comunicação, nós devolvemos 100% do seu dinheiro. Sem burocracia.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Pricing Card -->
+                    <div class="lg:col-span-5">
+                        <div class="rounded-3xl border border-stone-800 bg-[#0c0a09] p-8 md:p-10 shadow-2xl relative">
+                            <!-- Popular tag -->
+                            <span class="absolute -top-3 right-6 bg-[#d6bc8c] text-stone-950 font-mono text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Preço Promocional</span>
+                            
+                            <div class="text-center pb-6 border-b border-stone-800/80">
+                                <span class="text-stone-500 font-mono text-xs uppercase tracking-widest block mb-2">Adquirir Livro Capa Dura</span>
+                                <div class="flex items-baseline justify-center gap-2">
+                                    <span class="text-stone-500 line-through text-sm">R$ 89,90</span>
+                                    <span class="font-display text-4xl sm:text-5xl font-extrabold text-[#d6bc8c]">R$ 47,90</span>
+                                </div>
+                                <span class="text-stone-400 text-xs font-light block mt-2">Pagamento único ou em até 3x sem juros</span>
+                            </div>
+
+                            <!-- Form elements / Checkout CTA -->
+                            <div class="pt-6 space-y-4">
+                                <a href="https://pay.eloooeditora.com.br/billygraham" target="_blank" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full block text-center shadow-lg hover:shadow-[#d6bc8c]/20">
+                                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100"></span>
+                                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#d6bc8c] hover:bg-[#cbb080] text-stone-950 py-4 rounded-full font-bold text-xs sm:text-sm tracking-widest uppercase transition-colors duration-500">
+                                        Quero Pregar com Poder
+                                        <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                                    </span>
+                                </a>
+
+                                <!-- Secure checkout details -->
+                                <div class="flex flex-col items-center justify-center gap-3 pt-4 border-t border-stone-900">
+                                    <span class="text-[10px] font-mono text-stone-500 uppercase tracking-widest">Ambiente de pagamento criptografado</span>
+                                    <div class="flex items-center gap-4 opacity-55">
+                                        <iconify-icon icon="logos:visa" class="text-lg"></iconify-icon>
+                                        <iconify-icon icon="logos:mastercard" class="text-lg"></iconify-icon>
+                                        <iconify-icon icon="logos:pix" class="text-lg"></iconify-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+
+        <div class="flex items-center group cursor-pointer">
+            <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
+        </div>
+
+        <div class="text-xs font-mono uppercase tracking-widest flex gap-6">
+            <a href="#" class="hover:text-white transition-colors">Termos</a>
+            <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-white transition-colors">Suporte</a>
+        </div>
+
+        <div class="text-xs text-stone-600 font-mono tracking-widest uppercase">
+            &copy; 2026 ELOOO International Group.<br class="md:hidden"> Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        // Registrar GSAP e ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Animação de entrada suave para elementos com a classe reveal-up
+            const revealElements = document.querySelectorAll('.reveal-up');
+            
+            // Ativa os elementos da Hero logo ao carregar
+            const heroReveals = document.querySelectorAll('section:first-of-type .reveal-up');
+            heroReveals.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, 150 * index);
+            });
+
+            // Configura ScrollTrigger para elementos das seções subsequentes
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const elements = section.querySelectorAll('.reveal-up');
+                if (elements.length > 0) {
+                    ScrollTrigger.create({
+                        trigger: section,
+                        start: "top 75%",
+                        onEnter: () => {
+                            elements.forEach((el, index) => {
+                                setTimeout(() => {
+                                    el.classList.add('active');
+                                }, 100 * index);
+                            });
+                        },
+                        once: true
+                    });
+                }
+            });
+
+            // GSAP Parallax sutil no fundo
+            gsap.to(".ambient-glow-1", {
+                y: 100,
+                duration: 2,
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true
+                }
+            });
+            gsap.to(".ambient-glow-2", {
+                y: -150,
+                duration: 2,
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
