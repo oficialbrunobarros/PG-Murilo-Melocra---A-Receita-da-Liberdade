@@ -8,6 +8,7 @@ authors_data = [
         "name": "Tatiana Fonseca",
         "book": "Permaneça - O Caminho para a Plenitude",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/tatiana.vfonseca/",
         "bio": "Mentora de desenvolvimento pessoal, ajuda mulheres a alcançarem a plenitude espiritual e inteligência emocional em suas jornadas."
     },
     {
@@ -15,6 +16,7 @@ authors_data = [
         "name": "Dr. Sávio Cardoso",
         "book": "O Código da Vitalidade Masculina",
         "flag": "circle-flags:pt",
+        "instagram": "https://www.instagram.com/drsaviocardoso/",
         "bio": "Médico andrologista e mentor em saúde masculina na Europa, focado em alta performance, longevidade e vigor biológico."
     }, # Position 2 (Portugal)
     {
@@ -22,6 +24,7 @@ authors_data = [
         "name": "Kenje Kambara",
         "book": "Os Segredos do Lojista B2B & Mercado Automotivo",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/kenjekambara/",
         "bio": "Especialista em escala comercial e negócios B2B/B2C, mentorando lojistas e empresários do setor automotivo."
     },
     {
@@ -29,6 +32,7 @@ authors_data = [
         "name": "Berenice Duarte Borba",
         "book": "De Ateu ao Encontro com Deus Pai",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/bereniceduartte/",
         "bio": "Escritora e mentora espiritual, dedica sua vida a guiar pessoas no caminho do autoconhecimento e conexão com a fé."
     },
     # Row 2
@@ -37,6 +41,7 @@ authors_data = [
         "name": "Dr. Sérgio Caniço",
         "book": "O Poder de Um Sorriso",
         "flag": "circle-flags:pt",
+        "instagram": "https://www.instagram.com/drsergiocanico/",
         "bio": "Especialista em implantodontia e reabilitação oral, mentoreando profissionais sobre o impacto e o poder de um sorriso."
     }, # Position 5 (Portugal)
     {
@@ -44,6 +49,7 @@ authors_data = [
         "name": "Dr. Murilo Melocra",
         "book": "A Receita da Liberdade",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/murilomelocra/",
         "bio": "Médico de alta performance e fundador da ELOOO. Especialista em gestão patrimonial, investimentos e liberdade profissional."
     },
     {
@@ -51,6 +57,7 @@ authors_data = [
         "name": "Dra. Vanessa Rodrigues",
         "book": "Emagreça Saudável e Feliz",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/dravanessarodriguess/",
         "bio": "Médica integrativa especialista em emagrecimento saudável, promovendo reprogramação metabólica e bem-estar."
     },
     {
@@ -58,6 +65,7 @@ authors_data = [
         "name": "Berg Junior",
         "book": "Recalculando a Rota",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/bergjunior6/",
         "bio": "Estrategista de negócios e mentor de carreira, focado em ajudar profissionais a recalcularem suas rotas rumo ao sucesso."
     },
     # Row 3
@@ -66,6 +74,7 @@ authors_data = [
         "name": "Carine Aparecida",
         "book": "Além da Beleza",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/carineaparecida/",
         "bio": "Especialista em estética de alta autoridade e desenvolvimento pessoal, revelando a beleza que transcende o espelho."
     },
     {
@@ -73,6 +82,7 @@ authors_data = [
         "name": "Franklyn Fuck",
         "book": "O Maná do Vendedor",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/franklynfuck/",
         "bio": "Treinador de vendas e mentor de times comerciais, especialista em negociação de alto impacto e fechamento de contratos."
     },
     {
@@ -80,6 +90,7 @@ authors_data = [
         "name": "Dr. Fernando Merlos",
         "book": "Alma Médica",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/merlos.fernando/",
         "bio": "Médico humanista, mentor e palestrante focado na essência da medicina e no resgate da Alma Médica."
     },
     {
@@ -87,6 +98,7 @@ authors_data = [
         "name": "Douglas Vacilotto",
         "book": "Rompendo Fronteiras",
         "flag": "circle-flags:es",
+        "instagram": "https://www.instagram.com/vacilo77o/",
         "bio": "Empresário com atuação internacional, mentor de internacionalização de negócios e atração de capital na Europa."
     }, # Position 12 (Spain)
     # Row 4+
@@ -95,6 +107,7 @@ authors_data = [
         "name": "Dimas Neto",
         "book": "A Arte da Persistência",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/dimais.neto/",
         "bio": "Empresário e palestrante motivacional, ensina os segredos da persistência e superação de limites no empreendedorismo."
     },
     {
@@ -102,6 +115,7 @@ authors_data = [
         "name": "Anildo Silva",
         "book": "A Missão do Fundador",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/anildosilvabr/",
         "bio": "Fundador de grandes marcas, mentor de liderança executiva especializado em governança corporativa e sucessão."
     },
     {
@@ -109,6 +123,7 @@ authors_data = [
         "name": "Hewandro Entringer",
         "book": "Os Códigos do Networking",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/hewandroentringer/",
         "bio": "Especialista em parcerias estratégicas e networking de elite, mentorando profissionais a construírem conexões milionárias."
     },
     {
@@ -116,6 +131,7 @@ authors_data = [
         "name": "Cláudio Dutra",
         "book": "Profissional Inquestionável",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/claudiodutra.partner/",
         "bio": "Consultor de alta performance e mentor de executivos, especialista no desenvolvimento de profissionais inquestionáveis."
     },
     {
@@ -123,6 +139,7 @@ authors_data = [
         "name": "Márcio Lira",
         "book": "Liderança Inquestionável",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/eusoumarciolira/",
         "bio": "Mentor de líderes e empresários, especializado em desenvolvimento de equipes e posicionamento profissional inquestionável."
     },
     {
@@ -130,6 +147,7 @@ authors_data = [
         "name": "Diego Arcas",
         "book": "Despertando os Propósitos de Deus",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/diego.arcas/",
         "bio": "Teólogo, mentor espiritual e palestrante especializado em guiar pessoas no despertar do propósito divino de vida."
     },
     {
@@ -137,6 +155,7 @@ authors_data = [
         "name": "Rafael Cavalcanti",
         "book": "Os Códigos da Lucratividade",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/rafael.cavalcanti1/",
         "bio": "Estrategista financeiro e mentor de negócios, focado em escala de lucros e otimização de fluxo de caixa."
     },
     {
@@ -144,6 +163,7 @@ authors_data = [
         "name": "Dra. Gabriela Mendes",
         "book": "Segredos da Saúde Integrativa",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/gabrielamendes.oficial/",
         "bio": "Especialista em saúde integrativa e longevidade saudável, mentoreando profissionais a alcançarem alta performance física."
     },
     {
@@ -151,6 +171,7 @@ authors_data = [
         "name": "Herick Pereira",
         "book": "O Código do Campeão",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/herickpereirafutsal/",
         "bio": "Atleta profissional e mentor esportivo, especialista no desenvolvimento de mentalidade vencedora e foco absoluto."
     },
     {
@@ -158,13 +179,15 @@ authors_data = [
         "name": "Dr. Gustavo da Silva",
         "book": "Segredos da Ortopedia Esportiva",
         "flag": "circle-flags:br",
-        "bio": "Médico especialista em medicina esportiva and ortopedia, focado em reabilitação de alta performance e performance física."
+        "instagram": "https://www.instagram.com/drgustavo.silva/",
+        "bio": "Médico especialista em medicina esportiva e ortopedia, focado em reabilitação de alta performance e performance física."
     },
     {
         "slug": "edson-fabiano",
         "name": "Edson Fabiano",
         "book": "Shammah - O Deus que Ouve",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/fabinho01/",
         "bio": "Pastor, escritor e mentor espiritual focado em liderança eclesiástica, cura emocional e maturidade cristã."
     },
     {
@@ -172,6 +195,7 @@ authors_data = [
         "name": "Manoel Alvino",
         "book": "Odonto Business",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/manoelalvino/",
         "bio": "Empresário e cirurgião-dentista, mentor de negócios focado em gestão, marketing e escala financeira para consultórios odontológicos."
     },
     {
@@ -179,6 +203,7 @@ authors_data = [
         "name": "Rômulo Costa",
         "book": "Comercial de Alta Performance",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/costarom/",
         "bio": "Estrategista de vendas e mentor de líderes, especialista em inteligência comercial e fechamento de grandes contas."
     },
     {
@@ -186,6 +211,7 @@ authors_data = [
         "name": "Gislaine Costa",
         "book": "Comercial de Alta Performance",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/gislainecpc/",
         "bio": "Mentora de alta performance comercial e treinadora corporativa, focada em desenvolvimento humano e escala de vendas."
     },
     {
@@ -193,6 +219,7 @@ authors_data = [
         "name": "Bruno Barros",
         "book": "VIDANOVA & Autoralidade",
         "flag": "circle-flags:br",
+        "instagram": "https://www.instagram.com/oficialbrunobarros/",
         "bio": "Fundador da ELOOO International Group, estrategista editorial e mentor de posicionamento high-ticket para a elite de líderes e autores."
     }
 ]
@@ -251,7 +278,7 @@ for author in authors_data:
                             <h3 class="font-display text-[15px] sm:text-base font-semibold text-white tracking-wide transition-colors duration-500 whitespace-nowrap">
                                 {author['name']}
                             </h3>
-                            <a href="https://www.instagram.com/" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de {author['name']}">
+                            <a href="{author['instagram']}" target="_blank" class="text-stone-400 hover:text-[#d6bc8c] transition-colors flex items-center shrink-0" title="Instagram de {author['name']}">
                                 <iconify-icon icon="ri:instagram-line" class="text-sm"></iconify-icon>
                             </a>
                             <iconify-icon icon="{author['flag']}" class="text-sm shrink-0 shadow-[0_2px_4px_rgba(0,0,0,0.4)] rounded-full"></iconify-icon>
