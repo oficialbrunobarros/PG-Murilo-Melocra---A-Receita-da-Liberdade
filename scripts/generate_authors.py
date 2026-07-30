@@ -20,8 +20,8 @@ authors = [
     },
     {
         "slug": "berenice-duarte-borba",
-        "name": "Berenice Duarte Borba",
-        "title_br": "Berenice<br>Duarte Borba",
+        "name": "Berenice Duarte",
+        "title_br": "Berenice<br>Duarte",
         "book": "De Ateu ao Encontro com Deus Pai",
         "category": "PRIME",
         "points": "978"
@@ -36,8 +36,8 @@ authors = [
     },
     {
         "slug": "berg-junior",
-        "name": "Berg Junior",
-        "title_br": "Berg<br>Junior",
+        "name": "Berg Júnior",
+        "title_br": "Berg<br>Júnior",
         "book": "Recalculando a Rota",
         "category": "VIP",
         "points": "640"
@@ -52,8 +52,8 @@ authors = [
     },
     {
         "slug": "franklyn-fuck",
-        "name": "Franklyn Fuck",
-        "title_br": "Franklyn<br>Fuck",
+        "name": "Franklyn Rafael Fuck",
+        "title_br": "Franklyn Rafael<br>Fuck",
         "book": "O Maná do Vendedor",
         "category": "VIP",
         "points": "534"
@@ -100,17 +100,17 @@ authors = [
     },
     {
         "slug": "claudio-dutra",
-        "name": "Cláudio Dutra",
-        "title_br": "Cláudio<br>Dutra",
+        "name": "Claudio Dutra",
+        "title_br": "Claudio<br>Dutra",
         "book": "Profissional Inquestionável",
         "category": "VIP",
         "points": "408"
     },
     {
         "slug": "marcio-lira",
-        "name": "Márcio Lira",
-        "title_br": "Márcio<br>Lira",
-        "book": "Profissional Inquestionável",
+        "name": "Marcio Lira",
+        "title_br": "Marcio<br>Lira",
+        "book": "Liderança Inquestionável",
         "category": "VIP",
         "points": "408"
     },
@@ -134,7 +134,7 @@ authors = [
         "slug": "gabriela-mendes",
         "name": "Dra. Gabriela Mendes",
         "title_br": "Dra. Gabriela<br>Mendes",
-        "book": "Título a definir",
+        "book": "Segredos da Saúde Integrativa",
         "category": "VIP",
         "points": "408"
     },
@@ -148,9 +148,9 @@ authors = [
     },
     {
         "slug": "gustavo-da-silva",
-        "name": "Dr. Gustavo da Silva",
-        "title_br": "Dr. Gustavo<br>da Silva",
-        "book": "Título a definir",
+        "name": "Dr. Gustavo Silva",
+        "title_br": "Dr. Gustavo<br>Silva",
+        "book": "Segredos da Ortopedia Esportiva",
         "category": "VIP",
         "points": "408"
     },
@@ -196,8 +196,8 @@ authors = [
     },
     {
         "slug": "gislaine-costa",
-        "name": "Gislaine Costa",
-        "title_br": "Gislaine<br>Costa",
+        "name": "Gislaine da Costa",
+        "title_br": "Gislaine da<br>Costa",
         "book": "Comercial de Alta Performance",
         "category": "VIP",
         "points": "408"
