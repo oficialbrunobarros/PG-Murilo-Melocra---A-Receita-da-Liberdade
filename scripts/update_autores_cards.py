@@ -239,7 +239,7 @@ for author in authors_data:
                     <div class="z-10">
                         <!-- Photo Container -->
                         <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-stone-850 border border-stone-800/80">
-                            <img src="{img_path}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="{author['name']}" onerror="this.src='static/images/FOTO MURILO.jpeg'; this.style.filter='grayscale(1) brightness(0.6)';">
+                            <img src="{img_path}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="{author['name']}" onerror="this.src='static/images/avatar_placeholder.png'; this.style.filter='grayscale(1) brightness(0.6)';">
                         </div>
                         
                         <!-- Name & Flag & Instagram (Centered & Elevated) -->
