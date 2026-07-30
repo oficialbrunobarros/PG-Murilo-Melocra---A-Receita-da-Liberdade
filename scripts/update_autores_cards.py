@@ -2,6 +2,7 @@ import os
 
 # Author data with names, books, flags, and custom biographies
 authors_data = [
+    # Row 1
     {
         "slug": "tatiana-fonseca",
         "name": "Tatiana Fonseca",
@@ -9,6 +10,13 @@ authors_data = [
         "flag": "circle-flags:br",
         "bio": "Mentora de desenvolvimento pessoal, ajuda mulheres a alcançarem a plenitude espiritual e inteligência emocional em suas jornadas."
     },
+    {
+        "slug": "savio-cardoso",
+        "name": "Dr. Sávio Cardoso",
+        "book": "O Código da Vitalidade Masculina",
+        "flag": "circle-flags:pt",
+        "bio": "Médico andrologista e mentor em saúde masculina na Europa, focado em alta performance, longevidade e vigor biológico."
+    }, # Position 2 (Portugal)
     {
         "slug": "kenje-kambara",
         "name": "Kenje Kambara",
@@ -23,6 +31,14 @@ authors_data = [
         "flag": "circle-flags:br",
         "bio": "Escritora e mentora espiritual, dedica sua vida a guiar pessoas no caminho do autoconhecimento e conexão com a fé."
     },
+    # Row 2
+    {
+        "slug": "sergio-canico",
+        "name": "Dr. Sérgio Caniço",
+        "book": "O Poder de Um Sorriso",
+        "flag": "circle-flags:pt",
+        "bio": "Especialista em implantodontia e reabilitação oral, mentoreando profissionais sobre o impacto e o poder de um sorriso."
+    }, # Position 5 (Portugal)
     {
         "slug": "murilo-melocra",
         "name": "Dr. Murilo Melocra",
@@ -44,6 +60,7 @@ authors_data = [
         "flag": "circle-flags:br",
         "bio": "Estrategista de negócios e mentor de carreira, focado em ajudar profissionais a recalcularem suas rotas rumo ao sucesso."
     },
+    # Row 3
     {
         "slug": "carine-aparecida",
         "name": "Carine Aparecida",
@@ -66,6 +83,14 @@ authors_data = [
         "bio": "Médico humanista, mentor e palestrante focado na essência da medicina e no resgate da Alma Médica."
     },
     {
+        "slug": "douglas-vacilotto",
+        "name": "Douglas Vacilotto",
+        "book": "Rompendo Fronteiras",
+        "flag": "circle-flags:es",
+        "bio": "Empresário com atuação internacional, mentor de internacionalização de negócios e atração de capital na Europa."
+    }, # Position 12 (Spain)
+    # Row 4+
+    {
         "slug": "dimas-neto",
         "name": "Dimas Neto",
         "book": "A Arte da Persistência",
@@ -78,13 +103,6 @@ authors_data = [
         "book": "A Missão do Fundador",
         "flag": "circle-flags:br",
         "bio": "Fundador de grandes marcas, mentor de liderança executiva especializado em governança corporativa e sucessão."
-    },
-    {
-        "slug": "savio-cardoso",
-        "name": "Dr. Sávio Cardoso",
-        "book": "O Código da Vitalidade Masculina",
-        "flag": "circle-flags:pt",
-        "bio": "Médico andrologista e mentor em saúde masculina na Europa, focado em alta performance, longevidade e vigor biológico."
     },
     {
         "slug": "hewandro-entringer",
@@ -140,14 +158,7 @@ authors_data = [
         "name": "Dr. Gustavo da Silva",
         "book": "Segredos da Ortopedia Esportiva",
         "flag": "circle-flags:br",
-        "bio": "Médico especialista em medicina esportiva e ortopedia, focado em reabilitação de alta performance e performance física."
-    },
-    {
-        "slug": "douglas-vacilotto",
-        "name": "Douglas Vacilotto",
-        "book": "Rompendo Fronteiras",
-        "flag": "circle-flags:es",
-        "bio": "Empresário com atuação internacional, mentor de internacionalização de negócios e atração de capital na Europa."
+        "bio": "Médico especialista em medicina esportiva and ortopedia, focado em reabilitação de alta performance e performance física."
     },
     {
         "slug": "edson-fabiano",
@@ -155,13 +166,6 @@ authors_data = [
         "book": "Shammah - O Deus que Ouve",
         "flag": "circle-flags:br",
         "bio": "Pastor, escritor e mentor espiritual focado em liderança eclesiástica, cura emocional e maturidade cristã."
-    },
-    {
-        "slug": "sergio-canico",
-        "name": "Dr. Sérgio Caniço",
-        "book": "O Poder de Um Sorriso",
-        "flag": "circle-flags:pt",
-        "bio": "Especialista em implantodontia e reabilitação oral, mentoreando profissionais sobre o impacto e o poder de um sorriso."
     },
     {
         "slug": "manoel-alvino",
