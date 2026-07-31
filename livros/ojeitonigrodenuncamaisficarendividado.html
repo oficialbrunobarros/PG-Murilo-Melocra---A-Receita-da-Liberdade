@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>O Jeito Nigro de Nunca Mais Ficar Endividado | ELOOO Editora</title>
+
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Descubra os 12 princípios inspirados na trajetória pública de Thiago Nigro para eliminar dívidas, fazer o dinheiro sobrar e conquistar liberdade financeira." />
+    <meta name="keywords" content="Thiago Nigro, Primo Rico, eliminar dívidas, finanças pessoais, e-book finanças, Bruno Barros, liberdade financeira" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            light: '#e8d3b0',
+                            DEFAULT: '#d6bc8c',
+                            dark: '#bd9e66',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #fafaf9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .gold-glow {
+            text-shadow: 0 0 15px rgba(214, 188, 140, 0.4);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ambient glows matching gold theme */
+        .ambient-gold-1 {
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.08) 0%, transparent 70%);
+        }
+
+        .ambient-glow-2 {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body class="relative">
+    <!-- NAVBAR -->
+<header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 py-3 relative flex justify-between items-center">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center group cursor-pointer z-50">
+            <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-11 md:h-16 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+        </a>
+
+        <!-- Nav Links (Desktop) -->
+        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-9 text-[13px] font-sans uppercase tracking-[0.18em] text-stone-600 font-medium">
+            <a href="../index.html" class="hover:text-stone-900 transition-colors">Home</a>
+            <a href="../quem-somos.html" class="hover:text-stone-900 transition-colors">Quem Somos</a>
+            <a href="../autores.html" class="hover:text-stone-900 transition-colors">Autores</a>
+            <a href="../livros.html" class="hover:text-stone-900 transition-colors">Livros</a>
+            <a href="../trilhas.html" class="hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
+            <a href="../galeria.html" class="hover:text-stone-900 transition-colors">Galeria</a>
+            <a href="../contato.html" class="hover:text-stone-900 transition-colors">Contato</a>
+        </nav>
+
+        <!-- Action & Hamburger -->
+        <div class="flex items-center gap-4 z-50">
+            <button class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2.5 rounded-full font-bold text-[11px] text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+            <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
+                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
+        <nav class="flex flex-col items-center gap-6 text-[13px] font-sans uppercase tracking-[0.18em] text-white/70 font-medium">
+            <a href="../index.html" class="hover:text-white transition-colors mobile-link">Home</a>
+            <a href="../quem-somos.html" class="hover:text-white transition-colors mobile-link">Quem Somos</a>
+            <a href="../autores.html" class="hover:text-white transition-colors mobile-link">Autores</a>
+            <a href="../livros.html" class="hover:text-white transition-colors mobile-link">Livros</a>
+            <a href="../trilhas.html" class="hover:text-white transition-colors mobile-link">Trilhas Editoriais</a>
+            <a href="../galeria.html" class="hover:text-white transition-colors mobile-link">Galeria</a>
+            <a href="../contato.html" class="hover:text-white transition-colors mobile-link">Contato</a>
+            
+            <!-- CTA on mobile -->
+            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm mt-8">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100"></span>
+                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-bold text-[11px] text-white tracking-widest uppercase">
+                    Faça Parte da Elite Autoral
+                </span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .nav-link-active {
+        color: #0c0a09 !important;
+        background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%);
+        background-size: 200% auto;
+        border: 1px solid rgba(214, 188, 140, 0.6);
+        border-radius: 9999px;
+        padding: 6px 16px !important;
+        margin: -6px -8px;
+        box-shadow: 0 4px 20px -3px rgba(214, 188, 140, 0.5);
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        font-weight: 600 !important;
+        letter-spacing: 0.15em !important;
+        transition: all 0.3s ease;
+    }
+    
+    /* Brushed metallic reflection shine sweep overlay */
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.65) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(30deg);
+        animation: shineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes shineSweep {
+        0% { left: -100%; }
+        25% { left: 150%; }
+        100% { left: 150%; }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const path = window.location.pathname;
+        const currentPath = path.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Normalize path matching
+            const hrefFilename = href.split('/').pop();
+            const isMatch = (hrefFilename === currentPath) ||
+                            (path.includes('/autores/') && hrefFilename === 'autores.html') ||
+                            (path.includes('/livros/') && hrefFilename === 'livros.html');
+                            
+            if (isMatch) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+</script>
+
+
+    <!-- Ambient background glows -->
+    <div class="absolute top-0 right-1/4 w-[600px] h-[600px] ambient-gold-1 pointer-events-none z-0"></div>
+    <div class="absolute top-[110vh] left-1/4 w-[800px] h-[800px] ambient-glow-2 pointer-events-none z-0"></div>
+    <div class="absolute bottom-1/4 right-10 w-[700px] h-[700px] ambient-gold-1 pointer-events-none z-0"></div>
+
+    <!-- 1. HERO SECTION (A Revelação & Escassez) -->
+    <section class="relative min-h-[95vh] flex items-center justify-center pt-28 pb-16 overflow-hidden z-10">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Headline & Copy (Left) -->
+            <div class="lg:col-span-7 flex flex-col justify-center text-left">
+                <!-- Premium Badge -->
+                <div class="inline-flex items-center gap-3 mb-6 border border-stone-800/80 px-4 py-2 rounded-full bg-stone-900/60 backdrop-blur-md w-fit">
+                    <img src="../static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
+                    <div class="w-px h-3 bg-stone-700"></div>
+                    <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-gold font-medium">E-Book Exclusivo</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold tracking-tight leading-[1.05] mb-6 text-white">
+                    Você Não Sai das Dívidas <br>
+                    Apenas Ganhando <br class="hidden sm:inline">
+                    <span class="text-gold gold-glow">Mais Dinheiro</span>.
+                </h1>
+
+                <!-- Sub-headline / Persuasive hook -->
+                <p class="text-base sm:text-lg md:text-xl text-stone-300 max-w-2xl leading-relaxed mb-6 font-light">
+                    Você sai quando aprende a tomar decisões financeiras diferentes da maioria. Conheça os 12 princípios inspirados na trajetória pública de Thiago Nigro para eliminar dívidas, fazer o dinheiro sobrar e conquistar liberdade financeira.
+                </p>
+
+                <!-- Scarcity Warning Box -->
+                <div class="mb-8 p-4 rounded-2xl bg-stone-950 border border-stone-900 flex items-start gap-3 max-w-xl">
+                    <iconify-icon icon="solar:danger-circle-bold" class="text-xl text-gold shrink-0 mt-0.5"></iconify-icon>
+                    <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        <strong class="text-white">Atenção:</strong> A edição física deste livro está temporariamente <span class="text-red-500 font-medium">ESGOTADA</span> devido à alta demanda. Garanta agora a sua **edição digital (E-Book completo)** com preço promocional exclusivo por tempo limitado.
+                    </p>
+                </div>
+
+                <!-- CTA & Trust -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-6">
+                    <a href="#oferta" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.03] transition-all duration-500 shadow-lg hover:shadow-gold/25 w-full sm:w-auto text-center">
+                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-100"></span>
+                        <span class="relative flex items-center justify-center gap-3 h-full w-full bg-stone-950 px-8 py-4 rounded-full font-medium text-xs sm:text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-stone-900">
+                            Garantir E-Book Promocional
+                            <iconify-icon icon="solar:download-bold" class="text-lg text-gold"></iconify-icon>
+                        </span>
+                    </a>
+                    
+                    <!-- Secure transaction badge -->
+                    <div class="flex items-center gap-3 justify-center sm:justify-start">
+                        <iconify-icon icon="ri:lock-fill" class="text-xl text-gold"></iconify-icon>
+                        <span class="text-xs text-stone-400 font-mono tracking-wider uppercase">Download Imediato</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Cover Mockup (Right) -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <!-- Glowing background -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-gold/15 to-transparent blur-[120px] rounded-full"></div>
+                
+                <!-- Premium mockup container -->
+                <div class="relative group rounded-[2.5rem] overflow-hidden border border-stone-800 bg-stone-900/40 p-4 backdrop-blur-sm max-w-[340px] md:max-w-[370px] shadow-2xl transition-all duration-700 hover:border-gold/40 hover:shadow-gold/5">
+                    <img src="../static/images/jeito-nigro-mockup.png" class="w-full h-auto rounded-2xl shadow-xl transition-all duration-700 group-hover:scale-[1.02]" alt="Mockup 3D O Jeito Nigro de Nunca Mais Ficar Endividado">
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 2. OS 12 PRINCÍPIOS (Anatomia do Livro) -->
+    <section class="relative py-24 bg-stone-950/60 border-y border-stone-900 z-10 overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-gold font-mono text-xs uppercase tracking-[0.25em] block mb-3">O Roteiro da Liberdade</span>
+                <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight">
+                    Os 12 princípios fundamentais para <br class="hidden sm:inline">
+                    <span class="font-medium text-gold">zerar as dívidas</span> e prosperar
+                </h2>
+                <p class="text-stone-400 font-light mt-4 text-base sm:text-lg">
+                    Construído como um guia direto de transformação comportamental. Conheça os pilares que serão destravados em sua mente ao ler a obra:
+                </p>
+            </div>
+
+            <!-- Grid of 12 Principles -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Principle 1 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">01</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">A Decisão Fundamental</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Como encarar a realidade dos números sem rodeios e tomar a resolução emocional de romper permanentemente com a inadimplência.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 2 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">02</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Estancar Vazamentos</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Descubra como mapear e eliminar os pequenos e invisíveis gastos diários que sugam o seu salário silenciosamente antes do fim do mês.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 3 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">03</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Controle da Realidade</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Esqueça planilhas enfadonhas. Desenvolva um orçamento simples e flexível feito para a rotina diária real de quem deseja ter paz.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 4 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">04</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Quitação Estratégica</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            A ordem exata matemática e de comportamento para liquidar os credores, negociar descontos e evitar juros abusivos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 5 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">05</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Gastar Como os Ricos</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Entenda a distinção fundamental entre preço e valor, vencendo impulsos de compra que mantêm a maioria na estagnação.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 6 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">06</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">A Sobra Mensal Garantida</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Como inverter a lógica financeira: pague a si mesmo primeiro e crie margem financeira de forma estruturada e previsível.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 7 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">07</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Reserva de Segurança</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Quanto, como e onde investir seu colchão de segurança para que imprevistos diários nunca mais façam você retornar ao ciclo das dívidas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 8 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">08</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Aumentar a Renda</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Como desenvolver habilidades valorizadas pelo mercado e acelerar a recuperação financeira por meio de fontes alternativas de receitas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 9 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">09</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Dinheiro Trabalha para Você</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Vença o medo dos investimentos. Entenda como funciona a multiplicação de juros compostos a seu favor, saindo da base de consumo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 10 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">10</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Patrimônio com Disciplina</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            O poder sutil dos pequenos aportes frequentes ao longo do tempo. Como manter a cabeça fria e focar no longo prazo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 11 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">11</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">Blindagem do Futuro</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Crie barreiras permanentes em seu comportamento para evitar reincidir nos velhos hábitos de financiamento e parcelamento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Principle 12 -->
+                <div class="p-6 rounded-3xl border border-stone-800/60 bg-stone-900/10 backdrop-blur-sm transition-all duration-300 hover:border-stone-700/60 flex items-start gap-4">
+                    <div class="font-mono text-xs text-gold bg-gold/10 border border-gold/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0">12</div>
+                    <div>
+                        <h4 class="font-display text-base font-semibold text-white mb-1">A Conseqüência Final</h4>
+                        <p class="text-stone-400 font-light text-xs leading-relaxed">
+                            Descubra o real conceito de liberdade financeira: a paz de espírito para fazer escolhas por propósito e não por sobrevivência.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. GALERIA & AUTORIDADE -->
+    <section class="relative py-24 z-10">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left: Autograph Signing Image & Author Quote -->
+                <div class="lg:col-span-6 flex flex-col gap-6">
+                    <div class="rounded-3xl overflow-hidden border border-stone-800 bg-stone-900/40 p-4 shadow-xl">
+                        <img src="../static/images/jeito-nigro-signing.jpg" class="w-full h-auto rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 shadow-md" alt="Bruno Barros assinando o livro em noite de autógrafos">
+                    </div>
+                    
+                    <div class="p-6 border-l-2 border-gold bg-stone-950/40 rounded-r-3xl">
+                        <p class="text-stone-300 font-light text-sm italic leading-relaxed">
+                            "Mudar a vida financeira não tem relação com equações matemáticas complexas, mas com a transformação de hábitos. Cada princípio deste livro foi validado na prática observando quem constrói patrimônio real no Brasil."
+                        </p>
+                        <span class="text-xs font-mono text-gold uppercase tracking-wider block mt-3">— Bruno Barros, Editor & Autor</span>
+                    </div>
+                </div>
+
+                <!-- Right: Book in Casual Setting Image & Text -->
+                <div class="lg:col-span-6 space-y-8">
+                    <span class="text-gold font-mono text-xs uppercase tracking-[0.25em] block">Sua Próxima Leitura</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-light text-white leading-tight">
+                        Um manual para <br>
+                        ter sempre à mão
+                    </h2>
+                    
+                    <p class="text-stone-400 font-light text-base leading-relaxed">
+                        Projetado para leitura dinâmica e rápida, a obra foca em aplicação diária direta. Cada capítulo funciona como um módulo consultável para momentos cruciais de tomada de decisões de investimento ou corte de gastos.
+                    </p>
+
+                    <div class="rounded-3xl overflow-hidden border border-stone-800 bg-stone-900/40 p-4 shadow-xl max-w-md">
+                        <img src="../static/images/jeito-nigro-table.jpg" class="w-full h-auto rounded-2xl grayscale hover:grayscale-0 transition-all duration-500" alt="Livro em cima de uma mesa de café com anotações">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. OFERTA IRRECUSÁVEL (Fechamento) -->
+    <section id="oferta" class="relative py-24 bg-gradient-to-b from-stone-950/20 to-stone-950 z-10 border-t border-stone-900 overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            
+            <div class="relative rounded-[3rem] border border-stone-800 bg-[#0d0a09]/80 p-8 md:p-16 backdrop-blur-md overflow-hidden">
+                <!-- Background decor -->
+                <div class="absolute -right-20 -top-20 w-[400px] h-[400px] bg-[#d6bc8c]/10 blur-[100px] rounded-full pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-[300px] h-[300px] bg-white/5 blur-[80px] rounded-full pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                    
+                    <!-- Left: Offer Copy -->
+                    <div class="lg:col-span-7">
+                        <span class="text-gold font-mono text-xs uppercase tracking-[0.25em] block mb-3">Versão Digital Pronta Entrega</span>
+                        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6">
+                            Assuma o controle. <br>
+                            Seu futuro financeiro <br class="hidden sm:inline">
+                            depende desta <span class="font-medium text-gold">decisão</span>.
+                        </h2>
+                        
+                        <p class="text-stone-400 font-light text-base leading-relaxed mb-8">
+                            Adquira a versão digital (e-book completo) compatível com celulares, tablets, computadores e leitores Kindle. O arquivo em PDF e ePub será entregue de forma automática no seu e-mail logo após a confirmação.
+                        </p>
+
+                        <!-- Highlights List -->
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center gap-3 text-stone-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-xl text-[#d6bc8c]"></iconify-icon>
+                                <span class="text-sm font-light">E-Book completo com os 12 capítulos e bônus integrados</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-stone-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-xl text-[#d6bc8c]"></iconify-icon>
+                                <span class="text-sm font-light">Acesso vitalício aos formatos PDF e ePub</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-stone-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-xl text-[#d6bc8c]"></iconify-icon>
+                                <span class="text-sm font-light">Leitura imediata sem custo de frete</span>
+                            </li>
+                        </ul>
+
+                        <!-- Unconditional Guarantee Badge -->
+                        <div class="flex items-start gap-4 p-5 rounded-2xl bg-stone-900/60 border border-stone-800 max-w-lg">
+                            <iconify-icon icon="solar:lock-keyhole-bold" class="text-4xl text-gold shrink-0"></iconify-icon>
+                            <div>
+                                <h5 class="text-sm font-bold text-white mb-1">Garantia Satisfação ou Seu Dinheiro de Volta</h5>
+                                <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                    Adquira o e-book. Se em até 7 dias você achar que o conteúdo não é aplicável ou útil para a sua recuperação financeira, basta solicitar a devolução e faremos o reembolso total.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Pricing Card -->
+                    <div class="lg:col-span-5">
+                        <div class="rounded-3xl border border-stone-800 bg-[#0c0a09] p-8 md:p-10 shadow-2xl relative">
+                            <!-- Popular tag -->
+                            <span class="absolute -top-3 right-6 bg-gold text-stone-950 font-mono text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">Livro Digital</span>
+                            
+                            <div class="text-center pb-6 border-b border-stone-800/80">
+                                <span class="text-stone-500 font-mono text-xs uppercase tracking-widest block mb-2">Edição Digital E-Book</span>
+                                <div class="flex items-baseline justify-center gap-2">
+                                    <span class="text-stone-500 line-through text-sm">R$ 79,90</span>
+                                    <span class="font-display text-4xl sm:text-5xl font-extrabold text-gold">R$ 32,80</span>
+                                </div>
+                                <span class="text-stone-400 text-xs font-light block mt-2">Pagamento único. Acesso imediato no e-mail.</span>
+                            </div>
+
+                            <!-- Checkout Action -->
+                            <div class="pt-6 space-y-4">
+                                <a href="https://pay.eloooeditora.com.br/ ThiagoNigro" target="_blank" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full block text-center shadow-lg hover:shadow-gold/20">
+                                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100"></span>
+                                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#d6bc8c] hover:bg-[#cbb080] text-stone-950 py-4 rounded-full font-bold text-xs sm:text-sm tracking-widest uppercase transition-colors duration-500">
+                                        Quero Meu Livro Digital
+                                        <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                                    </span>
+                                </a>
+
+                                <!-- Secure checkout details -->
+                                <div class="flex flex-col items-center justify-center gap-3 pt-4 border-t border-stone-900">
+                                    <span class="text-[10px] font-mono text-stone-500 uppercase tracking-widest">Transação Segura Hasteada por SSL</span>
+                                    <div class="flex items-center gap-4 opacity-55">
+                                        <iconify-icon icon="logos:visa" class="text-lg"></iconify-icon>
+                                        <iconify-icon icon="logos:mastercard" class="text-lg"></iconify-icon>
+                                        <iconify-icon icon="logos:pix" class="text-lg"></iconify-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+
+        <div class="flex items-center group cursor-pointer">
+            <img src="../static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-8 md:h-12 object-contain transition-transform hover:scale-105" style="filter: brightness(0) invert(1);">
+        </div>
+
+        <div class="text-xs font-mono uppercase tracking-widest flex gap-6">
+            <a href="#" class="hover:text-white transition-colors">Termos</a>
+            <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-white transition-colors">Suporte</a>
+        </div>
+
+        <div class="text-xs text-stone-600 font-mono tracking-widest uppercase">
+            &copy; 2026 ELOOO International Group.<br class="md:hidden"> Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        // Registrar GSAP e ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Ativa os elementos da Hero logo ao carregar
+            const heroReveals = document.querySelectorAll('section:first-of-type .reveal-up');
+            heroReveals.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, 150 * index);
+            });
+
+            // Configura ScrollTrigger para elementos das seções subsequentes
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const elements = section.querySelectorAll('.reveal-up');
+                if (elements.length > 0) {
+                    ScrollTrigger.create({
+                        trigger: section,
+                        start: "top 75%",
+                        onEnter: () => {
+                            elements.forEach((el, index) => {
+                                setTimeout(() => {
+                                    el.classList.add('active');
+                                }, 100 * index);
+                            });
+                        },
+                        once: true
+                    });
+                }
+            });
+
+            // GSAP Parallax sutil no fundo
+            gsap.to(".ambient-gold-1", {
+                y: 100,
+                duration: 2,
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true
+                }
+            });
+            gsap.to(".ambient-glow-2", {
+                y: -150,
+                duration: 2,
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
