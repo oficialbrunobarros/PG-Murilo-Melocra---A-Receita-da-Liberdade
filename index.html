@@ -8,8 +8,8 @@
     <meta name="description" content="Bem-vindos ao Ecossistema ELOOO Global. Os 4 pilares de alta performance: Editora Internacional, Academy, Bio Premium e Content.">
 
     <script>
-        // If accessed via bio subdomain, immediately forward to bio landing page
-        if (window.location.hostname.startsWith('bio.') || window.location.hostname.includes('bio.elooo')) {
+        // If accessed via epremium or bio subdomain, immediately forward to bio landing page
+        if (window.location.hostname.startsWith('epremium.') || window.location.hostname.startsWith('bio.') || window.location.hostname.includes('epremium.elooo') || window.location.hostname.includes('bio.elooo')) {
             var p = window.location.pathname;
             if (!p.startsWith('/bio')) {
                 window.location.replace('/bio' + (p === '/' ? '' : p) + window.location.search + window.location.hash);
@@ -655,14 +655,14 @@
                             ELOOO VITRINE PREMIUM
                         </h2>
                         <p class="font-sans text-stone-300 text-sm sm:text-base font-light leading-relaxed mb-8">
-                            A vitrine de produtos e serviços de ultra luxo para redes sociais. Equipada com Inteligência Artificial que atende seus clientes, qualifica dúvidas e conduz o fechamento de vendas 24h por dia no automático.
+                            A vitrine de produtos e serviços de alto padrão para redes sociais. Equipada com Inteligência Artificial que atende seus clientes, qualifica dúvidas e conduz o fechamento de vendas 24h por dia no automático.
                         </p>
 
                         <!-- Highlights List -->
                         <div class="space-y-2.5 mb-10 pt-4 border-t border-white/10 text-xs font-mono text-stone-300">
                             <div class="flex items-center gap-2">
                                 <span class="text-[#d6bc8c]">✦</span>
-                                <span>Vitrine de Ultra Luxo para Redes Sociais</span>
+                                <span>Vitrine de Alto Padrão para Redes Sociais</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <span class="text-[#d6bc8c]">✦</span>
