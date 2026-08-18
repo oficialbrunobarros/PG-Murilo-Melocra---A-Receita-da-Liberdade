@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>404 - Página Não Encontrada | ELOOO International Group</title>
+
+    <script>
+        // If accessed via bio subdomain and route is not found (wrong username or invalid link), redirect to bio home
+        if (window.location.hostname.startsWith('bio.') || window.location.hostname.includes('bio.elooo')) {
+            window.location.replace('/');
+        }
+    </script>
     <meta name="description" content="A página que você procura não está disponível no ecossistema ELOOO International Group.">
     <meta property="og:title" content="404 - Página Não Encontrada | ELOOO International Group">
     <meta property="og:description" content="A editora de elite de maior impacto no mercado internacional.">

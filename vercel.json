@@ -53,6 +53,16 @@
       "destination": "/bio/privacidade.html"
     },
     {
+      "source": "/brunobarros",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/brunobarros.html"
+    },
+    {
       "source": "/leticia-vaz",
       "has": [
         {
@@ -60,7 +70,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/leticia-vaz.html"
+      "destination": "/bio/brunobarros.html"
     },
     {
       "source": "/demo",
@@ -70,7 +80,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/demo.html"
+      "destination": "/bio/brunobarros.html"
     },
     {
       "source": "/:path*",

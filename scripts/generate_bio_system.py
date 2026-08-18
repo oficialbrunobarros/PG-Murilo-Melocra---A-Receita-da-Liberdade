@@ -110,19 +110,6 @@ LANDING_HTML = """<!DOCTYPE html>
             background: linear-gradient(90deg, transparent, #d6bc8c, transparent);
             animation: scanLine 4s linear infinite;
         }
-
-        .gold-shimmer {
-            background: linear-gradient(110deg, #475569 0%, #475569 35%, #d6bc8c 50%, #475569 65%, #475569 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: lv-shimmer 4.5s linear infinite;
-        }
-
-        @keyframes lv-shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
     </style>
 </head>
 <body class="antialiased selection:bg-stone-900 selection:text-white">
@@ -140,7 +127,7 @@ LANDING_HTML = """<!DOCTYPE html>
                 <a href="#problema" class="hover:text-stone-900 transition-colors">Por que</a>
                 <a href="#como" class="hover:text-stone-900 transition-colors">Como funciona</a>
                 <a href="#planos" class="hover:text-stone-900 transition-colors">Planos</a>
-                <a href="leticia-vaz.html" target="_blank" class="hover:text-stone-900 transition-colors flex items-center gap-1">
+                <a href="brunobarros.html" target="_blank" class="hover:text-stone-900 transition-colors flex items-center gap-1">
                     <span>Bio Demo</span>
                     <iconify-icon icon="solar:arrow-right-up-linear" class="text-xs"></iconify-icon>
                 </a>
@@ -408,12 +395,12 @@ LANDING_HTML = """<!DOCTYPE html>
                             Veja uma bio rodando <span class="font-display italic text-stone-700">de verdade</span>.
                         </h2>
                         <p class="text-base sm:text-lg mt-5 text-stone-600 leading-relaxed">
-                            Esta é a demonstração oficial de bio de alta conversão servida pela infraestrutura da ELOOO. Toque, interaja, navegue pelos blocos e pelo concierge. É exatamente assim que vai funcionar para você.
+                            Esta é a demonstração oficial de bio de alta conversão do autor e mentor <strong class="text-stone-900">Bruno Barros</strong>, servida pela infraestrutura da ELOOO. Toque, interaja, navegue pelos blocos e pelo concierge. É exatamente assim que vai funcionar para você.
                         </p>
                         
                         <div class="mt-8 flex flex-wrap gap-3">
-                            <a href="leticia-vaz.html" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-stone-950 text-white font-bold text-sm shadow-md hover:bg-stone-800 hover:scale-[1.02] transition-all">
-                                <span>Abrir a bio em tela cheia</span>
+                            <a href="brunobarros.html" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-stone-950 text-white font-bold text-sm shadow-md hover:bg-stone-800 hover:scale-[1.02] transition-all">
+                                <span>Abrir a bio de Bruno Barros em tela cheia</span>
                                 <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
                             </a>
                             <a href="cadastrar.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-stone-900 border border-stone-200 font-bold text-sm hover:bg-stone-100 hover:scale-[1.02] transition-all">
@@ -439,8 +426,8 @@ LANDING_HTML = """<!DOCTYPE html>
                             
                             <!-- Iframe Screen -->
                             <div class="relative rounded-[36px] overflow-hidden h-[580px] bg-stone-900">
-                                <iframe src="leticia-vaz.html" title="Bio Demo Ao Vivo" class="w-full h-full border-0"></iframe>
-                                <a href="leticia-vaz.html" target="_blank" class="absolute inset-0 flex items-end justify-center pb-6 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 hover:opacity-100 transition-opacity">
+                                <iframe src="brunobarros.html" title="Bio Demo Ao Vivo" class="w-full h-full border-0"></iframe>
+                                <a href="brunobarros.html" target="_blank" class="absolute inset-0 flex items-end justify-center pb-6 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 hover:opacity-100 transition-opacity">
                                     <span class="text-xs font-bold tracking-wider uppercase px-5 py-2.5 rounded-full bg-white text-stone-950 shadow-xl">
                                         Abrir bio completa →
                                     </span>
@@ -1055,7 +1042,7 @@ ENTRAR_HTML = """<!DOCTYPE html>
                     Não tem conta? <a class="font-bold underline text-stone-900 hover:text-black" href="cadastrar.html">Criar conta</a>
                 </p>
 
-                <form class="space-y-5" onsubmit="event.preventDefault(); alert('Login efetuado com sucesso! Redirecionando para o dashboard...');">
+                <form class="space-y-5" onsubmit="event.preventDefault(); alert('Login efetuado com sucesso! Redirecionando para o painel...');">
                     <div>
                         <label for="email" class="block text-sm font-medium mb-1.5 text-stone-900">E-mail</label>
                         <input id="email" type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm outline-none bg-stone-50 border border-stone-300 focus:border-stone-900 transition-all text-stone-900"/>
@@ -1360,14 +1347,15 @@ PRIVACIDADE_HTML = """<!DOCTYPE html>
 """
 
 # ----------------------------------------------------
-# 6. BIO DEMO (src/bio/leticia-vaz.html & src/bio/demo.html)
+# 6. BIO BRUNO BARROS (src/bio/brunobarros.html)
 # ----------------------------------------------------
-DEMO_BIO_HTML = """<!DOCTYPE html>
+BRUNO_BARROS_BIO_HTML = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Letícia Vaz — Bio Oficial ELOOO BIO PREMIUM</title>
+    <title>Bruno Barros — Bio Oficial ELOOO BIO PREMIUM</title>
+    <meta name="description" content="Fundador da ELOOO International Group, autor e mentor de negócios de alta performance."/>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1380,7 +1368,7 @@ DEMO_BIO_HTML = """<!DOCTYPE html>
     <style>
         body {
             font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-            background: #1c1c1f;
+            background: #111113;
             color: #ffffff;
             margin: 0;
             padding: 0;
@@ -1398,13 +1386,20 @@ DEMO_BIO_HTML = """<!DOCTYPE html>
         .netflix-scroll::-webkit-scrollbar { display: none; }
 
         .bio-btn {
-            background: #000000;
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            background: rgba(24, 24, 27, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
             transition: all 0.2s ease;
         }
         .bio-btn:hover {
             transform: scale(1.02);
-            border-color: rgba(255, 255, 255, 0.4);
+            border-color: rgba(214, 188, 140, 0.5);
+            background: rgba(39, 39, 42, 0.95);
+        }
+
+        .gold-border-glow {
+            border: 1px solid rgba(214, 188, 140, 0.4);
+            box-shadow: 0 0 25px -5px rgba(214, 188, 140, 0.15);
         }
     </style>
 </head>
@@ -1414,100 +1409,143 @@ DEMO_BIO_HTML = """<!DOCTYPE html>
         
         <!-- Profile Header -->
         <div class="text-center flex flex-col items-center mb-6">
-            <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-stone-600 shadow-2xl mb-3 relative">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" alt="Letícia Vaz" class="w-full h-full object-cover"/>
+            <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#d6bc8c]/60 shadow-2xl mb-3 relative bg-stone-900">
+                <img src="static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop';"/>
             </div>
-            <h1 class="text-2xl font-bold text-white tracking-tight">Letícia Vaz</h1>
+            
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-1.5">
+                <iconify-icon icon="solar:verified-check-bold"></iconify-icon>
+                <span>ELOOO International Group</span>
+            </div>
+
+            <h1 class="text-2xl font-bold text-white tracking-tight">Bruno Barros</h1>
             <p class="text-xs text-stone-400 mt-1 max-w-xs leading-relaxed">
-                Responda 3 perguntas e descubra o melhor caminho para crescer seu negócio comigo ↓
+                Autor, Mentor & Fundador. Descubra em 3 perguntas o melhor caminho para o seu projeto ↓
             </p>
         </div>
 
         <!-- Social Icons Row -->
-        <div class="flex justify-center gap-3 py-2 flex-wrap">
-            <a href="https://instagram.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
+        <div class="flex justify-center gap-3 py-1 flex-wrap">
+            <a href="https://instagram.com/oficialbrunobarros" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-amber-300 transition-all">
                 <iconify-icon icon="solar:camera-linear"></iconify-icon>
             </a>
-            <a href="https://tiktok.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
-                <iconify-icon icon="solar:video-library-linear"></iconify-icon>
+            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Vim%20pela%20sua%20bio%20e%20quero%20conversar." target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-emerald-400 transition-all">
+                <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
             </a>
-            <a href="https://youtube.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
+            <a href="https://youtube.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-red-400 transition-all">
                 <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
             </a>
-            <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
+            <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-blue-400 transition-all">
                 <iconify-icon icon="solar:link-minimalistic-linear"></iconify-icon>
             </a>
         </div>
 
         <!-- Concierge AI Button -->
-        <button onclick="alert('Iniciando Concierge Inteligente...');" class="bio-btn w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-2xl relative overflow-hidden group">
-            <div class="w-11 h-11 rounded-xl bg-white/20 text-white flex items-center justify-center text-xl flex-none">
+        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20fazer%20meu%20diagn%C3%B3stico%20de%20autoridade%20e%20publica%C3%A7%C3%A3o%20editorial." target="_blank" class="bio-btn w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-2xl relative overflow-hidden group gold-border-glow">
+            <div class="w-11 h-11 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-xl flex-none">
                 <iconify-icon icon="solar:bolt-circle-bold"></iconify-icon>
             </div>
             <div class="flex-1 min-w-0">
-                <p class="font-bold text-sm text-white leading-tight">Como eu posso crescer seu negócio?</p>
-                <p class="text-xs text-stone-400 mt-0.5">Entenda seu momento atual e receba o produto ideal!</p>
+                <p class="font-bold text-sm text-white leading-tight">Qual o próximo passo para o seu negócio?</p>
+                <p class="text-xs text-stone-400 mt-0.5">Descubra seu momento e receba a orientação ideal!</p>
             </div>
-            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white text-xs flex-none">
+            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white text-xs flex-none group-hover:translate-x-1 transition-transform">
                 →
             </div>
-        </button>
+        </a>
 
-        <!-- Horizontal Netflix Carousel of Products -->
+        <!-- Horizontal Netflix Carousel of Solutions -->
         <div class="pt-2">
             <h2 class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3 flex items-center gap-1.5">
-                <iconify-icon icon="solar:play-bold" class="text-stone-500"></iconify-icon>
-                <span>COMO POSSO TE AJUDAR HOJE:</span>
+                <iconify-icon icon="solar:play-bold" class="text-amber-400"></iconify-icon>
+                <span>PROJETOS & SOLUÇÕES DE ALTA PERFORMANCE:</span>
             </h2>
 
             <div class="netflix-scroll">
-                <!-- Card 1 -->
-                <div class="w-[148px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=300&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover rounded-xl mb-2"/>
-                    <p class="text-xs font-bold text-white leading-tight truncate">10 ESTRATÉGIAS DE MARKETING</p>
-                    <span class="inline-block mt-2 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black text-stone-400">Ver detalhes</span>
+                <!-- Card 1: Livro -->
+                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 relative">
+                            <img src="static/images/recalculando-cover.png" onerror="this.src='static/images/bruno-barros.png';" class="w-full h-full object-cover"/>
+                        </div>
+                        <p class="text-xs font-bold text-white leading-tight">VIDANOVA & AUTORALIDADE</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5">Livro Oficial</p>
+                    </div>
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20do%20Bruno%20Barros." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                        Adquirir Livro
+                    </a>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="w-[148px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2">
-                    <img src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?q=80&w=300&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover rounded-xl mb-2"/>
-                    <p class="text-xs font-bold text-white leading-tight truncate">TIKTOK: ESTRATÉGIA E VENDAS</p>
-                    <span class="inline-block mt-2 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black text-stone-400">Ver detalhes</span>
+                <!-- Card 2: Editora -->
+                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 flex items-center justify-center p-3">
+                            <img src="static/images/ELOOO LOGO.png" class="w-full object-contain filter brightness-0 invert"/>
+                        </div>
+                        <p class="text-xs font-bold text-white leading-tight">PUBLICAÇÃO EDITORIAL</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5">Editora Internacional</p>
+                    </div>
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20saber%20como%20publicar%20meu%20livro%20com%20a%20Editora%20Elooo." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                        Publicar Livro
+                    </a>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="w-[148px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2">
-                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=300&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover rounded-xl mb-2"/>
-                    <p class="text-xs font-bold text-white leading-tight truncate">PLANEJAMENTO ESTRATÉGICO</p>
-                    <span class="inline-block mt-2 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black text-stone-400">Ver detalhes</span>
+                <!-- Card 3: Mentoria -->
+                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-gradient-to-br from-stone-800 to-stone-950 flex flex-col items-center justify-center p-2 text-center">
+                            <iconify-icon icon="solar:crown-line-duotone" class="text-3xl text-amber-400 mb-1"></iconify-icon>
+                            <span class="text-[11px] font-bold text-stone-300">MENTORIA VIP</span>
+                        </div>
+                        <p class="text-xs font-bold text-white leading-tight">MENTORIA EXECUTIVA</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5">Individual & Estratégica</p>
+                    </div>
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20Mentoria%20Individual%20do%20Bruno%20Barros." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                        Candidatura
+                    </a>
+                </div>
+
+                <!-- Card 4: ELOOO BIO -->
+                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 flex flex-col items-center justify-center p-2 text-center">
+                            <iconify-icon icon="solar:cpu-bolt-linear" class="text-3xl text-emerald-400 mb-1"></iconify-icon>
+                            <span class="text-[11px] font-bold text-stone-300">ELOOO BIO</span>
+                        </div>
+                        <p class="text-xs font-bold text-white leading-tight">ELOOO BIO PREMIUM</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5">Plataforma de Conversão</p>
+                    </div>
+                    <a href="index.html" target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                        Criar Minha Bio
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Featured Book Link -->
-        <a href="https://amazon.com.br" target="_blank" class="bio-btn block w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-lg">
-            <div class="w-12 h-12 rounded-xl bg-stone-800 flex-none overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover"/>
+        <!-- Direct Editorial Publishing Link -->
+        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20publicar%20meu%20livro%20pela%20Editora%20Elooo." target="_blank" class="bio-btn block w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-lg">
+            <div class="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-amber-300 text-2xl flex-none">
+                <iconify-icon icon="solar:book-bookmark-bold"></iconify-icon>
             </div>
             <div class="flex-1 min-w-0">
-                <p class="font-bold text-sm text-white leading-tight">10 ESTRATÉGIAS DE MARKETING</p>
-                <p class="text-xs text-stone-400 mt-0.5">MEU LIVRO | Disponível na Amazon</p>
+                <p class="font-bold text-sm text-white leading-tight">QUERO PUBLICAR MEU LIVRO</p>
+                <p class="text-xs text-stone-400 mt-0.5">Editora ELOOO | Brasil, Cascais & Madrid</p>
             </div>
             <iconify-icon icon="solar:arrow-right-up-linear" class="text-stone-400 text-base"></iconify-icon>
         </a>
 
-        <!-- WhatsApp Support Channels -->
-        <a href="https://wa.me/5547988660791" target="_blank" class="block w-full p-4 rounded-2xl bg-gradient-to-br from-emerald-900/40 to-stone-900 border border-emerald-500/30 text-white hover:scale-[1.02] transition-transform">
+        <!-- WhatsApp VIP Direct Channel -->
+        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Vim%20pelo%20seu%20link%20na%20bio." target="_blank" class="block w-full p-4 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-stone-900 border border-emerald-500/30 text-white hover:scale-[1.02] transition-transform">
             <div class="flex items-center gap-3 mb-2">
                 <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
                     <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
                 </div>
                 <div>
-                    <p class="font-bold text-xs text-white">WhatsApp Oficial</p>
+                    <p class="font-bold text-xs text-white">WhatsApp Direto</p>
                     <p class="text-[11px] text-stone-400">+55 (47) 98866-0791</p>
                 </div>
             </div>
-            <p class="text-xs font-bold text-stone-300">PALESTRAS, MENTORIAS & PARCERIAS</p>
+            <p class="text-xs font-bold text-stone-300">PALESTRAS, MENTORIAS & PARCERIAS INTERNACIONAIS</p>
         </a>
 
         <!-- Footer Branding -->
@@ -1524,19 +1562,22 @@ DEMO_BIO_HTML = """<!DOCTYPE html>
 """
 
 def generate_all():
-    print("Generating ELOOO BIO PREMIUM pages...")
+    print("Generating ELOOO BIO PREMIUM pages with Bruno Barros bio...")
     save("src/bio/index.html", LANDING_HTML)
     save("src/bio/entrar.html", ENTRAR_HTML)
     save("src/bio/cadastrar.html", CADASTRAR_HTML)
     save("src/bio/termos.html", TERMOS_HTML)
     save("src/bio/privacidade.html", PRIVACIDADE_HTML)
-    save("src/bio/leticia-vaz.html", DEMO_BIO_HTML)
-    save("src/bio/demo.html", DEMO_BIO_HTML)
+    
+    # Save Bruno Barros Bio
+    save("src/bio/brunobarros.html", BRUNO_BARROS_BIO_HTML)
+    # Redirect alias for leticia-vaz and demo
+    save("src/bio/leticia-vaz.html", BRUNO_BARROS_BIO_HTML)
+    save("src/bio/demo.html", BRUNO_BARROS_BIO_HTML)
     
     # Also create root alias src/bio.html
     save("src/bio.html", LANDING_HTML)
-    print("All pages generated successfully!")
+    print("All bio pages generated successfully!")
 
 if __name__ == "__main__":
     generate_all()
-
