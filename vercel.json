@@ -152,6 +152,28 @@
       "has": [
         {
           "type": "host",
+          "value": "pg-murilo-melocra-a-receita-da-libe.vercel.app"
+        }
+      ],
+      "destination": "https://bio.elooo.com.br/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "eloooeditora.vercel.app"
+        }
+      ],
+      "destination": "https://editora.elooo.com.br/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
           "value": "bio.elooo.com.br"
         }
       ],
