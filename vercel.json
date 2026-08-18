@@ -1,6 +1,88 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/index.html"
+    },
+    {
+      "source": "/entrar",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/entrar.html"
+    },
+    {
+      "source": "/cadastrar",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/cadastrar.html"
+    },
+    {
+      "source": "/termos",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/termos.html"
+    },
+    {
+      "source": "/privacidade",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/privacidade.html"
+    },
+    {
+      "source": "/leticia-vaz",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/leticia-vaz.html"
+    },
+    {
+      "source": "/demo",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/demo.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/static/(.*)",
@@ -20,7 +102,7 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "SAMEORIGIN"
         },
         {
           "key": "X-XSS-Protection",

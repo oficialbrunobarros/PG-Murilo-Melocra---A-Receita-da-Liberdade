@@ -6,6 +6,16 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>ELOOO International Group | Premium Authors & Books</title>
 
+    <script>
+        // If accessed via bio subdomain, immediately forward to bio landing page
+        if (window.location.hostname.startsWith('bio.') || window.location.hostname.includes('bio.elooo')) {
+            var p = window.location.pathname;
+            if (!p.startsWith('/bio')) {
+                window.location.replace('/bio' + (p === '/' ? '' : p) + window.location.search + window.location.hash);
+            }
+        }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
