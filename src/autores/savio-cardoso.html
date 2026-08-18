@@ -14,7 +14,7 @@
     <!-- Fonts: Space Grotesk + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -68,11 +68,8 @@
     </script>
 
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
         body {
-            background-color: #060608;
+            background-color: #0c0a09;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -84,13 +81,13 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Continuous shimmering liquid gold text sweep effect */
+        /* Continuous shimmering liquid gold text sweep effect from autores.html */
         .gold-text-sweep {
-            background: linear-gradient(90deg, #d6bc8c 0%, #faeac7 25%, #d6bc8c 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: goldSweep 5s linear infinite;
+            animation: goldSweep 6s linear infinite;
         }
         @keyframes goldSweep {
             0% { background-position: 0% center; }
@@ -150,131 +147,132 @@
             color: #000000 !important;
         }
 
-        /* CONIC ROTATING LASER BORDER BEAM EFFECT */
-        @keyframes rotateLaserBeam {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* FLASHLIGHT CARDS IDENTICAL TO AUTORES.HTML */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .laser-beam-card {
-            position: relative;
-            border-radius: 28px;
-            overflow: hidden;
-            background: rgba(14, 12, 11, 0.85);
-            border: 1px solid rgba(214, 188, 140, 0.15);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(20px);
-        }
-
-        .laser-beam-card .beam-spinner {
-            position: absolute;
-            inset: -150%;
-            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.5) 25%, transparent 50%, rgba(250, 234, 199, 0.8) 75%, transparent 100%);
-            animation: rotateLaserBeam 6s linear infinite;
-            opacity: 0.18;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
-
-        .laser-beam-card:hover .beam-spinner {
-            opacity: 0.85;
-            animation-duration: 3.5s;
-        }
-
-        .laser-beam-card:hover {
-            border-color: rgba(214, 188, 140, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(214, 188, 140, 0.2);
-        }
-
-        .laser-beam-card .inner-content {
-            position: relative;
-            z-index: 10;
-            background: rgba(12, 10, 9, 0.94);
-            border-radius: 26.5px;
-            margin: 1.5px;
-            height: calc(100% - 3px);
-        }
-
-        /* FLASHLIGHT EFFECT */
         .flashlight-card {
             position: relative;
-            background: rgba(16, 14, 13, 0.7);
-            border: 1px solid rgba(214, 188, 140, 0.2);
-            border-radius: 28px;
+            background: rgba(28, 25, 23, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(16px);
+            transition: border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+            backface-visibility: hidden;
         }
 
-        .flashlight-card::before {
+        .flashlight-card span.spin-border {
+            animation: none !important;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        .flashlight-card:hover span.spin-border {
+            animation: spin 4s linear infinite !important;
+            opacity: 1 !important;
+        }
+
+        .flashlight-card-inner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 29px;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 16, 14, 0.92);
+            backdrop-filter: blur(16px);
+            transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .flashlight-card-inner::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(650px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(214, 188, 140, 0.18), transparent 45%);
+            background: radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(214, 188, 140, 0.45), transparent 60%);
             z-index: 1;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
-        .flashlight-card:hover::before {
-            opacity: 1;
+        .flashlight-card-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(214, 188, 140, 0.12), transparent);
+            transform: skewX(-25deg);
+            z-index: 2;
+            pointer-events: none;
+            transition: none;
         }
 
         .flashlight-card:hover {
-            border-color: rgba(214, 188, 140, 0.6);
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(214, 188, 140, 0.2);
+            transform: translateY(-6px) scale(1.015);
+            border-color: transparent;
+            background-color: rgba(28, 25, 23, 0.75);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(214, 188, 140, 0.25);
         }
 
-        /* Ambient Glow */
-        .ambient-gold-glow {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(214, 188, 140, 0.16) 0%, transparent 70%);
-            pointer-events: none;
-            filter: blur(100px);
+        .flashlight-card:hover .flashlight-card-inner {
+            background-color: rgba(14, 12, 10, 0.96);
         }
 
-        /* 3D Book Floating Showcase */
-        .book-3d-wrap {
-            perspective: 1200px;
-            transform-style: preserve-3d;
+        .flashlight-card:hover .flashlight-card-inner::before {
+            opacity: 1;
         }
 
-        .book-3d-object {
-            transform: rotateY(-18deg) rotateX(8deg) rotateZ(-2deg);
-            box-shadow: -25px 35px 70px -10px rgba(0, 0, 0, 0.95), 0 0 40px rgba(214, 188, 140, 0.25);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        .flashlight-card:hover .flashlight-card-inner::after {
+            left: 150%;
+            transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .book-3d-wrap:hover .book-3d-object {
-            transform: rotateY(-4deg) rotateX(2deg) rotateZ(0deg) translateY(-8px) scale(1.03);
-            box-shadow: -35px 45px 90px -10px rgba(0, 0, 0, 0.98), 0 0 60px rgba(214, 188, 140, 0.45);
+        .flashlight-card:hover h3,
+        .flashlight-card:hover h4 {
+            color: #d6bc8c !important;
+            text-shadow: 0 0 10px rgba(214, 188, 140, 0.6), 0 0 2px rgba(214, 188, 140, 0.8);
+        }
+
+        /* REVEAL UP TRANSITION */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Pure Artist Portrait - Floating Majestic Cutout with Soft Feather Fade */
         @keyframes authorEntrance {
             0% {
                 opacity: 0;
-                transform: translateY(40px) scale(0.96);
-                filter: blur(12px) grayscale(40%);
+                transform: translateY(35px) scale(0.97);
+                filter: blur(10px);
             }
             100% {
                 opacity: 1;
                 transform: translateY(0px) scale(1);
-                filter: blur(0px) grayscale(0%);
+                filter: blur(0px);
             }
         }
 
         .portrait-artist-wrapper {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 620px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -286,8 +284,8 @@
             position: absolute;
             inset-x: 0;
             bottom: -2px;
-            height: 180px;
-            background: linear-gradient(to top, #060608 20%, rgba(6,6,8,0.8) 55%, transparent 100%);
+            height: 160px;
+            background: linear-gradient(to top, #0c0a09 25%, rgba(12,10,9,0.85) 60%, transparent 100%);
             pointer-events: none;
             z-index: 10;
         }
@@ -297,11 +295,11 @@
             top: 25%;
             left: 50%;
             transform: translate(-50%, -25%);
-            width: 520px;
-            height: 520px;
-            background: radial-gradient(circle, rgba(214, 188, 140, 0.24) 0%, rgba(214, 188, 140, 0.08) 45%, transparent 70%);
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.26) 0%, rgba(214, 188, 140, 0.08) 45%, transparent 70%);
             border-radius: 50%;
-            filter: blur(60px);
+            filter: blur(65px);
             pointer-events: none;
             z-index: 1;
             animation: pulseHalo 6s ease-in-out infinite alternate;
@@ -316,7 +314,7 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-height: 750px;
+            max-height: 760px;
             object-fit: contain;
             object-position: top center;
             filter: drop-shadow(0 25px 50px rgba(0,0,0,0.85));
@@ -326,30 +324,56 @@
         .portrait-artist-wrapper:hover .portrait-artist-img {
             transform: scale(1.025);
         }
+
+        /* 3D Book Floating Showcase */
+        .book-3d-wrap {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        .book-3d-object {
+            transform: rotateY(-16deg) rotateX(6deg);
+            box-shadow: -25px 35px 70px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(214, 188, 140, 0.25);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .book-3d-wrap:hover .book-3d-object {
+            transform: rotateY(-4deg) rotateX(2deg) translateY(-8px) scale(1.02);
+            box-shadow: -35px 45px 90px -10px rgba(0, 0, 0, 0.98), 0 0 60px rgba(214, 188, 140, 0.45);
+        }
+
+        /* Subtle Ambient Glow */
+        .ambient-gold-glow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.14) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(90px);
+        }
     </style>
 </head>
 
 <body class="selection:bg-[#d6bc8c] selection:text-black">
 
     <!-- NOISE GRAIN OVERLAY -->
-    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.035] pointer-events-none z-50"></div>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.025] pointer-events-none z-50"></div>
 
     <!-- INCLUDE_NAVBAR -->
 
     <!-- ========================================================================= -->
     <!-- HERO MASTERPIECE: AUTOR ARTISTA (ZERO MOLDURAS/RETÂNGULOS, ENTRADA CINEMATOGRÁFICA) -->
     <!-- ========================================================================= -->
-    <section class="relative min-h-screen w-full flex items-center justify-center pt-28 pb-12 px-6 sm:px-12 lg:px-20 overflow-hidden">
+    <section class="relative min-h-[92vh] sm:min-h-screen w-full flex items-center justify-center pt-24 pb-8 px-6 sm:px-12 lg:px-20 overflow-hidden">
         
         <!-- Ambient Stage Lighting -->
-        <div class="ambient-gold-glow top-10 left-1/4 w-[800px] h-[800px]"></div>
-        <div class="ambient-gold-glow bottom-0 right-10 w-[600px] h-[600px] opacity-35"></div>
+        <div class="ambient-gold-glow top-10 left-1/4 w-[750px] h-[750px]"></div>
+        <div class="ambient-gold-glow bottom-0 right-10 w-[550px] h-[550px] opacity-35"></div>
 
-        <div class="relative z-10 max-w-[1540px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div class="relative z-10 max-w-[1540px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <!-- LEFT COLUMN: O AUTOR SEM MOLDURA (GIGANTE, LIMPO, ARTISTA) -->
-            <div class="lg:col-span-6 flex justify-center items-end relative min-h-[540px] sm:min-h-[660px] lg:min-h-[760px]">
-                <div class="portrait-artist-wrapper">
+            <div class="lg:col-span-6 flex justify-center items-end relative min-h-[500px] sm:min-h-[620px] lg:min-h-[720px]">
+                <div class="portrait-artist-wrapper" id="authorHeroPortrait">
                     <!-- Halo de iluminação cinematográfica dourada -->
                     <div class="portrait-halo-light"></div>
 
@@ -359,41 +383,41 @@
             </div>
 
             <!-- RIGHT COLUMN: NOME GIGANTE & COPY EDITORIAL DE ALTO IMPACTO -->
-            <div class="lg:col-span-6 flex flex-col justify-center text-left py-4">
+            <div class="lg:col-span-6 flex flex-col justify-center text-left py-2">
                 
                 <!-- Category Sub-tag -->
-                <div class="inline-flex items-center gap-3 mb-4">
+                <div class="inline-flex items-center gap-3 mb-3 reveal-up">
                     <iconify-icon icon="circle-flags:br" class="text-base"></iconify-icon>
                     <iconify-icon icon="circle-flags:pt" class="text-base"></iconify-icon>
-                    <div class="w-px h-3.5 bg-white/20"></div>
+                    <div class="w-px h-3 bg-white/20"></div>
                     <span class="text-[11px] font-mono font-bold uppercase tracking-[0.28em] text-[#d6bc8c]">
                         MEDICINA DE LONGEVIDADE & ALTA PERFORMANCE
                     </span>
                 </div>
 
                 <!-- NOME DO AUTOR (GIGANTE & DOMINANTE) -->
-                <h1 class="font-display text-5xl sm:text-7xl lg:text-[84px] font-extrabold tracking-tight text-white leading-[0.96] mb-4">
+                <h1 class="font-display text-5xl sm:text-7xl lg:text-[82px] font-extrabold tracking-tight text-white leading-[0.96] mb-3 reveal-up">
                     Dr. Sávio Cardoso
                 </h1>
 
                 <!-- TÍTULO DA OBRA COM SWEEP DOURADO -->
-                <p class="font-display text-2xl sm:text-3xl lg:text-[36px] font-bold text-stone-100 leading-snug mb-6">
+                <p class="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-stone-100 leading-snug mb-5 reveal-up">
                     <span class="gold-text-sweep">O Código da Vitalidade Masculina</span> & Longevidade Ativa.
                 </p>
 
                 <!-- EDITORIAL MANIFESTO -->
-                <div class="relative mb-8 p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
-                    <p class="text-base sm:text-lg text-stone-300 font-light italic leading-relaxed text-stone-200">
+                <div class="relative mb-6 p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md reveal-up">
+                    <p class="text-base sm:text-lg text-stone-300 font-light italic leading-relaxed">
                         “A longevidade que vale a pena não é contada apenas nos anos vividos, mas no vigor celular, na clareza mental e na vitalidade diária com que você lidera seu propósito.”
                     </p>
-                    <div class="mt-3 text-right">
+                    <div class="mt-2 text-right">
                         <span class="text-xs font-mono text-[#d6bc8c] uppercase tracking-widest">— Dr. Sávio Cardoso</span>
                     </div>
                 </div>
 
                 <!-- PRIMARY & SECONDARY ACTION BUTTONS -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-10 py-4 sm:py-4.5 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 reveal-up">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-10 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
                         <iconify-icon icon="solar:book-bookmark-linear" class="text-lg"></iconify-icon>
                         <span>Adquirir Livro Oficial Autografado</span>
                     </a>
@@ -405,18 +429,18 @@
                 </div>
 
                 <!-- AUTHORITY STATS RIBBON -->
-                <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 text-left">
+                <div class="grid grid-cols-3 gap-6 pt-5 border-t border-white/10 text-left reveal-up">
                     <div>
                         <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">+10 Anos</p>
-                        <p class="text-[10.5px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Prática Clínica</p>
+                        <p class="text-[10px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Prática Clínica</p>
                     </div>
                     <div>
                         <p class="text-2xl sm:text-3xl font-extrabold font-display text-[#d6bc8c]">+3.000</p>
-                        <p class="text-[10.5px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Vidas Impactadas</p>
+                        <p class="text-[10px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Vidas Impactadas</p>
                     </div>
                     <div>
                         <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">Brasil & PT</p>
-                        <p class="text-[10.5px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Cascais & São Paulo</p>
+                        <p class="text-[10px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Cascais & São Paulo</p>
                     </div>
                 </div>
 
@@ -427,23 +451,23 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO 2: A HISTÓRIA & AUTORIDADE MÉDICA (COM LASER BEAMS & BOTÃO) -->
+    <!-- SEÇÃO 2: A HISTÓRIA & AUTORIDADE MÉDICA (ESPAÇAMENTO COMPACTO & CARDS FLASHLIGHT) -->
     <!-- ========================================================================= -->
-    <section class="py-28 bg-[#09080a] border-y border-stone-800/80 relative z-20">
+    <section class="py-16 sm:py-20 bg-[#090807] border-y border-stone-800/80 relative z-20">
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20">
             
-            <div class="max-w-3xl mb-16 text-left">
+            <div class="max-w-3xl mb-10 text-left reveal-up">
                 <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Trajetória & Autoridade</span>
-                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-1.5 mb-3">
                     A Ciência Médica a Serviço da Alta Performance
                 </h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-transparent rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
                 <!-- Story Narrative -->
-                <div class="lg:col-span-7 space-y-6 text-stone-300 text-base sm:text-lg leading-relaxed font-light text-left">
+                <div class="lg:col-span-7 space-y-5 text-stone-300 text-base sm:text-lg leading-relaxed font-light text-left reveal-up">
                     <p class="first-letter:text-5xl first-letter:font-display first-letter:font-extrabold first-letter:text-[#d6bc8c] first-letter:mr-3 first-letter:float-left">
                         O <strong class="text-white font-medium">Dr. Sávio Cardoso</strong> construiu sua reputação internacional conectando o que há de mais avançado na <span class="text-[#d6bc8c] font-medium">medicina preventiva, otimização celular e reposição hormonal estratégica</span>. Com consultórios ativos no Brasil e em Cascais (Portugal), ele atende executivos, empresários e profissionais que recusam o declínio físico e mental como destino inevitável.
                     </p>
@@ -455,7 +479,7 @@
                     </p>
 
                     <!-- SECTION 2 CONVERSION BUTTON -->
-                    <div class="pt-6">
+                    <div class="pt-3">
                         <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-xl">
                             <span>Conhecer Protocolos Médicos do Autor →</span>
                         </a>
@@ -463,48 +487,48 @@
                 </div>
 
                 <!-- 3 Pillars Cards with Spinning Laser Beams -->
-                <div class="lg:col-span-5 grid grid-cols-1 gap-5">
+                <div class="lg:col-span-5 grid grid-cols-1 gap-4">
                     
-                    <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-6 sm:p-7">
-                            <div class="flex items-center gap-4 mb-3">
+                    <div class="flashlight-card group p-[1.5px] reveal-up">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="flex items-center gap-4 mb-2.5 z-10 relative">
                                 <div class="w-11 h-11 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0">
                                     <iconify-icon icon="solar:shield-check-linear"></iconify-icon>
                                 </div>
                                 <h3 class="font-display text-lg font-bold text-white leading-tight">Medicina Preventiva de Precisão</h3>
                             </div>
-                            <p class="text-xs font-sans text-stone-400 leading-relaxed font-light">
+                            <p class="text-xs font-sans text-stone-400 leading-relaxed font-light z-10 relative">
                                 Diagnóstico metabólico celular antecipado para prevenir patologias degenerativas e desacelerar a idade biológica real.
                             </p>
                         </div>
                     </div>
 
-                    <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-6 sm:p-7">
-                            <div class="flex items-center gap-4 mb-3">
+                    <div class="flashlight-card group p-[1.5px] reveal-up">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="flex items-center gap-4 mb-2.5 z-10 relative">
                                 <div class="w-11 h-11 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0">
                                     <iconify-icon icon="solar:bolt-linear"></iconify-icon>
                                 </div>
                                 <h3 class="font-display text-lg font-bold text-white leading-tight">Otimização Endócrina & Força</h3>
                             </div>
-                            <p class="text-xs font-sans text-stone-400 leading-relaxed font-light">
+                            <p class="text-xs font-sans text-stone-400 leading-relaxed font-light z-10 relative">
                                 Modulação hormonal segura e respaldada por literatura médica global para restauração de vigor, foco e recomposição corporal.
                             </p>
                         </div>
                     </div>
 
-                    <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-6 sm:p-7">
-                            <div class="flex items-center gap-4 mb-3">
+                    <div class="flashlight-card group p-[1.5px] reveal-up">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="flex items-center gap-4 mb-2.5 z-10 relative">
                                 <div class="w-11 h-11 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0">
                                     <iconify-icon icon="solar:crown-line-duotone"></iconify-icon>
                                 </div>
                                 <h3 class="font-display text-lg font-bold text-white leading-tight">Presença Internacional</h3>
                             </div>
-                            <p class="text-xs font-sans text-stone-400 leading-relaxed font-light">
+                            <p class="text-xs font-sans text-stone-400 leading-relaxed font-light z-10 relative">
                                 Pioneirismo em conectar pacientes do polo de Cascais/Lisboa e dos grandes centros brasileiros à medicina de elite.
                             </p>
                         </div>
@@ -520,15 +544,15 @@
     <!-- ========================================================================= -->
     <!-- SEÇÃO 3: O LIVRO & OS 4 DIFERENCIAIS DA OBRA (COM MOCKUP LUXUOSO E BOTÃO) -->
     <!-- ========================================================================= -->
-    <section class="py-28 bg-[#060608] relative z-20 overflow-hidden">
+    <section class="py-16 sm:py-20 bg-[#0c0a09] relative z-20 overflow-hidden">
         
-        <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-15"></div>
+        <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] opacity-15"></div>
 
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
             
-            <div class="text-center max-w-3xl mx-auto mb-20">
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal-up">
                 <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Obra Literária Exclusiva</span>
-                <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-2 mb-4">
+                <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-1.5 mb-3">
                     O Livro: <span class="gold-text-sweep">O Código da Vitalidade Masculina</span>
                 </h2>
                 <p class="text-base sm:text-lg text-stone-400 font-light leading-relaxed">
@@ -537,39 +561,39 @@
             </div>
 
             <!-- SHOWCASE: LIVRO 3D COM LASER BEAM + 4 PILARES DA OBRA -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 
-                <!-- 3D Book Presentation Wrapped in Laser Beam Effect -->
-                <div class="lg:col-span-5 flex justify-center book-3d-wrap">
-                    <div class="laser-beam-card w-[310px] sm:w-[360px]">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-8 text-left book-3d-object">
+                <!-- 3D Book Presentation Wrapped in Flashlight Card -->
+                <div class="lg:col-span-5 flex justify-center book-3d-wrap reveal-up">
+                    <div class="flashlight-card group p-[1.5px] w-[310px] sm:w-[360px]">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.9)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-8 text-left book-3d-object" onmousemove="updateFlashlight(event, this)">
                             
                             <!-- Book Header Ribbon -->
-                            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5 z-10 relative">
                                 <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] font-bold">Elooo Editora</span>
                                 <span class="text-[10px] font-mono text-stone-400">Edição de Luxo</span>
                             </div>
 
                             <!-- Book Spine & Title -->
-                            <div class="my-6">
+                            <div class="my-5 z-10 relative">
                                 <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-[#faeac7]">Dr. Sávio Cardoso</span>
-                                <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-2 leading-tight">
+                                <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1.5 leading-tight">
                                     O CÓDIGO DA VITALIDADE MASCULINA
                                 </h3>
-                                <p class="text-xs text-stone-400 mt-2.5 font-light italic">
+                                <p class="text-xs text-stone-400 mt-2 font-light italic">
                                     Longevidade, Saúde Metabólica e Alta Performance
                                 </p>
                             </div>
 
                             <!-- Book Specs -->
-                            <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-300">
+                            <div class="pt-5 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-300 z-10 relative">
                                 <span class="text-[#d6bc8c]">✦ Capa Nobre</span>
                                 <span>✦ Tiragem Oficial</span>
                             </div>
 
                             <!-- Purchase Button inside Mockup -->
-                            <div class="mt-8">
+                            <div class="mt-7 z-10 relative">
                                 <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury w-full py-3.5 text-xs font-mono font-bold uppercase tracking-wider text-center">
                                     Comprar Exemplar Oficial
                                 </a>
@@ -578,52 +602,52 @@
                     </div>
                 </div>
 
-                <!-- The 4 Differentials / Pillars with Laser Beams -->
-                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                <!-- The 4 Differentials / Pillars with Flashlight Cards -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                     
                     <!-- Pilar 1 -->
-                    <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-7">
-                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">01</div>
-                            <h4 class="font-display text-lg font-bold text-white mb-2">Bioquímica da Energia</h4>
-                            <p class="text-xs text-stone-400 leading-relaxed font-light">
+                    <div class="flashlight-card group p-[1.5px] reveal-up">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1.5 z-10 relative">01</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1.5 z-10 relative">Bioquímica da Energia</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
                                 Compreenda como suas mitocôndrias geram energia celular e como extinguir a névoa mental e o cansaço crônico da sua rotina.
                             </p>
                         </div>
                     </div>
 
                     <!-- Pilar 2 -->
-                    <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-7">
-                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">02</div>
-                            <h4 class="font-display text-lg font-bold text-white mb-2">Equilíbrio Hormonal</h4>
-                            <p class="text-xs text-stone-400 leading-relaxed font-light">
+                    <div class="flashlight-card group p-[1.5px] reveal-up">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1.5 z-10 relative">02</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1.5 z-10 relative">Equilíbrio Hormonal</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
                                 Protocolos comprovados para otimização de testosterona, cortisol, tireoide e metabolismo com segurança e supervisão médica.
                             </p>
                         </div>
                     </div>
 
                     <!-- Pilar 3 -->
-                    <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-7">
-                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">03</div>
-                            <h4 class="font-display text-lg font-bold text-white mb-2">Sono & Neuroproteção</h4>
-                            <p class="text-xs text-stone-400 leading-relaxed font-light">
+                    <div class="flashlight-card group p-[1.5px] reveal-up">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1.5 z-10 relative">03</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1.5 z-10 relative">Sono & Neuroproteção</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
                                 Ajustes circadianos de precisão para induzir sono profundo reparador, acelerar regeneração neural e potencializar o raciocínio.
                             </p>
                         </div>
                     </div>
 
                     <!-- Pilar 4 -->
-                    <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                        <span class="beam-spinner"></span>
-                        <div class="inner-content p-7">
-                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">04</div>
-                            <h4 class="font-display text-lg font-bold text-white mb-2">Longevidade Produtiva</h4>
-                            <p class="text-xs text-stone-400 leading-relaxed font-light">
+                    <div class="flashlight-card group p-[1.5px] reveal-up">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1.5 z-10 relative">04</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1.5 z-10 relative">Longevidade Produtiva</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
                                 Construa uma reserva biológica robusta para manter vitalidade, força muscular e vigor sexual ao longo de todas as décadas da vida.
                             </p>
                         </div>
@@ -634,7 +658,7 @@
             </div>
 
             <!-- SECTION 3 BOTTOM ACTION BUTTON -->
-            <div class="mt-16 text-center">
+            <div class="mt-12 text-center reveal-up">
                 <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-4.5 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl">
                     <span>Garantir Meu Livro com Dedicatória Especial →</span>
                 </a>
@@ -646,63 +670,65 @@
     <!-- ========================================================================= -->
     <!-- SEÇÃO 4: PARA QUEM FOI ESCRITA ESTA OBRA (COM BOTÃO DE AÇÃO) -->
     <!-- ========================================================================= -->
-    <section class="py-24 bg-[#09080a] border-t border-stone-800/80 relative z-20">
+    <section class="py-16 sm:py-20 bg-[#090807] border-t border-stone-800/80 relative z-20">
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 text-center">
             
-            <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Público-Alvo</span>
-            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-12">
-                Para Quem é Este Livro?
-            </h2>
+            <div class="max-w-3xl mx-auto mb-10 reveal-up">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Público-Alvo</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-1.5 mb-2">
+                    Para Quem é Este Livro?
+                </h2>
+            </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
                 
-                <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                    <span class="beam-spinner"></span>
-                    <div class="inner-content p-6">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                <div class="flashlight-card group p-[1.5px] reveal-up">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3.5 z-10 relative">
                             <iconify-icon icon="solar:user-bold-duotone"></iconify-icon>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-2">Empresários & Líderes</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        <h3 class="font-display text-base font-bold text-white mb-2 z-10 relative">Empresários & Líderes</h3>
+                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
                             Profissionais que precisam de clareza mental extrema e energia constante para tomada de decisões diárias.
                         </p>
                     </div>
                 </div>
 
-                <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                    <span class="beam-spinner"></span>
-                    <div class="inner-content p-6">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                <div class="flashlight-card group p-[1.5px] reveal-up">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3.5 z-10 relative">
                             <iconify-icon icon="solar:dumbbell-large-linear"></iconify-icon>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-2">Busca por Vigor Físico</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        <h3 class="font-display text-base font-bold text-white mb-2 z-10 relative">Busca por Vigor Físico</h3>
+                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
                             Homens e mulheres que desejam recomposição corporal, força muscular e vitalidade sem estresse oxidativo.
                         </p>
                     </div>
                 </div>
 
-                <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                    <span class="beam-spinner"></span>
-                    <div class="inner-content p-6">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                <div class="flashlight-card group p-[1.5px] reveal-up">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3.5 z-10 relative">
                             <iconify-icon icon="solar:heart-pulse-linear"></iconify-icon>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-2">Longevidade Consciente</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        <h3 class="font-display text-base font-bold text-white mb-2 z-10 relative">Longevidade Consciente</h3>
+                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
                             Pessoas que compreendem que investir na saúde hoje é a melhor garantia de independência e produtividade no futuro.
                         </p>
                     </div>
                 </div>
 
-                <div class="laser-beam-card" onmousemove="updateFlashlight(event, this)">
-                    <span class="beam-spinner"></span>
-                    <div class="inner-content p-6">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                <div class="flashlight-card group p-[1.5px] reveal-up">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3.5 z-10 relative">
                             <iconify-icon icon="solar:book-bookmark-linear"></iconify-icon>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-2">Entusiastas da Medicina</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        <h3 class="font-display text-base font-bold text-white mb-2 z-10 relative">Entusiastas da Medicina</h3>
+                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
                             Leitores que exigem conteúdo embasado na ciência mais recente e com aplicabilidade imediata e comprovada.
                         </p>
                     </div>
@@ -711,7 +737,7 @@
             </div>
 
             <!-- SECTION 4 ACTION BUTTON -->
-            <div class="mt-12">
+            <div class="mt-10 reveal-up">
                 <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20adquirir%20o%20livro%20do%20Dr.%20S%C3%A1vio%20Cardoso%20para%20atingir%20meu%20%C3%A1pice%20biol%C3%B3gico." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-9 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-xl">
                     <span>Quero Atingir Meu Ápice Biológico →</span>
                 </a>
@@ -723,36 +749,36 @@
     <!-- ========================================================================= -->
     <!-- FINAL CONVERSION HERO (COMPRA & CONTATO OFICIAL) -->
     <!-- ========================================================================= -->
-    <section class="py-28 bg-gradient-to-b from-[#060608] via-[#12100e] to-[#060608] border-t border-stone-800 text-center relative z-20">
+    <section class="py-20 sm:py-24 bg-gradient-to-b from-[#0c0a09] via-[#141210] to-[#0c0a09] border-t border-stone-800 text-center relative z-20">
         <div class="max-w-4xl mx-auto px-6">
             
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/15 mb-6 backdrop-blur-md">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/15 mb-4 backdrop-blur-md reveal-up">
                 <iconify-icon icon="circle-flags:br" class="text-sm"></iconify-icon>
                 <iconify-icon icon="circle-flags:pt" class="text-sm"></iconify-icon>
                 <span class="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">Elooo Editora Internacional</span>
             </div>
 
-            <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-2 mb-6 leading-tight">
+            <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-1 mb-5 leading-tight reveal-up">
                 Garanta Seu Exemplar com Dedicatória Oficial do <span class="gold-text-sweep">Dr. Sávio Cardoso</span>
             </h2>
             
-            <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-2xl mx-auto reveal-up">
                 Adquira diretamente pela editora o livro que está transformando a compreensão de longevidade, vigor e medicina de alta performance no Brasil e em Portugal.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl w-full sm:w-auto">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal-up">
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-4.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl w-full sm:w-auto">
                     <span>Garantir Meu Livro Autografado →</span>
                 </a>
 
-                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="px-8 py-5 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2">
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="px-8 py-4.5 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2">
                     <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
                     <span>Falar com a Equipe do Autor</span>
                 </a>
             </div>
 
             <!-- Back to authors link -->
-            <div class="mt-14">
+            <div class="mt-10 reveal-up">
                 <a href="../autores.html" class="inline-flex items-center gap-2 text-xs font-mono text-stone-500 hover:text-white uppercase tracking-widest transition-colors">
                     <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
                     <span>Voltar para o Pódio de Autores ELOOO</span>
@@ -764,15 +790,44 @@
 
     <!-- INCLUDE_FOOTER -->
 
-    <!-- Interactive Flashlight Effect Script -->
+    <!-- Interactive GSAP & Flashlight Effect Scripts -->
     <script>
-        function updateFlashlight(e, card) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty("--mouse-x", `${x}px`);
-            card.style.setProperty("--mouse-y", `${y}px`);
-        }
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // GSAP ScrollTrigger for elements with .reveal-up
+            gsap.utils.toArray('.reveal-up').forEach((elem) => {
+                ScrollTrigger.create({
+                    trigger: elem,
+                    start: "top 88%",
+                    onEnter: () => elem.classList.add('active'),
+                });
+            });
+
+            // Parallax on Author Hero Image
+            const heroImg = document.getElementById('authorHeroPortrait');
+            if (heroImg) {
+                gsap.to(heroImg, {
+                    yPercent: -8,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: heroImg,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: 1
+                    }
+                });
+            }
+
+            // Flashlight mouse tracking
+            window.updateFlashlight = function (e, card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            }
+        });
     </script>
 </body>
 
