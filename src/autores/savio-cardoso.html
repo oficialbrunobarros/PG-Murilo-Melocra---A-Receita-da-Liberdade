@@ -286,19 +286,17 @@
             will-change: width, opacity;
         }
 
-        /* SCROLL REVEAL */
+        /* SCROLL REVEAL (CRISP, RAZOR-SHARP, NO BLUR) */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(30px);
-            filter: blur(8px);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity, filter;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
         }
 
         .scroll-reveal.in-view {
             opacity: 1;
             transform: translateY(0);
-            filter: blur(0px);
         }
 
         /* Pure Artist Portrait */
@@ -388,7 +386,7 @@
     <!-- INCLUDE_NAVBAR -->
 
     <!-- ========================================================================= -->
-    <!-- HERO SECTION: O AUTOR ARTISTA (CENTRO DAS ATENÇÕES / TRANSIÇÃO DINÂMICA) -->
+    <!-- HERO SECTION: 100% CRISTALINO, NÍTIDO E SEM DESFOQUES -->
     <!-- ========================================================================= -->
     <section id="heroSection" class="relative min-h-[92vh] sm:min-h-screen w-full flex items-center justify-center pt-24 pb-6 px-6 sm:px-12 lg:px-20 overflow-hidden">
         
@@ -404,34 +402,34 @@
                     <!-- Halo de iluminação cinematográfica dourada -->
                     <div class="portrait-halo-light"></div>
 
-                    <!-- FOTO GIGANTE DO AUTOR (100% LIMPA, SEM TEXTOS OU CAIXAS) -->
+                    <!-- FOTO GIGANTE DO AUTOR (100% LIMPA, NÍTIDA) -->
                     <img src="../static/images/savio-cardoso.png" alt="Dr. Sávio Cardoso" class="portrait-artist-img">
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: NOME GIGANTE & COPY EDITORIAL DE ALTO IMPACTO -->
+            <!-- RIGHT COLUMN: NOME GIGANTE & COPY EDITORIAL DE ALTO IMPACTO (100% NÍTIDA) -->
             <div class="lg:col-span-6 flex flex-col justify-center text-left py-2" id="heroTextCol">
                 
                 <!-- Category Sub-tag (Pure Typography, No Emojis) -->
-                <div class="inline-flex items-center gap-3 mb-3 scroll-reveal">
+                <div class="inline-flex items-center gap-3 mb-3">
                     <span class="text-[11px] font-mono font-bold uppercase tracking-[0.28em] text-[#d6bc8c]">
                         MEDICINA DE LONGEVIDADE & ALTA PERFORMANCE
                     </span>
                 </div>
 
-                <!-- NOME DO AUTOR (GIGANTE & DOMINANTE) -->
-                <h1 class="font-display text-5xl sm:text-7xl lg:text-[84px] font-extrabold tracking-tight text-white leading-[0.96] mb-3 scroll-reveal">
+                <!-- NOME DO AUTOR (GIGANTE, CRISTALINO & DOMINANTE) -->
+                <h1 class="font-display text-5xl sm:text-7xl lg:text-[84px] font-extrabold tracking-tight text-white leading-[0.96] mb-3">
                     Dr. Sávio Cardoso
                 </h1>
 
                 <!-- TÍTULO DA OBRA COM SWEEP DOURADO -->
-                <p class="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-stone-100 leading-snug mb-5 scroll-reveal">
+                <p class="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-stone-100 leading-snug mb-5">
                     <span class="gold-text-sweep">O Código da Vitalidade Masculina</span> & Longevidade Ativa.
                 </p>
 
                 <!-- EDITORIAL MANIFESTO -->
-                <div class="relative mb-6 p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md scroll-reveal">
-                    <p class="text-base sm:text-lg text-stone-300 font-light italic leading-relaxed">
+                <div class="relative mb-6 p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
+                    <p class="text-base sm:text-lg text-stone-200 font-light italic leading-relaxed">
                         “A longevidade que vale a pena não é contada apenas nos anos vividos, mas no vigor celular, na clareza mental e na vitalidade diária com que você lidera seu propósito.”
                     </p>
                     <div class="mt-2 text-right">
@@ -440,7 +438,7 @@
                 </div>
 
                 <!-- PRIMARY & SECONDARY ACTION BUTTONS -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-7 scroll-reveal">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-7">
                     <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-10 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
                         <iconify-icon icon="solar:book-bookmark-linear" class="text-lg"></iconify-icon>
                         <span>Adquirir Livro Oficial Autografado</span>
@@ -453,7 +451,7 @@
                 </div>
 
                 <!-- AUTHORITY STATS RIBBON -->
-                <div class="grid grid-cols-3 gap-6 pt-5 border-t border-white/10 text-left scroll-reveal">
+                <div class="grid grid-cols-3 gap-6 pt-5 border-t border-white/10 text-left">
                     <div>
                         <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">+10 Anos</p>
                         <p class="text-[10px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Prática Clínica</p>
@@ -1011,7 +1009,7 @@
         // DOM Ready Initializations
         document.addEventListener("DOMContentLoaded", () => {
             
-            // 1. DYNAMIC SCROLL REVEAL (Fade In on enter / Fade Out on exit)
+            // 1. DYNAMIC SCROLL REVEAL (Crisp, sharp, no blur)
             gsap.utils.toArray('.scroll-reveal').forEach((elem) => {
                 ScrollTrigger.create({
                     trigger: elem,
@@ -1024,31 +1022,29 @@
                 });
             });
 
-            // 2. PARALLAX & HERO SCROLL DISSOLVE
+            // 2. PARALLAX ON HERO (Crystal clear, smooth parallax without blur)
             const heroCol = document.getElementById('heroAuthorCol');
             const heroText = document.getElementById('heroTextCol');
             
             if (heroCol && heroText) {
                 gsap.to(heroCol, {
-                    y: -60,
-                    scale: 0.95,
-                    opacity: 0.3,
-                    filter: "blur(6px)",
+                    y: -50,
+                    scale: 0.96,
+                    opacity: 0.4,
                     scrollTrigger: {
                         trigger: "#heroSection",
-                        start: "25% top",
+                        start: "30% top",
                         end: "bottom top",
                         scrub: 1
                     }
                 });
 
                 gsap.to(heroText, {
-                    y: -40,
-                    opacity: 0.2,
-                    filter: "blur(6px)",
+                    y: -35,
+                    opacity: 0.3,
                     scrollTrigger: {
                         trigger: "#heroSection",
-                        start: "25% top",
+                        start: "30% top",
                         end: "bottom top",
                         scrub: 1
                     }
