@@ -11,12 +11,12 @@
     <meta property="og:description" content="Página de link na bio de alta conversão. Concierge de IA, vitrine inteligente, agendamento e métricas de vendas."/>
     <meta property="og:image" content="static/images/og-share.png"/>
     <meta property="og:type" content="website"/>
-    <meta name="theme-color" content="#FAF9F6"/>
+    <meta name="theme-color" content="#EAEAE5"/>
 
-    <!-- Premium Google Fonts: Playfair Display + Plus Jakarta Sans + Inter -->
+    <!-- Exact Fonts from ELOOO Website: Space Grotesk + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Iconify -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -31,32 +31,28 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         stone: {
-                            50: '#FAF9F6',
-                            100: '#F4F2EB',
-                            200: '#E7E5DD',
-                            300: '#D5D2C7',
-                            400: '#A39F93',
-                            500: '#736F64',
-                            600: '#524F46',
-                            700: '#38362F',
-                            800: '#24231E',
-                            900: '#141310',
-                            950: '#0C0B0A',
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                            950: '#0c0a09',
                         },
-                        gold: {
-                            50: '#FBF8F1',
-                            100: '#F5ECDB',
-                            200: '#EBD8B3',
-                            300: '#DEC08A',
-                            400: '#CAA258',
-                            500: '#B68B38',
-                            600: '#946E26',
-                        }
+                        surface: '#EAEAE5',
+                    },
+                    backgroundImage: {
+                        'noise': "url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")",
                     }
                 }
             }
@@ -65,73 +61,97 @@
 
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #FAF9F6;
-            color: #141310;
+            font-family: 'Inter', sans-serif;
+            background-color: #EAEAE5;
+            color: #1C1917;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        .font-serif {
-            font-family: 'Playfair Display', Georgia, serif;
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Glass Floating Pill Navbar */
+        /* FLOATING NAVBAR */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(229, 226, 218, 0.8);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(28, 25, 23, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
         }
 
-        /* Luxury Light Glass Cards */
-        .luxury-card {
+        /* FLASHLIGHT HOVER CARD (EXACT ELOOO STANDARD) */
+        .flashlight-card {
+            position: relative;
             background: #FFFFFF;
-            border: 1px solid #EBE8DF;
-            box-shadow: 0 10px 30px -10px rgba(20, 19, 16, 0.04), 0 2px 6px rgba(20, 19, 16, 0.02);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(28, 25, 23, 0.08);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .luxury-card:hover {
-            border-color: #D5D2C7;
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px -15px rgba(20, 19, 16, 0.08), 0 4px 12px rgba(20, 19, 16, 0.03);
+        .flashlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(214, 188, 140, 0.25), transparent 60%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .flashlight-card:hover {
+            transform: translateY(-4px);
+            border-color: #d6bc8c;
+            box-shadow: 0 20px 40px -15px rgba(28, 25, 23, 0.1), 0 0 25px rgba(214, 188, 140, 0.2);
+        }
+        .flashlight-card:hover::before {
+            opacity: 1;
         }
 
-        /* Luxury Dark Contrast Card (for Pro tier and special highlights) */
-        .luxury-card-dark {
-            background: linear-gradient(165deg, #181715 0%, #0D0D0B 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        /* MOVING GOLD BORDER BUTTON (EXACT ELOOO STANDARD) */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .btn-gold-spin {
+            position: relative;
+            display: inline-flex;
+            overflow: hidden;
+            border-radius: 9999px;
+            padding: 1.5px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .btn-gold-spin:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.4);
+        }
+        .btn-gold-spin span.spin-border {
+            position: absolute;
+            inset: -1000%;
+            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.9) 50%, transparent 100%);
+            animation: spin 3s linear infinite;
         }
 
-        /* Smooth Primary CTA Button */
-        .btn-luxury-primary {
-            background: #141310;
+        /* GOLD ACTIVE TAB / SELECTOR */
+        .gold-tab {
+            background: #1C1917;
             color: #FFFFFF;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            transition: all 0.25s ease;
-            box-shadow: 0 10px 25px -5px rgba(20, 19, 16, 0.25);
-        }
-        .btn-luxury-primary:hover {
-            background: #282620;
-            transform: translateY(-1px);
-            box-shadow: 0 15px 30px -5px rgba(20, 19, 16, 0.35);
+            border: 1px solid #d6bc8c;
+            box-shadow: 0 0 15px rgba(214, 188, 140, 0.25);
         }
 
-        /* Subtle Luxury Gold Highlight */
-        .text-gold {
-            color: #9E7422;
-        }
-
-        /* Clean Smartphone Frame */
-        .phone-frame {
+        /* IPHONE FRAME 3D STYLING */
+        .phone-mockup-wrapper {
+            position: relative;
             border-radius: 48px;
             padding: 10px;
-            background: #EBE8DF;
-            box-shadow: 0 35px 80px -20px rgba(20, 19, 16, 0.18), 0 10px 25px -5px rgba(20, 19, 16, 0.06);
-            border: 1px solid #DDD9CD;
+            background: linear-gradient(145deg, #2b2825, #141311);
+            box-shadow: 0 35px 80px -15px rgba(28, 25, 23, 0.35), 0 0 35px rgba(214, 188, 140, 0.15);
+            border: 2px solid rgba(214, 188, 140, 0.4);
         }
     </style>
 </head>
@@ -139,39 +159,45 @@
 
     <!-- FLOATING TOP NAVBAR -->
     <div class="fixed top-3 sm:top-5 inset-x-3 sm:inset-x-6 z-50 flex justify-center pointer-events-none">
-        <nav class="pointer-events-auto flex items-center justify-between gap-4 pl-4 pr-2.5 sm:pl-6 sm:pr-3 py-2.5 rounded-full w-full max-w-4xl glass-nav relative">
-            <!-- Brand Logo -->
-            <a class="inline-flex items-center flex-none" href="index.html">
-                <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-7 sm:h-8 object-contain" style="filter: brightness(0);"/>
-                <span class="ml-2.5 hidden sm:inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-stone-500 border-l border-stone-300 pl-2.5">
+        <nav class="pointer-events-auto flex items-center justify-between gap-4 pl-4 pr-3 sm:pl-6 sm:pr-4 py-3 rounded-full w-full max-w-5xl glass-nav relative">
+            <!-- Brand Logo (Enlarged and Crisp) -->
+            <a class="inline-flex items-center flex-none group" href="index.html">
+                <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-9 sm:h-11 md:h-12 object-contain transition-transform group-hover:scale-105" style="filter: brightness(0);"/>
+                <span class="ml-3 hidden sm:inline-block text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-stone-600 border-l border-stone-300 pl-3">
                     BIO PREMIUM
                 </span>
             </a>
 
             <!-- Desktop Nav Links -->
-            <div class="hidden md:flex items-center gap-7 text-[13px] font-semibold text-stone-600">
+            <div class="hidden md:flex items-center gap-7 text-[12px] font-sans font-semibold uppercase tracking-[0.14em] text-stone-700">
                 <a href="#problema" class="hover:text-stone-950 transition-colors">Por que</a>
                 <a href="#como" class="hover:text-stone-950 transition-colors">Como funciona</a>
                 <a href="#demo" class="hover:text-stone-950 transition-colors">Concierge IA</a>
                 <a href="#agenda" class="hover:text-stone-950 transition-colors">Agenda</a>
                 <a href="#planos" class="hover:text-stone-950 transition-colors">Planos</a>
-                <a href="brunobarros.html" target="_blank" class="text-stone-900 font-bold hover:text-amber-800 transition-colors flex items-center gap-1">
+                <a href="brunobarros.html" target="_blank" class="text-stone-950 font-bold hover:text-amber-800 transition-colors flex items-center gap-1">
                     <span>Bio Demo</span>
                     <iconify-icon icon="solar:arrow-right-up-linear" class="text-xs"></iconify-icon>
                 </a>
             </div>
 
             <!-- Action Buttons + Mobile Hamburger -->
-            <div class="flex items-center gap-2 flex-none">
-                <a class="hidden sm:inline-block px-3.5 py-2 text-[13px] font-semibold text-stone-700 hover:text-stone-950 transition-colors" href="entrar.html">
+            <div class="flex items-center gap-3 flex-none">
+                <a class="hidden sm:inline-block px-3.5 py-2 text-[12px] font-sans font-bold uppercase tracking-wider text-stone-700 hover:text-stone-950 transition-colors" href="entrar.html">
                     Entrar
                 </a>
-                <a class="inline-flex items-center px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] font-bold rounded-full btn-luxury-primary whitespace-nowrap" href="cadastrar.html">
-                    Começar
+                
+                <!-- Moving Gold Border CTA -->
+                <a href="cadastrar.html" class="btn-gold-spin">
+                    <span class="spin-border"></span>
+                    <span class="relative flex items-center justify-center gap-1.5 px-5 sm:px-6 py-2.5 rounded-full bg-[#0a0a0a] text-white text-[11px] sm:text-[12px] font-bold uppercase tracking-widest hover:bg-[#151515] transition-colors">
+                        <span>Começar</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="text-sm text-amber-300"></iconify-icon>
+                    </span>
                 </a>
 
                 <!-- Hamburger Button (Mobile) -->
-                <button id="mobile-hamburger-btn" type="button" class="md:hidden w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 flex items-center justify-center text-xl transition-all cursor-pointer" aria-label="Abrir Menu">
+                <button id="mobile-hamburger-btn" type="button" class="md:hidden w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 flex items-center justify-center text-xl transition-all cursor-pointer" aria-label="Abrir Menu">
                     <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
                 </button>
             </div>
@@ -179,38 +205,37 @@
     </div>
 
     <!-- MOBILE MENU OVERLAY / DRAWER -->
-    <div id="mobile-drawer" class="fixed inset-0 bg-stone-950/60 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-all duration-300 flex justify-end">
+    <div id="mobile-drawer" class="fixed inset-0 bg-stone-950/70 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-all duration-300 flex justify-end">
         <div id="mobile-drawer-content" class="w-full max-w-xs bg-white h-full shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
             <div>
                 <!-- Drawer Header -->
-                <div class="flex items-center justify-between border-b border-stone-100 pb-4 mb-6">
-                    <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO" class="h-7 object-contain" style="filter: brightness(0);"/>
+                <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-6">
+                    <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO" class="h-8 object-contain" style="filter: brightness(0);"/>
                     <button id="mobile-drawer-close" class="w-8 h-8 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center text-lg">
                         <iconify-icon icon="solar:close-circle-linear"></iconify-icon>
                     </button>
                 </div>
 
                 <!-- Drawer Links -->
-                <nav class="space-y-3 font-semibold text-sm text-stone-700">
-                    <a href="#problema" class="mobile-link block px-3 py-2.5 rounded-xl hover:bg-stone-50 hover:text-stone-950 transition-colors">Por que</a>
-                    <a href="#como" class="mobile-link block px-3 py-2.5 rounded-xl hover:bg-stone-50 hover:text-stone-950 transition-colors">Como funciona</a>
-                    <a href="#bio-real" class="mobile-link block px-3 py-2.5 rounded-xl hover:bg-stone-50 hover:text-stone-950 transition-colors">Bio de Bruno Barros</a>
-                    <a href="#demo" class="mobile-link block px-3 py-2.5 rounded-xl hover:bg-stone-50 hover:text-stone-950 transition-colors">Concierge com IA</a>
-                    <a href="#agenda" class="mobile-link block px-3 py-2.5 rounded-xl hover:bg-stone-50 hover:text-stone-950 transition-colors">Agenda Integrada</a>
-                    <a href="#planos" class="mobile-link block px-3 py-2.5 rounded-xl hover:bg-stone-50 hover:text-stone-950 transition-colors">Planos & Preços</a>
-                    <a href="brunobarros.html" target="_blank" class="mobile-link block px-3 py-2.5 rounded-xl bg-stone-100 text-stone-950 font-bold flex items-center justify-between">
-                        <span>Ver Bio Oficial</span>
+                <nav class="space-y-3 font-sans font-bold text-xs uppercase tracking-wider text-stone-700">
+                    <a href="#problema" class="mobile-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Por que</a>
+                    <a href="#como" class="mobile-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Como funciona</a>
+                    <a href="#demo" class="mobile-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Concierge com IA</a>
+                    <a href="#agenda" class="mobile-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Agenda Integrada</a>
+                    <a href="#planos" class="mobile-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Planos & Preços</a>
+                    <a href="brunobarros.html" target="_blank" class="mobile-link block px-4 py-3 rounded-2xl bg-stone-900 text-white font-bold flex items-center justify-between border border-[#d6bc8c]">
+                        <span>Bio Bruno Barros</span>
                         <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
                     </a>
                 </nav>
             </div>
 
             <!-- Drawer Bottom Actions -->
-            <div class="pt-6 border-t border-stone-100 space-y-2.5">
-                <a href="entrar.html" class="block w-full py-3 rounded-full text-center text-xs font-bold text-stone-800 bg-stone-100 hover:bg-stone-200 transition-colors">
+            <div class="pt-6 border-t border-stone-200 space-y-2.5">
+                <a href="entrar.html" class="block w-full py-3 rounded-full text-center text-xs font-bold text-stone-800 bg-stone-100 hover:bg-stone-200 transition-colors uppercase tracking-wider">
                     Fazer Login
                 </a>
-                <a href="cadastrar.html" class="block w-full py-3 rounded-full text-center text-xs font-bold text-white bg-stone-950 shadow-md">
+                <a href="cadastrar.html" class="block w-full py-3.5 rounded-full text-center text-xs font-bold text-white bg-stone-950 shadow-md uppercase tracking-wider">
                     Criar Conta Agora
                 </a>
             </div>
@@ -220,60 +245,84 @@
     <!-- MAIN CONTENT -->
     <main class="relative z-10">
 
-        <!-- HERO SECTION (Clean, High-Impact & Editorial) -->
-        <section class="relative pt-28 pb-14 sm:pt-36 sm:pb-20 overflow-hidden">
+        <!-- HERO SECTION (High-Impact Headline + Moving Border CTAs + SMARTPHONE MOCKUP RIGHT BELOW) -->
+        <section class="relative pt-32 pb-14 sm:pt-40 sm:pb-16 overflow-hidden">
             <div class="max-w-5xl mx-auto px-5 sm:px-6 text-center relative z-10">
                 
-                <h1 class="text-3xl sm:text-6xl lg:text-[68px] font-bold text-stone-950 tracking-tight leading-[1.12] mb-6">
-                    O link na bio que <span class="font-serif italic font-normal text-stone-800 underline decoration-stone-300 underline-offset-8">entende seu cliente</span> e conduz a venda.
+                <!-- Main Headline in Clean Space Grotesk -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-stone-900 leading-[1.12] mb-5">
+                    O link na bio que entende seu cliente e conduz a venda.
                 </h1>
 
-                <p class="text-base sm:text-xl text-stone-600 max-w-2xl mx-auto mb-9 leading-relaxed font-normal">
-                    Pare de empilhar vinte botões confusos. O <strong class="text-stone-950 font-semibold">ELOOO BIO PREMIUM</strong> faz 3 perguntas estratégicas, entende o momento do visitante e recomenda <strong class="text-stone-950 font-semibold">uma solução certa</strong> com botão de compra direto.
+                <!-- Subtitle -->
+                <p class="text-base sm:text-lg text-stone-600 max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+                    Pare de empilhar vinte botões confusos. O <strong class="text-stone-950 font-semibold">ELOOO BIO PREMIUM</strong> faz 3 perguntas estratégicas, qualifica o momento da pessoa e recomenda a solução exata com botão de compra direto.
                 </p>
 
-                <!-- Hero CTAs -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-14">
-                    <a href="cadastrar.html" class="w-full sm:w-auto px-8 py-4 rounded-full btn-luxury-primary text-sm sm:text-base font-bold flex items-center justify-center gap-2">
-                        <span>Quero vender no automático</span>
-                        <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                <!-- Hero Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                    <a href="cadastrar.html" class="btn-gold-spin w-full sm:w-auto shadow-xl">
+                        <span class="spin-border"></span>
+                        <span class="relative flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#0a0a0a] text-white text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#151515] transition-colors">
+                            <span>Quero vender no automático</span>
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-base text-amber-300"></iconify-icon>
+                        </span>
                     </a>
-                    <a href="#demo" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-stone-900 border border-stone-200 hover:bg-stone-100 text-sm sm:text-base font-semibold transition-all flex items-center justify-center gap-2 shadow-sm">
-                        <iconify-icon icon="solar:play-circle-linear" class="text-lg"></iconify-icon>
-                        <span>Ver demonstração</span>
+                    
+                    <a href="brunobarros.html" target="_blank" class="w-full sm:w-auto px-7 py-4 rounded-full bg-white text-stone-900 border border-stone-300 hover:border-[#d6bc8c] hover:bg-stone-50 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm">
+                        <span>Ver Bio de Bruno Barros</span>
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="text-base text-stone-600"></iconify-icon>
                     </a>
                 </div>
 
+                <!-- SMARTPHONE MOCKUP (RIGHT BELOW TITLE AND CTAS) -->
+                <div class="flex justify-center mb-14">
+                    <div class="w-full max-w-[330px] phone-mockup-wrapper relative">
+                        <!-- Dynamic Island -->
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-full z-20 flex items-center justify-end pr-2.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#222]"></div>
+                        </div>
+                        
+                        <!-- Interactive Screen -->
+                        <div class="relative rounded-[40px] overflow-hidden h-[580px] bg-stone-950">
+                            <iframe src="brunobarros.html" title="Bio Bruno Barros Ao Vivo" class="w-full h-full border-0"></iframe>
+                            <a href="brunobarros.html" target="_blank" class="absolute inset-x-0 bottom-0 py-3.5 bg-gradient-to-t from-black/90 via-black/60 to-transparent backdrop-blur-sm text-center text-xs font-mono font-bold uppercase tracking-widest text-[#f6e3c5] hover:text-white transition-colors">
+                                Abrir bio oficial completa →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Credibility & Stats Ribbon -->
-                <div class="pt-8 border-t border-stone-200/80 max-w-4xl mx-auto">
-                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-500 mb-6">
+                <div class="pt-8 border-t border-stone-300 max-w-4xl mx-auto">
+                    <p class="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-stone-500 mb-6">
                         Desenvolvido por ELOOO International Group
                     </p>
                     
                     <div class="grid grid-cols-3 gap-3 sm:gap-6">
-                        <div class="luxury-card rounded-2xl p-4 sm:p-5 text-center">
-                            <div class="text-2xl sm:text-4xl font-extrabold text-stone-950 tracking-tight">
+                        <div class="flashlight-card p-4 sm:p-5 text-center">
+                            <div class="text-2xl sm:text-4xl font-extrabold font-display text-stone-950 tracking-tight">
                                 <span class="counter" data-target="18">18</span> MI
                             </div>
-                            <div class="mt-1 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-500">
+                            <div class="mt-1 text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-stone-500">
                                 faturamento gerado
                             </div>
                         </div>
 
-                        <div class="luxury-card rounded-2xl p-4 sm:p-5 text-center">
-                            <div class="text-2xl sm:text-4xl font-extrabold text-stone-950 tracking-tight">
+                        <div class="flashlight-card p-4 sm:p-5 text-center">
+                            <div class="text-2xl sm:text-4xl font-extrabold font-display text-stone-950 tracking-tight">
                                 +<span class="counter" data-target="45">45</span> MI
                             </div>
-                            <div class="mt-1 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-500">
+                            <div class="mt-1 text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-stone-500">
                                 impactos gerados
                             </div>
                         </div>
 
-                        <div class="luxury-card rounded-2xl p-4 sm:p-5 text-center">
-                            <div class="text-2xl sm:text-4xl font-extrabold text-stone-950 tracking-tight">
+                        <div class="flashlight-card p-4 sm:p-5 text-center">
+                            <div class="text-2xl sm:text-4xl font-extrabold font-display text-stone-950 tracking-tight">
                                 +<span class="counter" data-target="3800">3.800</span>
                             </div>
-                            <div class="mt-1 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-500">
+                            <div class="mt-1 text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-stone-500">
                                 clientes & autores
                             </div>
                         </div>
@@ -284,66 +333,66 @@
         </section>
 
         <!-- O PROBLEMA (Antes vs Depois) -->
-        <section class="py-14 sm:py-20 px-5 sm:px-6 bg-white border-t border-b border-stone-200/80" id="problema">
+        <section class="py-14 sm:py-20 px-5 sm:px-6 bg-white border-t border-b border-stone-300" id="problema">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="text-2xl sm:text-4xl font-bold text-stone-950 leading-tight">
-                        Mostrar tudo é o mesmo que <span class="font-serif italic font-normal text-stone-800">não mostrar nada</span>.
+                    <h2 class="text-2xl sm:text-4xl font-bold font-display text-stone-950 leading-tight">
+                        Mostrar tudo é o mesmo que não mostrar nada.
                     </h2>
                     <p class="text-sm sm:text-base mt-2.5 max-w-xl mx-auto text-stone-600">
-                        Quanto mais opções você empilha no link, mais o cliente se perde. O ELOOO BIO PREMIUM inverte isso. Ele <strong class="text-stone-950 font-semibold">conduz</strong> a decisão.
+                        Quanto mais opções você empilha no link, mais o cliente se perde. O ELOOO BIO PREMIUM inverte isso: ele <strong class="text-stone-950 font-semibold">conduz</strong> a decisão.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7">
                     <!-- Antes Card -->
-                    <div class="rounded-3xl p-7 sm:p-9 bg-stone-50 border border-stone-200">
-                        <span class="text-xs font-bold uppercase tracking-wider text-stone-500 block mb-4">
-                            Como é hoje
+                    <div class="flashlight-card p-7 sm:p-9 bg-stone-50 border border-stone-200">
+                        <span class="text-xs font-mono font-bold uppercase tracking-wider text-stone-500 block mb-4">
+                            ✕ Como a maioria faz hoje
                         </span>
-                        <h3 class="text-xl font-bold mb-4 text-stone-950">Você joga tudo no link e torce.</h3>
+                        <h3 class="text-xl font-bold font-display mb-4 text-stone-950">Você joga tudo no link e torce.</h3>
                         <ul class="space-y-3 text-sm text-stone-600">
                             <li class="flex items-start gap-2.5">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>Dez ou vinte opções competindo ao mesmo tempo</span>
+                                <span>Dez ou vinte opções competindo pela atenção ao mesmo tempo</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>O cliente não sabe por onde começar nem o que faz sentido</span>
+                                <span>O visitante não sabe o que é adequado para o momento dele</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>Sem qualificação, você perde tempo com pessoas curiosas</span>
+                                <span>Sem qualificação, você perde tempo com curiosos no WhatsApp</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>A maioria desiste e fecha a página sem clicar em nada</span>
+                                <span>Mais de 80% abandonam a página sem tomar nenhuma ação</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Depois Card (ELOOO BIO) -->
-                    <div class="luxury-card-dark rounded-3xl p-7 sm:p-9 text-white">
-                        <span class="text-xs font-bold uppercase tracking-wider text-amber-300 block mb-4">
-                            Com ELOOO BIO PREMIUM
+                    <div class="flashlight-card p-7 sm:p-9 bg-[#141311] text-white border border-[#d6bc8c]/40 shadow-xl">
+                        <span class="text-xs font-mono font-bold uppercase tracking-wider text-amber-300 block mb-4">
+                            ✓ Com ELOOO BIO PREMIUM
                         </span>
-                        <h3 class="text-xl font-bold mb-4 text-white">O sistema entende o momento e conduz.</h3>
+                        <h3 class="text-xl font-bold font-display mb-4 text-[#f6e3c5]">O sistema entende o momento e conduz.</h3>
                         <ul class="space-y-3 text-sm text-stone-200">
                             <li class="flex items-start gap-2.5">
                                 <span class="text-emerald-400 font-bold">✓</span>
-                                <span>O visitante responde 3 perguntas rápidas e fluídas</span>
+                                <span>O visitante responde 3 perguntas rápidas e dinâmicas</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="text-emerald-400 font-bold">✓</span>
-                                <span>A IA cruza o objetivo, nível e orçamento da pessoa</span>
+                                <span>A IA cruza o objetivo, nível e momento do cliente</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="text-emerald-400 font-bold">✓</span>
-                                <span>Mostra 1 recomendação certa com explicação e botão de compra</span>
+                                <span>Mostra 1 recomendação exata com explicação e botão de compra</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="text-emerald-400 font-bold">✓</span>
-                                <span>Sua taxa de conversão aumenta e as vendas acontecem 24h</span>
+                                <span>Sua conversão aumenta e as vendas acontecem 24h por dia</span>
                             </li>
                         </ul>
                     </div>
@@ -351,50 +400,50 @@
             </div>
         </section>
 
-        <!-- COMO FUNCIONA (4 Passos Claros) -->
+        <!-- COMO FUNCIONA (4 Passos com Flashlight Cards) -->
         <section class="py-14 sm:py-20 px-5 sm:px-6" id="como">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="text-2xl sm:text-4xl font-bold text-stone-950 leading-tight">
-                        Quatro passos. Uma <span class="font-serif italic font-normal text-stone-800">máquina de conversão</span>.
+                    <h2 class="text-2xl sm:text-4xl font-bold font-display text-stone-950 leading-tight">
+                        Quatro passos. Uma máquina de conversão.
                     </h2>
-                    <p class="text-sm mt-2 text-stone-500">
+                    <p class="text-sm mt-2 text-stone-600 font-medium">
                         Simples de configurar. Extremamente poderoso para vender.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
                     <!-- Passo 1 -->
-                    <div class="luxury-card rounded-2xl p-6">
-                        <div class="text-2xl font-serif italic text-stone-400 mb-3">01</div>
-                        <h3 class="text-base font-bold text-stone-950 mb-1.5">Você cadastra</h3>
+                    <div class="flashlight-card p-6">
+                        <div class="text-2xl font-display font-bold text-[#d6bc8c] mb-3">01</div>
+                        <h3 class="text-base font-bold font-display text-stone-950 mb-1.5">Você cadastra</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
-                            Produtos, livros, mentorias e serviços. Cada um com preço, momento e problema que resolve.
+                            Produtos, livros, mentorias e serviços. Cada um com preço, momento e dor que resolve.
                         </p>
                     </div>
 
                     <!-- Passo 2 -->
-                    <div class="luxury-card rounded-2xl p-6">
-                        <div class="text-2xl font-serif italic text-stone-400 mb-3">02</div>
-                        <h3 class="text-base font-bold text-stone-950 mb-1.5">O cliente responde</h3>
+                    <div class="flashlight-card p-6">
+                        <div class="text-2xl font-display font-bold text-[#d6bc8c] mb-3">02</div>
+                        <h3 class="text-base font-bold font-display text-stone-950 mb-1.5">O cliente responde</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
                             3 a 5 perguntas rápidas e intuitivas na bio. Sem formulários longos ou chatos.
                         </p>
                     </div>
 
                     <!-- Passo 3 -->
-                    <div class="luxury-card rounded-2xl p-6 bg-stone-900 text-white border-stone-900">
-                        <div class="text-2xl font-serif italic text-amber-300 mb-3">03</div>
-                        <h3 class="text-base font-bold text-white mb-1.5">A IA recomenda</h3>
+                    <div class="flashlight-card p-6 bg-stone-900 text-white border-[#d6bc8c]/50">
+                        <div class="text-2xl font-display font-bold text-amber-300 mb-3">03</div>
+                        <h3 class="text-base font-bold font-display text-white mb-1.5">A IA recomenda</h3>
                         <p class="text-xs text-stone-300 leading-relaxed">
                             O sistema cruza as respostas em tempo real e entrega a melhor opção com motivo claro.
                         </p>
                     </div>
 
                     <!-- Passo 4 -->
-                    <div class="luxury-card rounded-2xl p-6">
-                        <div class="text-2xl font-serif italic text-stone-400 mb-3">04</div>
-                        <h3 class="text-base font-bold text-stone-950 mb-1.5">Você converte</h3>
+                    <div class="flashlight-card p-6">
+                        <div class="text-2xl font-display font-bold text-[#d6bc8c] mb-3">04</div>
+                        <h3 class="text-base font-bold font-display text-stone-950 mb-1.5">Você converte</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
                             O cliente fecha a compra ou agenda direto com você com alto nível de decisão.
                         </p>
@@ -403,134 +452,95 @@
             </div>
         </section>
 
-        <!-- BIO REAL AO VIVO (Mockup Interativo do Smartphone) -->
-        <section class="py-14 sm:py-20 px-5 sm:px-6 bg-white border-t border-b border-stone-200/80" id="bio-real">
-            <div class="max-w-5xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-                    <div>
-                        <h2 class="text-2xl sm:text-4xl font-bold text-stone-950 leading-tight">
-                            Veja o modelo de bio de <span class="font-serif italic font-normal text-stone-800">Bruno Barros</span> ao vivo.
-                        </h2>
-                        <p class="text-sm sm:text-base mt-4 text-stone-600 leading-relaxed">
-                            Navegue diretamente pela bio oficial do autor e mentor Bruno Barros (<code class="text-xs bg-stone-100 px-2 py-0.5 rounded text-stone-800 font-semibold">bio.elooo.com.br/brunobarros</code>). Teste os botões, o carrossel estilo Netflix e o concierge integrado.
-                        </p>
-
-                        <div class="mt-7 flex flex-wrap gap-3">
-                            <a href="brunobarros.html" target="_blank" class="px-6 py-3.5 rounded-full btn-luxury-primary text-xs sm:text-sm font-bold inline-flex items-center gap-2">
-                                <span>Abrir bio em tela cheia</span>
-                                <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
-                            </a>
-                            <a href="cadastrar.html" class="px-6 py-3.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 text-xs sm:text-sm font-bold transition-colors">
-                                Criar a minha agora
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Smartphone Frame Preview -->
-                    <div class="flex justify-center">
-                        <div class="w-full max-w-[320px] phone-frame relative">
-                            <!-- Dynamic Island -->
-                            <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20"></div>
-                            
-                            <!-- Iframe Frame -->
-                            <div class="relative rounded-[40px] overflow-hidden h-[560px] bg-stone-950">
-                                <iframe src="brunobarros.html" title="Bio Bruno Barros Oficial" class="w-full h-full border-0"></iframe>
-                                <a href="brunobarros.html" target="_blank" class="absolute inset-x-0 bottom-0 py-3 bg-stone-950/80 backdrop-blur-sm text-center text-xs font-bold text-white hover:bg-stone-950 transition-colors">
-                                    Abrir bio oficial completa →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- DEMO INTERATIVA (Concierge IA em Tempo Real) -->
-        <section class="py-14 sm:py-20 px-5 sm:px-6" id="demo">
+        <section class="py-14 sm:py-20 px-5 sm:px-6 bg-white border-t border-b border-stone-300" id="demo">
             <div class="max-w-5xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
                     <div>
-                        <h2 class="text-2xl sm:text-4xl font-bold text-stone-950 leading-tight">
-                            Diagnostica, qualifica e <span class="font-serif italic font-normal text-stone-800">recomenda</span> em segundos.
+                        <h2 class="text-2xl sm:text-4xl font-bold font-display text-stone-950 leading-tight">
+                            Diagnostica, qualifica e recomenda em segundos.
                         </h2>
                         <p class="text-sm sm:text-base mt-4 text-stone-600 leading-relaxed">
                             Experimente ao lado como o Concierge de IA funciona na prática. Ele entende a resposta de cada visitante e entrega a solução exata com argumento de valor.
                         </p>
 
                         <div class="mt-8">
-                            <a href="cadastrar.html" class="px-7 py-3.5 rounded-full btn-luxury-primary text-xs sm:text-sm font-bold inline-flex items-center gap-2">
-                                <span>Montar meu concierge agora</span>
-                                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                            <a href="cadastrar.html" class="btn-gold-spin">
+                                <span class="spin-border"></span>
+                                <span class="relative flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
+                                    <span>Montar meu concierge agora</span>
+                                    <iconify-icon icon="solar:arrow-right-linear" class="text-amber-300"></iconify-icon>
+                                </span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Clean Interactive Concierge Widget -->
-                    <div class="luxury-card rounded-3xl p-6 sm:p-7 border border-stone-200" id="concierge-widget">
+                    <!-- Interactive Concierge Widget -->
+                    <div class="flashlight-card p-6 sm:p-8" id="concierge-widget">
                         <!-- Step 1 -->
                         <div id="quiz-step-1" class="quiz-step">
-                            <p class="text-xs font-bold uppercase tracking-wider text-stone-400 mb-1">Passo 1 de 3</p>
-                            <h3 class="text-lg font-bold text-stone-950 mb-4">Como você está no seu negócio hoje?</h3>
+                            <p class="text-xs font-mono font-bold uppercase tracking-wider text-[#d6bc8c] mb-1">Passo 1 de 3</p>
+                            <h3 class="text-lg font-bold font-display text-stone-950 mb-4">Como você está no seu negócio hoje?</h3>
                             <div class="space-y-2.5">
-                                <button onclick="nextQuizStep(1, 'Estou começando')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(1, 'Estou começando')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Estou começando agora</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="nextQuizStep(1, 'Vendo sem previsibilidade')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(1, 'Vendo sem previsibilidade')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Vendo, mas sem consistência</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="nextQuizStep(1, 'Tenho estrutura desorganizada')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(1, 'Tenho estrutura desorganizada')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Tenho demanda, mas falta organização</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="nextQuizStep(1, 'Quero escala')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(1, 'Quero escala')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Já faturei alto, quero escala e autoridade</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Step 2 -->
                         <div id="quiz-step-2" class="quiz-step hidden">
-                            <p class="text-xs font-bold uppercase tracking-wider text-stone-400 mb-1">Passo 2 de 3</p>
-                            <h3 class="text-lg font-bold text-stone-950 mb-4">Qual seu objetivo principal agora?</h3>
+                            <p class="text-xs font-mono font-bold uppercase tracking-wider text-[#d6bc8c] mb-1">Passo 2 de 3</p>
+                            <h3 class="text-lg font-bold font-display text-stone-950 mb-4">Qual seu objetivo principal agora?</h3>
                             <div class="space-y-2.5">
-                                <button onclick="nextQuizStep(2, 'Atrair clientes qualificados')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(2, 'Atrair clientes qualificados')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Atrair clientes qualificados</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="nextQuizStep(2, 'Aumentar ticket')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(2, 'Aumentar ticket')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Aumentar o valor das minhas vendas</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="nextQuizStep(2, 'Automatizar 24h')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(2, 'Automatizar 24h')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Automatizar vendas 24h sem esforço manual</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="nextQuizStep(2, 'Publicar livro')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="nextQuizStep(2, 'Publicar livro')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Publicar livro e lançar mentoria</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Step 3 -->
                         <div id="quiz-step-3" class="quiz-step hidden">
-                            <p class="text-xs font-bold uppercase tracking-wider text-stone-400 mb-1">Passo 3 de 3</p>
-                            <h3 class="text-lg font-bold text-stone-950 mb-4">Qual sua faixa de faturamento mensal?</h3>
+                            <p class="text-xs font-mono font-bold uppercase tracking-wider text-[#d6bc8c] mb-1">Passo 3 de 3</p>
+                            <h3 class="text-lg font-bold font-display text-stone-950 mb-4">Qual sua faixa de faturamento mensal?</h3>
                             <div class="space-y-2.5">
-                                <button onclick="finishQuiz('Até 10k')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="finishQuiz('Até 10k')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Até R$ 10.000 / mês</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="finishQuiz('De 10k a 50k')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="finishQuiz('De 10k a 50k')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>De R$ 10.000 a R$ 50.000 / mês</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
-                                <button onclick="finishQuiz('Acima de 50k')" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors flex items-center justify-between">
+                                <button onclick="finishQuiz('Acima de 50k')" class="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Mais de R$ 50.000 / mês</span>
-                                    <span class="text-stone-400">→</span>
+                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
                                 </button>
                             </div>
                         </div>
@@ -540,12 +550,15 @@
                             <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-3 text-2xl">
                                 <iconify-icon icon="solar:check-circle-bold"></iconify-icon>
                             </div>
-                            <h4 class="text-xl font-bold text-stone-950">Plano Recomendado: ELOOO BIO Pro</h4>
+                            <h4 class="text-xl font-bold font-display text-stone-950">Plano Recomendado: ELOOO BIO Pro</h4>
                             <p class="text-xs text-stone-600 mt-1 mb-5">
                                 A IA identificou que seu maior gargalo é a automação e triagem de leads qualificados antes de atender.
                             </p>
-                            <a href="cadastrar.html?plan=pro" class="block w-full py-3.5 rounded-full btn-luxury-primary text-xs font-bold uppercase tracking-wider">
-                                Ativar Plano Pro →
+                            <a href="cadastrar.html?plan=pro" class="btn-gold-spin w-full">
+                                <span class="spin-border"></span>
+                                <span class="relative block w-full py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest text-center">
+                                    Ativar Plano Pro →
+                                </span>
                             </a>
                             <button onclick="resetQuiz()" class="mt-3 text-xs text-stone-500 hover:text-stone-950 underline">
                                 Refazer teste
@@ -557,36 +570,39 @@
         </section>
 
         <!-- AGENDA INTEGRADA -->
-        <section class="py-14 sm:py-20 px-5 sm:px-6 bg-white border-t border-b border-stone-200/80" id="agenda">
+        <section class="py-14 sm:py-20 px-5 sm:px-6" id="agenda">
             <div class="max-w-5xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
                     <div>
-                        <h2 class="text-2xl sm:text-4xl font-bold text-stone-950 leading-tight">
-                            Da recomendação ao <span class="font-serif italic font-normal text-stone-800">horário marcado</span>.
+                        <h2 class="text-2xl sm:text-4xl font-bold font-display text-stone-950 leading-tight">
+                            Da recomendação ao horário marcado.
                         </h2>
                         <p class="text-sm sm:text-base mt-4 text-stone-600 leading-relaxed">
                             O cliente seleciona o dia, o horário e o tipo de atendimento direto na sua bio. Sem ida e volta de mensagens. Confirmação instantânea no seu WhatsApp.
                         </p>
 
                         <div class="mt-7">
-                            <a href="cadastrar.html" class="px-7 py-3.5 rounded-full btn-luxury-primary text-xs sm:text-sm font-bold inline-flex items-center gap-2">
-                                <span>Ativar minha agenda</span>
-                                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                            <a href="cadastrar.html" class="btn-gold-spin">
+                                <span class="spin-border"></span>
+                                <span class="relative flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
+                                    <span>Ativar minha agenda</span>
+                                    <iconify-icon icon="solar:arrow-right-linear" class="text-amber-300"></iconify-icon>
+                                </span>
                             </a>
                         </div>
                     </div>
 
                     <!-- Clean Calendar Preview -->
-                    <div class="luxury-card rounded-3xl p-6 max-w-sm mx-auto w-full">
-                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-stone-100">
-                            <span class="text-xs font-bold text-stone-950">Junho 2026</span>
+                    <div class="flashlight-card p-6 max-w-sm mx-auto w-full">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-stone-200">
+                            <span class="text-xs font-bold font-display text-stone-950 uppercase tracking-wider">Junho 2026</span>
                             <div class="flex gap-1">
                                 <button class="w-6 h-6 rounded bg-stone-100 text-stone-700 text-xs">‹</button>
                                 <button class="w-6 h-6 rounded bg-stone-100 text-stone-700 text-xs">›</button>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-stone-400 mb-2">
+                        <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-mono font-bold text-stone-400 mb-2">
                             <div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
                         </div>
 
@@ -601,17 +617,17 @@
                             <div class="py-1.5 text-stone-300">7</div>
                             <button class="py-1.5 rounded-lg bg-stone-50 hover:bg-stone-200">8</button>
                             <div class="py-1.5 text-stone-300 line-through">9</div>
-                            <button class="py-1.5 rounded-lg bg-stone-950 text-white font-bold">10</button>
+                            <button class="py-1.5 rounded-lg bg-stone-950 text-white font-bold border border-[#d6bc8c]">10</button>
                             <button class="py-1.5 rounded-lg bg-stone-50 hover:bg-stone-200">11</button>
                             <button class="py-1.5 rounded-lg bg-stone-50 hover:bg-stone-200">12</button>
                             <div class="py-1.5 text-stone-300">13</div>
                         </div>
 
-                        <div class="mt-4 pt-3 border-t border-stone-100">
-                            <p class="text-[11px] font-bold text-stone-600 mb-2">Horários Disponíveis (10 de Junho)</p>
+                        <div class="mt-4 pt-3 border-t border-stone-200">
+                            <p class="text-[11px] font-mono font-bold text-stone-600 mb-2">Horários Disponíveis (10 de Junho)</p>
                             <div class="grid grid-cols-3 gap-1.5 text-xs font-semibold">
                                 <button class="py-1.5 rounded-lg bg-stone-100 hover:bg-stone-950 hover:text-white transition-colors">09:00</button>
-                                <button class="py-1.5 rounded-lg bg-stone-950 text-white font-bold">10:30</button>
+                                <button class="py-1.5 rounded-lg bg-stone-950 text-white font-bold border border-[#d6bc8c]">10:30</button>
                                 <button class="py-1.5 rounded-lg bg-stone-100 hover:bg-stone-950 hover:text-white transition-colors">14:00</button>
                             </div>
                         </div>
@@ -621,10 +637,10 @@
         </section>
 
         <!-- PLANOS & PREÇOS -->
-        <section class="py-14 sm:py-24 px-5 sm:px-6" id="planos">
+        <section class="py-14 sm:py-24 px-5 sm:px-6 bg-white border-t border-b border-stone-300" id="planos">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="text-2xl sm:text-4xl font-bold text-stone-950 leading-tight">
+                    <h2 class="text-2xl sm:text-4xl font-bold font-display text-stone-950 leading-tight">
                         Planos desenhados para o seu momento.
                     </h2>
                     <p class="text-sm sm:text-base mt-2 text-stone-600">
@@ -632,20 +648,20 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto items-stretch">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
                     
                     <!-- Starter -->
-                    <div class="luxury-card rounded-3xl p-7 flex flex-col justify-between">
+                    <div class="flashlight-card p-7 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-stone-950">Starter</h3>
+                            <h3 class="text-xl font-bold font-display text-stone-950">Starter</h3>
                             <p class="text-xs text-stone-500 mt-1 mb-5">Sua presença pronta pra vender.</p>
                             
                             <div class="mb-5">
                                 <div class="flex items-baseline gap-1">
-                                    <span class="text-3xl font-extrabold text-stone-950">R$ 97</span>
+                                    <span class="text-3xl font-extrabold font-display text-stone-950">R$ 97</span>
                                     <span class="text-xs text-stone-500 font-medium">/mês</span>
                                 </div>
-                                <p class="text-[11px] text-stone-400 mt-0.5">R$ 81/mês no plano anual</p>
+                                <p class="text-[11px] font-mono text-stone-400 mt-0.5">R$ 81/mês no plano anual</p>
                             </div>
 
                             <ul class="space-y-2.5 mb-7 text-xs text-stone-700">
@@ -655,54 +671,57 @@
                             </ul>
                         </div>
 
-                        <a href="cadastrar.html?plan=starter" class="block w-full py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-center text-xs transition-colors">
+                        <a href="cadastrar.html?plan=starter" class="block w-full py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-center text-xs uppercase tracking-wider transition-colors">
                             Começar com Starter
                         </a>
                     </div>
 
-                    <!-- Pro (Destaque Dark) -->
-                    <div class="luxury-card-dark rounded-3xl p-7 flex flex-col justify-between text-white relative shadow-xl scale-[1.02]">
-                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-400 text-stone-950">
-                            Mais Escolhido
+                    <!-- Pro (Destaque Dark com Borda Giratória Gold) -->
+                    <div class="flashlight-card p-7 flex flex-col justify-between bg-[#11100E] text-white relative shadow-2xl scale-[1.03] border-2 border-[#d6bc8c]">
+                        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#d6bc8c] text-stone-950 shadow-md">
+                            ★ Mais Escolhido
                         </span>
 
                         <div>
-                            <h3 class="text-xl font-bold text-white">Pro</h3>
-                            <p class="text-xs text-stone-400 mt-1 mb-5">A IA que vende por você 24h.</p>
+                            <h3 class="text-2xl font-bold font-display text-white mt-1">Pro</h3>
+                            <p class="text-xs text-stone-400 mt-1 mb-5">A IA que qualifica e vende por você 24h.</p>
                             
                             <div class="mb-5">
                                 <div class="flex items-baseline gap-1">
-                                    <span class="text-3xl font-extrabold text-white">R$ 147</span>
+                                    <span class="text-4xl font-extrabold font-display text-white">R$ 147</span>
                                     <span class="text-xs text-stone-400 font-medium">/mês</span>
                                 </div>
-                                <p class="text-[11px] text-stone-400 mt-0.5">R$ 123/mês no plano anual</p>
+                                <p class="text-[11px] font-mono text-amber-200/80 mt-0.5">R$ 123/mês no plano anual</p>
                             </div>
 
-                            <ul class="space-y-2.5 mb-7 text-xs text-stone-200">
+                            <ul class="space-y-3 mb-7 text-xs text-stone-200">
                                 <li class="flex items-center gap-2 font-bold text-amber-300">✓ Tudo do Starter</li>
-                                <li class="flex items-center gap-2 font-semibold">✓ Concierge com IA inteligente</li>
+                                <li class="flex items-center gap-2 font-semibold text-white">✓ Concierge com IA inteligente</li>
                                 <li class="flex items-center gap-2">✓ CRM de leads + roteamento para WhatsApp</li>
                                 <li class="flex items-center gap-2">✓ Métricas e analytics de conversão</li>
                             </ul>
                         </div>
 
-                        <a href="cadastrar.html?plan=pro" class="block w-full py-3 rounded-full bg-white text-stone-950 font-bold text-center text-xs hover:bg-stone-100 transition-colors shadow-md">
-                            Começar com Pro
+                        <a href="cadastrar.html?plan=pro" class="btn-gold-spin w-full">
+                            <span class="spin-border"></span>
+                            <span class="relative block w-full py-3.5 rounded-full bg-[#1c1917] text-white font-bold text-xs uppercase tracking-widest text-center">
+                                Começar com Pro →
+                            </span>
                         </a>
                     </div>
 
                     <!-- Elite -->
-                    <div class="luxury-card rounded-3xl p-7 flex flex-col justify-between">
+                    <div class="flashlight-card p-7 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-stone-950">Elite</h3>
-                            <p class="text-xs text-stone-500 mt-1 mb-5">Seu negócio no automático.</p>
+                            <h3 class="text-xl font-bold font-display text-stone-950">Elite</h3>
+                            <p class="text-xs text-stone-500 mt-1 mb-5">Seu negócio rodando no automático.</p>
                             
                             <div class="mb-5">
                                 <div class="flex items-baseline gap-1">
-                                    <span class="text-3xl font-extrabold text-stone-950">R$ 197</span>
+                                    <span class="text-3xl font-extrabold font-display text-stone-950">R$ 197</span>
                                     <span class="text-xs text-stone-500 font-medium">/mês</span>
                                 </div>
-                                <p class="text-[11px] text-stone-400 mt-0.5">R$ 164/mês no plano anual</p>
+                                <p class="text-[11px] font-mono text-stone-400 mt-0.5">R$ 164/mês no plano anual</p>
                             </div>
 
                             <ul class="space-y-2.5 mb-7 text-xs text-stone-700">
@@ -713,7 +732,7 @@
                             </ul>
                         </div>
 
-                        <a href="cadastrar.html?plan=elite" class="block w-full py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-center text-xs transition-colors">
+                        <a href="cadastrar.html?plan=elite" class="block w-full py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-center text-xs uppercase tracking-wider transition-colors">
                             Começar com Elite
                         </a>
                     </div>
@@ -730,16 +749,19 @@
             </div>
         </section>
 
-        <!-- CTA FINAL -->
-        <section class="py-16 sm:py-20 px-6 text-center bg-stone-950 text-white">
+        <!-- CTA FINAL (Obsidian Dark with Gold Moving Border) -->
+        <section class="py-16 sm:py-20 px-6 text-center bg-[#0a0a0a] text-white">
             <div class="max-w-2xl mx-auto">
-                <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-10 object-contain mx-auto mb-5 filter brightness-0 invert"/>
-                <h2 class="text-3xl sm:text-4xl font-bold mb-3">Sua bio pronta em 2 minutos.</h2>
+                <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-12 object-contain mx-auto mb-5 filter brightness-0 invert"/>
+                <h2 class="text-3xl sm:text-5xl font-bold font-display mb-3">Sua bio pronta em 2 minutos.</h2>
                 <p class="text-stone-400 text-sm sm:text-base mb-8">
                     Crie sua conta agora e comece a conduzir decisões de compra.
                 </p>
-                <a class="inline-block px-9 py-4 rounded-full bg-white text-stone-950 text-xs sm:text-sm font-bold hover:bg-stone-100 transition-all shadow-xl" href="cadastrar.html">
-                    Criar conta e começar →
+                <a href="cadastrar.html" class="btn-gold-spin scale-105">
+                    <span class="spin-border"></span>
+                    <span class="relative flex items-center justify-center gap-2 px-9 py-4 rounded-full bg-[#141311] text-[#f6e3c5] text-xs sm:text-sm font-bold uppercase tracking-widest">
+                        <span>Criar conta e começar →</span>
+                    </span>
                 </a>
             </div>
         </section>
@@ -747,18 +769,29 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-10 px-6 text-center text-xs text-stone-500 bg-white border-t border-stone-200">
+    <footer class="py-10 px-6 text-center text-xs text-stone-500 bg-white border-t border-stone-300">
         <p>© 2026 ELOOO BIO PREMIUM · Ecossistema <strong class="text-stone-900">ELOOO International Group</strong>.</p>
-        <div class="flex items-center justify-center gap-5 mt-3">
+        <div class="flex items-center justify-center gap-6 mt-3 font-mono">
             <a class="hover:text-stone-900 transition-colors" href="termos.html">Termos</a>
             <a class="hover:text-stone-900 transition-colors" href="privacidade.html">Privacidade</a>
-            <a href="https://wa.me/5547988660791" target="_blank" rel="noopener noreferrer" class="hover:text-stone-900 transition-colors">WhatsApp Suporte</a>
+            <a href="https://wa.me/5547988660791" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 transition-colors">WhatsApp Suporte</a>
             <a href="mailto:contato@elooo.com.br" class="hover:text-stone-900 transition-colors">contato@elooo.com.br</a>
         </div>
     </footer>
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
+        // Flashlight mouse tracking on cards
+        document.querySelectorAll('.flashlight-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
         // Mobile Drawer Toggle
         const drawer = document.getElementById('mobile-drawer');
         const drawerContent = document.getElementById('mobile-drawer-content');

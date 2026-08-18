@@ -8,19 +8,20 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: #0E0D0C;
             color: #ffffff;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
         }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
 
         .netflix-scroll {
             display: flex;
@@ -41,7 +42,7 @@
         }
         .bio-btn:hover {
             transform: translateY(-1px);
-            border-color: rgba(214, 188, 140, 0.6);
+            border-color: #d6bc8c;
             background: rgba(38, 36, 33, 0.95);
         }
     </style>
@@ -56,7 +57,7 @@
                 <img src="static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop';"/>
             </div>
             
-            <h1 class="text-2xl font-bold text-white tracking-tight">Bruno Barros</h1>
+            <h1 class="text-2xl font-bold font-display text-white tracking-tight">Bruno Barros</h1>
             <p class="text-xs text-stone-400 mt-0.5 max-w-xs leading-relaxed">
                 Autor, Mentor & Fundador da ELOOO International Group
             </p>
@@ -64,7 +65,7 @@
 
         <!-- Social Icons Row -->
         <div class="flex justify-center gap-3 py-1">
-            <a href="https://instagram.com/oficialbrunobarros" target="_blank" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-stone-200 text-lg hover:bg-stone-800 transition-colors">
+            <a href="https://instagram.com/oficialbrunobarros" target="_blank" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-stone-200 text-lg hover:bg-stone-800 hover:text-amber-300 transition-colors">
                 <iconify-icon icon="solar:camera-linear"></iconify-icon>
             </a>
             <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Vim%20pela%20sua%20bio%20e%20quero%20conversar." target="_blank" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-stone-200 text-lg hover:bg-emerald-600 transition-colors">
@@ -76,7 +77,7 @@
         </div>
 
         <!-- Concierge IA Direct Action -->
-        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20fazer%20meu%20diagn%C3%B3stico%20editorial." target="_blank" class="bio-btn w-full p-4 rounded-2xl flex items-center gap-3.5 text-left shadow-lg border border-amber-400/30">
+        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20fazer%20meu%20diagn%C3%B3stico%20editorial." target="_blank" class="bio-btn w-full p-4 rounded-2xl flex items-center gap-3.5 text-left shadow-lg border border-amber-400/40">
             <div class="w-11 h-11 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-xl flex-none">
                 <iconify-icon icon="solar:bolt-circle-bold"></iconify-icon>
             </div>
@@ -84,12 +85,12 @@
                 <p class="font-bold text-sm text-white leading-tight">Diagnóstico Editorial Rápido</p>
                 <p class="text-xs text-stone-400 mt-0.5">Descubra o próximo passo para o seu livro</p>
             </div>
-            <div class="text-stone-400 text-sm">→</div>
+            <div class="text-amber-300 text-sm">→</div>
         </a>
 
         <!-- Horizontal Netflix Carousel -->
         <div class="pt-2">
-            <p class="text-[11px] font-bold uppercase tracking-wider text-stone-400 mb-2.5">
+            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-stone-400 mb-2.5">
                 PROJETOS & SOLUÇÕES
             </p>
 
@@ -100,10 +101,10 @@
                         <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800">
                             <img src="static/images/recalculando-cover.png" onerror="this.src='static/images/bruno-barros.png';" class="w-full h-full object-cover"/>
                         </div>
-                        <p class="text-xs font-bold text-white leading-tight">VIDANOVA & AUTORALIDADE</p>
+                        <p class="text-xs font-bold font-display text-white leading-tight">VIDANOVA & AUTORALIDADE</p>
                         <p class="text-[10px] text-stone-400 mt-0.5">Livro Oficial</p>
                     </div>
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20do%20Bruno%20Barros." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20do%20Bruno%20Barros." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-[#d6bc8c] hover:text-black text-stone-200 transition-colors">
                         Adquirir
                     </a>
                 </div>
@@ -114,10 +115,10 @@
                         <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 flex items-center justify-center p-3">
                             <img src="static/images/ELOOO LOGO.png" class="w-full object-contain filter brightness-0 invert"/>
                         </div>
-                        <p class="text-xs font-bold text-white leading-tight">PUBLICAÇÃO EDITORIAL</p>
+                        <p class="text-xs font-bold font-display text-white leading-tight">PUBLICAÇÃO EDITORIAL</p>
                         <p class="text-[10px] text-stone-400 mt-0.5">Editora Internacional</p>
                     </div>
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20publicar%20meu%20livro." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20publicar%20meu%20livro." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-[#d6bc8c] hover:text-black text-stone-200 transition-colors">
                         Publicar Livro
                     </a>
                 </div>
@@ -129,10 +130,10 @@
                             <iconify-icon icon="solar:crown-line-duotone" class="text-2xl text-amber-400 mb-1"></iconify-icon>
                             <span class="text-[10px] font-bold text-stone-300">MENTORIA</span>
                         </div>
-                        <p class="text-xs font-bold text-white leading-tight">MENTORIA VIP</p>
+                        <p class="text-xs font-bold font-display text-white leading-tight">MENTORIA VIP</p>
                         <p class="text-[10px] text-stone-400 mt-0.5">Individual</p>
                     </div>
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es%20da%20Mentoria." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es%20da%20Mentoria." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-[#d6bc8c] hover:text-black text-stone-200 transition-colors">
                         Candidatura
                     </a>
                 </div>
@@ -145,7 +146,7 @@
                 <iconify-icon icon="solar:book-bookmark-bold"></iconify-icon>
             </div>
             <div class="flex-1 min-w-0">
-                <p class="font-bold text-sm text-white leading-tight">QUERO PUBLICAR MEU LIVRO</p>
+                <p class="font-bold font-display text-sm text-white leading-tight">QUERO PUBLICAR MEU LIVRO</p>
                 <p class="text-xs text-stone-400 mt-0.5">Editora ELOOO | Brasil, Cascais & Madrid</p>
             </div>
             <iconify-icon icon="solar:arrow-right-up-linear" class="text-stone-400 text-sm"></iconify-icon>
@@ -153,7 +154,7 @@
 
         <!-- Footer -->
         <div class="pt-6 pb-2 text-center">
-            <a href="index.html" class="text-[10px] font-bold text-stone-500 uppercase tracking-widest hover:text-white">
+            <a href="index.html" class="text-[10px] font-mono font-bold text-stone-500 uppercase tracking-widest hover:text-white">
                 Criado com ELOOO BIO PREMIUM
             </a>
         </div>
