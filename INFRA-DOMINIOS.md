@@ -9,7 +9,7 @@
 |---|---|---|
 | elooo.com.br | institucional (HOJE: WordPress externo via Cloudflare) | — (futuro: gateway `index.html` deste repo) |
 | editora.elooo.com.br | `/editora` (editora + autores + livros) | eloooeditora (este repo) |
-| bio.elooo.com.br | LP da Bio Premium (`/bio/index`) + **slugs de usuário via proxy** | pg-murilo-melocra (este repo) |
+| premium.elooo.com.br | LP da Vitrine Premium (`/bio/index`) + **slugs de usuário via proxy** | pg-murilo-melocra (este repo) |
 | content.elooo.com.br | `/content` (LP da ferramenta — criar `content.html`) | pg-murilo-melocra (este repo) |
 | academy.elooo.com.br | `/academy` (vitrine — criar `academy.html`) | pg-murilo-melocra (este repo) |
 | app.elooo.com.br | o SEAAS/app (repo elooo-system) | elooo-system |
@@ -28,6 +28,13 @@
 4. **Headers de segurança** no topo (HSTS/nosniff/XFO/referrer/permissions).
    Não adicionar CSP aqui: os slugs de usuário passam pelo proxy e já recebem
    a CSP do app — uma segunda CSP viraria interseção e quebraria embeds.
+
+## NUNCA recriar mapas estáticos de perfis (/brunobarros, /leticia-vaz)
+
+As páginas dos usuários são VIVAS (concierge com IA, leads, cliques) e vêm do
+motor via proxy `/:slug`. Uma cópia .html congelada quebra o produto — se a LP
+precisar de uma amostra, use um iframe apontando para o slug real ou /demo
+(que já aponta para o motor).
 
 ## Para novas LPs
 

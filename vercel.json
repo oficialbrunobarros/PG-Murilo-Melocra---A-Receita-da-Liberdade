@@ -103,46 +103,6 @@
       "destination": "/bio/privacidade"
     },
     {
-      "source": "/brunobarros",
-      "has": [
-        {
-          "type": "host",
-          "value": "premium.elooo.com.br"
-        }
-      ],
-      "destination": "/bio/brunobarros"
-    },
-    {
-      "source": "/brunobarros",
-      "has": [
-        {
-          "type": "host",
-          "value": "bio.elooo.com.br"
-        }
-      ],
-      "destination": "/bio/brunobarros"
-    },
-    {
-      "source": "/leticia-vaz",
-      "has": [
-        {
-          "type": "host",
-          "value": "premium.elooo.com.br"
-        }
-      ],
-      "destination": "/bio/leticia-vaz"
-    },
-    {
-      "source": "/leticia-vaz",
-      "has": [
-        {
-          "type": "host",
-          "value": "bio.elooo.com.br"
-        }
-      ],
-      "destination": "/bio/leticia-vaz"
-    },
-    {
       "source": "/demo",
       "has": [
         {
@@ -150,7 +110,7 @@
           "value": "premium.elooo.com.br"
         }
       ],
-      "destination": "/bio/brunobarros"
+      "destination": "https://app.elooo.com.br/api/midia?bio=1&slug=brunobarros"
     },
     {
       "source": "/demo",
@@ -160,7 +120,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/brunobarros"
+      "destination": "https://app.elooo.com.br/api/midia?bio=1&slug=brunobarros"
     },
     {
       "source": "/api/midia",
