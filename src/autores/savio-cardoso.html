@@ -81,7 +81,7 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Continuous shimmering liquid gold text sweep effect from autores.html */
+        /* Continuous shimmering liquid gold text sweep effect */
         .gold-text-sweep {
             background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
             background-size: 200% auto;
@@ -147,7 +147,7 @@
             color: #000000 !important;
         }
 
-        /* FLASHLIGHT CARDS IDENTICAL TO AUTORES.HTML */
+        /* FLASHLIGHT CARDS */
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -218,7 +218,7 @@
         }
 
         .flashlight-card:hover {
-            transform: translateY(-6px) scale(1.015);
+            transform: translateY(-5px) scale(1.015);
             border-color: transparent;
             background-color: rgba(28, 25, 23, 0.75);
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(214, 188, 140, 0.25);
@@ -243,12 +243,37 @@
             text-shadow: 0 0 10px rgba(214, 188, 140, 0.6), 0 0 2px rgba(214, 188, 140, 0.8);
         }
 
-        /* SCROLL ANIMATED REVEALS & FADES */
+        /* HIGH-SPEED GLOWING LASER PULSE FIRING EFFECTS (FROM QUEM-SOMOS) */
+        .tech-pulse-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f6e3c5;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #d6bc8c, 0 0 20px #d6bc8c, 0 0 35px #d6bc8c;
+            pointer-events: none;
+            z-index: 50;
+            transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1), top 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+            will-change: left, top, transform, opacity;
+        }
+
+        .tech-pulse-trail {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 10%, rgba(214,188,140,0.6) 50%, #f6e3c5 90%);
+            pointer-events: none;
+            z-index: 49;
+            transform-origin: left center;
+            transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+            will-change: width, opacity;
+        }
+
+        /* SCROLL REVEAL */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(35px);
-            filter: blur(10px);
-            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            filter: blur(8px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity, filter;
         }
 
@@ -258,7 +283,7 @@
             filter: blur(0px);
         }
 
-        /* Pure Artist Portrait - Floating Majestic Cutout with Soft Feather Fade */
+        /* Pure Artist Portrait */
         .portrait-artist-wrapper {
             position: relative;
             width: 100%;
@@ -435,10 +460,14 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO 2: TRAJETÓRIA & AUTORIDADE MÉDICA (DESIGN EXECUTIVO DE LUXO & COMPACTO) -->
+    <!-- SEÇÃO 2: TRAJETÓRIA & AUTORIDADE MÉDICA (COM EFEITO DE DISPARO DE LASER) -->
     <!-- ========================================================================= -->
     <section id="trajetoriaSection" class="py-12 sm:py-16 bg-[#080706] border-y border-stone-800/80 relative z-20 overflow-hidden">
-        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20">
+        
+        <!-- Laser Pulse Effects Container for Section 2 -->
+        <div id="section2-laser-container" class="absolute inset-0 w-full h-full pointer-events-none z-40 overflow-hidden"></div>
+
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
             
             <div class="max-w-3xl mb-10 text-left scroll-reveal">
                 <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Autoridade & Propósito</span>
@@ -450,21 +479,24 @@
                 </p>
             </div>
 
-            <!-- EXECUTIVE SPLIT: LEFT TIMELINE SPINE / RIGHT AUTHORITY HIGHLIGHTS -->
+            <!-- EXECUTIVE SPLIT: LEFT TIMELINE CARDS (TARGETS) / RIGHT MASTER CARD (EMITTER) -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                 
-                <!-- Left Column: 3 Milestone Cards -->
+                <!-- Left Column: 3 Milestone Cards (Targets of the Laser Pulse) -->
                 <div class="lg:col-span-7 flex flex-col justify-between gap-4">
                     
-                    <!-- Milestone 1 -->
-                    <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <!-- Milestone 1 Target -->
+                    <div id="target-card-1" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec2(1)">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-6 flex items-start gap-4" onmousemove="updateFlashlight(event, this)">
                             <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0 z-10 relative">
                                 <iconify-icon icon="solar:stethoscope-linear"></iconify-icon>
                             </div>
                             <div class="z-10 relative">
-                                <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Pilar Clínico</span>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Pilar Clínico</span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-stone-400">Diagnóstico Celular</span>
+                                </div>
                                 <h3 class="font-display text-lg font-bold text-white mb-1">Medicina Preventiva & Longevidade</h3>
                                 <p class="text-xs text-stone-400 font-light leading-relaxed">
                                     Mais de uma década dedicada a diagnósticos celulares precoces, desacelerando a idade biológica e neutralizando a inflamação crônica.
@@ -473,15 +505,18 @@
                         </div>
                     </div>
 
-                    <!-- Milestone 2 -->
-                    <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <!-- Milestone 2 Target -->
+                    <div id="target-card-2" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec2(2)">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-6 flex items-start gap-4" onmousemove="updateFlashlight(event, this)">
                             <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0 z-10 relative">
                                 <iconify-icon icon="solar:bolt-linear"></iconify-icon>
                             </div>
                             <div class="z-10 relative">
-                                <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Performance Endócrina</span>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Performance Endócrina</span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-stone-400">Eixo Hormonal</span>
+                                </div>
                                 <h3 class="font-display text-lg font-bold text-white mb-1">Otimização Hormonal Estratégica</h3>
                                 <p class="text-xs text-stone-400 font-light leading-relaxed">
                                     Protocolos de regulação hormonal segura para executivos e líderes que necessitam de energia sustentada, foco analítico e vigor corporal.
@@ -490,15 +525,18 @@
                         </div>
                     </div>
 
-                    <!-- Milestone 3 -->
-                    <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <!-- Milestone 3 Target -->
+                    <div id="target-card-3" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec2(3)">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-6 flex items-start gap-4" onmousemove="updateFlashlight(event, this)">
                             <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0 z-10 relative">
                                 <iconify-icon icon="solar:global-linear"></iconify-icon>
                             </div>
                             <div class="z-10 relative">
-                                <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Impacto Internacional</span>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Impacto Internacional</span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-stone-400">Cascais & Brasil</span>
+                                </div>
                                 <h3 class="font-display text-lg font-bold text-white mb-1">Polo Cascais (Portugal) & Brasil</h3>
                                 <p class="text-xs text-stone-400 font-light leading-relaxed">
                                     Atendimento médico e mentoria com alcance global, transformando a rotina biológica de centenas de empresários na Europa e América Latina.
@@ -509,15 +547,21 @@
 
                 </div>
 
-                <!-- Right Column: Executive Callout & Action Card -->
+                <!-- Right Column: Executive Master Card (Laser Emitter on Hover / Click) -->
                 <div class="lg:col-span-5 flex flex-col justify-between">
-                    <div class="flashlight-card group p-[1.5px] h-full scroll-reveal">
+                    <div id="emitter-card-sec2" class="flashlight-card group p-[1.5px] h-full scroll-reveal cursor-pointer" onmouseenter="fireRandomLaserSec2()" onclick="fireAllLasersSec2()">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.9)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-8 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
                             <div class="z-10 relative">
-                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/20 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
-                                    <iconify-icon icon="solar:crown-line-duotone"></iconify-icon>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/20 text-[#d6bc8c] flex items-center justify-center text-xl">
+                                        <iconify-icon icon="solar:crown-line-duotone"></iconify-icon>
+                                    </div>
+                                    <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] px-3 py-1 rounded-full bg-[#d6bc8c]/10 border border-[#d6bc8c]/30">
+                                        ✦ Disparador de Metodologia
+                                    </span>
                                 </div>
+                                
                                 <h3 class="font-display text-2xl font-extrabold text-white mb-3 leading-tight">
                                     O Padrão de Excelência do Dr. Sávio Cardoso
                                 </h3>
@@ -545,10 +589,12 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO 3: O LIVRO & OS 4 DIFERENCIAIS DA OBRA (COM MOCKUP 3D E BOTÃO) -->
+    <!-- SEÇÃO 3: O LIVRO & OS 4 DIFERENCIAIS DA OBRA (COM BOTÃO ABAIXO DO MOCKUP & DISPARO) -->
     <!-- ========================================================================= -->
     <section id="livroSection" class="py-12 sm:py-16 bg-[#0c0a09] relative z-20 overflow-hidden">
         
+        <!-- Laser Pulse Effects Container for Section 3 -->
+        <div id="section3-laser-container" class="absolute inset-0 w-full h-full pointer-events-none z-40 overflow-hidden"></div>
         <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] opacity-15"></div>
 
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
@@ -563,53 +609,59 @@
                 </p>
             </div>
 
-            <!-- SHOWCASE: LIVRO 3D COM LASER BEAM + 4 PILARES DA OBRA -->
+            <!-- SHOWCASE: LIVRO 3D (EMITTER) + 4 PILARES DA OBRA (TARGETS) -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
-                <!-- 3D Book Presentation Wrapped in Flashlight Card -->
-                <div class="lg:col-span-5 flex justify-center book-3d-wrap scroll-reveal">
-                    <div class="flashlight-card group p-[1.5px] w-[310px] sm:w-[360px]">
-                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.9)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                        <div class="flashlight-card-inner p-8 text-left book-3d-object" onmousemove="updateFlashlight(event, this)">
-                            
-                            <!-- Book Header Ribbon -->
-                            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5 z-10 relative">
-                                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] font-bold">Elooo Editora</span>
-                                <span class="text-[10px] font-mono text-stone-400">Edição de Luxo</span>
-                            </div>
+                <!-- Left Column: 3D Book Mockup + Clean Purchase Button BELOW the Book -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center scroll-reveal">
+                    
+                    <!-- 3D Book Mockup Container (Laser Emitter) -->
+                    <div id="book-emitter-card" class="book-3d-wrap w-full flex justify-center cursor-pointer" onmouseenter="fireRandomLaserSec3()" onclick="fireAllLasersSec3()">
+                        <div class="flashlight-card group p-[1.5px] w-[310px] sm:w-[350px]">
+                            <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.9)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                            <div class="flashlight-card-inner p-8 text-left book-3d-object" onmousemove="updateFlashlight(event, this)">
+                                
+                                <!-- Book Header Ribbon -->
+                                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5 z-10 relative">
+                                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] font-bold">Elooo Editora</span>
+                                    <span class="text-[10px] font-mono text-stone-400">Edição de Luxo</span>
+                                </div>
 
-                            <!-- Book Spine & Title -->
-                            <div class="my-5 z-10 relative">
-                                <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-[#faeac7]">Dr. Sávio Cardoso</span>
-                                <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1.5 leading-tight">
-                                    O CÓDIGO DA VITALIDADE MASCULINA
-                                </h3>
-                                <p class="text-xs text-stone-400 mt-2 font-light italic">
-                                    Longevidade, Saúde Metabólica e Alta Performance
-                                </p>
-                            </div>
+                                <!-- Book Spine & Title (Ready for real cover image) -->
+                                <div class="my-6 z-10 relative">
+                                    <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-[#faeac7]">Dr. Sávio Cardoso</span>
+                                    <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1.5 leading-tight">
+                                        O CÓDIGO DA VITALIDADE MASCULINA
+                                    </h3>
+                                    <p class="text-xs text-stone-400 mt-2 font-light italic">
+                                        Longevidade, Saúde Metabólica e Alta Performance
+                                    </p>
+                                </div>
 
-                            <!-- Book Specs -->
-                            <div class="pt-5 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-300 z-10 relative">
-                                <span class="text-[#d6bc8c]">✦ Capa Nobre</span>
-                                <span>✦ Tiragem Oficial</span>
-                            </div>
-
-                            <!-- Purchase Button inside Mockup -->
-                            <div class="mt-7 z-10 relative">
-                                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury w-full py-3.5 text-xs font-mono font-bold uppercase tracking-wider text-center">
-                                    Comprar Exemplar Oficial
-                                </a>
+                                <!-- Book Specs -->
+                                <div class="pt-5 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-300 z-10 relative">
+                                    <span class="text-[#d6bc8c]">✦ Capa Nobre</span>
+                                    <span>✦ Tiragem Oficial</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- BOTÃO DOURADO ABAIXO DO MOCKUP (ISOLADO PARA RECEBER A CAPA REAL) -->
+                    <div class="w-full max-w-[350px] mt-6">
+                        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury w-full py-4 text-xs font-mono font-bold uppercase tracking-wider text-center shadow-2xl">
+                            <iconify-icon icon="solar:book-bookmark-linear" class="text-lg"></iconify-icon>
+                            <span>Comprar Exemplar Oficial</span>
+                        </a>
+                    </div>
+
                 </div>
 
-                <!-- The 4 Differentials / Pillars with Flashlight Cards -->
+                <!-- Right Column: The 4 Differentials / Pillars (Targets of Book Laser) -->
                 <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                     
-                    <!-- Pilar 1 -->
-                    <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <!-- Pilar 1 Target -->
+                    <div id="book-target-1" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(1)">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
                             <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">01</div>
@@ -620,8 +672,8 @@
                         </div>
                     </div>
 
-                    <!-- Pilar 2 -->
-                    <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <!-- Pilar 2 Target -->
+                    <div id="book-target-2" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(2)">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
                             <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">02</div>
@@ -632,8 +684,8 @@
                         </div>
                     </div>
 
-                    <!-- Pilar 3 -->
-                    <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <!-- Pilar 3 Target -->
+                    <div id="book-target-3" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(3)">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
                             <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">03</div>
@@ -644,8 +696,8 @@
                         </div>
                     </div>
 
-                    <!-- Pilar 4 -->
-                    <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <!-- Pilar 4 Target -->
+                    <div id="book-target-4" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(4)">
                         <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
                         <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
                             <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">04</div>
@@ -671,69 +723,101 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO 4: PARA QUEM FOI ESCRITA ESTA OBRA (COM BOTÃO DE AÇÃO) -->
+    <!-- SEÇÃO 4: PÚBLICO-ALVO REFORMULADO (ALTO PADRÃO EXECUTIVO & EDITORIAL) -->
     <!-- ========================================================================= -->
     <section id="publicoSection" class="py-12 sm:py-16 bg-[#080706] border-t border-stone-800/80 relative z-20">
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 text-center">
             
             <div class="max-w-3xl mx-auto mb-8 scroll-reveal">
-                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Público-Alvo</span>
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Diagnóstico & Aplicação</span>
                 <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-1.5 mb-2">
-                    Para Quem é Este Livro?
+                    Para Quem Foi Escrita Esta Obra?
                 </h2>
+                <p class="text-sm text-stone-400 font-light max-w-xl mx-auto">
+                    Desenvolvido para perfis que demandam o máximo de si mesmos e exigem soluções biológicas fundamentadas em dados.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+            <!-- 4 Ultra-Luxury Cards with Indices, Badges and Flashlight Effect -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
                 
+                <!-- Card 1 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3 z-10 relative">
-                            <iconify-icon icon="solar:user-bold-duotone"></iconify-icon>
+                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">01</span>
+                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
+                                    <iconify-icon icon="solar:briefcase-bold-duotone"></iconify-icon>
+                                </div>
+                            </div>
+                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Liderança Sob Pressão</span>
+                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Empresários & C-Levels</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Executivos que precisam eliminar a fadiga após o almoço, sustentar foco analítico por 14 horas diárias e tomar decisões estratégicas sem neblina mental.
+                            </p>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-1.5 z-10 relative">Empresários & Líderes</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
-                            Profissionais que precisam de clareza mental extrema e energia constante para tomada de decisões diárias.
-                        </p>
                     </div>
                 </div>
 
+                <!-- Card 2 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3 z-10 relative">
-                            <iconify-icon icon="solar:dumbbell-large-linear"></iconify-icon>
+                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">02</span>
+                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
+                                    <iconify-icon icon="solar:dumbbell-large-linear"></iconify-icon>
+                                </div>
+                            </div>
+                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Rejuvenescimento Físico</span>
+                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Homens 35+ e Vigor Ativo</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Indivíduos que recusam a queda de libido, a perda muscular e a desaceleração metabólica como sintomas "normais" da passagem do tempo.
+                            </p>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-1.5 z-10 relative">Busca por Vigor Físico</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
-                            Homens e mulheres que desejam recomposição corporal, força muscular e vitalidade sem estresse oxidativo.
-                        </p>
                     </div>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3 z-10 relative">
-                            <iconify-icon icon="solar:heart-pulse-linear"></iconify-icon>
+                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">03</span>
+                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
+                                    <iconify-icon icon="solar:heart-pulse-linear"></iconify-icon>
+                                </div>
+                            </div>
+                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Investimento em Futuro</span>
+                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Longevidade Consciente</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Pessoas que enxergam a saúde biológica como o ativo patrimonial mais valioso para desfrutar do sucesso financeiro com independência e lucidez.
+                            </p>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-1.5 z-10 relative">Longevidade Consciente</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
-                            Pessoas que compreendem que investir na saúde hoje é a melhor garantia de independência e produtividade no futuro.
-                        </p>
                     </div>
                 </div>
 
+                <!-- Card 4 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
-                        <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-3 z-10 relative">
-                            <iconify-icon icon="solar:book-bookmark-linear"></iconify-icon>
+                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">04</span>
+                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
+                                    <iconify-icon icon="solar:dna-linear"></iconify-icon>
+                                </div>
+                            </div>
+                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Ciência de Ponta</span>
+                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Entusiastas de Biohacking</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Leitores que procuram protocolos práticos, aplicáveis e com respaldo em ensaios clínicos rigorosos da medicina moderna.
+                            </p>
                         </div>
-                        <h3 class="font-display text-base font-bold text-white mb-1.5 z-10 relative">Entusiastas da Medicina</h3>
-                        <p class="text-xs text-stone-400 font-light leading-relaxed z-10 relative">
-                            Leitores que exigem conteúdo embasado na ciência mais recente e com aplicabilidade imediata e comprovada.
-                        </p>
                     </div>
                 </div>
 
@@ -750,15 +834,24 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- FINAL CONVERSION HERO (COMPRA & CONTATO OFICIAL) -->
+    <!-- FINAL CONVERSION STAGE: FOTO DO AUTOR EM BACKGROUND COM TEXTO SOBREPOSTO -->
     <!-- ========================================================================= -->
-    <section id="finalSection" class="py-16 sm:py-20 bg-gradient-to-b from-[#0c0a09] via-[#141210] to-[#0c0a09] border-t border-stone-800 text-center relative z-20">
-        <div class="max-w-4xl mx-auto px-6">
+    <section id="finalSection" class="relative min-h-[560px] flex items-center justify-center py-20 bg-[#0c0a09] border-t border-stone-800 text-center overflow-hidden z-20">
+        
+        <!-- FOTO DO AUTOR COMO BACKGROUND CINEMATOGRÁFICO COM GRADIENTE ESCURO -->
+        <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+            <img src="../static/images/savio-cardoso.png" alt="Dr. Sávio Cardoso" class="w-full h-full object-cover object-top opacity-20 filter grayscale contrast-125 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/85 to-[#0c0a09]/95"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0c0a09_80%)]"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
             
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/15 mb-3 backdrop-blur-md scroll-reveal">
+            <div class="inline-flex items-center gap-2 mb-3 scroll-reveal">
                 <iconify-icon icon="circle-flags:br" class="text-sm"></iconify-icon>
                 <iconify-icon icon="circle-flags:pt" class="text-sm"></iconify-icon>
-                <span class="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">Elooo Editora Internacional</span>
+                <div class="w-px h-3 bg-white/20"></div>
+                <span class="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">Elooo Editora Internacional</span>
             </div>
 
             <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-1 mb-4 leading-tight scroll-reveal">
@@ -793,10 +886,122 @@
 
     <!-- INCLUDE_FOOTER -->
 
-    <!-- Interactive GSAP Scroll Scrubbing & Flashlight Effect Scripts -->
+    <!-- Interactive GSAP Scroll, Flashlight & Dynamic Laser Pulses Scripts -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
+        // =========================================================================
+        // LASER PULSE SHOOTING FUNCTION (MATCHING QUEM-SOMOS LOGIC)
+        // =========================================================================
+        function shootLaserPulse(containerId, sourceElem, targetElem) {
+            const container = document.getElementById(containerId);
+            if (!container || !sourceElem || !targetElem) return;
+
+            const containerRect = container.getBoundingClientRect();
+            const srcRect = sourceElem.getBoundingClientRect();
+            const tgtRect = targetElem.getBoundingClientRect();
+
+            // Source coordinate (middle edge closest to target)
+            const isSourceRight = srcRect.left > tgtRect.left;
+            const x1 = isSourceRight ? (srcRect.left - containerRect.left) : (srcRect.right - containerRect.left);
+            const y1 = (srcRect.top + srcRect.bottom) / 2 - containerRect.top;
+
+            // Target coordinate
+            const x2 = isSourceRight ? (tgtRect.right - containerRect.left) : (tgtRect.left - containerRect.left);
+            const y2 = (tgtRect.top + tgtRect.bottom) / 2 - containerRect.top;
+
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+            // Create Trail Line
+            const trail = document.createElement('div');
+            trail.className = 'tech-pulse-trail';
+            trail.style.left = `${x1}px`;
+            trail.style.top = `${y1}px`;
+            trail.style.width = '0px';
+            trail.style.transform = `rotate(${angle}deg)`;
+            container.appendChild(trail);
+
+            // Create Particle Seed
+            const seed = document.createElement('div');
+            seed.className = 'tech-pulse-particle';
+            seed.style.left = `${x1}px`;
+            seed.style.top = `${y1}px`;
+            seed.style.transform = 'translate(-50%, -50%) scale(1)';
+            container.appendChild(seed);
+
+            // Trigger animation
+            requestAnimationFrame(() => {
+                trail.style.width = `${dist}px`;
+                seed.style.left = `${x2}px`;
+                seed.style.top = `${y2}px`;
+                seed.style.transform = 'translate(-50%, -50%) scale(1.3)';
+            });
+
+            // Splash feedback on target card
+            setTimeout(() => {
+                targetElem.style.boxShadow = '0 0 35px rgba(214, 188, 140, 0.6), 0 20px 40px rgba(0,0,0,0.9)';
+                targetElem.style.borderColor = 'rgba(214, 188, 140, 0.8)';
+                setTimeout(() => {
+                    targetElem.style.boxShadow = '';
+                    targetElem.style.borderColor = '';
+                }, 450);
+            }, 300);
+
+            // Cleanup
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                seed.style.opacity = '0';
+                setTimeout(() => {
+                    trail.remove();
+                    seed.remove();
+                }, 300);
+            }, 550);
+        }
+
+        // Section 2 Laser Triggers (From Right Master Card to Left 3 Cards)
+        window.triggerLaserSec2 = function(cardNum) {
+            const emitter = document.getElementById('emitter-card-sec2');
+            const target = document.getElementById(`target-card-${cardNum}`);
+            if (emitter && target) {
+                shootLaserPulse('section2-laser-container', emitter, target);
+            }
+        };
+
+        window.fireRandomLaserSec2 = function() {
+            const rand = Math.floor(Math.random() * 3) + 1;
+            window.triggerLaserSec2(rand);
+        };
+
+        window.fireAllLasersSec2 = function() {
+            [1, 2, 3].forEach((num, idx) => {
+                setTimeout(() => window.triggerLaserSec2(num), idx * 140);
+            });
+        };
+
+        // Section 3 Laser Triggers (From 3D Book Mockup on Left to 4 Pillar Cards on Right)
+        window.triggerLaserSec3 = function(pillarNum) {
+            const bookEmitter = document.getElementById('book-emitter-card');
+            const target = document.getElementById(`book-target-${pillarNum}`);
+            if (bookEmitter && target) {
+                shootLaserPulse('section3-laser-container', bookEmitter, target);
+            }
+        };
+
+        window.fireRandomLaserSec3 = function() {
+            const rand = Math.floor(Math.random() * 4) + 1;
+            window.triggerLaserSec3(rand);
+        };
+
+        window.fireAllLasersSec3 = function() {
+            [1, 2, 3, 4].forEach((num, idx) => {
+                setTimeout(() => window.triggerLaserSec3(num), idx * 120);
+            });
+        };
+
+        // DOM Ready Initializations
         document.addEventListener("DOMContentLoaded", () => {
             
             // 1. DYNAMIC SCROLL REVEAL (Fade In on enter / Fade Out on exit)
@@ -812,7 +1017,7 @@
                 });
             });
 
-            // 2. PARALLAX & HERO SCROLL DISSOLVE (Author portrait & text smoothly transition as you scroll)
+            // 2. PARALLAX & HERO SCROLL DISSOLVE
             const heroCol = document.getElementById('heroAuthorCol');
             const heroText = document.getElementById('heroTextCol');
             
@@ -859,7 +1064,26 @@
                 });
             }
 
-            // 4. Flashlight mouse tracking
+            // 4. Auto-fire initial welcome lasers on scroll into sections
+            ScrollTrigger.create({
+                trigger: "#trajetoriaSection",
+                start: "top 60%",
+                once: true,
+                onEnter: () => {
+                    setTimeout(() => window.fireAllLasersSec2(), 300);
+                }
+            });
+
+            ScrollTrigger.create({
+                trigger: "#livroSection",
+                start: "top 60%",
+                once: true,
+                onEnter: () => {
+                    setTimeout(() => window.fireAllLasersSec3(), 400);
+                }
+            });
+
+            // 5. Flashlight mouse tracking
             window.updateFlashlight = function (e, card) {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
