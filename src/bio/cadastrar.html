@@ -26,11 +26,11 @@
             Já tem conta? <a href="entrar.html" class="font-bold underline text-stone-900">Fazer login</a>
         </p>
 
-        <!-- Plan Selector Bar -->
+        <!-- Plan Selector Bar (Starter 127 / Pro 147 / Elite 497) -->
         <div class="mb-5 p-1 rounded-2xl bg-stone-100 grid grid-cols-3 gap-1 text-xs font-bold text-center">
-            <button type="button" onclick="selectPlan('starter')" id="btn-starter" class="py-2 rounded-xl transition-colors text-stone-600">Starter</button>
-            <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors">Pro</button>
-            <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2 rounded-xl transition-colors text-stone-600">Elite</button>
+            <button type="button" onclick="selectPlan('starter')" id="btn-starter" class="py-2 rounded-xl transition-colors text-stone-600">Starter R$127</button>
+            <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors">Pró R$147</button>
+            <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2 rounded-xl transition-colors text-stone-600">Elite R$497</button>
         </div>
 
         <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='https://wa.me/5547988660791?text=Ol%C3%A1%2C%20acabei%20de%20me%20cadastrar%20no%20ELOOO%20BIO%20PREMIUM%20e%20quero%20ativar%20minha%20conta.';">
@@ -42,7 +42,7 @@
             <div>
                 <label class="block text-xs font-bold text-stone-700 mb-1">Usuário da sua Bio</label>
                 <div class="flex items-center rounded-xl bg-stone-50 border border-stone-300 focus-within:border-stone-900 overflow-hidden">
-                    <span class="px-3 text-xs text-stone-400">bio.elooo.com.br/</span>
+                    <span class="px-3 text-xs text-stone-400 font-mono">bio.elooo.com.br/</span>
                     <input type="text" required placeholder="seunome" class="w-full py-3 pr-4 text-sm bg-transparent outline-none"/>
                 </div>
             </div>
