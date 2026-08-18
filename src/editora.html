@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth h-full" lang="pt-BR">
+<html class="scroll-smooth" lang="pt-BR">
 
 <head>
     <meta charset="utf-8" />
@@ -43,7 +43,7 @@
                             700: '#44403c',
                             800: '#292524',
                             900: '#1c1917',
-                            950: '#0a0a0c',
+                            950: '#0c0a09',
                         },
                         gold: {
                             100: '#fdf6e7',
@@ -64,14 +64,13 @@
     </script>
 
     <style>
-        html, body {
-            height: 100%;
-            overflow: hidden;
-            background-color: #070709;
+        body {
+            background-color: #0c0a09;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
+            overflow-x: hidden;
         }
 
         .font-display {
@@ -144,298 +143,441 @@
             color: #000000 !important;
         }
 
-        /* 3D PERSPECTIVE STAGE FOR FLYING CARDS INTO DEPTH */
-        .stage-3d {
-            perspective: 1100px;
-            perspective-origin: 50% 50%;
-            transform-style: preserve-3d;
-            position: relative;
-            width: 100%;
-            height: 100%;
+        /* BACKGROUND MARQUEE 3D STREAM OF AUTHORS */
+        @keyframes marqueeRowLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        .author-card-3d {
-            position: absolute;
-            width: 240px;
-            height: 330px;
-            border-radius: 24px;
-            background: linear-gradient(165deg, rgba(28, 25, 24, 0.95) 0%, rgba(12, 10, 9, 0.98) 100%);
-            border: 1.5px solid rgba(214, 188, 140, 0.45);
-            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 30px rgba(214, 188, 140, 0.25);
+        @keyframes marqueeRowRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .marquee-track-left {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: marqueeRowLeft 60s linear infinite;
+        }
+
+        .marquee-track-right {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: marqueeRowRight 60s linear infinite;
+        }
+
+        .author-stream-card {
+            width: 200px;
+            height: 270px;
+            border-radius: 20px;
+            background: linear-gradient(165deg, rgba(28, 25, 23, 0.85) 0%, rgba(12, 10, 9, 0.95) 100%);
+            border: 1.5px solid rgba(214, 188, 140, 0.35);
+            box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(214, 188, 140, 0.15);
             overflow: hidden;
-            backface-visibility: hidden;
-            will-change: transform, opacity;
-            animation: flyToDepth 16s infinite cubic-bezier(0.25, 1, 0.5, 1);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
         }
 
-        @keyframes flyToDepth {
-            0% {
-                transform: translate3d(var(--x-start, 0px), var(--y-start, 0px), 160px) rotateY(var(--rot-y, -10deg)) rotateX(var(--rot-x, 6deg)) scale(1.08);
-                opacity: 0;
-                filter: blur(0px);
-            }
-            8% {
-                opacity: 1;
-            }
-            75% {
-                opacity: 0.85;
-                filter: blur(1px);
-            }
-            100% {
-                transform: translate3d(var(--x-end, -40px), var(--y-end, -20px), -1000px) rotateY(calc(var(--rot-y, -10deg) * 1.6)) rotateX(calc(var(--rot-x, 6deg) * 1.4)) scale(0.25);
-                opacity: 0;
-                filter: blur(4px);
-            }
+        .author-stream-card:hover {
+            border-color: #d6bc8c;
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 25px 55px -10px rgba(0, 0, 0, 0.95), 0 0 30px rgba(214, 188, 140, 0.4);
         }
 
         /* Ambient Glow */
         .ambient-gold-glow {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(214, 188, 140, 0.14) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.15) 0%, transparent 70%);
             pointer-events: none;
-            filter: blur(60px);
+            filter: blur(70px);
         }
     </style>
 </head>
 
-<body class="h-full flex flex-col justify-between relative selection:bg-[#d6bc8c] selection:text-black">
+<body class="selection:bg-[#d6bc8c] selection:text-black">
 
     <!-- NOISE GRAIN OVERLAY -->
-    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.035] pointer-events-none z-50"></div>
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.03] pointer-events-none z-50"></div>
 
-    <!-- AMBIENT BACKGROUND GLOWS -->
-    <div class="ambient-gold-glow top-0 right-1/4 w-[600px] h-[600px]"></div>
-    <div class="ambient-gold-glow bottom-0 left-10 w-[500px] h-[500px] opacity-50"></div>
+    <!-- INCLUDE_NAVBAR -->
 
-    <!-- MINIMALIST LUXURY HEADER / NAVBAR -->
-    <header class="relative z-30 w-full px-6 sm:px-12 py-5 flex items-center justify-between">
-        <!-- Logo ELOOO -->
-        <a href="index.html" class="flex items-center gap-3 group">
-            <img src="static/images/ELOOO LOGO.png" alt="ELOOO International Group" class="h-8 sm:h-10 object-contain filter brightness-0 invert transition-transform group-hover:scale-105">
-            <span class="hidden sm:inline-block text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c] border-l border-white/20 pl-3">
-                EDITORA
-            </span>
-        </a>
+    <!-- HERO SECTION (CLEAN, MINIMALIST & CENTRALIZED WITH AUTHORS IN THE BACKGROUND) -->
+    <section class="relative min-h-[92vh] sm:min-h-screen w-full flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        
+        <!-- Ambient Lighting Glows -->
+        <div class="ambient-gold-glow top-10 left-1/2 -translate-x-1/2 w-[700px] h-[700px]"></div>
+        <div class="ambient-gold-glow bottom-0 right-10 w-[500px] h-[500px] opacity-40"></div>
 
-        <!-- Right Quick Actions -->
-        <div class="flex items-center gap-4">
-            <a href="autores.html" class="text-xs font-mono font-semibold uppercase tracking-widest text-stone-300 hover:text-white transition-colors hidden sm:block">
-                Autores
-            </a>
-            <a href="livros.html" class="text-xs font-mono font-semibold uppercase tracking-widest text-stone-300 hover:text-white transition-colors hidden sm:block">
-                Livros
-            </a>
-            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20pela%20Elooo%20Editora%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20editoriais." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 hover:border-[#d6bc8c] text-stone-200 hover:text-white text-xs font-mono uppercase tracking-wider transition-all flex items-center gap-2">
-                <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-sm"></iconify-icon>
-                <span>Falar com Editor</span>
-            </a>
-        </div>
-    </header>
-
-    <!-- HERO SECTION (100% MINIMALIST & NO-SCROLL) -->
-    <main class="relative z-20 flex-1 flex items-center px-6 sm:px-12 lg:px-20 max-w-[1560px] mx-auto w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full h-full py-4">
+        <!-- BACKGROUND 3D STREAM OF ALL 24 AUTHORS (FLOWING ENDLESSLY BEHIND) -->
+        <div class="absolute inset-0 flex flex-col justify-center gap-6 pointer-events-none select-none opacity-40 sm:opacity-45 scale-100 sm:scale-105 transform -rotate-1">
             
-            <!-- LEFT COLUMN: TITLES, BADGES & CTA -->
-            <div class="lg:col-span-7 flex flex-col justify-center text-left">
-                
-                <!-- TOP BADGE WITH INTERNATIONAL FLAGS -->
-                <div class="inline-flex items-center gap-3 mb-5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10 w-fit backdrop-blur-md">
-                    <span class="text-sm">🇧🇷</span>
-                    <span class="text-sm">🇵🇹</span>
-                    <span class="text-sm">🇪🇸</span>
-                    <div class="w-px h-3.5 bg-white/20"></div>
-                    <span class="text-[10.5px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">
-                        BRASIL · CASCAIS · MADRID
-                    </span>
-                </div>
-
-                <!-- H1: MAIN STATEMENT -->
-                <h1 class="font-display text-3xl sm:text-5xl lg:text-[52px] xl:text-[58px] font-bold tracking-tight text-white leading-[1.12] mb-4">
-                    Elooo Editora — <span class="gold-text-sweep">Autoridade, Propósito, Lucro e Legado</span> Através de Livros.
-                </h1>
-
-                <!-- H2: EMOTIONAL AUTOGRAPH STATEMENT -->
-                <h2 class="font-sans text-lg sm:text-2xl text-stone-300 font-light italic leading-relaxed mb-8 max-w-2xl text-stone-200">
-                    “Um autógrafo seu representa muito mais do que você imagina...”
-                </h2>
-
-                <!-- PRIMARY GOLD CTA BUTTON -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20pela%20Elooo%20Editora%20e%20quero%20fazer%20parte%20da%20elite%20autoral%20global." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-10 py-4 sm:py-4.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl">
-                        <span>Faça parte da elite autoral global da Elooo</span>
-                        <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
-                    </a>
-                </div>
-
-                <!-- Subtle Author Stats Ribbon -->
-                <div class="mt-8 pt-6 border-t border-white/10 flex items-center gap-8 text-xs font-mono text-stone-400">
-                    <div class="flex items-center gap-2">
-                        <span class="text-[#d6bc8c] font-bold text-sm">31+</span>
-                        <span>Autores no Pódio</span>
+            <!-- ROW 1 (Moves Left - 12 Authors) -->
+            <div class="marquee-track-left">
+                <!-- Authors Set 1 -->
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
                     </div>
-                    <div class="w-px h-3 bg-white/10"></div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[#d6bc8c] font-bold text-sm">+3.500</span>
-                        <span>Livros Distribuídos</span>
-                    </div>
-                    <div class="w-px h-3 bg-white/10"></div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[#d6bc8c] font-bold text-sm">3 Países</span>
-                        <span>Presença Física</span>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Bruno Barros</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Fundador & Autor</p>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- RIGHT COLUMN: 3D CARDS GLIDING INTO DEPTH -->
-            <div class="lg:col-span-5 relative h-[380px] sm:h-[460px] lg:h-[540px] flex items-center justify-center pointer-events-none select-none">
-                <div class="stage-3d flex items-center justify-center" id="cardStreamStage">
-                    
-                    <!-- CARD 1: Bruno Barros -->
-                    <div class="author-card-3d" style="--x-start: -20px; --y-start: 10px; --x-end: -60px; --y-end: -40px; --rot-y: -12deg; --rot-x: 6deg; animation-delay: 0s;">
-                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
-                            <img src="static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop';"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
-                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
-                                Fundador
-                            </span>
-                        </div>
-                        <div class="p-4 text-left">
-                            <h3 class="font-display font-bold text-sm text-white leading-tight">Bruno Barros</h3>
-                            <p class="text-[10px] text-stone-400 mt-0.5">Recalculando a Rota</p>
-                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
-                                <span>✦ Autor ELOOO</span>
-                                <span>Brasil / Cascais</span>
-                            </div>
-                        </div>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/sergio-canico.png" alt="Sérgio Caniço" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
                     </div>
-
-                    <!-- CARD 2: Sérgio Caniço -->
-                    <div class="author-card-3d" style="--x-start: 30px; --y-start: -15px; --x-end: 20px; --y-end: -60px; --rot-y: 10deg; --rot-x: -4deg; animation-delay: 2.6s;">
-                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
-                            <img src="static/images/sergio-canico.png" alt="Sérgio Caniço" class="w-full h-full object-cover object-top"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
-                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
-                                Portugal
-                            </span>
-                        </div>
-                        <div class="p-4 text-left">
-                            <h3 class="font-display font-bold text-sm text-white leading-tight">Sérgio Caniço</h3>
-                            <p class="text-[10px] text-stone-400 mt-0.5">Autoridade Internacional</p>
-                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
-                                <span>✦ Autor ELOOO</span>
-                                <span>Cascais</span>
-                            </div>
-                        </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Sérgio Caniço</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Portugal / Cascais</p>
                     </div>
+                </div>
 
-                    <!-- CARD 3: Vanessa Rodrigues -->
-                    <div class="author-card-3d" style="--x-start: -35px; --y-start: 25px; --x-end: -80px; --y-end: -10px; --rot-y: -8deg; --rot-x: 5deg; animation-delay: 5.2s;">
-                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
-                            <img src="static/images/vanessa-rodrigues.png" alt="Vanessa Rodrigues" class="w-full h-full object-cover object-top"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
-                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
-                                Autora
-                            </span>
-                        </div>
-                        <div class="p-4 text-left">
-                            <h3 class="font-display font-bold text-sm text-white leading-tight">Vanessa Rodrigues</h3>
-                            <p class="text-[10px] text-stone-400 mt-0.5">Liderança & Propósito</p>
-                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
-                                <span>✦ Autora ELOOO</span>
-                                <span>Brasil</span>
-                            </div>
-                        </div>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/FOTO MURILO.jpeg" alt="Murilo Melocra" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
                     </div>
-
-                    <!-- CARD 4: Diego Arcas -->
-                    <div class="author-card-3d" style="--x-start: 25px; --y-start: 5px; --x-end: 50px; --y-end: -45px; --rot-y: 12deg; --rot-x: -6deg; animation-delay: 7.8s;">
-                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
-                            <img src="static/images/diego-arcas.png" alt="Diego Arcas" class="w-full h-full object-cover object-top"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
-                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
-                                Autor
-                            </span>
-                        </div>
-                        <div class="p-4 text-left">
-                            <h3 class="font-display font-bold text-sm text-white leading-tight">Diego Arcas</h3>
-                            <p class="text-[10px] text-stone-400 mt-0.5">Inteligência Financeira</p>
-                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
-                                <span>✦ Autor ELOOO</span>
-                                <span>Brasil</span>
-                            </div>
-                        </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Murilo Melocra</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
                     </div>
+                </div>
 
-                    <!-- CARD 5: Tatiana Fonseca -->
-                    <div class="author-card-3d" style="--x-start: -15px; --y-start: -20px; --x-end: -50px; --y-end: -70px; --rot-y: -10deg; --rot-x: 4deg; animation-delay: 10.4s;">
-                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
-                            <img src="static/images/tatiana-fonseca.png" alt="Tatiana Fonseca" class="w-full h-full object-cover object-top"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
-                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
-                                Autora
-                            </span>
-                        </div>
-                        <div class="p-4 text-left">
-                            <h3 class="font-display font-bold text-sm text-white leading-tight">Tatiana Fonseca</h3>
-                            <p class="text-[10px] text-stone-400 mt-0.5">Gestão & Governança</p>
-                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
-                                <span>✦ Autora ELOOO</span>
-                                <span>Brasil</span>
-                            </div>
-                        </div>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/vanessa-rodrigues.png" alt="Vanessa Rodrigues" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
                     </div>
-
-                    <!-- CARD 6: Douglas Vacilotto -->
-                    <div class="author-card-3d" style="--x-start: 15px; --y-start: 20px; --x-end: 35px; --y-end: -25px; --rot-y: 8deg; --rot-x: -5deg; animation-delay: 13.0s;">
-                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
-                            <img src="static/images/douglas-vacilotto.png" alt="Douglas Vacilotto" class="w-full h-full object-cover object-top"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
-                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
-                                Autor
-                            </span>
-                        </div>
-                        <div class="p-4 text-left">
-                            <h3 class="font-display font-bold text-sm text-white leading-tight">Douglas Vacilotto</h3>
-                            <p class="text-[10px] text-stone-400 mt-0.5">Mentalidade & Execução</p>
-                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
-                                <span>✦ Autor ELOOO</span>
-                                <span>Brasil</span>
-                            </div>
-                        </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Vanessa Rodrigues</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autora & Mentora</p>
                     </div>
+                </div>
 
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/diego-arcas.png" alt="Diego Arcas" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Diego Arcas</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/tatiana-fonseca.png" alt="Tatiana Fonseca" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Tatiana Fonseca</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autora & Executiva</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/douglas-vacilotto.png" alt="Douglas Vacilotto" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Douglas Vacilotto</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/gabriela-mendes.png" alt="Gabriela Mendes" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Gabriela Mendes</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autora & Mentora</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/dimas-neto.png" alt="Dimas Neto" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Dimas Neto</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/carine-aparecida.png" alt="Carine Aparecida" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Carine Aparecida</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autora ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/fernando-merlos.png" alt="Fernando Merlos" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Fernando Merlos</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/berenice-duarte-borba.png" alt="Berenice Duarte Borba" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Berenice Duarte</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autora ELOOO</p>
+                    </div>
+                </div>
+
+                <!-- Duplicate for Infinite Loop -->
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Bruno Barros</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Fundador & Autor</p>
+                    </div>
+                </div>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/sergio-canico.png" alt="Sérgio Caniço" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Sérgio Caniço</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Portugal / Cascais</p>
+                    </div>
+                </div>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/FOTO MURILO.jpeg" alt="Murilo Melocra" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Murilo Melocra</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
                 </div>
             </div>
 
-        </div>
-    </main>
+            <!-- ROW 2 (Moves Right - Other 12 Authors) -->
+            <div class="marquee-track-right">
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/savio-cardoso.png" alt="Sávio Cardoso" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Sávio Cardoso</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor & Mentor</p>
+                    </div>
+                </div>
 
-    <!-- MINIMALIST FOOTER STRIP -->
-    <footer class="relative z-30 w-full px-6 sm:px-12 py-4 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-stone-500 border-t border-white/5">
-        <div>
-            © 2026 <strong class="text-stone-300">ELOOO EDITORA</strong> · Brasil, Cascais & Madrid.
-        </div>
-        <div class="flex items-center gap-6 mt-2 sm:mt-0">
-            <a href="autores.html" class="hover:text-stone-300 transition-colors">Pódio de Autores</a>
-            <a href="livros.html" class="hover:text-stone-300 transition-colors">Catálogo de Livros</a>
-            <a href="termos.html" class="hover:text-stone-300 transition-colors">Termos</a>
-            <a href="privacidade.html" class="hover:text-stone-300 transition-colors">Privacidade</a>
-        </div>
-    </footer>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/anildo-silva.png" alt="Anildo Silva" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Anildo Silva</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
 
-    <!-- INTERACTIVE 3D PARALLAX EFFECT -->
-    <script>
-        const stage = document.getElementById('cardStreamStage');
-        window.addEventListener('mousemove', (e) => {
-            if (!stage) return;
-            const x = (e.clientX / window.innerWidth - 0.5) * 15;
-            const y = (e.clientY / window.innerHeight - 0.5) * 15;
-            stage.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-        });
-    </script>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/berg-junior.png" alt="Berg Junior" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Berg Junior</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/claudio-dutra.png" alt="Cláudio Dutra" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Cláudio Dutra</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/edson-fabiano.png" alt="Edson Fabiano" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Edson Fabiano</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/franklyn-fuck.png" alt="Franklyn Fuck" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Franklyn Fuck</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/gustavo-da-silva.png" alt="Gustavo da Silva" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Gustavo da Silva</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/herick-pereira.png" alt="Herick Pereira" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Herick Pereira</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/hewandro-entringer.png" alt="Hewandro Entringer" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Hewandro Entringer</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/kenje-kambara.png" alt="Kenje Kambara" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Kenje Kambara</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor Internacional</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/marcio-lira.png" alt="Márcio Lira" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Márcio Lira</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/rafael-cavalcanti.png" alt="Rafael Cavalcanti" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Rafael Cavalcanti</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+
+                <!-- Duplicate for Infinite Loop -->
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/savio-cardoso.png" alt="Sávio Cardoso" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Sávio Cardoso</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor & Mentor</p>
+                    </div>
+                </div>
+                <div class="author-stream-card">
+                    <div class="h-[200px] w-full bg-stone-900 overflow-hidden relative">
+                        <img src="static/images/anildo-silva.png" alt="Anildo Silva" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-2.5 text-center">
+                        <p class="font-display font-bold text-xs text-white truncate">Anildo Silva</p>
+                        <p class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider">Autor ELOOO</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RADIAL SHADOW MASK OVERLAY FOR CRYSTAL CLEAR TEXT READABILITY -->
+        <div class="absolute inset-0 bg-radial-vignette pointer-events-none z-10" style="background: radial-gradient(circle at 50% 50%, rgba(12,10,9,0.92) 0%, rgba(12,10,9,0.82) 40%, rgba(12,10,9,0.65) 75%, rgba(12,10,9,0.9) 100%);"></div>
+
+        <!-- CENTERED HIGH-IMPACT EDITORIAL CONTENT (NO RETANGLES / NO IA CLUTTER) -->
+        <div class="relative z-20 max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center">
+            
+            <!-- FLAGS OF THE THREE INTERNATIONAL HUBS (CLEAN & SUBTLE) -->
+            <div class="flex items-center justify-center gap-3 mb-6 text-lg sm:text-xl">
+                <span title="Brasil">🇧🇷</span>
+                <span title="Portugal (Cascais)">🇵🇹</span>
+                <span title="Espanha (Madrid)">🇪🇸</span>
+            </div>
+
+            <!-- H1: MAJESTIC EDITORIAL HEADLINE -->
+            <h1 class="font-display text-4xl sm:text-6xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.08] mb-6 max-w-3xl">
+                Elooo Editora — <span class="gold-text-sweep">Autoridade, Propósito, Lucro e Legado</span> Através de Livros.
+            </h1>
+
+            <!-- H2: SOULFUL AUTOGRAPH STATEMENT -->
+            <h2 class="font-sans text-lg sm:text-2xl lg:text-[26px] text-stone-300 font-light italic leading-relaxed mb-10 max-w-2xl text-stone-200">
+                “Um autógrafo seu representa muito mais do que você imagina...”
+            </h2>
+
+            <!-- PRIMARY NOBLE GOLD CTA BUTTON -->
+            <div class="flex items-center justify-center w-full">
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20pela%20Elooo%20Editora%20e%20quero%20fazer%20parte%20da%20elite%20autoral%20global." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-12 py-4 sm:py-5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl">
+                    <span>Faça parte da elite autoral global da Elooo</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- INCLUDE_FOOTER -->
+
 </body>
 
 </html>
