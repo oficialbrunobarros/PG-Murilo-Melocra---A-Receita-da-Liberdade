@@ -4,84 +4,50 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Entrar — ELOOO BIO PREMIUM</title>
-    <meta name="description" content="Acesse o painel da sua Bio Inteligente ELOOO BIO PREMIUM."/>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #09090b; color: #fff; }
-        .gold-text { color: #d6bc8c; }
-        .glass-box {
-            background: linear-gradient(170deg, rgba(24, 24, 28, 0.75) 0%, rgba(12, 12, 15, 0.9) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8);
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FAF9F6; color: #141310; }
+        .font-serif { font-family: 'Playfair Display', Georgia, serif; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-4xl glass-box rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 border border-white/10">
-        
-        <!-- Left Showcase -->
-        <div class="hidden lg:flex flex-col justify-between p-12 bg-gradient-to-br from-[#16161c] to-[#0d0d10] border-r border-white/10 relative overflow-hidden">
-            <div class="relative z-10">
-                <a href="../index.html" class="inline-block mb-8">
-                    <img src="../static/images/ELOOO LOGO.png" alt="ELOOO Logo" class="h-10 object-contain filter brightness-0 invert"/>
-                </a>
-                <span class="text-xs font-mono uppercase tracking-[0.2em] text-[#d6bc8c]">Bem-vindo de volta</span>
-                <h1 class="font-serif italic text-4xl font-bold text-white mt-2 leading-tight">Sua vitrine inteligente te espera.</h1>
-                <p class="text-stone-400 text-sm mt-4 font-light leading-relaxed">
-                    Acesse seu painel, acompanhe as respostas da IA e veja suas vendas crescendo no automático.
-                </p>
+    <div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-xl">
+        <a href="../index.html" class="inline-block mb-6">
+            <img src="../static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-8 object-contain" style="filter: brightness(0);"/>
+        </a>
+
+        <h1 class="text-2xl font-bold text-stone-950">Entrar na sua conta</h1>
+        <p class="text-xs text-stone-500 mt-1 mb-6">
+            Não tem conta? <a href="cadastrar.html" class="font-bold underline text-stone-900">Criar conta</a>
+        </p>
+
+        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Login efetuado com sucesso! Redirecionando...');">
+            <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1.5">E-mail</label>
+                <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
-            <div class="relative z-10 p-5 rounded-2xl bg-white/[0.04] border border-white/10">
-                <p class="text-xs font-mono text-[#d6bc8c] uppercase">STATUS DO SISTEMA</p>
-                <div class="flex items-center gap-2 mt-1">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-xs text-stone-200">Concierge IA ativo e operando 24/7</span>
+            <div>
+                <div class="flex justify-between mb-1.5">
+                    <label class="text-xs font-bold text-stone-700">Senha</label>
+                    <a href="#esqueci" onclick="alert('Instruções enviadas para seu e-mail!')" class="text-xs text-stone-500 hover:underline">Esqueci a senha</a>
                 </div>
+                <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-full bg-stone-950 text-white font-bold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors mt-2 shadow-md">
+                Entrar no Painel →
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="../index.html" class="text-xs text-stone-400 hover:text-stone-900 underline">← Voltar à página inicial</a>
         </div>
-
-        <!-- Right Form -->
-        <div class="p-8 sm:p-12 flex flex-col justify-center">
-            <a href="../index.html" class="lg:hidden inline-block mb-6">
-                <img src="../static/images/ELOOO LOGO.png" alt="ELOOO Logo" class="h-9 object-contain filter brightness-0 invert"/>
-            </a>
-
-            <h2 class="text-2xl font-bold text-white">Acessar Conta</h2>
-            <p class="text-sm text-stone-400 mt-1 mb-8">
-                Não tem conta? <a href="cadastrar.html" class="text-[#f6e3c5] font-bold underline hover:text-white">Criar conta</a>
-            </p>
-
-            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Login efetuado com sucesso! Redirecionando...');">
-                <div>
-                    <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-2">E-mail</label>
-                    <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3.5 rounded-xl text-sm bg-white/[0.04] border border-white/10 focus:border-[#d6bc8c] outline-none text-white transition-colors"/>
-                </div>
-
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <label class="text-xs font-mono uppercase tracking-wider text-stone-400">Senha</label>
-                        <a href="#esqueci" onclick="alert('Instruções enviadas para seu e-mail!')" class="text-xs text-[#d6bc8c] hover:underline">Esqueci a senha</a>
-                    </div>
-                    <input type="password" required placeholder="••••••••" class="w-full px-4 py-3.5 rounded-xl text-sm bg-white/[0.04] border border-white/10 focus:border-[#d6bc8c] outline-none text-white transition-colors"/>
-                </div>
-
-                <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-[#f6e3c5] to-[#d6bc8c] text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity mt-4 shadow-xl">
-                    Entrar no Painel →
-                </button>
-            </form>
-
-            <div class="mt-8 text-center">
-                <a href="../index.html" class="text-xs text-stone-400 hover:text-white underline">← Voltar à página inicial</a>
-            </div>
-        </div>
-
     </div>
 </body>
 </html>

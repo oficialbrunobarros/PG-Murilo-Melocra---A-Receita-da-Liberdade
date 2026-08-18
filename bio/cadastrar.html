@@ -7,96 +7,63 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #09090b; color: #fff; }
-        .glass-box {
-            background: linear-gradient(170deg, rgba(24, 24, 28, 0.75) 0%, rgba(12, 12, 15, 0.9) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8);
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FAF9F6; color: #141310; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-4xl glass-box rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 border border-white/10">
-        
-        <!-- Left Showcase -->
-        <div class="hidden lg:flex flex-col justify-between p-12 bg-gradient-to-br from-[#16161c] to-[#0d0d10] border-r border-white/10 relative overflow-hidden">
-            <div class="relative z-10">
-                <a href="../index.html" class="inline-block mb-8">
-                    <img src="../static/images/ELOOO LOGO.png" alt="ELOOO Logo" class="h-10 object-contain filter brightness-0 invert"/>
-                </a>
-                <span class="text-xs font-mono uppercase tracking-[0.2em] text-[#d6bc8c]">Comece em 2 minutos</span>
-                <h1 class="font-serif italic text-4xl font-bold text-white mt-2 leading-tight">Sua vitrine inteligente pronta pra vender.</h1>
-                <p class="text-stone-400 text-sm mt-4 font-light leading-relaxed">
-                    Crie sua bio de alta conversão, treine sua IA e comece a conduzir decisões imediatamente.
-                </p>
-            </div>
+    <div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-xl">
+        <a href="../index.html" class="inline-block mb-6">
+            <img src="../static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-8 object-contain" style="filter: brightness(0);"/>
+        </a>
 
-            <div class="relative z-10 p-5 rounded-2xl bg-amber-400/10 border border-amber-400/30">
-                <div class="flex items-center gap-2 mb-1">
-                    <iconify-icon icon="solar:shield-check-bold" class="text-amber-400 text-xl"></iconify-icon>
-                    <span class="text-xs font-bold text-white uppercase">Garantia Incondicional 7 Dias</span>
-                </div>
-                <p class="text-xs text-stone-300">Não gostou? Devolvemos 100% do seu investimento.</p>
-            </div>
+        <h1 class="text-2xl font-bold text-stone-950">Criar sua conta</h1>
+        <p class="text-xs text-stone-500 mt-1 mb-5">
+            Já tem conta? <a href="entrar.html" class="font-bold underline text-stone-900">Fazer login</a>
+        </p>
+
+        <!-- Plan Selector Bar -->
+        <div class="mb-5 p-1 rounded-2xl bg-stone-100 grid grid-cols-3 gap-1 text-xs font-bold text-center">
+            <button type="button" onclick="selectPlan('starter')" id="btn-starter" class="py-2 rounded-xl transition-colors text-stone-600">Starter</button>
+            <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors">Pro</button>
+            <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2 rounded-xl transition-colors text-stone-600">Elite</button>
         </div>
 
-        <!-- Right Form -->
-        <div class="p-8 sm:p-12 flex flex-col justify-center">
-            <a href="../index.html" class="lg:hidden inline-block mb-6">
-                <img src="../static/images/ELOOO LOGO.png" alt="ELOOO Logo" class="h-9 object-contain filter brightness-0 invert"/>
-            </a>
-
-            <h2 class="text-2xl font-bold text-white">Criar Sua Conta</h2>
-            <p class="text-sm text-stone-400 mt-1 mb-6">
-                Já tem conta? <a href="entrar.html" class="text-[#f6e3c5] font-bold underline hover:text-white">Fazer login</a>
-            </p>
-
-            <!-- Plan Selector -->
-            <div class="mb-6 p-1 rounded-2xl bg-white/[0.05] border border-white/10 grid grid-cols-3 gap-1 text-[11px] font-mono font-bold text-center">
-                <button type="button" onclick="selectPlan('starter')" id="btn-starter" class="py-2.5 rounded-xl transition-all text-stone-400">Starter</button>
-                <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2.5 rounded-xl bg-gradient-to-r from-[#f6e3c5] to-[#d6bc8c] text-black shadow-md transition-all">Pro (★)</button>
-                <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2.5 rounded-xl transition-all text-stone-400">Elite</button>
+        <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='https://wa.me/5547988660791?text=Ol%C3%A1%2C%20acabei%20de%20me%20cadastrar%20no%20ELOOO%20BIO%20PREMIUM%20e%20quero%20ativar%20minha%20conta.';">
+            <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Nome Completo</label>
+                <input type="text" required placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
-            <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='https://wa.me/5547988660791?text=Ol%C3%A1%2C%20acabei%20de%20me%20cadastrar%20no%20ELOOO%20BIO%20PREMIUM%20e%20quero%20ativar%20minha%20conta.';">
-                <div>
-                    <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1.5">Nome Completo</label>
-                    <input type="text" required placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl text-sm bg-white/[0.04] border border-white/10 focus:border-[#d6bc8c] outline-none text-white transition-colors"/>
+            <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Usuário da sua Bio</label>
+                <div class="flex items-center rounded-xl bg-stone-50 border border-stone-300 focus-within:border-stone-900 overflow-hidden">
+                    <span class="px-3 text-xs text-stone-400">bio.elooo.com.br/</span>
+                    <input type="text" required placeholder="seunome" class="w-full py-3 pr-4 text-sm bg-transparent outline-none"/>
                 </div>
-
-                <div>
-                    <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1.5">Usuário da sua Bio</label>
-                    <div class="flex items-center rounded-xl bg-white/[0.04] border border-white/10 focus-within:border-[#d6bc8c] overflow-hidden">
-                        <span class="px-3 text-xs font-mono text-stone-500">bio.elooo.com.br/</span>
-                        <input type="text" required placeholder="seunome" class="w-full py-3 pr-4 text-sm bg-transparent outline-none text-white"/>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1.5">E-mail</label>
-                    <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-white/[0.04] border border-white/10 focus:border-[#d6bc8c] outline-none text-white transition-colors"/>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1.5">Senha</label>
-                    <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl text-sm bg-white/[0.04] border border-white/10 focus:border-[#d6bc8c] outline-none text-white transition-colors"/>
-                </div>
-
-                <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-[#f6e3c5] to-[#d6bc8c] text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity mt-4 shadow-xl">
-                    Criar Conta e Ativar Plano →
-                </button>
-            </form>
-
-            <div class="mt-6 text-center">
-                <a href="../index.html" class="text-xs text-stone-400 hover:text-white underline">← Voltar à página inicial</a>
             </div>
+
+            <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">E-mail</label>
+                <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Senha</label>
+                <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-full bg-stone-950 text-white font-bold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors mt-2 shadow-md">
+                Criar Conta e Começar →
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="../index.html" class="text-xs text-stone-400 hover:text-stone-900 underline">← Voltar à página inicial</a>
         </div>
-
     </div>
 
     <script>
@@ -107,10 +74,10 @@
                 elite: document.getElementById('btn-elite')
             };
             for (let k in btns) {
-                btns[k].className = 'py-2.5 rounded-xl transition-all text-stone-400';
+                btns[k].className = 'py-2 rounded-xl transition-colors text-stone-600';
             }
             if (btns[plan]) {
-                btns[plan].className = 'py-2.5 rounded-xl bg-gradient-to-r from-[#f6e3c5] to-[#d6bc8c] text-black shadow-md transition-all font-bold';
+                btns[plan].className = 'py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors font-bold';
             }
         }
         const urlParams = new URLSearchParams(window.location.search);
