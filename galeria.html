@@ -110,80 +110,168 @@
 
     <!-- NAVBAR -->
 <header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
-    <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
-    <div class="max-w-[1440px] mx-auto px-6 py-3 relative flex justify-between items-center">
+    <div class="absolute inset-0 bg-white/80 backdrop-blur-md border-b border-stone-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.03)]"></div>
+    <div class="max-w-[1440px] mx-auto px-5 sm:px-8 py-3 relative flex justify-between items-center">
         <!-- Logo -->
         <a href="index.html" class="flex items-center group cursor-pointer z-50">
-            <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-11 md:h-16 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
+            <img src="static/images/ELOOO LOGO.png" alt="Elooo International Group" class="h-10 sm:h-12 md:h-14 object-contain transition-transform hover:scale-105" style="filter: brightness(0);">
         </a>
 
         <!-- Nav Links (Desktop) -->
-        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-9 text-[13px] font-sans uppercase tracking-[0.18em] text-stone-600 font-medium">
-            <a href="index.html" class="hover:text-stone-900 transition-colors">Home</a>
-            <a href="quem-somos.html" class="hover:text-stone-900 transition-colors">Quem Somos</a>
-            <a href="autores.html" class="hover:text-stone-900 transition-colors">Autores</a>
-            <a href="livros.html" class="hover:text-stone-900 transition-colors">Livros</a>
-            <a href="trilhas.html" class="hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
-            <a href="galeria.html" class="hover:text-stone-900 transition-colors">Galeria</a>
-            <a href="contato.html" class="hover:text-stone-900 transition-colors">Contato</a>
+        <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-8 text-[12.5px] font-sans uppercase tracking-[0.16em] text-stone-600 font-medium">
+            <a href="index.html" class="nav-item hover:text-stone-900 transition-colors">Home</a>
+            <a href="quem-somos.html" class="nav-item hover:text-stone-900 transition-colors">Quem Somos</a>
+            <a href="autores.html" class="nav-item hover:text-stone-900 transition-colors">Autores</a>
+            <a href="livros.html" class="nav-item hover:text-stone-900 transition-colors">Livros</a>
+            <a href="trilhas.html" class="nav-item hover:text-stone-900 transition-colors">Trilhas Editoriais</a>
+            <a href="galeria.html" class="nav-item hover:text-stone-900 transition-colors">Galeria</a>
+            <a href="contato.html" class="nav-item hover:text-stone-900 transition-colors">Contato</a>
         </nav>
 
         <!-- Action & Hamburger -->
-        <div class="flex items-center gap-4 z-50">
+        <div class="flex items-center gap-3 z-50">
+            <!-- Desktop CTA -->
             <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
                 <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
                 <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-5 py-2.5 rounded-full font-bold text-[11px] text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
                     Faça Parte da Elite Autoral
                 </span>
             </a>
-            <button id="mobile-menu-btn" class="lg:hidden text-3xl text-stone-900 hover:text-stone-600 transition-colors flex items-center">
-                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+
+            <!-- Mobile Quick WhatsApp icon -->
+            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="lg:hidden w-10 h-10 rounded-full bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center text-xl transition-transform active:scale-90" aria-label="WhatsApp">
+                <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
+            </a>
+
+            <!-- Hamburger Button -->
+            <button id="mobile-menu-btn" type="button" class="lg:hidden w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-300/80 text-stone-900 flex items-center justify-center text-2xl transition-all duration-300 active:scale-95 cursor-pointer" aria-label="Abrir Menu">
+                <iconify-icon id="mobile-menu-icon" icon="solar:hamburger-menu-linear"></iconify-icon>
             </button>
         </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-stone-950 flex flex-col items-center justify-center z-[60] transition-transform duration-500 translate-x-full lg:hidden">
-        <nav class="flex flex-col items-center gap-6 text-[13px] font-sans uppercase tracking-[0.18em] text-white/70 font-medium">
-            <a href="index.html" class="hover:text-white transition-colors mobile-link">Home</a>
-            <a href="quem-somos.html" class="hover:text-white transition-colors mobile-link">Quem Somos</a>
-            <a href="autores.html" class="hover:text-white transition-colors mobile-link">Autores</a>
-            <a href="livros.html" class="hover:text-white transition-colors mobile-link">Livros</a>
-            <a href="trilhas.html" class="hover:text-white transition-colors mobile-link">Trilhas Editoriais</a>
-            <a href="galeria.html" class="hover:text-white transition-colors mobile-link">Galeria</a>
-            <a href="contato.html" class="hover:text-white transition-colors mobile-link">Contato</a>
-            
-            <!-- CTA on mobile -->
-            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm mt-8">
-                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100"></span>
-                <span class="relative flex items-center justify-center h-full w-full bg-[#0a0a0a] px-8 py-3 rounded-full font-bold text-[11px] text-white tracking-widest uppercase">
-                    Faça Parte da Elite Autoral
+    <!-- Mobile Menu Overlay Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#0c0a09]/98 backdrop-blur-2xl flex flex-col justify-between z-[99999] opacity-0 pointer-events-none transition-all duration-300 overflow-y-auto px-6 py-6 lg:hidden">
+        
+        <!-- Mobile Drawer Header -->
+        <div class="flex items-center justify-between border-b border-stone-800/80 pb-5 w-full">
+            <a href="index.html" class="flex items-center mobile-link">
+                <img src="static/images/ELOOO LOGO.png" alt="Elooo Logo" class="h-9 object-contain" style="filter: brightness(0) invert(1);">
+            </a>
+            <button id="mobile-menu-close" type="button" class="w-10 h-10 rounded-full bg-stone-900 border border-stone-800 text-stone-300 hover:text-white flex items-center justify-center text-2xl transition-transform active:scale-90 cursor-pointer" aria-label="Fechar Menu">
+                <iconify-icon icon="solar:close-circle-linear"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex flex-col gap-2 py-6 my-auto w-full max-w-sm mx-auto">
+            <a href="index.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:home-2-linear" class="text-base text-stone-500"></iconify-icon>
+                    Home
                 </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
+            </a>
+
+            <a href="quem-somos.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:shield-star-linear" class="text-base text-stone-500"></iconify-icon>
+                    Quem Somos
+                </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
+            </a>
+
+            <a href="autores.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-base text-stone-500"></iconify-icon>
+                    Autores
+                </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
+            </a>
+
+            <a href="livros.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:book-2-linear" class="text-base text-stone-500"></iconify-icon>
+                    Livros
+                </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
+            </a>
+
+            <a href="trilhas.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:compass-linear" class="text-base text-stone-500"></iconify-icon>
+                    Trilhas Editoriais
+                </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
+            </a>
+
+            <a href="galeria.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:gallery-linear" class="text-base text-stone-500"></iconify-icon>
+                    Galeria
+                </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
+            </a>
+
+            <a href="contato.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:letter-linear" class="text-base text-stone-500"></iconify-icon>
+                    Contato
+                </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
+            </a>
+
+            <a href="faq.html" class="mobile-nav-link mobile-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-xs font-sans uppercase tracking-[0.18em] text-stone-300 hover:text-white hover:bg-stone-900/60 transition-all">
+                <span class="flex items-center gap-3">
+                    <iconify-icon icon="solar:question-circle-linear" class="text-base text-stone-500"></iconify-icon>
+                    FAQ
+                </span>
+                <iconify-icon icon="solar:arrow-right-linear" class="text-xs text-stone-600 opacity-60"></iconify-icon>
             </a>
         </nav>
+
+        <!-- Mobile Drawer Footer -->
+        <div class="border-t border-stone-800/80 pt-6 w-full max-w-sm mx-auto space-y-3">
+            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="relative block group rounded-full p-[1.5px] overflow-hidden w-full text-center shadow-lg">
+                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-100"></span>
+                <span class="relative flex items-center justify-center gap-2 h-full w-full bg-[#0c0a09] px-6 py-3.5 rounded-full font-bold text-xs text-white tracking-widest uppercase">
+                    <span>Faça Parte da Elite Autoral</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-[#d6bc8c]"></iconify-icon>
+                </span>
+            </a>
+
+            <div class="flex items-center justify-between px-2 pt-2 text-[10px] font-mono text-stone-500 uppercase tracking-widest">
+                <span>Brasil · Portugal · Espanha</span>
+                <a href="contato.html" class="text-[#d6bc8c] mobile-link hover:underline">Sedes & Concierge</a>
+            </div>
+        </div>
+
     </div>
 </header>
 
 <style>
-    .nav-link-active {
+    /* Active Link State on Desktop */
+    #navbar nav a.nav-link-active {
         color: #0c0a09 !important;
         background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%);
         background-size: 200% auto;
-        border: 1px solid rgba(214, 188, 140, 0.6);
+        border: 1px solid rgba(214, 188, 140, 0.7);
         border-radius: 9999px;
-        padding: 6px 16px !important;
-        margin: -6px -8px;
+        padding: 6px 18px !important;
+        margin: -6px -4px;
         box-shadow: 0 4px 20px -3px rgba(214, 188, 140, 0.5);
         position: relative;
         overflow: hidden;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         font-weight: 600 !important;
         letter-spacing: 0.15em !important;
         transition: all 0.3s ease;
     }
     
     /* Brushed metallic reflection shine sweep overlay */
-    .nav-link-active::after {
+    #navbar nav a.nav-link-active::after {
         content: '';
         position: absolute;
         top: -50%;
@@ -205,28 +293,120 @@
         25% { left: 150%; }
         100% { left: 150%; }
     }
+
+    /* Active Link State in Mobile Drawer */
+    #mobile-menu a.mobile-nav-link.nav-link-active {
+        color: #0c0a09 !important;
+        background: linear-gradient(135deg, #d6bc8c 0%, #f6e3c5 50%, #d6bc8c 100%) !important;
+        border: 1px solid rgba(214, 188, 140, 0.9) !important;
+        border-radius: 16px !important;
+        font-weight: 700 !important;
+        box-shadow: 0 6px 25px -4px rgba(214, 188, 140, 0.6) !important;
+    }
+    #mobile-menu a.mobile-nav-link.nav-link-active iconify-icon {
+        color: #0c0a09 !important;
+        opacity: 1 !important;
+    }
 </style>
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const path = window.location.pathname;
-        const currentPath = path.split("/").pop() || "index.html";
-        const navLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
-        
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (!href) return;
-            
-            // Normalize path matching
-            const hrefFilename = href.split('/').pop();
-            const isMatch = (hrefFilename === currentPath) ||
-                            (path.includes('/autores/') && hrefFilename === 'autores.html') ||
-                            (path.includes('/livros/') && hrefFilename === 'livros.html');
-                            
-            if (isMatch) {
-                link.classList.add('nav-link-active');
+    (function() {
+        function initNavigation() {
+            // 1. Identify current active page
+            const pathname = window.location.pathname;
+            function cleanSlug(url) {
+                if (!url) return 'index';
+                const noQuery = url.split('?')[0].split('#')[0];
+                const parts = noQuery.split('/').filter(Boolean);
+                if (parts.length === 0) return 'index';
+                const file = parts[parts.length - 1];
+                return file.replace(/\.html$/, '') || 'index';
             }
-        });
-    });
+
+            const currentSlug = cleanSlug(pathname);
+            const isAuthorSubpage = pathname.includes('/autores/');
+            const isBookSubpage = pathname.includes('/livros/');
+
+            const allLinks = document.querySelectorAll('#navbar nav a, #mobile-menu nav a');
+            allLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href) return;
+                const linkSlug = cleanSlug(href);
+
+                let isMatch = false;
+                if (currentSlug === 'index' && linkSlug === 'index') {
+                    isMatch = true;
+                } else if (currentSlug !== 'index' && linkSlug === currentSlug) {
+                    isMatch = true;
+                } else if (isAuthorSubpage && linkSlug === 'autores') {
+                    isMatch = true;
+                } else if (isBookSubpage && linkSlug === 'livros') {
+                    isMatch = true;
+                }
+
+                if (isMatch) {
+                    link.classList.add('nav-link-active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+
+            // 2. Mobile Menu Toggle Logic
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function openMenu() {
+                if (!mobileMenu) return;
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                if (!mobileMenu) return;
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = '';
+            }
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isOpen = mobileMenu && mobileMenu.classList.contains('opacity-100');
+                    if (isOpen) closeMenu();
+                    else openMenu();
+                });
+            }
+
+            if (menuClose) {
+                menuClose.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    closeMenu();
+                });
+            }
+
+            if (mobileMenu) {
+                // Close when tapping any link inside
+                mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        closeMenu();
+                    });
+                });
+
+                // Close when pressing Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeMenu();
+                });
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initNavigation);
+        } else {
+            initNavigation();
+        }
+    })();
 </script>
 
 
@@ -529,29 +709,6 @@
                     } else {
                         navbar.querySelector('.absolute').classList.replace('bg-white/95', 'bg-white/70');
                     }
-                });
-            }
-
-            // Mobile menu logic
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('translate-x-full');
-                    mobileMenu.classList.toggle('translate-x-0');
-                    const isOpen = mobileMenu.classList.contains('translate-x-0');
-                    menuBtn.innerHTML = isOpen 
-                        ? '<iconify-icon icon="solar:close-circle-linear"></iconify-icon>' 
-                        : '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
-                    if (isOpen) menuBtn.style.color = '#fff';
-                    else menuBtn.style.color = '';
-                });
-                mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('translate-x-full');
-                        mobileMenu.classList.remove('translate-x-0');
-                        menuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
-                    });
                 });
             }
         });

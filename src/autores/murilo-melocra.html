@@ -818,39 +818,6 @@
                 card.style.setProperty("--mouse-y", `${y}px`);
             }
 
-            // Mobile Menu Toggle
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            let menuOpen = false;
-
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    menuOpen = !menuOpen;
-                    if (menuOpen) {
-                        mobileMenu.classList.remove('translate-x-full');
-                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:close-circle-linear"></iconify-icon>';
-                        mobileMenuBtn.classList.add('text-white'); // Make close button white on dark bg
-                        mobileMenuBtn.classList.remove('text-stone-900');
-                    } else {
-                        mobileMenu.classList.add('translate-x-full');
-                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
-                        mobileMenuBtn.classList.remove('text-white');
-                        mobileMenuBtn.classList.add('text-stone-900');
-                    }
-                });
-
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        menuOpen = false;
-                        mobileMenu.classList.add('translate-x-full');
-                        mobileMenuBtn.innerHTML = '<iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>';
-                        mobileMenuBtn.classList.remove('text-white');
-                        mobileMenuBtn.classList.add('text-stone-900');
-                    });
-                });
-            }
-
             // GSAP Scroll Animation
             // We animate the 'index' property of currentFrame object from 0 to 191
             gsap.to(currentFrame, {
