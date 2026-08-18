@@ -231,12 +231,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top left;
             opacity: 0;
             transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             transform: scale(0.98);
         }
         .tech-mockup-layer.active-mockup {
-            opacity: 0.85;
+            opacity: 0.95;
             transform: scale(1);
         }
 
@@ -505,7 +506,7 @@
                     <button onclick="window.selectTechTab('gestao', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none active-tech-tab group">
                         <div class="max-w-[76%]">
                             <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-[#d6bc8c] uppercase transition-colors duration-300">Gestão de Projetos</h4>
-                            <p class="text-stone-300 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Acompanhamento em tempo real de cada fase editorial, do rascunho ao design físico final.</p>
+                            <p class="text-stone-300 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Acompanhamento em tempo real de cada fase editorial no SEAAS, da inspiração à publicação final.</p>
                         </div>
                         <span class="tech-tab-num select-none">01</span>
                         <!-- Border anim SVG -->
@@ -518,7 +519,7 @@
                     <button onclick="window.selectTechTab('ranking', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
                         <div class="max-w-[76%]">
                             <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">Ranking de Autores</h4>
-                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Placar interativo de performance, vendas e impacto de mercado da elite de mentores.</p>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Ranking da Elite Autoral com Top of Mind, pontuação e impacto de mercado dos mentores.</p>
                         </div>
                         <span class="tech-tab-num select-none">02</span>
                         <!-- Border anim SVG -->
@@ -531,7 +532,7 @@
                     <button onclick="window.selectTechTab('club', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
                         <div class="max-w-[76%]">
                             <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">ELOOO Club</h4>
-                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Área exclusiva de networking, convites a conselhos privados e eventos de luxo intercontinentais.</p>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Rede exclusiva de permuta, geração de negócios em Moeda ELOOO e conexões entre membros.</p>
                         </div>
                         <span class="tech-tab-num select-none">03</span>
                         <!-- Border anim SVG -->
@@ -544,7 +545,7 @@
                     <button onclick="window.selectTechTab('universidade', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
                         <div class="max-w-[76%]">
                             <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">Universidade Corporativa</h4>
-                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Módulos de treinamento e capacitação para monetização e aplicação comercial do livro.</p>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Trilha do Autor e módulos práticos: da ideia ao manuscrito estruturado do seu livro.</p>
                         </div>
                         <span class="tech-tab-num select-none">04</span>
                         <!-- Border anim SVG -->
@@ -554,10 +555,10 @@
                     </button>
 
                     <!-- Tab 5 -->
-                    <button onclick="window.selectTechTab('distribuicao', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
+                    <button onclick="window.selectTechTab('multientrega', this)" class="tech-tab-card w-full flex items-center justify-between text-left focus:outline-none group">
                         <div class="max-w-[76%]">
-                            <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">Distribuição Global</h4>
-                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Status de envio internacional, estoque físico e pontos de venda em Lisboa, Madrid e Brasil.</p>
+                            <h4 class="font-display text-[13px] md:text-sm font-semibold tracking-wider text-stone-400 uppercase transition-colors duration-300">Plataforma Multientrega</h4>
+                            <p class="text-stone-500 group-hover:text-stone-400 text-[11px] font-light mt-1.5 leading-relaxed transition-colors duration-300">Experiência multimídia completa para o leitor com Resumo, Tarefas, PDF, MindMap, Áudio e Vídeos.</p>
                         </div>
                         <span class="tech-tab-num select-none">05</span>
                         <!-- Border anim SVG -->
@@ -603,15 +604,15 @@
                             <!-- Base Mockup Frame -->
                             <div class="relative w-full h-full rounded-2xl overflow-hidden bg-stone-950" style="transform: translateZ(10px);">
                                 <!-- Gestão Mockup -->
-                                <img id="tech-mockup-gestao" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer active-mockup" alt="Gestão de Projetos">
+                                <img id="tech-mockup-gestao" src="static/images/seaas-projetos.png" class="tech-mockup-layer active-mockup" alt="Gestão de Projetos SEAAS">
                                 <!-- Ranking Mockup -->
-                                <img id="tech-mockup-ranking" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="Ranking de Autores">
+                                <img id="tech-mockup-ranking" src="static/images/seaas-ranking.png" class="tech-mockup-layer" alt="Ranking de Autores SEAAS">
                                 <!-- Club Mockup -->
-                                <img id="tech-mockup-club" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="ELOOO Club">
+                                <img id="tech-mockup-club" src="static/images/seaas-club.png" class="tech-mockup-layer" alt="ELOOO Club SEAAS">
                                 <!-- Universidade Mockup -->
-                                <img id="tech-mockup-universidade" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="Universidade Corporativa">
-                                <!-- Distribuição Mockup -->
-                                <img id="tech-mockup-distribuicao" src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200&auto=format&fit=crop" class="tech-mockup-layer" alt="Distribuição Global">
+                                <img id="tech-mockup-universidade" src="static/images/seaas-academy.png" class="tech-mockup-layer" alt="Universidade Corporativa SEAAS">
+                                <!-- Plataforma Multientrega Mockup -->
+                                <img id="tech-mockup-multientrega" src="static/images/seaas-multientrega.png" class="tech-mockup-layer" alt="Plataforma Multientrega SEAAS">
                             </div>
 
                             <!-- 3D FLOATING GLASS WIDGETS -->
@@ -650,38 +651,38 @@
         const techWidgetData = {
             gestao: {
                 w1_lbl: "Fase Editorial",
-                w1_val: "Diagramação de Capa",
-                w2_lbl: "Cronograma",
-                w2_val: "Dentro do Prazo",
+                w1_val: "Diagramação de Livros",
+                w2_lbl: "Evolução SEAAS",
+                w2_val: "Etapas em Tempo Real",
                 w2_icon: "solar:checklist-minimalistic-linear"
             },
             ranking: {
-                w1_lbl: "Performance",
-                w1_val: "TOP 10 Geral",
-                w2_lbl: "Impacto Anual",
-                w2_val: "+15k Livros Enviados",
-                w2_icon: "solar:graph-up-linear"
+                w1_lbl: "Elite Autoral",
+                w1_val: "Top of Mind Oficial",
+                w2_lbl: "Classificação",
+                w2_val: "Pontuação & Ranking",
+                w2_icon: "solar:cup-star-linear"
             },
             club: {
-                w1_lbl: "Status de Membro",
-                w1_val: "Conselho Convidado",
-                w2_lbl: "Próximo Encontro",
-                w2_val: "Lisboa, Out/2026",
-                w2_icon: "solar:star-ring-linear"
+                w1_lbl: "Comunidade Autoral",
+                w1_val: "Membros & Permuta",
+                w2_lbl: "Moeda ELOOO",
+                w2_val: "Negócios na Rede",
+                w2_icon: "solar:wallet-money-linear"
             },
             universidade: {
-                w1_lbl: "Módulos",
-                w1_val: "Posicionamento Comercial",
-                w2_lbl: "Conclusão",
-                w2_val: "76% Concluído",
-                w2_icon: "solar:notebook-linear"
+                w1_lbl: "Trilha do Autor",
+                w1_val: "Da Ideia ao Manuscrito",
+                w2_lbl: "Metodologia",
+                w2_val: "Estrutura do Zero",
+                w2_icon: "solar:graduation-cap-linear"
             },
-            distribuicao: {
-                w1_lbl: "Status de Envio",
-                w1_val: "Lote de Portugal: OK",
-                w2_lbl: "Rotas de Entrega",
-                w2_val: "Lisboa • Madrid • BR",
-                w2_icon: "solar:global-linear"
+            multientrega: {
+                w1_lbl: "Formatos Integrados",
+                w1_val: "PDF • Áudio • Vídeo • Mapas",
+                w2_lbl: "Entrega Interativa",
+                w2_val: "Resumo & Tarefas (MAPs)",
+                w2_icon: "solar:play-circle-linear"
             }
         };
 
@@ -790,7 +791,7 @@
         }
 
         let activeTechIndex = 0;
-        const techTabs = ['gestao', 'ranking', 'club', 'universidade', 'distribuicao'];
+        const techTabs = ['gestao', 'ranking', 'club', 'universidade', 'multientrega'];
         let techAutoplayTimer = null;
         let borderAnimId = null;
         let borderAnimStart = 0;
