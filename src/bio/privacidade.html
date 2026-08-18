@@ -7,52 +7,42 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
-    <link rel="stylesheet" href="static/css/linkcommerce_1.css"/>
-    <link rel="stylesheet" href="static/css/linkcommerce_2.css"/>
-
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #fff; }
-        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #09090b; color: #d4d4d8; }
     </style>
 </head>
-<body class="antialiased bg-white text-stone-900 min-h-screen">
-    <header class="border-b border-stone-200 px-6 py-4 flex items-center justify-between">
+<body class="antialiased min-h-screen">
+    <header class="border-b border-white/10 px-6 py-4 flex items-center justify-between bg-[#0e0e12]">
         <a class="flex items-center gap-2" href="index.html">
-            <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-8 object-contain" style="filter: brightness(0);"/>
-            <span class="text-sm font-bold text-stone-900">BIO PREMIUM</span>
+            <img src="static/images/ELOOO LOGO.png" alt="ELOOO Logo" class="h-8 object-contain filter brightness-0 invert"/>
+            <span class="text-xs font-mono uppercase tracking-widest text-[#d6bc8c]">BIO PREMIUM</span>
         </a>
-        <a class="text-xs hover:underline text-stone-600" href="index.html">← Voltar ao início</a>
+        <a class="text-xs text-stone-400 hover:text-white underline font-mono" href="index.html">← Início</a>
     </header>
 
-    <main class="max-w-2xl mx-auto px-6 py-14">
-        <div class="mb-10">
-            <p class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-2">Segurança & LGPD / GDPR</p>
-            <h1 class="font-display text-3xl font-bold text-stone-950 mb-2">Política de Privacidade</h1>
-            <p class="text-sm text-stone-500">Última atualização: 18 de agosto de 2026</p>
+    <main class="max-w-3xl mx-auto px-6 py-16">
+        <div class="mb-10 pb-6 border-b border-white/10">
+            <p class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c]">Segurança & LGPD</p>
+            <h1 class="text-3xl font-bold text-white mt-1">Política de Privacidade</h1>
+            <p class="text-xs text-stone-400 mt-1 font-mono">Última atualização: 18 de agosto de 2026</p>
         </div>
 
-        <div class="space-y-8 text-sm leading-relaxed text-stone-700">
-            <section class="space-y-3">
-                <h2 class="text-base font-bold text-stone-950">1. Compromisso com a Privacidade</h2>
-                <p>O <strong class="text-stone-950">ELOOO BIO PREMIUM</strong> respeita a privacidade de seus usuários e clientes. Todos os dados coletados são tratados com o mais rigoroso padrão de criptografia e conformidade legal.</p>
+        <div class="space-y-8 text-sm leading-relaxed text-stone-300">
+            <section class="space-y-2">
+                <h2 class="text-base font-bold text-white">1. Proteção Rigorosa de Dados</h2>
+                <p>O <strong class="text-white">ELOOO BIO PREMIUM</strong> adota criptografia de ponta e cumpre integralmente as diretrizes da LGPD brasileira e do GDPR europeu.</p>
             </section>
 
-            <section class="space-y-3">
-                <h2 class="text-base font-bold text-stone-950">2. Dados Coletados</h2>
-                <p>Coletamos apenas as informações necessárias para a prestação dos serviços: nome, e-mail, telefone de contato, credenciais de acesso e métricas anônimas de visualizações e cliques.</p>
+            <section class="space-y-2">
+                <h2 class="text-base font-bold text-white">2. Propriedade dos Leads</h2>
+                <p>Todos os contatos, respostas e leads gerados na sua bio personalizada pertencem exclusivamente a você. A ELOOO não comercializa dados de terceiros.</p>
             </section>
 
-            <section class="space-y-3">
-                <h2 class="text-base font-bold text-stone-950">3. Papel de Operador de Dados (LGPD Art. 39)</h2>
-                <p>Os dados capturados pelo Concierge de IA ou formulários na sua bio personalizada pertencem a você (Controlador). A ELOOO atua como Operadora técnica dos dados, não os comercializando nem os utilizando para fins próprios.</p>
-            </section>
-
-            <section class="space-y-3">
-                <h2 class="text-base font-bold text-stone-950">4. Seus Direitos</h2>
-                <p>Você pode solicitar a qualquer momento a visualização, exportação ou exclusão definitiva de seus dados e de suas bios através do e-mail <a href="mailto:privacidade@elooo.com.br" class="underline text-stone-900 font-semibold">privacidade@elooo.com.br</a>.</p>
+            <section class="space-y-2">
+                <h2 class="text-base font-bold text-white">3. Direitos dos Titulares</h2>
+                <p>A qualquer momento você pode solicitar exportação ou exclusão definitiva de informações via <a href="mailto:privacidade@elooo.com.br" class="text-[#d6bc8c] underline">privacidade@elooo.com.br</a>.</p>
             </section>
         </div>
     </main>

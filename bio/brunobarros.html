@@ -3,168 +3,183 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Bruno Barros — Bio Oficial ELOOO BIO PREMIUM</title>
-    <meta name="description" content="Fundador da ELOOO International Group, autor e mentor de negócios de alta performance."/>
+    <title>Bruno Barros | Bio Oficial — ELOOO BIO PREMIUM</title>
+    <meta name="description" content="Fundador da ELOOO International Group, escritor e mentor de negócios de alta performance."/>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
-    <link rel="stylesheet" href="../static/css/linkcommerce_1.css"/>
-    <link rel="stylesheet" href="../static/css/linkcommerce_2.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-            background: #111113;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #09090b;
             color: #ffffff;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         .netflix-scroll {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
         }
         .netflix-scroll::-webkit-scrollbar { display: none; }
 
         .bio-btn {
-            background: rgba(24, 24, 27, 0.85);
+            background: linear-gradient(160deg, rgba(26, 26, 32, 0.9) 0%, rgba(14, 14, 18, 0.95) 100%);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(16px);
-            transition: all 0.2s ease;
+            backdrop-filter: blur(20px);
+            transition: all 0.25s ease;
         }
         .bio-btn:hover {
-            transform: scale(1.02);
+            transform: translateY(-2px) scale(1.01);
             border-color: rgba(214, 188, 140, 0.5);
-            background: rgba(39, 39, 42, 0.95);
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.15);
         }
 
         .gold-border-glow {
-            border: 1px solid rgba(214, 188, 140, 0.4);
-            box-shadow: 0 0 25px -5px rgba(214, 188, 140, 0.15);
+            border: 1.5px solid rgba(214, 188, 140, 0.5);
+            box-shadow: 0 0 35px -5px rgba(214, 188, 140, 0.25);
+        }
+
+        .gold-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #ffffff 50%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldSweep 4s linear infinite;
+        }
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center py-10 px-4">
+<body class="min-h-screen flex flex-col items-center py-10 px-4 relative">
 
-    <div class="w-full max-w-[420px] space-y-4">
+    <!-- Ambient Background Light -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-amber-400/10 blur-[100px] pointer-events-none"></div>
+
+    <div class="w-full max-w-[430px] space-y-4 relative z-10">
         
         <!-- Profile Header -->
-        <div class="text-center flex flex-col items-center mb-6">
-            <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#d6bc8c]/60 shadow-2xl mb-3 relative bg-stone-900">
+        <div class="text-center flex flex-col items-center mb-5">
+            <div class="w-28 h-28 rounded-full overflow-hidden border-2 border-[#d6bc8c] shadow-[0_0_30px_rgba(214,188,140,0.3)] mb-3 relative bg-stone-900">
                 <img src="../static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop';"/>
             </div>
             
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-1.5">
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300 mb-2">
                 <iconify-icon icon="solar:verified-check-bold"></iconify-icon>
-                <span>ELOOO International Group</span>
+                <span>ELOOO INTERNATIONAL GROUP</span>
             </div>
 
-            <h1 class="text-2xl font-bold text-white tracking-tight">Bruno Barros</h1>
-            <p class="text-xs text-stone-400 mt-1 max-w-xs leading-relaxed">
-                Autor, Mentor & Fundador. Descubra em 3 perguntas o melhor caminho para o seu projeto ↓
+            <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Bruno Barros</h1>
+            <p class="text-xs text-stone-300 mt-1 max-w-xs leading-relaxed font-light">
+                Escritor, Mentor & Fundador. Descubra em 3 perguntas o melhor caminho para o seu projeto editorial ↓
             </p>
         </div>
 
         <!-- Social Icons Row -->
         <div class="flex justify-center gap-3 py-1 flex-wrap">
-            <a href="https://instagram.com/oficialbrunobarros" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-amber-300 transition-all">
+            <a href="https://instagram.com/oficialbrunobarros" target="_blank" class="w-11 h-11 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-[#d6bc8c] hover:text-black hover:scale-110 transition-all">
                 <iconify-icon icon="solar:camera-linear"></iconify-icon>
             </a>
-            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Vim%20pela%20sua%20bio%20e%20quero%20conversar." target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-emerald-400 transition-all">
+            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Vim%20pela%20sua%20bio%20e%20quero%20conversar." target="_blank" class="w-11 h-11 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-emerald-500 hover:text-white hover:scale-110 transition-all">
                 <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
             </a>
-            <a href="https://youtube.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-red-400 transition-all">
+            <a href="https://youtube.com" target="_blank" class="w-11 h-11 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-red-600 hover:text-white hover:scale-110 transition-all">
                 <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
             </a>
-            <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-900 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-800 hover:text-blue-400 transition-all">
+            <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-blue-600 hover:text-white hover:scale-110 transition-all">
                 <iconify-icon icon="solar:link-minimalistic-linear"></iconify-icon>
             </a>
         </div>
 
         <!-- Concierge AI Button -->
-        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20fazer%20meu%20diagn%C3%B3stico%20de%20autoridade%20e%20publica%C3%A7%C3%A3o%20editorial." target="_blank" class="bio-btn w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-2xl relative overflow-hidden group gold-border-glow">
-            <div class="w-11 h-11 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-xl flex-none">
+        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20fazer%20meu%20diagn%C3%B3stico%20editorial." target="_blank" class="bio-btn w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-2xl relative overflow-hidden group gold-border-glow">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-2xl flex-none group-hover:scale-110 transition-transform">
                 <iconify-icon icon="solar:bolt-circle-bold"></iconify-icon>
             </div>
             <div class="flex-1 min-w-0">
-                <p class="font-bold text-sm text-white leading-tight">Qual o próximo passo para o seu negócio?</p>
-                <p class="text-xs text-stone-400 mt-0.5">Descubra seu momento e receba a orientação ideal!</p>
+                <p class="font-bold text-sm text-white leading-tight">Qual o próximo passo para o seu livro?</p>
+                <p class="text-xs text-stone-400 mt-0.5 font-light">Diagnóstico rápido com nossa equipe editorial!</p>
             </div>
-            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white text-xs flex-none group-hover:translate-x-1 transition-transform">
+            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white text-sm flex-none group-hover:translate-x-1 transition-transform">
                 →
             </div>
         </a>
 
-        <!-- Horizontal Netflix Carousel of Solutions -->
+        <!-- Horizontal Netflix Carousel -->
         <div class="pt-2">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3 flex items-center gap-1.5">
+            <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-[#d6bc8c] mb-3 flex items-center gap-1.5">
                 <iconify-icon icon="solar:play-bold" class="text-amber-400"></iconify-icon>
                 <span>PROJETOS & SOLUÇÕES DE ALTA PERFORMANCE:</span>
             </h2>
 
             <div class="netflix-scroll">
                 <!-- Card 1: Livro -->
-                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                <div class="w-[160px] flex-none rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 p-3 flex flex-col justify-between hover:border-[#d6bc8c]/50 transition-all">
                     <div>
-                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 relative">
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 relative shadow-md">
                             <img src="../static/images/recalculando-cover.png" onerror="this.src='static/images/bruno-barros.png';" class="w-full h-full object-cover"/>
                         </div>
                         <p class="text-xs font-bold text-white leading-tight">VIDANOVA & AUTORALIDADE</p>
-                        <p class="text-[10px] text-stone-400 mt-0.5">Livro Oficial</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5 font-mono">Livro Oficial</p>
                     </div>
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20do%20Bruno%20Barros." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
-                        Adquirir Livro
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20do%20Bruno%20Barros." target="_blank" class="block text-center mt-3 text-[10px] font-bold uppercase tracking-wider py-2 rounded-xl bg-white/10 hover:bg-[#d6bc8c] hover:text-black text-stone-200 transition-colors">
+                        Adquirir
                     </a>
                 </div>
 
                 <!-- Card 2: Editora -->
-                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                <div class="w-[160px] flex-none rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 p-3 flex flex-col justify-between hover:border-[#d6bc8c]/50 transition-all">
                     <div>
-                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 flex items-center justify-center p-3">
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-900 flex items-center justify-center p-4 border border-white/5">
                             <img src="../static/images/ELOOO LOGO.png" class="w-full object-contain filter brightness-0 invert"/>
                         </div>
                         <p class="text-xs font-bold text-white leading-tight">PUBLICAÇÃO EDITORIAL</p>
-                        <p class="text-[10px] text-stone-400 mt-0.5">Editora Internacional</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5 font-mono">Editora Internacional</p>
                     </div>
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20saber%20como%20publicar%20meu%20livro%20com%20a%20Editora%20Elooo." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20publicar%20meu%20livro." target="_blank" class="block text-center mt-3 text-[10px] font-bold uppercase tracking-wider py-2 rounded-xl bg-white/10 hover:bg-[#d6bc8c] hover:text-black text-stone-200 transition-colors">
                         Publicar Livro
                     </a>
                 </div>
 
                 <!-- Card 3: Mentoria -->
-                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                <div class="w-[160px] flex-none rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 p-3 flex flex-col justify-between hover:border-[#d6bc8c]/50 transition-all">
                     <div>
-                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-gradient-to-br from-stone-800 to-stone-950 flex flex-col items-center justify-center p-2 text-center">
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-gradient-to-br from-stone-900 to-stone-950 flex flex-col items-center justify-center p-3 text-center border border-white/5">
                             <iconify-icon icon="solar:crown-line-duotone" class="text-3xl text-amber-400 mb-1"></iconify-icon>
-                            <span class="text-[11px] font-bold text-stone-300">MENTORIA VIP</span>
+                            <span class="text-[10px] font-mono font-bold text-amber-300">MENTORIA VIP</span>
                         </div>
                         <p class="text-xs font-bold text-white leading-tight">MENTORIA EXECUTIVA</p>
-                        <p class="text-[10px] text-stone-400 mt-0.5">Individual & Estratégica</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5 font-mono">Individual & Estratégica</p>
                     </div>
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20Mentoria%20Individual%20do%20Bruno%20Barros." target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es%20da%20Mentoria." target="_blank" class="block text-center mt-3 text-[10px] font-bold uppercase tracking-wider py-2 rounded-xl bg-white/10 hover:bg-[#d6bc8c] hover:text-black text-stone-200 transition-colors">
                         Candidatura
                     </a>
                 </div>
 
                 <!-- Card 4: ELOOO BIO -->
-                <div class="w-[155px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2.5 flex flex-col justify-between">
+                <div class="w-[160px] flex-none rounded-2xl overflow-hidden bg-white/[0.04] border border-white/10 p-3 flex flex-col justify-between hover:border-[#d6bc8c]/50 transition-all">
                     <div>
-                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-800 flex flex-col items-center justify-center p-2 text-center">
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden mb-2 bg-stone-900 flex flex-col items-center justify-center p-3 text-center border border-white/5">
                             <iconify-icon icon="solar:cpu-bolt-linear" class="text-3xl text-emerald-400 mb-1"></iconify-icon>
-                            <span class="text-[11px] font-bold text-stone-300">ELOOO BIO</span>
+                            <span class="text-[10px] font-mono font-bold text-emerald-300">ELOOO BIO</span>
                         </div>
                         <p class="text-xs font-bold text-white leading-tight">ELOOO BIO PREMIUM</p>
-                        <p class="text-[10px] text-stone-400 mt-0.5">Plataforma de Conversão</p>
+                        <p class="text-[10px] text-stone-400 mt-0.5 font-mono">Plataforma SaaS</p>
                     </div>
-                    <a href="../index.html" target="_blank" class="block text-center mt-2.5 text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 transition-colors">
+                    <a href="../index.html" target="_blank" class="block text-center mt-3 text-[10px] font-bold uppercase tracking-wider py-2 rounded-xl bg-white/10 hover:bg-[#d6bc8c] hover:text-black text-stone-200 transition-colors">
                         Criar Minha Bio
                     </a>
                 </div>
@@ -172,34 +187,34 @@
         </div>
 
         <!-- Direct Editorial Publishing Link -->
-        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20publicar%20meu%20livro%20pela%20Editora%20Elooo." target="_blank" class="bio-btn block w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-lg">
-            <div class="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-amber-300 text-2xl flex-none">
+        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Quero%20publicar%20meu%20livro%20com%20a%20Elooo." target="_blank" class="bio-btn block w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-lg">
+            <div class="w-12 h-12 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center text-2xl flex-none">
                 <iconify-icon icon="solar:book-bookmark-bold"></iconify-icon>
             </div>
             <div class="flex-1 min-w-0">
                 <p class="font-bold text-sm text-white leading-tight">QUERO PUBLICAR MEU LIVRO</p>
-                <p class="text-xs text-stone-400 mt-0.5">Editora ELOOO | Brasil, Cascais & Madrid</p>
+                <p class="text-xs text-stone-400 mt-0.5 font-light">Editora ELOOO | Brasil, Cascais & Madrid</p>
             </div>
             <iconify-icon icon="solar:arrow-right-up-linear" class="text-stone-400 text-base"></iconify-icon>
         </a>
 
         <!-- WhatsApp VIP Direct Channel -->
-        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Vim%20pelo%20seu%20link%20na%20bio." target="_blank" class="block w-full p-4 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-stone-900 border border-emerald-500/30 text-white hover:scale-[1.02] transition-transform">
+        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20Bruno!%20Vim%20pelo%20seu%20link%20na%20bio." target="_blank" class="block w-full p-4 rounded-2xl bg-gradient-to-br from-emerald-950/80 to-[#121215] border border-emerald-500/30 text-white hover:scale-[1.01] transition-transform shadow-xl">
             <div class="flex items-center gap-3 mb-2">
-                <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
                     <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
                 </div>
                 <div>
                     <p class="font-bold text-xs text-white">WhatsApp Direto</p>
-                    <p class="text-[11px] text-stone-400">+55 (47) 98866-0791</p>
+                    <p class="text-[11px] text-stone-400 font-mono">+55 (47) 98866-0791</p>
                 </div>
             </div>
-            <p class="text-xs font-bold text-stone-300">PALESTRAS, MENTORIAS & PARCERIAS INTERNACIONAIS</p>
+            <p class="text-xs font-bold text-stone-200">PALESTRAS, MENTORIAS & PARCERIAS INTERNACIONAIS</p>
         </a>
 
         <!-- Footer Branding -->
         <div class="pt-8 pb-4 text-center">
-            <a href="../index.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-900/80 border border-white/10 text-[10px] font-bold text-stone-400 uppercase tracking-widest hover:text-white">
+            <a href="../index.html" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-[10px] font-mono font-bold text-stone-400 uppercase tracking-widest hover:text-[#d6bc8c] transition-colors">
                 <span>Criado com ELOOO BIO PREMIUM</span>
             </a>
         </div>
