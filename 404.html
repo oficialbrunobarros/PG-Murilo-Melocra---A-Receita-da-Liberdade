@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="pt-BR">
-
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Universidade | ELOOO International Group</title>
+    <title>404 - Página Não Encontrada | ELOOO International Group</title>
+    <meta name="description" content="A página que você procura não está disponível no ecossistema ELOOO International Group.">
+    <meta property="og:title" content="404 - Página Não Encontrada | ELOOO International Group">
+    <meta property="og:description" content="A editora de elite de maior impacto no mercado internacional.">
+    <meta property="og:image" content="static/images/og-share.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                         display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            850: '#211f1d',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        }
                     },
                     backgroundImage: {
                         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
@@ -30,48 +40,41 @@
     </script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
             background-color: #0c0a09;
             color: #ffffff;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldSweep 6s linear infinite;
         }
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
         }
-        .flashlight-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        .flashlight-card::before {
-            content: '';
+        .ambient-glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.04), transparent 40%);
-            z-index: 1;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214,188,140,0.12) 0%, transparent 70%);
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            z-index: 0;
         }
-        .flashlight-card:hover::before { opacity: 1; }
     </style>
 </head>
-
-<body>
+<body class="relative min-h-screen flex flex-col justify-between">
     <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
-    
+    <div class="ambient-glow"></div>
+
     <!-- NAVBAR -->
 <header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
     <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
@@ -194,55 +197,54 @@
 </script>
 
 
-    <section class="py-32 min-h-screen flex flex-col justify-center relative z-10 px-6 max-w-[1440px] mx-auto md:px-24">
-        <div class="mb-20 reveal-up">
-            <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-900 border border-stone-850 rounded-full w-fit">
-                <iconify-icon icon="solar:square-academic-cap-linear" class="text-amber-500"></iconify-icon>
-                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Treinamento de Elite</span>
+    <main class="relative z-10 flex-grow flex items-center justify-center pt-36 pb-24 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-900/80 border border-stone-800 text-[#d6bc8c] text-[10px] font-mono uppercase tracking-[0.25em] mb-6">
+                <iconify-icon icon="solar:compass-bold-duotone" class="text-sm"></iconify-icon>
+                <span>Erro 404 · Rota Desconhecida</span>
             </div>
-            <h2 class="font-display text-4xl md:text-6xl font-medium tracking-tight text-white">
-                Universidade ELOOO
+
+            <h1 class="font-display text-7xl sm:text-9xl font-bold tracking-tighter text-stone-850 select-none mb-2 relative">
+                <span class="gold-text-sweep">404</span>
+            </h1>
+
+            <h2 class="font-display text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-4 uppercase">
+                Página Não Encontrada no Ecossistema
             </h2>
-            <p class="mt-4 text-stone-400 max-w-xl font-light">
-                Programas avançados de mentoria, escrita de livros de autoridade e aceleração de marcas pessoais para profissionais de destaque.
+
+            <p class="text-stone-400 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed mb-10">
+                O endereço que você tentou acessar foi movido, renomeado ou não faz parte de nossas publicações ativas. Explore nossos principais diretórios abaixo:
             </p>
+
+            <!-- Action buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="index.html" class="relative group rounded-full p-[1.5px] overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-80 group-hover:opacity-100 transition-opacity"></span>
+                    <span class="relative flex items-center justify-center gap-2.5 h-full w-full bg-[#0c0a09] px-7 py-3.5 rounded-full transition-colors group-hover:bg-[#151311]">
+                        <iconify-icon icon="solar:home-2-linear" class="text-[#d6bc8c] text-base"></iconify-icon>
+                        <span class="font-medium text-xs text-white tracking-widest uppercase">Voltar ao Início</span>
+                    </span>
+                </a>
+
+                <a href="autores.html" class="px-6 py-3.5 rounded-full bg-stone-900/60 hover:bg-stone-850 border border-stone-800 hover:border-[#d6bc8c]/40 text-stone-300 hover:text-white text-xs font-medium uppercase tracking-widest transition-all duration-300 flex items-center gap-2">
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-stone-400 text-sm"></iconify-icon>
+                    <span>Ver Autores</span>
+                </a>
+
+                <a href="livros.html" class="px-6 py-3.5 rounded-full bg-stone-900/60 hover:bg-stone-850 border border-stone-800 hover:border-[#d6bc8c]/40 text-stone-300 hover:text-white text-xs font-medium uppercase tracking-widest transition-all duration-300 flex items-center gap-2">
+                    <iconify-icon icon="solar:book-2-linear" class="text-stone-400 text-sm"></iconify-icon>
+                    <span>Catálogo de Livros</span>
+                </a>
+
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-medium uppercase tracking-widest transition-all duration-300 flex items-center gap-2">
+                    <iconify-icon icon="ic:baseline-whatsapp" class="text-sm"></iconify-icon>
+                    <span>Falar no WhatsApp</span>
+                </a>
+            </div>
+
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Module 1 -->
-            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                    <iconify-icon icon="solar:pen-linear" class="text-white text-2xl"></iconify-icon>
-                </div>
-                <h3 class="font-display text-xl font-semibold text-white mb-4">Escrita de Autoridade</h3>
-                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
-                    Metodologia guiada para estruturar, escrever e lançar seu livro com posicionamento premium, atraindo alto valor de marca pessoal.
-                </p>
-            </div>
-
-            <!-- Module 2 -->
-            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                    <iconify-icon icon="solar:graph-up-linear" class="text-white text-2xl"></iconify-icon>
-                </div>
-                <h3 class="font-display text-xl font-semibold text-white mb-4">High-Ticket Mentoring</h3>
-                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
-                    Estruture o ecossistema de vendas pós-livro. Crie mentorias, masterminds e cursos de alto ticket voltados à sua audiência de elite.
-                </p>
-            </div>
-
-            <!-- Module 3 -->
-            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                    <iconify-icon icon="solar:globus-linear" class="text-white text-2xl"></iconify-icon>
-                </div>
-                <h3 class="font-display text-xl font-semibold text-white mb-4">Escala de Vendas</h3>
-                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
-                    Sistemas automatizados de aquisição e tráfego pago desenhados para vender livros e mentorias continuamente com excelente ROI.
-                </p>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
 <footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
@@ -283,25 +285,5 @@
     </a>
 </div>
 
-
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-        document.addEventListener("DOMContentLoaded", () => {
-            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
-                ScrollTrigger.create({
-                    trigger: elem,
-                    start: "top 85%",
-                    onEnter: function () { elem.classList.add('active'); }
-                });
-            });
-            window.updateFlashlight = function (e, card) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            }
-        });
-    </script>
 </body>
 </html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FAQ - Perguntas Frequentes | ELOOO International Group</title>
+    <meta name="description" content="Tire suas dúvidas sobre o processo editorial, distribuição internacional, direitos autorais e tecnologia SEAAS da ELOOO Editora.">
+    <meta property="og:title" content="FAQ - Perguntas Frequentes | ELOOO International Group">
+    <meta property="og:description" content="Tire todas as suas dúvidas sobre publicação, mentoria e distribuição na ELOOO.">
+    <meta property="og:image" content="static/images/og-share.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            850: '#211f1d',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        }
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0a09;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldSweep 6s linear infinite;
+        }
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+        .glass-card {
+            background: rgba(28, 25, 23, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(214, 188, 140, 0.3);
+            background: rgba(28, 25, 23, 0.7);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between">
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+
+    <!-- INCLUDE_NAVBAR -->
+
+    <main class="relative z-10 flex-grow pt-36 pb-24 px-6 md:px-24">
+        <div class="max-w-[1100px] mx-auto">
+            
+            <!-- Page Header -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-900/80 border border-stone-800 text-[#d6bc8c] text-[10px] font-mono uppercase tracking-[0.25em] mb-4">
+                    <iconify-icon icon="solar:question-circle-linear" class="text-sm"></iconify-icon>
+                    <span>Central de Respostas</span>
+                </div>
+                <h1 class="font-display text-3xl sm:text-5xl font-medium tracking-tight text-white uppercase mb-4">
+                    Perguntas <span class="gold-text-sweep font-semibold">Frequentes</span>
+                </h1>
+                <p class="text-stone-400 text-xs sm:text-sm font-light max-w-2xl mx-auto leading-relaxed">
+                    Tudo o que você precisa saber sobre a publicação, metodologia, direitos autorais, distribuição internacional e o ecossistema ELOOO.
+                </p>
+                
+                <!-- Live Search Bar -->
+                <div class="max-w-xl mx-auto mt-8 relative">
+                    <input type="text" id="faqSearch" placeholder="Digite uma palavra-chave (ex: distribuição, prazos, royalties, SEAAS)..." class="w-full bg-stone-900/70 border border-stone-800 focus:border-[#d6bc8c]/50 rounded-full py-3.5 pl-12 pr-6 text-xs text-white placeholder-stone-500 outline-none transition-all" oninput="filterFaq()">
+                    <iconify-icon icon="solar:magnifer-linear" class="absolute left-4 top-1/2 -translate-y-1/2 text-stone-500 text-lg"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- FAQ List -->
+            <div class="space-y-4" id="faqList">
+                
+                <!-- FAQ Item 1 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="editorial" onclick="toggleFaq(0)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">01</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                Quanto tempo dura o processo de publicação de um livro na ELOOO?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-0" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-0" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            O ciclo completo de produção editorial — desde a validação do conceito e estruturação do sumário até a diagramação de luxo, revisão ortográfica e impressão premium — leva em média de 60 a 90 dias. Cada fase é acompanhada em tempo real pelo autor através do nosso sistema proprietário SEAAS.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="editorial" onclick="toggleFaq(1)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">02</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                Preciso ter o manuscrito já escrito para iniciar o projeto?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-1" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-1" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            Não. Mais de 70% dos nossos autores de elite iniciam com suas ideias, mentorias e experiências práticas. Nossa equipe editorial e o método exclusivo 'Da Ideia ao Manuscrito' conduzem você por sessões de alinhamento, estrutura capitular e redação assistida para materializar sua obra com máxima sofisticação.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="distribuicao" onclick="toggleFaq(2)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">03</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                Como funciona a distribuição internacional de livros?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-2" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-2" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            A ELOOO International Group opera com sede matriz no Brasil (Joinville/SC) e polos parceiros de distribuição na Europa (Cascais/Portugal e Madrid/Espanha). Nossos livros contam com tiragens impressas de luxo, distribuição direta para eventos, feiras e pontos estratégicos, além de entrega digital global integrada.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="distribuicao" onclick="toggleFaq(3)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">04</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                Quais são as opções de formatos disponibilizados para os leitores?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-3" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-3" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            Além do exemplar físico capa dura de colecionador, a ELOOO disponibiliza a Plataforma Multientrega do Leitor, que entrega a obra em múltiplos formatos complementares: Livro Versão Digital/PDF diagramado, Resumos executivos, Tarefas práticas de implementação (MAPs), Mapas Mentais (MindMaps), Áudios e Aulas em vídeo com acesso imediato.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="modalidades" onclick="toggleFaq(4)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">05</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                Qual a diferença entre publicação individual, coautoria e institucional?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-4" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-4" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            O Livro Individual é uma obra solo voltada à consolidação definitiva da sua autoridade pessoal e metodologia própria. A Coautoria reúne especialistas selecionados em capítulos complementares sob um tema de alto impacto. Já a edição Institucional/Corporativa documenta a trajetória, cultura e conquistas de grandes empresas e organizações.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 6 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="tecnologia" onclick="toggleFaq(5)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">06</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                O que é o SEAAS (Sistema Empresarial Autônomo-Assistido)?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-5" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-5" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            O SEAAS é a tecnologia exclusiva desenvolvida pela ELOOO para gerenciar o ecossistema autoral. Ele reúne o pipeline de projetos em tempo real, ranking da elite autoral com gamificação, portal de membros com transações em Moeda ELOOO, e a universidade corporativa para capacitação de autores.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 7 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="comunidade" onclick="toggleFaq(6)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">07</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                O que é o ELOOO Club e como funciona a Moeda ELOOO?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-6" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-6" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            O ELOOO Club é uma comunidade fechada de alto nível para os autores da editora. Nele, os membros trocam serviços, realizam networking de negócios, participam de conselhos consultivos privados e utilizam a Moeda ELOOO para transações de permuta rastreável dentro da rede.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 8 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="direitos" onclick="toggleFaq(7)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">08</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                Quem mantém a propriedade intelectual e direitos autorais do livro?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-7" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-7" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            O autor mantém 100% dos direitos autorais e patrimoniais da sua criação intelectual. A ELOOO atua como editora parceira na produção, chancela institucional, registro de ISBN/Ficha Catalográfica e distribuição.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 9 -->
+                <div class="faq-card glass-card p-6 md:p-8 cursor-pointer group" data-category="atendimento" onclick="toggleFaq(8)">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-4">
+                            <span class="text-[#d6bc8c] font-mono text-xs mt-1 shrink-0">09</span>
+                            <h3 class="font-display text-base md:text-lg font-medium text-white group-hover:text-[#d6bc8c] transition-colors leading-snug">
+                                Como faço para submeter meu projeto ou agendar uma reunião?
+                            </h3>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center shrink-0 text-stone-400 group-hover:text-white group-hover:border-[#d6bc8c]/40 transition-all">
+                            <iconify-icon id="faq-icon-8" icon="solar:alt-arrow-down-linear" class="text-base transition-transform duration-300"></iconify-icon>
+                        </div>
+                    </div>
+                    <div id="faq-ans-8" class="hidden pt-4 mt-4 border-t border-stone-800/60 pl-8">
+                        <p class="text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                            Você pode preencher nosso formulário na página de Contato ou falar diretamente com o nosso Concierge Executivo via WhatsApp pelo número +55 (47) 98866-0791. Nosso comitê editorial realiza a análise prévia do seu perfil em até 48 horas úteis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still have questions banner -->
+            <div class="mt-16 p-8 rounded-3xl bg-gradient-to-r from-stone-900/80 via-stone-850/60 to-stone-900/80 border border-[#d6bc8c]/25 text-center flex flex-col items-center justify-center">
+                <h3 class="font-display text-xl font-medium text-white mb-2">Ainda tem dúvidas específicas sobre a sua obra?</h3>
+                <p class="text-stone-400 text-xs max-w-lg mb-6 leading-relaxed">Nossa equipe de especialistas editoriais está à disposição para analisar seu projeto e orientar a melhor trilha de publicação.</p>
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-semibold uppercase tracking-widest transition-all shadow-lg hover:shadow-[#25D366]/20">
+                    <iconify-icon icon="ic:baseline-whatsapp" class="text-lg"></iconify-icon>
+                    <span>Falar com o Concierge no WhatsApp</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- INCLUDE_FOOTER -->
+
+    <script>
+        function toggleFaq(index) {
+            const ans = document.getElementById('faq-ans-' + index);
+            const icon = document.getElementById('faq-icon-' + index);
+            if (!ans || !icon) return;
+
+            const isHidden = ans.classList.contains('hidden');
+            if (isHidden) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function filterFaq() {
+            const query = document.getElementById('faqSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.faq-card');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

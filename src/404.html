@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>404 - Página Não Encontrada | ELOOO International Group</title>
+    <meta name="description" content="A página que você procura não está disponível no ecossistema ELOOO International Group.">
+    <meta property="og:title" content="404 - Página Não Encontrada | ELOOO International Group">
+    <meta property="og:description" content="A editora de elite de maior impacto no mercado internacional.">
+    <meta property="og:image" content="static/images/og-share.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            850: '#211f1d',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        }
+                    },
+                    backgroundImage: {
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0a09;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldSweep 6s linear infinite;
+        }
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+        .ambient-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214,188,140,0.12) 0%, transparent 70%);
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between">
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+    <div class="ambient-glow"></div>
+
+    <!-- INCLUDE_NAVBAR -->
+
+    <main class="relative z-10 flex-grow flex items-center justify-center pt-36 pb-24 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-900/80 border border-stone-800 text-[#d6bc8c] text-[10px] font-mono uppercase tracking-[0.25em] mb-6">
+                <iconify-icon icon="solar:compass-bold-duotone" class="text-sm"></iconify-icon>
+                <span>Erro 404 · Rota Desconhecida</span>
+            </div>
+
+            <h1 class="font-display text-7xl sm:text-9xl font-bold tracking-tighter text-stone-850 select-none mb-2 relative">
+                <span class="gold-text-sweep">404</span>
+            </h1>
+
+            <h2 class="font-display text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-4 uppercase">
+                Página Não Encontrada no Ecossistema
+            </h2>
+
+            <p class="text-stone-400 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed mb-10">
+                O endereço que você tentou acessar foi movido, renomeado ou não faz parte de nossas publicações ativas. Explore nossos principais diretórios abaixo:
+            </p>
+
+            <!-- Action buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="index.html" class="relative group rounded-full p-[1.5px] overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-80 group-hover:opacity-100 transition-opacity"></span>
+                    <span class="relative flex items-center justify-center gap-2.5 h-full w-full bg-[#0c0a09] px-7 py-3.5 rounded-full transition-colors group-hover:bg-[#151311]">
+                        <iconify-icon icon="solar:home-2-linear" class="text-[#d6bc8c] text-base"></iconify-icon>
+                        <span class="font-medium text-xs text-white tracking-widest uppercase">Voltar ao Início</span>
+                    </span>
+                </a>
+
+                <a href="autores.html" class="px-6 py-3.5 rounded-full bg-stone-900/60 hover:bg-stone-850 border border-stone-800 hover:border-[#d6bc8c]/40 text-stone-300 hover:text-white text-xs font-medium uppercase tracking-widest transition-all duration-300 flex items-center gap-2">
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-stone-400 text-sm"></iconify-icon>
+                    <span>Ver Autores</span>
+                </a>
+
+                <a href="livros.html" class="px-6 py-3.5 rounded-full bg-stone-900/60 hover:bg-stone-850 border border-stone-800 hover:border-[#d6bc8c]/40 text-stone-300 hover:text-white text-xs font-medium uppercase tracking-widest transition-all duration-300 flex items-center gap-2">
+                    <iconify-icon icon="solar:book-2-linear" class="text-stone-400 text-sm"></iconify-icon>
+                    <span>Catálogo de Livros</span>
+                </a>
+
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-[#25D366] text-xs font-medium uppercase tracking-widest transition-all duration-300 flex items-center gap-2">
+                    <iconify-icon icon="ic:baseline-whatsapp" class="text-sm"></iconify-icon>
+                    <span>Falar no WhatsApp</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- INCLUDE_FOOTER -->
+</body>
+</html>

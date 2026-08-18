@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="pt-BR">
-
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Universidade | ELOOO International Group</title>
+    <title>Política de Privacidade | ELOOO International Group</title>
+    <meta name="description" content="Conheça a Política de Privacidade da ELOOO International Group, em plena conformidade com a LGPD (Brasil) e GDPR (União Europeia).">
+    <meta property="og:title" content="Política de Privacidade | ELOOO International Group">
+    <meta property="og:description" content="Compromisso de proteção de dados e privacidade em conformidade com LGPD e GDPR.">
+    <meta property="og:image" content="static/images/og-share.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                         display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            850: '#211f1d',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        }
                     },
                     backgroundImage: {
                         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
@@ -30,48 +40,28 @@
     </script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
             background-color: #0c0a09;
             color: #ffffff;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldSweep 6s linear infinite;
         }
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
         }
-        .flashlight-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        .flashlight-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.04), transparent 40%);
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .flashlight-card:hover::before { opacity: 1; }
     </style>
 </head>
-
-<body>
+<body class="relative min-h-screen flex flex-col justify-between">
     <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
-    
+
     <!-- NAVBAR -->
 <header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
     <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-stone-200/50"></div>
@@ -194,55 +184,96 @@
 </script>
 
 
-    <section class="py-32 min-h-screen flex flex-col justify-center relative z-10 px-6 max-w-[1440px] mx-auto md:px-24">
-        <div class="mb-20 reveal-up">
-            <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-900 border border-stone-850 rounded-full w-fit">
-                <iconify-icon icon="solar:square-academic-cap-linear" class="text-amber-500"></iconify-icon>
-                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Treinamento de Elite</span>
+    <main class="relative z-10 flex-grow pt-36 pb-24 px-6 md:px-24">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Header -->
+            <div class="mb-12 border-b border-stone-800/80 pb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-900/80 border border-stone-800 text-[#d6bc8c] text-[10px] font-mono uppercase tracking-[0.25em] mb-4">
+                    <iconify-icon icon="solar:shield-check-bold-duotone" class="text-sm"></iconify-icon>
+                    <span>Segurança & Governança de Dados</span>
+                </div>
+                <h1 class="font-display text-3xl sm:text-5xl font-medium tracking-tight text-white uppercase mb-3">
+                    Política de <span class="gold-text-sweep font-semibold">Privacidade</span>
+                </h1>
+                <p class="text-stone-500 text-xs font-mono tracking-wider">Última atualização: Agosto de 2026 · Conformidade LGPD (BR) e GDPR (UE)</p>
             </div>
-            <h2 class="font-display text-4xl md:text-6xl font-medium tracking-tight text-white">
-                Universidade ELOOO
-            </h2>
-            <p class="mt-4 text-stone-400 max-w-xl font-light">
-                Programas avançados de mentoria, escrita de livros de autoridade e aceleração de marcas pessoais para profissionais de destaque.
-            </p>
+
+            <!-- Content Body -->
+            <div class="space-y-8 text-stone-300 text-xs md:text-sm font-light leading-relaxed">
+                
+                <section class="p-6 rounded-2xl bg-stone-900/40 border border-stone-850">
+                    <h2 class="font-display text-base md:text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-mono text-sm">01.</span> Introdução e Princípios
+                    </h2>
+                    <p>A <strong>ELOOO International Group</strong> (com sede matriz em Joinville/SC, Brasil, e representações parceiras em Cascais/Portugal e Madrid/Espanha) valoriza a confidencialidade e a segurança dos dados pessoais de seus autores, clientes, leitores e visitantes. Esta Política de Privacidade estabelece como coletamos, utilizamos, armazenamos e protegemos suas informações, respeitando integralmente a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - LGPD)</strong> e o <strong>Regulamento Geral sobre a Proteção de Dados (Regulamento UE 2016/679 - GDPR)</strong>.</p>
+                </section>
+
+                <section class="p-6 rounded-2xl bg-stone-900/40 border border-stone-850">
+                    <h2 class="font-display text-base md:text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-mono text-sm">02.</span> Dados Pessoais Coletados
+                    </h2>
+                    <p class="mb-2">Coletamos apenas os dados estritamente necessários para a prestação dos nossos serviços editoriais de alta performance:</p>
+                    <ul class="list-disc list-inside space-y-1.5 text-stone-400 pl-2">
+                        <li><strong>Dados de Identificação:</strong> Nome completo, e-mail corporativo, número de telefone/WhatsApp, profissão, empresa e biografia executiva.</li>
+                        <li><strong>Dados de Projetos e Originais:</strong> Sinopses, rascunhos, manuscritos, sumários e arquivos submetidos para avaliação do comitê editorial.</li>
+                        <li><strong>Dados de Navegação:</strong> Endereço IP, tipo de navegador, páginas acessadas e dados anônimos de interação recolhidos via cookies de desempenho.</li>
+                    </ul>
+                </section>
+
+                <section class="p-6 rounded-2xl bg-stone-900/40 border border-stone-850">
+                    <h2 class="font-display text-base md:text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-mono text-sm">03.</span> Finalidade e Bases Legais do Tratamento
+                    </h2>
+                    <p class="mb-2">Seus dados são tratados com base nas seguintes hipóteses legais:</p>
+                    <ul class="list-disc list-inside space-y-1.5 text-stone-400 pl-2">
+                        <li><strong>Execução de Contrato:</strong> Para produzir, diagramar, registrar ISBN, imprimir e distribuir obras literárias sob demanda.</li>
+                        <li><strong>Consentimento:</strong> Para envio de comunicados institucionais, convites para encontros da Elite Autoral e novidades de catálogo.</li>
+                        <li><strong>Legítimo Interesse:</strong> Para aprimoramento contínuo das funcionalidades do sistema proprietário SEAAS e segurança cibernética da plataforma.</li>
+                    </ul>
+                </section>
+
+                <section class="p-6 rounded-2xl bg-stone-900/40 border border-stone-850">
+                    <h2 class="font-display text-base md:text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-mono text-sm">04.</span> Transferência Internacional de Dados
+                    </h2>
+                    <p>Devido à nossa operação transfronteiriça entre o Brasil e a Europa (Portugal e Espanha), seus dados podem ser processados em servidores seguros localizados em múltiplos territórios. Adotamos cláusulas contratuais padrão e padrões rigorosos de criptografia ponta a ponta (AES-256 e TLS 1.3) para garantir que o nível de proteção exigido pela LGPD e GDPR seja mantido em todas as jurisdições.</p>
+                </section>
+
+                <section class="p-6 rounded-2xl bg-stone-900/40 border border-stone-850">
+                    <h2 class="font-display text-base md:text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-mono text-sm">05.</span> Direitos do Titular
+                    </h2>
+                    <p class="mb-2">Você tem o direito de solicitar a qualquer momento:</p>
+                    <ul class="list-disc list-inside space-y-1.5 text-stone-400 pl-2">
+                        <li>Confirmação da existência de tratamento e acesso aos dados.</li>
+                        <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
+                        <li>Anonimização, bloqueio ou eliminação de dados desnecessários.</li>
+                        <li>Portabilidade dos dados a outro fornecedor de serviço editorial.</li>
+                        <li>Revogação do consentimento previamente concedido.</li>
+                    </ul>
+                </section>
+
+                <section class="p-6 rounded-2xl bg-stone-900/40 border border-stone-850">
+                    <h2 class="font-display text-base md:text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-mono text-sm">06.</span> Canal do Encarregado de Dados (DPO)
+                    </h2>
+                    <p>Para exercer quaisquer dos seus direitos ou esclarecer dúvidas sobre a privacidade dos seus dados, entre em contato diretamente com o nosso Encarregado pelo Tratamento de Dados Pessoais (DPO):</p>
+                    <div class="mt-4 p-4 rounded-xl bg-stone-950/70 border border-stone-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div>
+                            <p class="font-mono text-xs text-white font-medium">Encarregado DPO · ELOOO International Group</p>
+                            <p class="text-stone-400 text-xs mt-0.5">E-mail: <a href="mailto:privacidade@elooo.com" class="text-[#d6bc8c] hover:underline">privacidade@elooo.com</a></p>
+                        </div>
+                        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20privacidade%20e%20prote%C3%A7%C3%A3o%20de%20dados." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-stone-900 hover:bg-stone-800 border border-[#d6bc8c]/40 text-[#d6bc8c] text-[11px] font-mono uppercase tracking-wider transition-colors">
+                            Atendimento DPO
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Module 1 -->
-            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                    <iconify-icon icon="solar:pen-linear" class="text-white text-2xl"></iconify-icon>
-                </div>
-                <h3 class="font-display text-xl font-semibold text-white mb-4">Escrita de Autoridade</h3>
-                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
-                    Metodologia guiada para estruturar, escrever e lançar seu livro com posicionamento premium, atraindo alto valor de marca pessoal.
-                </p>
-            </div>
-
-            <!-- Module 2 -->
-            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                    <iconify-icon icon="solar:graph-up-linear" class="text-white text-2xl"></iconify-icon>
-                </div>
-                <h3 class="font-display text-xl font-semibold text-white mb-4">High-Ticket Mentoring</h3>
-                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
-                    Estruture o ecossistema de vendas pós-livro. Crie mentorias, masterminds e cursos de alto ticket voltados à sua audiência de elite.
-                </p>
-            </div>
-
-            <!-- Module 3 -->
-            <div class="flashlight-card p-8" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                    <iconify-icon icon="solar:globus-linear" class="text-white text-2xl"></iconify-icon>
-                </div>
-                <h3 class="font-display text-xl font-semibold text-white mb-4">Escala de Vendas</h3>
-                <p class="font-sans text-stone-400 text-sm leading-relaxed font-light">
-                    Sistemas automatizados de aquisição e tráfego pago desenhados para vender livros e mentorias continuamente com excelente ROI.
-                </p>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
 <footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
@@ -283,25 +314,5 @@
     </a>
 </div>
 
-
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-        document.addEventListener("DOMContentLoaded", () => {
-            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
-                ScrollTrigger.create({
-                    trigger: elem,
-                    start: "top 85%",
-                    onEnter: function () { elem.classList.add('active'); }
-                });
-            });
-            window.updateFlashlight = function (e, card) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            }
-        });
-    </script>
 </body>
 </html>

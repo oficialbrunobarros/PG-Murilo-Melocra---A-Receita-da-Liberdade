@@ -35,6 +35,11 @@ def adjust_paths(content, depth):
     content = content.replace('href="trilhas.html', f'href="{prefix}trilhas.html')
     content = content.replace('href="galeria.html', f'href="{prefix}galeria.html')
     content = content.replace('href="contato.html', f'href="{prefix}contato.html')
+    content = content.replace('href="faq.html', f'href="{prefix}faq.html')
+    content = content.replace('href="mapa-do-site.html', f'href="{prefix}mapa-do-site.html')
+    content = content.replace('href="autoridade-editorial.html', f'href="{prefix}autoridade-editorial.html')
+    content = content.replace('href="privacidade.html', f'href="{prefix}privacidade.html')
+    content = content.replace('href="termos.html', f'href="{prefix}termos.html')
     
     # Replace action href inside navbar if it has specific page anchors
     # e.g., href="#navbar" inside subdirectory should not change unless they are absolute.
