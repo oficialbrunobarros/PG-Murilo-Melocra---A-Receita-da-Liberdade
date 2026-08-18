@@ -116,7 +116,7 @@ authors_data = [
         "book": "Mulheres de Alta Performance",
         "flag": "circle-flags:pt",
         "instagram": "https://www.instagram.com/anacarinamendes/",
-        "bio": "Mentora, palestrante e especialista em desenvolvimento pessoal e liderança feminina. Auxilia mulheres a destravarem sua alta performance, equilibrarem carreira e vida pessoal, e assumirem o protagonismo de suas trajetórias."
+        "bio": "Médica-dentista, empresária e CEO da Foramen Dental Care, Clínica Jorge Moura e Clínica Mendes Moura em Portugal. Especialista em liderança e alta performance feminina, orienta mulheres a alcançarem excelência profissional e equilíbrio de vida."
     },
     {
         "slug": "anildo-silva",
@@ -228,7 +228,7 @@ authors_data = [
         "book": "Inteligência Espiritual",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/prantoniosiqueira/",
-        "bio": "Pastor, mentor e conselheiro familiar. Dedica sua vida ao ensino dos princípios bíblicos, ajudando pessoas a desenvolverem sua inteligência espiritual, fortalecerem a fé e construírem lares com bases sólidas."
+        "bio": "Pastor na Igreja Mais de Cristo Joinville e Vice-Presidente da Convenção Mais de Cristo. Mentor e conselheiro, dedica sua vida a ensinar princípios bíblicos que desenvolvem inteligência espiritual, maturidade e bases familiares sólidas."
     },
     {
         "slug": "fabio-ferro",
@@ -236,7 +236,7 @@ authors_data = [
         "book": "Transformando Sonhos em Propósito",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/fabioaferro/",
-        "bio": "Empresário, mentor e palestrante. Especialista em gestão estratégica and desenvolvimento de negócios, orienta empreendedores a organizarem suas ideias, estruturarem processos e transformarem sonhos em propósitos reais."
+        "bio": "Empresário e fundador da Fagerflex Colchões, com mais de 25 anos de mercado no setor de conforto e sono. Mentor e palestrante, capacita líderes a estruturarem negócios resilientes e transformarem grandes sonhos em propósitos reais."
     },
     {
         "slug": "bianka-einkenberg",
@@ -244,7 +244,7 @@ authors_data = [
         "book": "Importação de Alto Nível",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/bianka.importacao/",
-        "bio": "Empresária, especialista em comércio exterior e mentora de negócios internacionais. Ajuda empreendedores a desmistificarem o processo de importação e escalarem suas operações com segurança."
+        "bio": "Empresária, mentora e fundadora da Crossbridge Comércio Exterior, com mais de 10 anos de experiência internacional. Desmistifica o processo de importação e ajuda empresas a escalarem operações globais com alta lucratividade e segurança."
     },
     {
         "slug": "bruno-barros",
