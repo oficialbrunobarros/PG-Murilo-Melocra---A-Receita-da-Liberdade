@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>ELOOO International Group | Premium Authors & Books</title>
+    <title>ELOOO Global Ecosystem | Bem-vindos ao Ecossistema ELOOO Global</title>
+    <meta name="description" content="Bem-vindos ao Ecossistema ELOOO Global. Os 4 pilares de alta performance: Editora Internacional, Academy, Bio Premium e Content.">
 
     <script>
         // If accessed via bio subdomain, immediately forward to bio landing page
@@ -16,10 +17,10 @@
         }
     </script>
 
-    <!-- Fonts -->
+    <!-- Fonts: Space Grotesk + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -52,8 +53,13 @@
                             700: '#44403c',
                             800: '#292524',
                             900: '#1c1917',
+                            950: '#0a0a0c',
                         },
-                        'surface-light': '#EAEAE5',
+                        gold: {
+                            400: '#d6bc8c',
+                            500: '#c5a870',
+                            600: '#b39868',
+                        }
                     },
                     backgroundImage: {
                         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
@@ -66,200 +72,374 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #EAEAE5;
-            color: #1C1917;
+            background-color: #0a0a0c;
+            color: #ffffff;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        .text-outline {
-            -webkit-text-stroke: 1px #1C1917;
-            color: transparent;
-            transition: all 0.5s ease;
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* FLASHLIGHT EFFECT */
-        .flashlight-card {
+        /* FLASHLIGHT HOVER CARD */
+        .ecosystem-card {
             position: relative;
-            background: rgba(28, 25, 23, 0.02);
-            border: 1px solid rgba(28, 25, 23, 0.08);
-            border-radius: 24px;
+            background: linear-gradient(165deg, rgba(26, 25, 28, 0.85) 0%, rgba(14, 14, 16, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
             overflow: hidden;
-            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .flashlight-card::before {
+        .ecosystem-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(28, 25, 23, 0.04), transparent 40%);
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(214, 188, 140, 0.18), transparent 50%);
             z-index: 1;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .flashlight-card:hover::before {
+        .ecosystem-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(214, 188, 140, 0.6);
+            box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.9), 0 0 35px rgba(214, 188, 140, 0.2);
+        }
+
+        .ecosystem-card:hover::before {
             opacity: 1;
         }
 
-        /* SPINNING BORDER CTA */
+        /* MOVING GOLD BORDER BUTTON */
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+        .btn-gold-spin {
+            position: relative;
+            display: inline-flex;
+            overflow: hidden;
+            border-radius: 9999px;
+            padding: 1.5px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .btn-gold-spin:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.4);
+        }
+        .btn-gold-spin span.spin-border {
+            position: absolute;
+            inset: -1000%;
+            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.9) 50%, transparent 100%);
+            animation: spin 3s linear infinite;
+        }
+
+        /* AMBIENT GLOWS */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(50px);
+        }
     </style>
 </head>
 
-<body>
-    <!-- NOISE OVERLAY -->
-    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+<body class="antialiased selection:bg-[#d6bc8c] selection:text-black">
+
+    <!-- NOISE GRAIN OVERLAY -->
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.03] pointer-events-none z-50"></div>
 
     <!-- INCLUDE_NAVBAR -->
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen w-full flex items-center justify-center pt-32 pb-20 bg-stone-900 text-white overflow-hidden">
-        <!-- Background decorative details -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(120,113,108,0.15),transparent_50%)]"></div>
-        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-stone-800/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- HERO / GATEWAY HEADER -->
+    <main class="relative min-h-screen pt-32 pb-24 sm:pt-40 sm:pb-32 overflow-hidden flex flex-col justify-center">
+        
+        <!-- Ambient Background Nebulas -->
+        <div class="ambient-glow top-10 left-1/2 -translate-x-1/2"></div>
+        <div class="ambient-glow bottom-10 right-10 opacity-60"></div>
 
-        <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10 w-full">
             
-            <div class="lg:col-span-8 flex flex-col justify-center text-left">
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-800/60 border border-stone-700/50 rounded-full w-fit reveal-up">
-                    <img src="static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
-                    <div class="w-px h-3 bg-stone-700"></div>
-                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">International Group</span>
+            <!-- Section Header -->
+            <div class="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+                <!-- Ecosystem Badge -->
+                <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-white/[0.05] border border-white/10 rounded-full backdrop-blur-md">
+                    <img src="static/images/ELOOO LOGO.png" alt="ELOOO" class="h-3 object-contain filter brightness-0 invert">
+                    <div class="w-px h-3.5 bg-white/20"></div>
+                    <span class="text-[10.5px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">
+                        PORTAL OFICIAL · ECOSSISTEMA GLOBAL
+                    </span>
                 </div>
 
-                <h1 class="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[0.9] mb-8 reveal-up delay-100">
-                    Propósito e<br>
-                    <span class="text-outline text-transparent">Liberdade para</span><br>
-                    Profissionais.
+                <!-- Main Title -->
+                <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] mb-6">
+                    BEM-VINDOS AO ECOSSISTEMA ELOOO GLOBAL
                 </h1>
 
-                <p class="text-lg md:text-xl text-stone-400 max-w-2xl leading-relaxed font-light mb-12 reveal-up delay-200">
-                    A ELOOO International Group publica os guias de maior autoridade e impacto do mercado, conectando profissionais de elite à sua liberdade de tempo, financeira e geográfica.
+                <!-- Subtitle -->
+                <p class="font-sans text-base sm:text-xl text-stone-300 font-light leading-relaxed max-w-3xl mx-auto">
+                    Conheça os quatro pilares integrados de alta performance: Publicação Editorial Internacional, Educação Executiva, Tecnologia de Conversão e Produção Audiovisual.
                 </p>
-
-                <div class="flex flex-wrap gap-4 reveal-up delay-300">
-                    <a href="#autores" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                            Conhecer Autores
-                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80"></iconify-icon>
-                        </span>
-                    </a>
-                    <a href="#livros" class="px-8 py-4 border border-stone-700 hover:border-white rounded-full font-medium text-sm text-stone-300 hover:text-white uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
-                        Ver Livros
-                        <iconify-icon icon="solar:arrow-down-linear" class="text-lg"></iconify-icon>
-                    </a>
-                </div>
             </div>
-        </div>
-        
-        <!-- Scroll hint -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-40">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400">Explore</span>
-            <div class="w-px h-8 bg-stone-700 overflow-hidden relative">
-                <div class="absolute top-0 left-0 w-full h-full bg-white animate-scroll-line" style="animation: scroll-line 2s infinite;"></div>
-            </div>
-        </div>
-    </section>
 
-    <!-- PORTAL NAVIGATION HIGHLIGHTS -->
-    <section class="py-32 bg-stone-100 text-stone-900 relative z-10 overflow-hidden">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- THE 4 SUPER-PREMIUM CARDS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
                 
-                <!-- Authors Portal Block -->
-                <div class="flashlight-card group p-12 bg-white flex flex-col justify-between min-h-[400px] reveal-up delay-100 border border-stone-200/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500" onmousemove="updateFlashlight(event, this)">
-                    <div>
-                        <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 bg-stone-100 border border-stone-200 rounded-full">
-                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-stone-500"></iconify-icon>
-                            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Mentes Brilhantes</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 mb-6">Autores ELOOO</h3>
-                        <p class="font-sans text-stone-500 leading-relaxed mb-6 font-light">
-                            Conheça o pódio de mentores, especialistas e autores de elite que assinam as publicações exclusivas do ELOOO International Group. Acesse o Leaderboard completo e suas páginas oficiais.
-                        </p>
+                <!-- CARD 1: EDITORA -->
+                <div class="ecosystem-card p-8 sm:p-10 flex flex-col justify-between group relative" onmousemove="updateFlashlight(event, this)">
+                    <!-- Big Numeric Watermark -->
+                    <div class="absolute top-4 right-6 font-display font-bold text-7xl sm:text-8xl text-white/[0.03] select-none pointer-events-none group-hover:text-[#d6bc8c]/10 transition-colors">
+                        01
                     </div>
-                    <a href="autores.html" class="mt-8 relative group/btn rounded-full p-[1px] overflow-hidden bg-stone-800 shadow-md w-fit">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.2)_50%,transparent_100%)] opacity-100 group-hover/btn:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 bg-[#0a0a0a] px-8 py-3 rounded-full font-medium text-xs text-white tracking-widest uppercase transition-colors duration-500 group-hover/btn:bg-[#111]">
-                            Ver Leaderboard de Autores
-                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                        </span>
-                    </a>
+
+                    <div class="relative z-10">
+                        <!-- Card Header / Icon & Tag -->
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/30 text-amber-300 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                                <iconify-icon icon="solar:book-bookmark-bold"></iconify-icon>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#d6bc8c]">
+                                PUBLICAÇÃO & AUTORALIDADE
+                            </span>
+                        </div>
+
+                        <!-- Card Title & Description -->
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-3 tracking-tight group-hover:text-[#f6e3c5] transition-colors">
+                            ELOOO EDITORA
+                        </h2>
+                        <p class="font-sans text-stone-300 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            A editora de elite de maior autoridade e curadoria internacional. Publicação física e digital de livros que transformam profissionais em referências absolutas de mercado no Brasil, Portugal (Cascais) e Espanha (Madrid).
+                        </p>
+
+                        <!-- Highlights List -->
+                        <div class="space-y-2.5 mb-10 pt-4 border-t border-white/10 text-xs font-mono text-stone-300">
+                            <div class="flex items-center gap-2">
+                                <span class="text-amber-400">✦</span>
+                                <span>Pódio oficial com 31+ Autores de Alta Performance</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-amber-400">✦</span>
+                                <span>Mais de 3.500 livros impressos e distribuídos</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-amber-400">✦</span>
+                                <span>Distribuição física multientrega e presença internacional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card CTA Button -->
+                    <div class="relative z-10">
+                        <a href="editora.html" class="btn-gold-spin w-full">
+                            <span class="spin-border"></span>
+                            <span class="relative flex items-center justify-between w-full px-6 py-4 rounded-full bg-[#121215] text-[#f6e3c5] text-xs font-mono font-bold uppercase tracking-widest hover:bg-[#1a1a20] transition-colors">
+                                <span>Acessar Editora Internacional</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-base text-amber-300"></iconify-icon>
+                            </span>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Books Portal Block -->
-                <div class="flashlight-card group p-12 bg-white flex flex-col justify-between min-h-[400px] reveal-up delay-200 border border-stone-200/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500" onmousemove="updateFlashlight(event, this)">
-                    <div>
-                        <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 bg-stone-100 border border-stone-200 rounded-full">
-                            <iconify-icon icon="solar:book-bookmark-linear" class="text-stone-500"></iconify-icon>
-                            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Coleções de Impacto</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 mb-6">Nossas Obras</h3>
-                        <p class="font-sans text-stone-500 leading-relaxed mb-6 font-light">
-                            Explore o catálogo de livros publicados pela editora ELOOO, focados em autonomia profissional, inteligência financeira, vitalidade e desenvolvimento de negócios.
-                        </p>
+                <!-- CARD 2: ACADEMY -->
+                <div class="ecosystem-card p-8 sm:p-10 flex flex-col justify-between group relative" onmousemove="updateFlashlight(event, this)">
+                    <!-- Big Numeric Watermark -->
+                    <div class="absolute top-4 right-6 font-display font-bold text-7xl sm:text-8xl text-white/[0.03] select-none pointer-events-none group-hover:text-[#d6bc8c]/10 transition-colors">
+                        02
                     </div>
-                    <a href="livros.html" class="mt-8 relative group/btn rounded-full p-[1px] overflow-hidden bg-stone-800 shadow-md w-fit">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.2)_50%,transparent_100%)] opacity-100 group-hover/btn:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 bg-[#0a0a0a] px-8 py-3 rounded-full font-medium text-xs text-white tracking-widest uppercase transition-colors duration-500 group-hover/btn:bg-[#111]">
-                            Explorar Catálogo de Livros
-                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                        </span>
-                    </a>
+
+                    <div class="relative z-10">
+                        <!-- Card Header / Icon & Tag -->
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-400/30 text-blue-300 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                                <iconify-icon icon="solar:diploma-verified-bold"></iconify-icon>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-blue-300">
+                                EDUCAÇÃO EXECUTIVA
+                            </span>
+                        </div>
+
+                        <!-- Card Title & Description -->
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-3 tracking-tight group-hover:text-blue-200 transition-colors">
+                            ELOOO ACADEMY
+                        </h2>
+                        <p class="font-sans text-stone-300 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            Nossa universidade corporativa e centro de aceleração de carreiras. Trilhas de conhecimento avançado, formação de novos autores, inteligência de negócios e desenvolvimento de autoridade para líderes e mentores.
+                        </p>
+
+                        <!-- Highlights List -->
+                        <div class="space-y-2.5 mb-10 pt-4 border-t border-white/10 text-xs font-mono text-stone-300">
+                            <div class="flex items-center gap-2">
+                                <span class="text-blue-400">✦</span>
+                                <span>Trilhas Editoriais, Liderança & Mentalidade</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-blue-400">✦</span>
+                                <span>Mentorias Individuais e Masterclasses Estratégicas</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-blue-400">✦</span>
+                                <span>Certificação oficial de competências e autoralidade</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card CTA Button -->
+                    <div class="relative z-10">
+                        <a href="universidade.html" class="btn-gold-spin w-full">
+                            <span class="spin-border"></span>
+                            <span class="relative flex items-center justify-between w-full px-6 py-4 rounded-full bg-[#121215] text-[#f6e3c5] text-xs font-mono font-bold uppercase tracking-widest hover:bg-[#1a1a20] transition-colors">
+                                <span>Acessar Elooo Academy</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-base text-amber-300"></iconify-icon>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3: BIO PREMIUM -->
+                <div class="ecosystem-card p-8 sm:p-10 flex flex-col justify-between group relative" onmousemove="updateFlashlight(event, this)">
+                    <!-- Big Numeric Watermark -->
+                    <div class="absolute top-4 right-6 font-display font-bold text-7xl sm:text-8xl text-white/[0.03] select-none pointer-events-none group-hover:text-[#d6bc8c]/10 transition-colors">
+                        03
+                    </div>
+
+                    <div class="relative z-10">
+                        <!-- Card Header / Icon & Tag -->
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                                <iconify-icon icon="solar:smartphone-2-bold"></iconify-icon>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-emerald-300">
+                                TECNOLOGIA & IA
+                            </span>
+                        </div>
+
+                        <!-- Card Title & Description -->
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-3 tracking-tight group-hover:text-emerald-200 transition-colors">
+                            ELOOO BIO PREMIUM
+                        </h2>
+                        <p class="font-sans text-stone-300 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            A plataforma de link na bio mais sofisticada do mercado. Equipada com Concierge de Inteligência Artificial que qualifica visitantes 24h, agenda consultas e recomenda o produto certo para vender no automático.
+                        </p>
+
+                        <!-- Highlights List -->
+                        <div class="space-y-2.5 mb-10 pt-4 border-t border-white/10 text-xs font-mono text-stone-300">
+                            <div class="flex items-center gap-2">
+                                <span class="text-emerald-400">✦</span>
+                                <span>Concierge de Inteligência Artificial Ativo 24/7</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-emerald-400">✦</span>
+                                <span>Agendamento inteligente sincronizado com WhatsApp</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-emerald-400">✦</span>
+                                <span>Bio oficial pronta em 2 minutos com padrão de elite</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card CTA Button -->
+                    <div class="relative z-10">
+                        <a href="bio.html" class="btn-gold-spin w-full">
+                            <span class="spin-border"></span>
+                            <span class="relative flex items-center justify-between w-full px-6 py-4 rounded-full bg-[#121215] text-[#f6e3c5] text-xs font-mono font-bold uppercase tracking-widest hover:bg-[#1a1a20] transition-colors">
+                                <span>Acessar Elooo Bio Premium</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-base text-amber-300"></iconify-icon>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 4: CONTENT -->
+                <div class="ecosystem-card p-8 sm:p-10 flex flex-col justify-between group relative" onmousemove="updateFlashlight(event, this)">
+                    <!-- Big Numeric Watermark -->
+                    <div class="absolute top-4 right-6 font-display font-bold text-7xl sm:text-8xl text-white/[0.03] select-none pointer-events-none group-hover:text-[#d6bc8c]/10 transition-colors">
+                        04
+                    </div>
+
+                    <div class="relative z-10">
+                        <!-- Card Header / Icon & Tag -->
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-400/30 text-purple-300 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                                <iconify-icon icon="solar:videocamera-record-bold"></iconify-icon>
+                            </div>
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-purple-300">
+                                ESTÚDIO & AUDIOVISUAL
+                            </span>
+                        </div>
+
+                        <!-- Card Title & Description -->
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-3 tracking-tight group-hover:text-purple-200 transition-colors">
+                            ELOOO CONTENT
+                        </h2>
+                        <p class="font-sans text-stone-300 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            Núcleo de produção audiovisual e inteligência de conteúdo para autores e especialistas. Estúdio completo de podcasts, videocasts, gravação de materiais complementares (áudio, vídeo, tarefas e mindmaps) e posicionamento digital.
+                        </p>
+
+                        <!-- Highlights List -->
+                        <div class="space-y-2.5 mb-10 pt-4 border-t border-white/10 text-xs font-mono text-stone-300">
+                            <div class="flex items-center gap-2">
+                                <span class="text-purple-400">✦</span>
+                                <span>Gravação de Podcasts, Entrevistas e Videocasts</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-purple-400">✦</span>
+                                <span>Plataforma multientrega para leitores e mentorados</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-purple-400">✦</span>
+                                <span>Estratégia de autoridade e conteúdo de alto valor</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card CTA Button -->
+                    <div class="relative z-10">
+                        <a href="galeria.html" class="btn-gold-spin w-full">
+                            <span class="spin-border"></span>
+                            <span class="relative flex items-center justify-between w-full px-6 py-4 rounded-full bg-[#121215] text-[#f6e3c5] text-xs font-mono font-bold uppercase tracking-widest hover:bg-[#1a1a20] transition-colors">
+                                <span>Acessar Elooo Content</span>
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-base text-amber-300"></iconify-icon>
+                            </span>
+                        </a>
+                    </div>
                 </div>
 
             </div>
+
+            <!-- Global Contact Ribbon -->
+            <div class="mt-16 sm:mt-20 text-center">
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20pelo%20portal%20global%20da%20Elooo%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#d6bc8c] hover:bg-white/[0.08] text-stone-300 hover:text-white transition-all text-xs font-mono font-bold uppercase tracking-widest">
+                    <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
+                    <span>Falar com o Concierge Corporativo no WhatsApp</span>
+                    <iconify-icon icon="solar:arrow-right-up-linear" class="text-stone-400 text-sm"></iconify-icon>
+                </a>
+            </div>
+
         </div>
-    </section>
-<!-- INCLUDE_FOOTER -->
+    </main>
+
+    <!-- INCLUDE_FOOTER -->
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // Efeito de Revelação Genérico (Classes reveal-up)
-            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
-                ScrollTrigger.create({
-                    trigger: elem,
-                    start: "top 85%",
-                    onEnter: function () {
-                        elem.classList.add('active');
-                    }
-                });
-            });
-
-            // Efeito Lanterna (Flashlight Effect)
-            window.updateFlashlight = function (e, card) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            }
-        
-            // Leaderboard Show More / Show Less Toggle
-            });
+        // Flashlight Hover Effect
+        window.updateFlashlight = function (e, card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
+        };
     </script>
 </body>
 
