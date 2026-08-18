@@ -53,26 +53,6 @@
       "destination": "/bio/privacidade.html"
     },
     {
-      "source": "/brunobarros",
-      "has": [
-        {
-          "type": "host",
-          "value": "bio.elooo.com.br"
-        }
-      ],
-      "destination": "/bio/brunobarros.html"
-    },
-    {
-      "source": "/leticia-vaz",
-      "has": [
-        {
-          "type": "host",
-          "value": "bio.elooo.com.br"
-        }
-      ],
-      "destination": "/bio/brunobarros.html"
-    },
-    {
       "source": "/demo",
       "has": [
         {
@@ -81,6 +61,26 @@
         }
       ],
       "destination": "/bio/brunobarros.html"
+    },
+    {
+      "source": "/api/midia",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "https://app.elooo.com.br/api/midia"
+    },
+    {
+      "source": "/:slug([a-z0-9][a-z0-9-]{1,58}[a-z0-9])",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "https://app.elooo.com.br/api/midia?bio=1&slug=:slug"
     },
     {
       "source": "/:path*",
