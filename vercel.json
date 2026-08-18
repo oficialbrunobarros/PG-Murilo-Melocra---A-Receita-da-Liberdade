@@ -3,14 +3,14 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/",
+      "source": "/inicio",
       "has": [
         {
           "type": "host",
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/index.html"
+      "destination": "/bio/index"
     },
     {
       "source": "/entrar",
@@ -20,7 +20,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/entrar.html"
+      "destination": "/bio/entrar"
     },
     {
       "source": "/cadastrar",
@@ -30,7 +30,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/cadastrar.html"
+      "destination": "/bio/cadastrar"
     },
     {
       "source": "/termos",
@@ -40,7 +40,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/termos.html"
+      "destination": "/bio/termos"
     },
     {
       "source": "/privacidade",
@@ -50,7 +50,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/privacidade.html"
+      "destination": "/bio/privacidade"
     },
     {
       "source": "/demo",
@@ -60,7 +60,7 @@
           "value": "bio.elooo.com.br"
         }
       ],
-      "destination": "/bio/brunobarros.html"
+      "destination": "/bio/brunobarros"
     },
     {
       "source": "/api/midia",
@@ -119,6 +119,19 @@
           "value": "1; mode=block"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/inicio",
+      "permanent": false
     }
   ]
 }
