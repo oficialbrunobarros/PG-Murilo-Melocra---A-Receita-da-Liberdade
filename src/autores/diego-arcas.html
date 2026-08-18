@@ -618,7 +618,7 @@
                     O Livro: <span class="gold-text-sweep">Despertando os Propósitos de Deus</span>
                 </h2>
                 <p class="text-base sm:text-lg text-stone-400 font-light leading-relaxed">
-                    O roteiro espiritual e prático para empreendedores que desejam governar suas empresas sob a soberania divina com prosperidade íntegra.
+                    Um testemunho sobre transformações, fé e milagres que fará você mudar completamente a forma como enxerga e valoriza a sua vida.
                 </p>
             </div>
 
@@ -629,34 +629,10 @@
                 <div class="lg:col-span-5 flex flex-col items-center justify-center scroll-reveal">
                     
                     <!-- 3D Book Mockup Container (Laser Emitter) -->
-                    <div id="book-emitter-card" class="book-3d-wrap w-full flex justify-center cursor-pointer" onmouseenter="fireRandomLaserSec3()" onclick="fireAllLasersSec3()">
-                        <div class="flashlight-card group p-[1.5px] w-[310px] sm:w-[350px]">
-                            <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.9)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                            <div class="flashlight-card-inner p-8 text-left book-3d-object" onmousemove="updateFlashlight(event, this)">
-                                
-                                <!-- Book Header Ribbon -->
-                                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5 z-10 relative">
-                                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] font-bold">Elooo Editora</span>
-                                    <span class="text-[10px] font-mono text-stone-400">Edição de Luxo</span>
-                                </div>
-
-                                <!-- Book Spine & Title (Ready for real cover image) -->
-                                <div class="my-6 z-10 relative">
-                                    <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-[#faeac7]">Diego Arcas</span>
-                                    <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1.5 leading-tight">
-                                        DESPERTANDO OS PROPÓSITOS DE DEUS
-                                    </h3>
-                                    <p class="text-xs text-stone-400 mt-2 font-light italic">
-                                        Fé, Administração e Princípios Inabaláveis
-                                    </p>
-                                </div>
-
-                                <!-- Book Specs -->
-                                <div class="pt-5 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-300 z-10 relative">
-                                    <span class="text-[#d6bc8c]">✦ Capa Nobre</span>
-                                    <span>✦ Tiragem Oficial</span>
-                                </div>
-                            </div>
+                    <div id="book-emitter-card" class="book-3d-wrap w-full flex justify-center items-center cursor-pointer relative" onmouseenter="fireRandomLaserSec3()" onclick="fireAllLasersSec3()">
+                        <div class="relative group p-2 transition-transform duration-500 hover:scale-105">
+                            <div class="absolute inset-0 bg-radial from-[#d6bc8c]/25 to-transparent rounded-full filter blur-[50px] opacity-70 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                            <img src="../static/images/despertando-os-propositos-de-deus-mockup.png" alt="Livro Despertando os Propósitos de Deus - Diego Arcas" class="relative z-10 w-[270px] sm:w-[310px] max-h-[460px] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)]">
                         </div>
                     </div>
 
