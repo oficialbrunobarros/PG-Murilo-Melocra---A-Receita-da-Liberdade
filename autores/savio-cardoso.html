@@ -243,6 +243,24 @@
             text-shadow: 0 0 10px rgba(214, 188, 140, 0.6), 0 0 2px rgba(214, 188, 140, 0.8);
         }
 
+        /* LUXURY NUMERIC EFFECT (ZERO EMOJIS, HIGH-FASHION GOLD GLOW) */
+        .luxury-num-badge {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(180deg, #faeac7 0%, #d6bc8c 50%, rgba(214, 188, 140, 0.25) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-shadow: 0 0 25px rgba(214, 188, 140, 0.25);
+        }
+
+        .flashlight-card:hover .luxury-num-badge {
+            transform: scale(1.08) translateY(-2px);
+            text-shadow: 0 0 35px rgba(250, 234, 199, 0.7), 0 0 15px rgba(214, 188, 140, 0.9);
+        }
+
         /* HIGH-SPEED GLOWING LASER PULSE FIRING EFFECTS (FROM QUEM-SOMOS) */
         .tech-pulse-particle {
             position: absolute;
@@ -696,11 +714,8 @@
             <!-- RIGHT COLUMN: NOME GIGANTE & COPY EDITORIAL DE ALTO IMPACTO -->
             <div class="lg:col-span-6 flex flex-col justify-center text-left py-2" id="heroTextCol">
                 
-                <!-- Category Sub-tag -->
+                <!-- Category Sub-tag (Pure Typography, No Emojis) -->
                 <div class="inline-flex items-center gap-3 mb-3 scroll-reveal">
-                    <iconify-icon icon="circle-flags:br" class="text-base"></iconify-icon>
-                    <iconify-icon icon="circle-flags:pt" class="text-base"></iconify-icon>
-                    <div class="w-px h-3 bg-white/20"></div>
                     <span class="text-[11px] font-mono font-bold uppercase tracking-[0.28em] text-[#d6bc8c]">
                         MEDICINA DE LONGEVIDADE & ALTA PERFORMANCE
                     </span>
@@ -1025,12 +1040,12 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO 4: PÚBLICO-ALVO REFORMULADO (ALTO PADRÃO EXECUTIVO & EDITORIAL) -->
+    <!-- SEÇÃO 4: DIAGNÓSTICO & APLICAÇÃO (EFEITO GLOW NOS NÚMEROS, ZERO EMOJIS) -->
     <!-- ========================================================================= -->
     <section id="publicoSection" class="py-12 sm:py-16 bg-[#080706] border-t border-stone-800/80 relative z-20">
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 text-center">
             
-            <div class="max-w-3xl mx-auto mb-8 scroll-reveal">
+            <div class="max-w-3xl mx-auto mb-10 scroll-reveal">
                 <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Diagnóstico & Aplicação</span>
                 <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-1.5 mb-2">
                     Para Quem Foi Escrita Esta Obra?
@@ -1040,22 +1055,19 @@
                 </p>
             </div>
 
-            <!-- 4 Ultra-Luxury Cards with Indices, Badges and Flashlight Effect -->
+            <!-- 4 Cards with High-End Glowing Numeric Badges and Zero Emojis -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
                 
                 <!-- Card 1 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
                         <div class="z-10 relative">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">01</span>
-                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
-                                    <iconify-icon icon="solar:briefcase-bold-duotone"></iconify-icon>
-                                </div>
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">01</span>
                             </div>
-                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Liderança Sob Pressão</span>
-                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Empresários & C-Levels</h3>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Liderança Sob Pressão</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Empresários & C-Levels</h3>
                             <p class="text-xs text-stone-400 font-light leading-relaxed">
                                 Executivos que precisam eliminar a fadiga após o almoço, sustentar foco analítico por 14 horas diárias e tomar decisões estratégicas sem neblina mental.
                             </p>
@@ -1066,18 +1078,15 @@
                 <!-- Card 2 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
                         <div class="z-10 relative">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">02</span>
-                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
-                                    <iconify-icon icon="solar:dumbbell-large-linear"></iconify-icon>
-                                </div>
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">02</span>
                             </div>
-                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Rejuvenescimento Físico</span>
-                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Homens 35+ e Vigor Ativo</h3>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Rejuvenescimento Físico</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Homens 35+ e Vigor Ativo</h3>
                             <p class="text-xs text-stone-400 font-light leading-relaxed">
-                                Indivíduos que recusam a queda de libido, a perda muscular e a desaceleração metabólica como sintomas "normais" da passagem do tempo.
+                                Indivíduos que recusam a queda de libido, a perda muscular e a desaceleração metabólica como sintomas da passagem do tempo.
                             </p>
                         </div>
                     </div>
@@ -1086,16 +1095,13 @@
                 <!-- Card 3 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
                         <div class="z-10 relative">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">03</span>
-                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
-                                    <iconify-icon icon="solar:heart-pulse-linear"></iconify-icon>
-                                </div>
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">03</span>
                             </div>
-                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Investimento em Futuro</span>
-                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Longevidade Consciente</h3>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Investimento em Futuro</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Longevidade Consciente</h3>
                             <p class="text-xs text-stone-400 font-light leading-relaxed">
                                 Pessoas que enxergam a saúde biológica como o ativo patrimonial mais valioso para desfrutar do sucesso financeiro com independência e lucidez.
                             </p>
@@ -1106,16 +1112,13 @@
                 <!-- Card 4 -->
                 <div class="flashlight-card group p-[1.5px] scroll-reveal">
                     <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
-                    <div class="flashlight-card-inner p-6 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
                         <div class="z-10 relative">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-3xl font-display font-extrabold text-[#d6bc8c]/40 group-hover:text-[#d6bc8c] transition-colors">04</span>
-                                <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl">
-                                    <iconify-icon icon="solar:dna-linear"></iconify-icon>
-                                </div>
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">04</span>
                             </div>
-                            <span class="text-[9px] font-mono text-[#d6bc8c] uppercase tracking-wider font-bold">Ciência de Ponta</span>
-                            <h3 class="font-display text-lg font-bold text-white mt-1 mb-2">Entusiastas de Biohacking</h3>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Ciência de Ponta</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Entusiastas de Biohacking</h3>
                             <p class="text-xs text-stone-400 font-light leading-relaxed">
                                 Leitores que procuram protocolos práticos, aplicáveis e com respaldo em ensaios clínicos rigorosos da medicina moderna.
                             </p>
@@ -1126,7 +1129,7 @@
             </div>
 
             <!-- SECTION 4 ACTION BUTTON -->
-            <div class="mt-8 scroll-reveal">
+            <div class="mt-10 scroll-reveal">
                 <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20adquirir%20o%20livro%20do%20Dr.%20S%C3%A1vio%20Cardoso%20para%20atingir%20meu%20%C3%A1pice%20biol%C3%B3gico." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-9 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-xl">
                     <span>Quero Atingir Meu Ápice Biológico →</span>
                 </a>
@@ -1136,53 +1139,57 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- FINAL CONVERSION STAGE: FOTO DO AUTOR EM BACKGROUND COM TEXTO SOBREPOSTO -->
+    <!-- FINAL CONVERSION STAGE: FOTO DO AUTOR VISÍVEL & IMPOSTA (SEM RETÂNGULO ELOOO) -->
     <!-- ========================================================================= -->
-    <section id="finalSection" class="relative min-h-[560px] flex items-center justify-center py-20 bg-[#0c0a09] border-t border-stone-800 text-center overflow-hidden z-20">
+    <section id="finalSection" class="relative py-16 sm:py-24 bg-[#0c0a09] border-t border-stone-800 overflow-hidden z-20">
         
-        <!-- FOTO DO AUTOR COMO BACKGROUND CINEMATOGRÁFICO COM GRADIENTE ESCURO -->
-        <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
-            <img src="../static/images/savio-cardoso.png" alt="Dr. Sávio Cardoso" class="w-full h-full object-cover object-top opacity-20 filter grayscale contrast-125 scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/85 to-[#0c0a09]/95"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0c0a09_80%)]"></div>
-        </div>
+        <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-15"></div>
 
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            
-            <div class="inline-flex items-center gap-2 mb-3 scroll-reveal">
-                <iconify-icon icon="circle-flags:br" class="text-sm"></iconify-icon>
-                <iconify-icon icon="circle-flags:pt" class="text-sm"></iconify-icon>
-                <div class="w-px h-3 bg-white/20"></div>
-                <span class="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">Elooo Editora Internacional</span>
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- LEFT COLUMN: FOTO DO AUTOR NÍTIDA, VISÍVEL E IMPOSTA -->
+                <div class="lg:col-span-5 flex justify-center items-end scroll-reveal">
+                    <div class="relative w-full max-w-[420px] flex justify-center items-end">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-radial from-[#d6bc8c]/25 to-transparent rounded-full filter blur-[50px] pointer-events-none"></div>
+                        <img src="../static/images/savio-cardoso.png" alt="Dr. Sávio Cardoso" class="relative z-10 w-full max-h-[500px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]">
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: H1 DIRETO NO TOPO (SEM RETÂNGULO ELOOO) & CTAs DE CONVERSÃO -->
+                <div class="lg:col-span-7 flex flex-col justify-center text-left py-4 scroll-reveal">
+                    
+                    <!-- H1 OFICIAL DIRETO (ZERO RETÂNGULOS OU BADGES ANTERIORES) -->
+                    <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white leading-tight mb-4">
+                        Garanta Seu Exemplar com Dedicatória Oficial do <span class="gold-text-sweep">Dr. Sávio Cardoso</span>
+                    </h2>
+                    
+                    <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-2xl">
+                        Adquira diretamente pela editora o livro que está transformando a compreensão de longevidade, vigor e medicina de alta performance no Brasil e em Portugal.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8">
+                        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-4.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
+                            <span>Garantir Meu Livro Autografado →</span>
+                        </a>
+
+                        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="px-8 py-4.5 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
+                            <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
+                            <span>Falar com a Equipe do Autor</span>
+                        </a>
+                    </div>
+
+                    <!-- Back to authors link -->
+                    <div>
+                        <a href="../autores.html" class="inline-flex items-center gap-2 text-xs font-mono text-stone-500 hover:text-white uppercase tracking-widest transition-colors">
+                            <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+                            <span>Voltar para o Pódio de Autores ELOOO</span>
+                        </a>
+                    </div>
+
+                </div>
+
             </div>
-
-            <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-1 mb-4 leading-tight scroll-reveal">
-                Garanta Seu Exemplar com Dedicatória Oficial do <span class="gold-text-sweep">Dr. Sávio Cardoso</span>
-            </h2>
-            
-            <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-2xl mx-auto scroll-reveal">
-                Adquira diretamente pela editora o livro que está transformando a compreensão de longevidade, vigor e medicina de alta performance no Brasil e em Portugal.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 scroll-reveal">
-                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-4.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl w-full sm:w-auto">
-                    <span>Garantir Meu Livro Autografado →</span>
-                </a>
-
-                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="px-8 py-4.5 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2">
-                    <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
-                    <span>Falar com a Equipe do Autor</span>
-                </a>
-            </div>
-
-            <!-- Back to authors link -->
-            <div class="mt-8 scroll-reveal">
-                <a href="../autores.html" class="inline-flex items-center gap-2 text-xs font-mono text-stone-500 hover:text-white uppercase tracking-widest transition-colors">
-                    <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
-                    <span>Voltar para o Pódio de Autores ELOOO</span>
-                </a>
-            </div>
-
         </div>
     </section>
 
