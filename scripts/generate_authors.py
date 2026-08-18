@@ -75,6 +75,14 @@ authors = [
         "points": "514"
     },
     {
+        "slug": "ana-carina-mendes",
+        "name": "Dra. Ana Carina Mendes",
+        "title_br": "Dra. Ana Carina<br>Mendes",
+        "book": "Mulheres de Alta Performance",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
         "slug": "anildo-silva",
         "name": "Anildo Silva",
         "title_br": "Anildo<br>Silva",
@@ -199,6 +207,30 @@ authors = [
         "name": "Gislaine da Costa",
         "title_br": "Gislaine da<br>Costa",
         "book": "Comercial de Alta Performance",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
+        "slug": "antonio-siqueira",
+        "name": "Pastor Antônio Siqueira",
+        "title_br": "Pastor Antônio<br>Siqueira",
+        "book": "Inteligência Espiritual",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
+        "slug": "fabio-ferro",
+        "name": "Fabio Ferro",
+        "title_br": "Fabio<br>Ferro",
+        "book": "Transformando Sonhos em Propósito",
+        "category": "VIP",
+        "points": "408"
+    },
+    {
+        "slug": "bianka-einkenberg",
+        "name": "Bianka Einkenberg",
+        "title_br": "Bianka<br>Einkenberg",
+        "book": "Importação de Alto Nível",
         "category": "VIP",
         "points": "408"
     },
