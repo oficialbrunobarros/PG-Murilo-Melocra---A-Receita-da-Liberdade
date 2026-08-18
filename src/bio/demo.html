@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Letícia Vaz — Bio Oficial ELOOO BIO PREMIUM</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="static/css/linkcommerce_1.css"/>
+    <link rel="stylesheet" href="static/css/linkcommerce_2.css"/>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            background: #1c1c1f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .netflix-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 8px;
+        }
+        .netflix-scroll::-webkit-scrollbar { display: none; }
+
+        .bio-btn {
+            background: #000000;
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.2s ease;
+        }
+        .bio-btn:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-10 px-4">
+
+    <div class="w-full max-w-[420px] space-y-4">
+        
+        <!-- Profile Header -->
+        <div class="text-center flex flex-col items-center mb-6">
+            <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-stone-600 shadow-2xl mb-3 relative">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" alt="Letícia Vaz" class="w-full h-full object-cover"/>
+            </div>
+            <h1 class="text-2xl font-bold text-white tracking-tight">Letícia Vaz</h1>
+            <p class="text-xs text-stone-400 mt-1 max-w-xs leading-relaxed">
+                Responda 3 perguntas e descubra o melhor caminho para crescer seu negócio comigo ↓
+            </p>
+        </div>
+
+        <!-- Social Icons Row -->
+        <div class="flex justify-center gap-3 py-2 flex-wrap">
+            <a href="https://instagram.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
+                <iconify-icon icon="solar:camera-linear"></iconify-icon>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
+                <iconify-icon icon="solar:video-library-linear"></iconify-icon>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
+                <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-2xl bg-stone-800/80 border border-white/10 flex items-center justify-center text-stone-200 text-xl hover:bg-stone-700 transition-colors">
+                <iconify-icon icon="solar:link-minimalistic-linear"></iconify-icon>
+            </a>
+        </div>
+
+        <!-- Concierge AI Button -->
+        <button onclick="alert('Iniciando Concierge Inteligente...');" class="bio-btn w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-2xl relative overflow-hidden group">
+            <div class="w-11 h-11 rounded-xl bg-white/20 text-white flex items-center justify-center text-xl flex-none">
+                <iconify-icon icon="solar:bolt-circle-bold"></iconify-icon>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="font-bold text-sm text-white leading-tight">Como eu posso crescer seu negócio?</p>
+                <p class="text-xs text-stone-400 mt-0.5">Entenda seu momento atual e receba o produto ideal!</p>
+            </div>
+            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white text-xs flex-none">
+                →
+            </div>
+        </button>
+
+        <!-- Horizontal Netflix Carousel of Products -->
+        <div class="pt-2">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3 flex items-center gap-1.5">
+                <iconify-icon icon="solar:play-bold" class="text-stone-500"></iconify-icon>
+                <span>COMO POSSO TE AJUDAR HOJE:</span>
+            </h2>
+
+            <div class="netflix-scroll">
+                <!-- Card 1 -->
+                <div class="w-[148px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=300&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover rounded-xl mb-2"/>
+                    <p class="text-xs font-bold text-white leading-tight truncate">10 ESTRATÉGIAS DE MARKETING</p>
+                    <span class="inline-block mt-2 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black text-stone-400">Ver detalhes</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="w-[148px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2">
+                    <img src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?q=80&w=300&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover rounded-xl mb-2"/>
+                    <p class="text-xs font-bold text-white leading-tight truncate">TIKTOK: ESTRATÉGIA E VENDAS</p>
+                    <span class="inline-block mt-2 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black text-stone-400">Ver detalhes</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="w-[148px] flex-none rounded-2xl overflow-hidden bg-stone-900 border border-white/10 p-2">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=300&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover rounded-xl mb-2"/>
+                    <p class="text-xs font-bold text-white leading-tight truncate">PLANEJAMENTO ESTRATÉGICO</p>
+                    <span class="inline-block mt-2 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black text-stone-400">Ver detalhes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Book Link -->
+        <a href="https://amazon.com.br" target="_blank" class="bio-btn block w-full p-4 rounded-2xl flex items-center gap-4 text-left shadow-lg">
+            <div class="w-12 h-12 rounded-xl bg-stone-800 flex-none overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover"/>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="font-bold text-sm text-white leading-tight">10 ESTRATÉGIAS DE MARKETING</p>
+                <p class="text-xs text-stone-400 mt-0.5">MEU LIVRO | Disponível na Amazon</p>
+            </div>
+            <iconify-icon icon="solar:arrow-right-up-linear" class="text-stone-400 text-base"></iconify-icon>
+        </a>
+
+        <!-- WhatsApp Support Channels -->
+        <a href="https://wa.me/5547988660791" target="_blank" class="block w-full p-4 rounded-2xl bg-gradient-to-br from-emerald-900/40 to-stone-900 border border-emerald-500/30 text-white hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                    <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
+                </div>
+                <div>
+                    <p class="font-bold text-xs text-white">WhatsApp Oficial</p>
+                    <p class="text-[11px] text-stone-400">+55 (47) 98866-0791</p>
+                </div>
+            </div>
+            <p class="text-xs font-bold text-stone-300">PALESTRAS, MENTORIAS & PARCERIAS</p>
+        </a>
+
+        <!-- Footer Branding -->
+        <div class="pt-8 pb-4 text-center">
+            <a href="index.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-900/80 border border-white/10 text-[10px] font-bold text-stone-400 uppercase tracking-widest hover:text-white">
+                <span>Criado com ELOOO BIO PREMIUM</span>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
