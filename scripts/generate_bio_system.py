@@ -28,7 +28,7 @@ LANDING_HTML = """<!DOCTYPE html>
     <!-- Exact Fonts from ELOOO Website: Space Grotesk + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Iconify -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -107,7 +107,6 @@ LANDING_HTML = """<!DOCTYPE html>
             background: #FFFFFF;
             border: 1px solid rgba(28, 25, 23, 0.08);
             border-radius: 24px;
-            overflow: hidden;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .flashlight-card::before {
@@ -122,6 +121,7 @@ LANDING_HTML = """<!DOCTYPE html>
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
+            border-radius: inherit;
         }
         .flashlight-card:hover {
             transform: translateY(-3px);
@@ -132,28 +132,57 @@ LANDING_HTML = """<!DOCTYPE html>
             opacity: 1;
         }
 
-        /* MOVING GOLD BORDER BUTTON (ELOOO GOLD SPIN) */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        /* ABSOLUTELY GOLD SUPER-PREMIUM BUTTON */
+        @keyframes goldGleam {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .btn-gold-spin {
+
+        @keyframes goldShimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+
+        .btn-gold-luxury {
             position: relative;
             display: inline-flex;
-            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #d6bc8c 0%, #faeac7 25%, #c5a870 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background-size: 250% 250%;
+            animation: goldGleam 4s ease infinite;
+            color: #12100e !important;
+            font-weight: 800;
             border-radius: 9999px;
-            padding: 1.5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1.5px solid #faeac7;
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.65), 0 0 15px rgba(214, 188, 140, 0.4);
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            text-decoration: none;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
         }
-        .btn-gold-spin:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.5);
-        }
-        .btn-gold-spin span.spin-border {
+
+        .btn-gold-luxury::after {
+            content: '';
             position: absolute;
-            inset: -1000%;
-            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.95) 50%, transparent 100%);
-            animation: spin 3s linear infinite;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+            transform: translateX(-150%) skewX(-20deg);
+            animation: goldShimmerSweep 3.5s infinite;
+            pointer-events: none;
+        }
+
+        .btn-gold-luxury:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 35px -5px rgba(214, 188, 140, 0.9), 0 0 25px rgba(250, 234, 199, 0.7);
+            border-color: #ffffff;
+            color: #000000 !important;
         }
 
         /* LUXURY GOLD GRADIENT SECTIONS */
@@ -196,12 +225,9 @@ LANDING_HTML = """<!DOCTYPE html>
 
             <!-- Right Action: Hamburger + Gold CTA -->
             <div class="flex items-center gap-2.5 flex-none">
-                <a href="cadastrar.html" class="btn-gold-spin">
-                    <span class="spin-border"></span>
-                    <span class="relative flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-[#0a0a0a] text-white text-[11px] sm:text-[12px] font-bold uppercase tracking-widest hover:bg-[#151515] transition-colors">
-                        <span>Quero Minha Bio</span>
-                        <iconify-icon icon="solar:arrow-right-linear" class="text-sm text-amber-300"></iconify-icon>
-                    </span>
+                <a href="cadastrar.html" class="btn-gold-luxury px-5 py-2.5 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-widest">
+                    <span>Quero Minha Bio</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
                 </a>
 
                 <!-- Hamburger Button (Desktop & Mobile) -->
@@ -246,11 +272,8 @@ LANDING_HTML = """<!DOCTYPE html>
                 <a href="entrar.html" class="block w-full py-3 rounded-full text-center text-xs font-bold text-stone-800 bg-stone-100 hover:bg-stone-200 transition-colors uppercase tracking-wider">
                     Fazer Login
                 </a>
-                <a href="cadastrar.html" class="btn-gold-spin w-full">
-                    <span class="spin-border"></span>
-                    <span class="relative block w-full py-3.5 rounded-full bg-[#0a0a0a] text-white font-bold text-xs uppercase tracking-widest text-center">
-                        Contratar Implementação 24h →
-                    </span>
+                <a href="cadastrar.html" class="btn-gold-luxury w-full py-3.5 text-xs font-mono font-bold uppercase tracking-widest text-center">
+                    Contratar Implementação 24h →
                 </a>
             </div>
         </div>
@@ -275,20 +298,14 @@ LANDING_HTML = """<!DOCTYPE html>
 
                 <!-- Hero Action Buttons (Both Super-Premium Gold) -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-                    <a href="cadastrar.html" class="btn-gold-spin w-full sm:w-auto shadow-xl">
-                        <span class="spin-border"></span>
-                        <span class="relative flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#151515] transition-colors">
-                            <span>Quero Minha Bio Pronta em 24h</span>
-                            <iconify-icon icon="solar:arrow-right-linear" class="text-base text-amber-300"></iconify-icon>
-                        </span>
+                    <a href="cadastrar.html" class="btn-gold-luxury w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-xl">
+                        <span>Quero Minha Bio Pronta em 24h</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
                     </a>
                     
-                    <a href="brunobarros.html" target="_blank" class="btn-gold-spin w-full sm:w-auto">
-                        <span class="spin-border"></span>
-                        <span class="relative flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#1c1917] text-[#f6e3c5] text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-[#25221e] transition-colors">
-                            <span>Ver Exemplo de Bruno Barros</span>
-                            <iconify-icon icon="solar:arrow-right-up-linear" class="text-base text-amber-300"></iconify-icon>
-                        </span>
+                    <a href="brunobarros.html" target="_blank" class="w-full sm:w-auto px-7 py-4 rounded-full bg-white text-stone-900 border-2 border-[#d6bc8c] hover:border-[#b89445] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm">
+                        <span>Ver Exemplo de Bruno Barros</span>
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="text-base text-[#b89445]"></iconify-icon>
                     </a>
                 </div>
 
@@ -382,34 +399,31 @@ LANDING_HTML = """<!DOCTYPE html>
 
                     <!-- Depois Card -->
                     <div class="flashlight-card p-6 sm:p-7 bg-[#141311] text-white border border-[#d6bc8c]/50 shadow-lg">
-                        <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-300 block mb-3">
+                        <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#d6bc8c] block mb-3">
                             ✓ Com ELOOO BIO PREMIUM
                         </span>
                         <h3 class="text-lg font-bold font-display mb-3 text-[#f6e3c5]">Nós fazemos tudo. No ar em 24h.</h3>
                         <ul class="space-y-2 text-xs sm:text-sm text-stone-200">
                             <li class="flex items-start gap-2">
-                                <span class="text-amber-300 font-bold">✓</span>
+                                <span class="text-[#d6bc8c] font-bold">✓</span>
                                 <span>Você apenas nos envia suas fotos, links e produtos</span>
                             </li>
                             <li class="flex items-start gap-2">
-                                <span class="text-amber-300 font-bold">✓</span>
+                                <span class="text-[#d6bc8c] font-bold">✓</span>
                                 <span>Nossa equipe projeta seu design e treina seu Concierge de IA</span>
                             </li>
                             <li class="flex items-start gap-2">
-                                <span class="text-amber-300 font-bold">✓</span>
+                                <span class="text-[#d6bc8c] font-bold">✓</span>
                                 <span>Em até 24 horas sua bio de luxo está ativa e pronta para faturar</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Section Action CTA Button -->
+                <!-- Section Action CTA Button (Dourado Super-Premium) -->
                 <div class="mt-8 text-center">
-                    <a href="cadastrar.html" class="btn-gold-spin">
-                        <span class="spin-border"></span>
-                        <span class="relative flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
-                            <span>Quero que a equipe ELOOO monte minha bio →</span>
-                        </span>
+                    <a href="cadastrar.html" class="btn-gold-luxury px-8 py-3.5 text-xs font-mono font-bold uppercase tracking-widest">
+                        <span>Quero que a equipe ELOOO monte minha bio →</span>
                     </a>
                 </div>
             </div>
@@ -448,7 +462,7 @@ LANDING_HTML = """<!DOCTYPE html>
 
                     <!-- Passo 3 -->
                     <div class="flashlight-card p-5 bg-stone-900 text-white border-[#d6bc8c]/60">
-                        <div class="text-xl font-display font-bold text-amber-300 mb-2">03</div>
+                        <div class="text-xl font-display font-bold text-[#d6bc8c] mb-2">03</div>
                         <h3 class="text-sm font-bold font-display text-white mb-1">No ar em 24h</h3>
                         <p class="text-xs text-stone-300 leading-relaxed">
                             Em até 24 horas entregamos seu link oficial de elite pronto para você colocar na sua bio.
@@ -465,13 +479,10 @@ LANDING_HTML = """<!DOCTYPE html>
                     </div>
                 </div>
 
-                <!-- Section Action CTA Button -->
+                <!-- Section Action CTA Button (Dourado Super-Premium) -->
                 <div class="mt-8 text-center">
-                    <a href="cadastrar.html" class="btn-gold-spin">
-                        <span class="spin-border"></span>
-                        <span class="relative flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
-                            <span>Iniciar Minha Implementação em 24h →</span>
-                        </span>
+                    <a href="cadastrar.html" class="btn-gold-luxury px-8 py-3.5 text-xs font-mono font-bold uppercase tracking-widest">
+                        <span>Iniciar Minha Implementação em 24h →</span>
                     </a>
                 </div>
             </div>
@@ -490,11 +501,8 @@ LANDING_HTML = """<!DOCTYPE html>
                         </p>
 
                         <div class="mt-6">
-                            <a href="cadastrar.html" class="btn-gold-spin">
-                                <span class="spin-border"></span>
-                                <span class="relative flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
-                                    <span>Quero meu Concierge IA treinado →</span>
-                                </span>
+                            <a href="cadastrar.html" class="btn-gold-luxury px-8 py-3.5 text-xs font-mono font-bold uppercase tracking-widest">
+                                <span>Quero meu Concierge IA treinado →</span>
                             </a>
                         </div>
                     </div>
@@ -503,70 +511,67 @@ LANDING_HTML = """<!DOCTYPE html>
                     <div class="flashlight-card p-5 sm:p-6" id="concierge-widget">
                         <!-- Step 1 -->
                         <div id="quiz-step-1" class="quiz-step">
-                            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#d6bc8c] mb-1">Passo 1 de 3</p>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#b89445] mb-1">Passo 1 de 3</p>
                             <h3 class="text-base font-bold font-display text-stone-950 mb-3">Como você está no seu negócio hoje?</h3>
                             <div class="space-y-2">
                                 <button onclick="nextQuizStep(1, 'Estou começando')" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Estou começando agora</span>
-                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
+                                    <span class="text-stone-400 group-hover:text-[#d6bc8c]">→</span>
                                 </button>
                                 <button onclick="nextQuizStep(1, 'Vendo sem previsibilidade')" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Vendo, mas sem consistência</span>
-                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
+                                    <span class="text-stone-400 group-hover:text-[#d6bc8c]">→</span>
                                 </button>
                                 <button onclick="nextQuizStep(1, 'Quero escala')" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Já faturo alto, quero escala</span>
-                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
+                                    <span class="text-stone-400 group-hover:text-[#d6bc8c]">→</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Step 2 -->
                         <div id="quiz-step-2" class="quiz-step hidden">
-                            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#d6bc8c] mb-1">Passo 2 de 3</p>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#b89445] mb-1">Passo 2 de 3</p>
                             <h3 class="text-base font-bold font-display text-stone-950 mb-3">Qual seu objetivo principal agora?</h3>
                             <div class="space-y-2">
                                 <button onclick="nextQuizStep(2, 'Atrair clientes qualificados')" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Atrair clientes de alto valor</span>
-                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
+                                    <span class="text-stone-400 group-hover:text-[#d6bc8c]">→</span>
                                 </button>
                                 <button onclick="nextQuizStep(2, 'Automatizar 24h')" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Automatizar vendas 24h</span>
-                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
+                                    <span class="text-stone-400 group-hover:text-[#d6bc8c]">→</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Step 3 -->
                         <div id="quiz-step-3" class="quiz-step hidden">
-                            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#d6bc8c] mb-1">Passo 3 de 3</p>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#b89445] mb-1">Passo 3 de 3</p>
                             <h3 class="text-base font-bold font-display text-stone-950 mb-3">Qual sua faixa de faturamento mensal?</h3>
                             <div class="space-y-2">
                                 <button onclick="finishQuiz('Até 10k')" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Até R$ 10.000 / mês</span>
-                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
+                                    <span class="text-stone-400 group-hover:text-[#d6bc8c]">→</span>
                                 </button>
                                 <button onclick="finishQuiz('Acima de 10k')" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-stone-50 hover:bg-stone-900 hover:text-white border border-stone-200 transition-all flex items-center justify-between group">
                                     <span>Mais de R$ 10.000 / mês</span>
-                                    <span class="text-stone-400 group-hover:text-amber-300">→</span>
+                                    <span class="text-stone-400 group-hover:text-[#d6bc8c]">→</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Result -->
                         <div id="quiz-result" class="quiz-step hidden text-center py-2">
-                            <div class="w-10 h-10 rounded-full bg-stone-100 text-stone-900 flex items-center justify-center mx-auto mb-2 text-xl border border-stone-300">
-                                <iconify-icon icon="solar:check-circle-bold" class="text-amber-600"></iconify-icon>
+                            <div class="w-10 h-10 rounded-full bg-amber-100 text-stone-900 flex items-center justify-center mx-auto mb-2 text-xl border border-amber-300">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-amber-700"></iconify-icon>
                             </div>
                             <h4 class="text-base font-bold font-display text-stone-950">Plano Recomendado: ELOOO BIO Pró (R$ 147/mês)</h4>
                             <p class="text-xs text-stone-600 mt-1 mb-4">
                                 Com Concierge de Inteligência Artificial implementado e treinado pela nossa equipe em até 24 horas.
                             </p>
-                            <a href="cadastrar.html?plan=pro" class="btn-gold-spin w-full">
-                                <span class="spin-border"></span>
-                                <span class="relative block w-full py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest text-center">
-                                    Contratar Plano Pró (Entrega 24h) →
-                                </span>
+                            <a href="cadastrar.html?plan=pro" class="btn-gold-luxury w-full py-4 text-xs font-mono font-bold uppercase tracking-widest text-center shadow-lg">
+                                Contratar Plano Pró (Entrega 24h) →
                             </a>
                             <button onclick="resetQuiz()" class="mt-2.5 text-[11px] text-stone-500 hover:text-stone-950 underline">
                                 Refazer teste
@@ -583,8 +588,8 @@ LANDING_HTML = """<!DOCTYPE html>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
                     <div>
                         <!-- Exclusive Elite Badge -->
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 text-[10.5px] font-mono font-bold uppercase tracking-wider mb-3">
-                            <iconify-icon icon="solar:crown-line-duotone" class="text-amber-400"></iconify-icon>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d6bc8c]/20 border border-[#d6bc8c]/40 text-[#f6e3c5] text-[10.5px] font-mono font-bold uppercase tracking-wider mb-3">
+                            <iconify-icon icon="solar:crown-line-duotone" class="text-[#d6bc8c]"></iconify-icon>
                             <span>EXCLUSIVO DO PLANO ELITE (R$ 497/mês)</span>
                         </div>
 
@@ -592,15 +597,12 @@ LANDING_HTML = """<!DOCTYPE html>
                             Nós configuramos sua agenda completa.
                         </h2>
                         <p class="text-xs sm:text-sm mt-3 text-stone-300 leading-relaxed font-light">
-                            No <strong class="text-amber-300 font-semibold">Plano Elite</strong>, nossa equipe cadastra seus horários disponíveis, tipos de consultas e valores. O cliente marca a sessão diretamente na sua bio de forma 100% automatizada.
+                            No <strong class="text-[#d6bc8c] font-semibold">Plano Elite</strong>, nossa equipe cadastra seus horários disponíveis, tipos de consultas e valores. O cliente marca a sessão diretamente na sua bio de forma 100% automatizada.
                         </p>
 
                         <div class="mt-6">
-                            <a href="cadastrar.html?plan=elite" class="btn-gold-spin">
-                                <span class="spin-border"></span>
-                                <span class="relative flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#121215] text-[#f6e3c5] text-xs font-bold uppercase tracking-widest">
-                                    <span>Contratar Plano Elite (Setup 24h) →</span>
-                                </span>
+                            <a href="cadastrar.html?plan=elite" class="btn-gold-luxury px-8 py-4 text-xs font-mono font-bold uppercase tracking-widest">
+                                <span>Contratar Plano Elite (Setup 24h) →</span>
                             </a>
                         </div>
                     </div>
@@ -609,7 +611,7 @@ LANDING_HTML = """<!DOCTYPE html>
                     <div class="flashlight-card p-5 max-w-sm mx-auto w-full bg-[#141311] text-white border border-[#d6bc8c]/40">
                         <div class="flex items-center justify-between mb-3 pb-2.5 border-b border-white/10">
                             <span class="text-xs font-bold font-display text-white uppercase tracking-wider">Junho 2026</span>
-                            <span class="text-[10px] font-mono text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded">Plano Elite</span>
+                            <span class="text-[10px] font-mono text-[#d6bc8c] bg-[#d6bc8c]/10 px-2 py-0.5 rounded">Plano Elite</span>
                         </div>
 
                         <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-mono font-bold text-stone-500 mb-2">
@@ -664,10 +666,10 @@ LANDING_HTML = """<!DOCTYPE html>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto items-stretch">
                     
                     <!-- Basic 127 (SUBSTITUINDO STARTER) -->
-                    <div class="flashlight-card p-6 flex flex-col justify-between border border-stone-200">
+                    <div class="flashlight-card p-6 sm:p-7 flex flex-col justify-between border border-stone-200">
                         <div>
                             <span class="text-[10.5px] font-mono uppercase font-bold text-stone-400">Implementação Básica</span>
-                            <h3 class="text-lg font-bold font-display text-stone-950 mt-0.5">Basic</h3>
+                            <h3 class="text-xl font-bold font-display text-stone-950 mt-0.5">Basic</h3>
                             <p class="text-xs text-stone-500 mt-0.5 mb-4">Sua presença montada por nós.</p>
                             
                             <div class="mb-4">
@@ -675,7 +677,7 @@ LANDING_HTML = """<!DOCTYPE html>
                                     <span class="text-3xl font-extrabold font-display text-stone-950">R$ 127</span>
                                     <span class="text-xs text-stone-500 font-medium">/mês</span>
                                 </div>
-                                <p class="text-[10px] text-amber-700 font-bold mt-0.5">✦ Entrega completa em até 24h</p>
+                                <p class="text-[10.5px] text-[#8c6e26] font-mono font-bold mt-1">✦ Entrega completa em até 24h</p>
                             </div>
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-700">
@@ -686,28 +688,25 @@ LANDING_HTML = """<!DOCTYPE html>
                             </ul>
                         </div>
 
-                        <a href="cadastrar.html?plan=basic" class="btn-gold-spin w-full">
-                            <span class="spin-border"></span>
-                            <span class="relative block w-full py-3 rounded-full bg-[#1c1917] text-white font-bold text-xs uppercase tracking-widest text-center">
-                                Contratar Basic (24h) →
-                            </span>
+                        <a href="cadastrar.html?plan=basic" class="btn-gold-luxury w-full py-3.5 text-xs font-mono font-bold uppercase tracking-widest text-center shadow-md">
+                            Contratar Basic (24h) →
                         </a>
                     </div>
 
                     <!-- Pro 147 (MAIS VENDIDO - DESTAQUE VISÍVEL E UNCLIPPED) -->
-                    <div class="flashlight-card p-6 flex flex-col justify-between bg-[#11100E] text-white relative shadow-xl scale-[1.02] border-2 border-[#d6bc8c]">
+                    <div class="flashlight-card p-6 sm:p-7 flex flex-col justify-between bg-[#11100E] text-white relative shadow-2xl scale-[1.02] border-2 border-[#d6bc8c]">
                         
                         <div>
                             <!-- MAIS VENDIDO BADGE (PROMINENT & FULLY VISIBLE) -->
                             <div class="mb-3">
-                                <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#d6bc8c] text-stone-950 shadow-md">
-                                    <iconify-icon icon="solar:star-bold"></iconify-icon>
+                                <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10.5px] font-mono font-bold uppercase tracking-wider bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-[#d6bc8c] text-stone-950 shadow-md">
+                                    <iconify-icon icon="solar:star-bold" class="text-stone-950"></iconify-icon>
                                     <span>MAIS VENDIDO</span>
                                 </div>
                             </div>
 
-                            <span class="text-[10.5px] font-mono uppercase font-bold text-amber-300">Implementação + Treinamento IA</span>
-                            <h3 class="text-xl font-bold font-display text-white mt-0.5">Pró</h3>
+                            <span class="text-[10.5px] font-mono uppercase font-bold text-[#d6bc8c]">Implementação + Treinamento IA</span>
+                            <h3 class="text-2xl font-bold font-display text-white mt-0.5">Pró</h3>
                             <p class="text-xs text-stone-400 mt-0.5 mb-4">A IA configurada por especialistas.</p>
                             
                             <div class="mb-4">
@@ -715,30 +714,27 @@ LANDING_HTML = """<!DOCTYPE html>
                                     <span class="text-4xl font-extrabold font-display text-white">R$ 147</span>
                                     <span class="text-xs text-stone-400 font-medium">/mês</span>
                                 </div>
-                                <p class="text-[10px] text-amber-300 font-bold mt-0.5">✦ Entrega completa em até 24h</p>
+                                <p class="text-[10.5px] text-[#f6e3c5] font-mono font-bold mt-1">✦ Entrega completa em até 24h</p>
                             </div>
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-200">
-                                <li class="flex items-center gap-2 font-bold text-amber-300">✓ Tudo do Plano Basic</li>
+                                <li class="flex items-center gap-2 font-bold text-[#d6bc8c]">✓ Tudo do Plano Basic</li>
                                 <li class="flex items-center gap-2 font-semibold text-white">✓ Nós treinamos seu Concierge de IA</li>
                                 <li class="flex items-center gap-2">✓ Qualificação estratégica de público</li>
                                 <li class="flex items-center gap-2">✓ Relatórios e métricas de conversão</li>
                             </ul>
                         </div>
 
-                        <a href="cadastrar.html?plan=pro" class="btn-gold-spin w-full">
-                            <span class="spin-border"></span>
-                            <span class="relative block w-full py-3.5 rounded-full bg-[#1c1917] text-[#f6e3c5] font-bold text-xs uppercase tracking-widest text-center shadow-lg">
-                                Contratar Plano Pró (24h) →
-                            </span>
+                        <a href="cadastrar.html?plan=pro" class="btn-gold-luxury w-full py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-center shadow-xl">
+                            Contratar Plano Pró (24h) →
                         </a>
                     </div>
 
                     <!-- Elite 497 (COM AGENDA INTEGRADA) -->
-                    <div class="flashlight-card p-6 flex flex-col justify-between border border-stone-200">
+                    <div class="flashlight-card p-6 sm:p-7 flex flex-col justify-between border border-stone-200">
                         <div>
                             <span class="text-[10.5px] font-mono uppercase font-bold text-[#b89445]">Setup Executivo Total</span>
-                            <h3 class="text-lg font-bold font-display text-stone-950 mt-0.5">Elite</h3>
+                            <h3 class="text-xl font-bold font-display text-stone-950 mt-0.5">Elite</h3>
                             <p class="text-xs text-stone-500 mt-0.5 mb-4">Automação total e agenda marcada.</p>
                             
                             <div class="mb-4">
@@ -746,22 +742,19 @@ LANDING_HTML = """<!DOCTYPE html>
                                     <span class="text-3xl font-extrabold font-display text-stone-950">R$ 497</span>
                                     <span class="text-xs text-stone-500 font-medium">/mês</span>
                                 </div>
-                                <p class="text-[10px] text-amber-700 font-bold mt-0.5">✦ Entrega completa em até 24h</p>
+                                <p class="text-[10.5px] text-[#8c6e26] font-mono font-bold mt-1">✦ Entrega completa em até 24h</p>
                             </div>
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-700">
                                 <li class="flex items-center gap-2 font-semibold text-stone-900">✓ Tudo do Plano Pró</li>
-                                <li class="flex items-center gap-2 font-bold text-amber-800">✓ Nós configuramos sua Agenda Integrada</li>
+                                <li class="flex items-center gap-2 font-bold text-[#8c6e26]">✓ Nós configuramos sua Agenda Integrada</li>
                                 <li class="flex items-center gap-2">✓ Concierge com IA estendida</li>
                                 <li class="flex items-center gap-2">✓ Suporte prioritário via WhatsApp</li>
                             </ul>
                         </div>
 
-                        <a href="cadastrar.html?plan=elite" class="btn-gold-spin w-full">
-                            <span class="spin-border"></span>
-                            <span class="relative block w-full py-3 rounded-full bg-[#1c1917] text-white font-bold text-xs uppercase tracking-widest text-center">
-                                Contratar Elite (24h) →
-                            </span>
+                        <a href="cadastrar.html?plan=elite" class="btn-gold-luxury w-full py-3.5 text-xs font-mono font-bold uppercase tracking-widest text-center shadow-md">
+                            Contratar Elite (24h) →
                         </a>
                     </div>
 
@@ -888,27 +881,57 @@ ENTRAR_HTML = """<!DOCTYPE html>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body { font-family: 'Inter', sans-serif; background: #EAEAE5; color: #1C1917; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .btn-gold-spin {
+        
+        @keyframes goldGleam {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes goldShimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+        .btn-gold-luxury {
             position: relative;
             display: inline-flex;
-            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d6bc8c 0%, #faeac7 25%, #c5a870 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background-size: 250% 250%;
+            animation: goldGleam 4s ease infinite;
+            color: #12100e !important;
+            font-weight: 800;
             border-radius: 9999px;
-            padding: 1.5px;
-            transition: transform 0.3s ease;
+            border: 1.5px solid #faeac7;
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.65), 0 0 15px rgba(214, 188, 140, 0.4);
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            text-decoration: none;
         }
-        .btn-gold-spin:hover { transform: scale(1.02); }
-        .btn-gold-spin span.spin-border {
+        .btn-gold-luxury::after {
+            content: '';
             position: absolute;
-            inset: -1000%;
-            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.95) 50%, transparent 100%);
-            animation: spin 3s linear infinite;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+            transform: translateX(-150%) skewX(-20deg);
+            animation: goldShimmerSweep 3.5s infinite;
+            pointer-events: none;
+        }
+        .btn-gold-luxury:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 35px -5px rgba(214, 188, 140, 0.9);
+            border-color: #ffffff;
+            color: #000000 !important;
         }
     </style>
 </head>
@@ -938,11 +961,8 @@ ENTRAR_HTML = """<!DOCTYPE html>
                 <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
-            <button type="submit" class="btn-gold-spin w-full mt-2">
-                <span class="spin-border"></span>
-                <span class="relative block w-full py-3.5 rounded-full bg-[#0a0a0a] text-white font-bold text-xs uppercase tracking-widest text-center">
-                    Entrar no Painel →
-                </span>
+            <button type="submit" class="btn-gold-luxury w-full py-4 text-xs font-mono font-bold uppercase tracking-widest text-center mt-2 shadow-lg">
+                Entrar no Painel →
             </button>
         </form>
 
@@ -966,30 +986,57 @@ CADASTRAR_HTML = """<!DOCTYPE html>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body { font-family: 'Inter', sans-serif; background: #EAEAE5; color: #1C1917; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .btn-gold-spin {
+        
+        @keyframes goldGleam {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes goldShimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+        .btn-gold-luxury {
             position: relative;
             display: inline-flex;
-            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d6bc8c 0%, #faeac7 25%, #c5a870 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background-size: 250% 250%;
+            animation: goldGleam 4s ease infinite;
+            color: #12100e !important;
+            font-weight: 800;
             border-radius: 9999px;
-            padding: 1.5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1.5px solid #faeac7;
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.65), 0 0 15px rgba(214, 188, 140, 0.4);
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            text-decoration: none;
         }
-        .btn-gold-spin:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.5);
-        }
-        .btn-gold-spin span.spin-border {
+        .btn-gold-luxury::after {
+            content: '';
             position: absolute;
-            inset: -1000%;
-            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.95) 50%, transparent 100%);
-            animation: spin 3s linear infinite;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+            transform: translateX(-150%) skewX(-20deg);
+            animation: goldShimmerSweep 3.5s infinite;
+            pointer-events: none;
+        }
+        .btn-gold-luxury:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 35px -5px rgba(214, 188, 140, 0.9);
+            border-color: #ffffff;
+            color: #000000 !important;
         }
     </style>
 </head>
@@ -1009,9 +1056,9 @@ CADASTRAR_HTML = """<!DOCTYPE html>
 
         <!-- Plan Selector Bar (Basic 127 / Pro 147 / Elite 497) -->
         <div class="mb-5 p-1 rounded-2xl bg-stone-100 grid grid-cols-3 gap-1 text-xs font-bold text-center">
-            <button type="button" onclick="selectPlan('basic')" id="btn-basic" class="py-2 rounded-xl transition-colors text-stone-600">Basic R$127</button>
-            <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors">Pró R$147</button>
-            <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2 rounded-xl transition-colors text-stone-600">Elite R$497</button>
+            <button type="button" onclick="selectPlan('basic')" id="btn-basic" class="py-2.5 rounded-xl transition-all text-stone-600">Basic R$127</button>
+            <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2.5 rounded-xl bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-[#d6bc8c] text-stone-950 shadow-md border border-[#c5a870] font-bold transition-all">Pró R$147</button>
+            <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2.5 rounded-xl transition-all text-stone-600">Elite R$497</button>
         </div>
 
         <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='https://wa.me/5547988660791?text=Ol%C3%A1%2C%20acabei%20de%20assinar%20o%20ELOOO%20BIO%20PREMIUM%20e%20quero%20enviar%20minhas%20informa%C3%A7%C3%B5es%20para%20colocar%20minha%20bio%20no%20ar%20em%2024h.';">
@@ -1038,11 +1085,8 @@ CADASTRAR_HTML = """<!DOCTYPE html>
                 <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
-            <button type="submit" class="btn-gold-spin w-full mt-2">
-                <span class="spin-border"></span>
-                <span class="relative block w-full py-4 rounded-full bg-[#0a0a0a] text-white font-bold text-xs uppercase tracking-widest text-center shadow-xl">
-                    Contratar e Iniciar Implementação (24h) →
-                </span>
+            <button type="submit" class="btn-gold-luxury w-full py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-center mt-2 shadow-xl">
+                Contratar e Iniciar Implementação (24h) →
             </button>
         </form>
 
@@ -1059,10 +1103,10 @@ CADASTRAR_HTML = """<!DOCTYPE html>
                 elite: document.getElementById('btn-elite')
             };
             for (let k in btns) {
-                btns[k].className = 'py-2 rounded-xl transition-colors text-stone-600';
+                btns[k].className = 'py-2.5 rounded-xl transition-all text-stone-600 font-medium';
             }
             if (btns[plan]) {
-                btns[plan].className = 'py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors font-bold';
+                btns[plan].className = 'py-2.5 rounded-xl bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-[#d6bc8c] text-stone-950 shadow-md border border-[#c5a870] font-bold transition-all';
             }
         }
         const urlParams = new URLSearchParams(window.location.search);
@@ -1337,7 +1381,7 @@ BRUNO_BARROS_BIO_HTML = """<!DOCTYPE html>
 """
 
 def generate_all():
-    print("Generating refined ELOOO BIO PREMIUM with Basic plan, unclipped MAIS VENDIDO badge, no green AI dots, and all super-premium gold buttons...")
+    print("Generating refined ELOOO BIO PREMIUM with absolute gold gleam luxury buttons...")
     save("src/bio/index.html", LANDING_HTML)
     save("src/bio/entrar.html", ENTRAR_HTML)
     save("src/bio/cadastrar.html", CADASTRAR_HTML)
@@ -1347,7 +1391,7 @@ def generate_all():
     save("src/bio/leticia-vaz.html", BRUNO_BARROS_BIO_HTML)
     save("src/bio/demo.html", BRUNO_BARROS_BIO_HTML)
     save("src/bio.html", LANDING_HTML)
-    print("All pages generated successfully!")
+    print("All bio pages updated successfully with pure luxury gold buttons!")
 
 if __name__ == "__main__":
     generate_all()

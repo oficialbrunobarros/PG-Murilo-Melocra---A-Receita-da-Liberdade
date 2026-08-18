@@ -7,30 +7,57 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body { font-family: 'Inter', sans-serif; background: #EAEAE5; color: #1C1917; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .btn-gold-spin {
+        
+        @keyframes goldGleam {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes goldShimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+        .btn-gold-luxury {
             position: relative;
             display: inline-flex;
-            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d6bc8c 0%, #faeac7 25%, #c5a870 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background-size: 250% 250%;
+            animation: goldGleam 4s ease infinite;
+            color: #12100e !important;
+            font-weight: 800;
             border-radius: 9999px;
-            padding: 1.5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1.5px solid #faeac7;
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.65), 0 0 15px rgba(214, 188, 140, 0.4);
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            text-decoration: none;
         }
-        .btn-gold-spin:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.5);
-        }
-        .btn-gold-spin span.spin-border {
+        .btn-gold-luxury::after {
+            content: '';
             position: absolute;
-            inset: -1000%;
-            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.95) 50%, transparent 100%);
-            animation: spin 3s linear infinite;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+            transform: translateX(-150%) skewX(-20deg);
+            animation: goldShimmerSweep 3.5s infinite;
+            pointer-events: none;
+        }
+        .btn-gold-luxury:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 35px -5px rgba(214, 188, 140, 0.9);
+            border-color: #ffffff;
+            color: #000000 !important;
         }
     </style>
 </head>
@@ -50,9 +77,9 @@
 
         <!-- Plan Selector Bar (Basic 127 / Pro 147 / Elite 497) -->
         <div class="mb-5 p-1 rounded-2xl bg-stone-100 grid grid-cols-3 gap-1 text-xs font-bold text-center">
-            <button type="button" onclick="selectPlan('basic')" id="btn-basic" class="py-2 rounded-xl transition-colors text-stone-600">Basic R$127</button>
-            <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors">Pró R$147</button>
-            <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2 rounded-xl transition-colors text-stone-600">Elite R$497</button>
+            <button type="button" onclick="selectPlan('basic')" id="btn-basic" class="py-2.5 rounded-xl transition-all text-stone-600">Basic R$127</button>
+            <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2.5 rounded-xl bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-[#d6bc8c] text-stone-950 shadow-md border border-[#c5a870] font-bold transition-all">Pró R$147</button>
+            <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2.5 rounded-xl transition-all text-stone-600">Elite R$497</button>
         </div>
 
         <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='https://wa.me/5547988660791?text=Ol%C3%A1%2C%20acabei%20de%20assinar%20o%20ELOOO%20BIO%20PREMIUM%20e%20quero%20enviar%20minhas%20informa%C3%A7%C3%B5es%20para%20colocar%20minha%20bio%20no%20ar%20em%2024h.';">
@@ -79,11 +106,8 @@
                 <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
-            <button type="submit" class="btn-gold-spin w-full mt-2">
-                <span class="spin-border"></span>
-                <span class="relative block w-full py-4 rounded-full bg-[#0a0a0a] text-white font-bold text-xs uppercase tracking-widest text-center shadow-xl">
-                    Contratar e Iniciar Implementação (24h) →
-                </span>
+            <button type="submit" class="btn-gold-luxury w-full py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-center mt-2 shadow-xl">
+                Contratar e Iniciar Implementação (24h) →
             </button>
         </form>
 
@@ -100,10 +124,10 @@
                 elite: document.getElementById('btn-elite')
             };
             for (let k in btns) {
-                btns[k].className = 'py-2 rounded-xl transition-colors text-stone-600';
+                btns[k].className = 'py-2.5 rounded-xl transition-all text-stone-600 font-medium';
             }
             if (btns[plan]) {
-                btns[plan].className = 'py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors font-bold';
+                btns[plan].className = 'py-2.5 rounded-xl bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-[#d6bc8c] text-stone-950 shadow-md border border-[#c5a870] font-bold transition-all';
             }
         }
         const urlParams = new URLSearchParams(window.location.search);
