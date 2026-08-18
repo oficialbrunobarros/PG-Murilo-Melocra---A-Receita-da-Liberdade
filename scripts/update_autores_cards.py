@@ -148,7 +148,7 @@ authors_data = [
         "book": "Despertando os Propósitos de Deus",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/diego.arcas/",
-        "bio": "Administrador, empresário, jogador de poker e fundador da In Festa Buffet Kids em Joinville. Utiliza estratégia, disciplina e controle emocional como fundamentos para tomada de decisões nos negócios."
+        "bio": "Administrador, empresário e fundador da In Festa Buffet Kids em Joinville. Utiliza estratégia, disciplina e controle emocional como fundamentos para tomada de decisões nos negócios."
     },
     {
         "slug": "rafael-cavalcanti",
