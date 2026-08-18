@@ -117,7 +117,10 @@
 
         <!-- Nav Links (Desktop) -->
         <nav class="hidden lg:flex items-center lg:gap-6 xl:gap-8 text-[12.5px] font-sans uppercase tracking-[0.16em] text-stone-600 font-medium">
-            <a href="../index.html" class="nav-item hover:text-stone-900 transition-colors">Home</a>
+            <a href="../index.html" class="nav-item inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#d6bc8c]/20 text-stone-900 border border-[#d6bc8c]/60 font-bold transition-all hover:bg-[#d6bc8c]/30 shadow-sm">
+                <span class="text-stone-900 font-bold">Home</span>
+                <span class="text-xs tracking-tight">🇧🇷🇵🇹🇪🇸</span>
+            </a>
             <a href="../quem-somos.html" class="nav-item hover:text-stone-900 transition-colors">Quem Somos</a>
             <a href="../autores.html" class="nav-item hover:text-stone-900 transition-colors">Autores</a>
             <a href="../livros.html" class="nav-item hover:text-stone-900 transition-colors">Livros</a>
@@ -127,7 +130,7 @@
         </nav>
 
         <!-- Action & Hamburger -->
-        <div class="flex items-center gap-3 z-50">
+        <div class="flex items-center gap-2.5 z-50">
             <!-- Desktop CTA -->
             <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="hidden lg:block relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 bg-stone-850 shadow-sm hover:shadow-md">
                 <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
@@ -136,13 +139,14 @@
                 </span>
             </a>
 
-            <!-- Mobile Quick WhatsApp icon -->
-            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Elooo%20e%20quero%20saber%20como%20publicar%20o%20meu%20livro." target="_blank" rel="noopener noreferrer" class="lg:hidden w-10 h-10 rounded-full bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center text-xl transition-transform active:scale-90" aria-label="WhatsApp">
-                <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
-            </a>
+            <!-- Mobile Quick Links: Quem Somos & Autores -->
+            <div class="flex lg:hidden items-center gap-1 text-[10.5px] font-sans font-bold uppercase tracking-wider text-stone-700">
+                <a href="../quem-somos.html" class="px-2 py-1.5 rounded-lg hover:bg-stone-100 transition-colors">Quem Somos</a>
+                <a href="../autores.html" class="px-2 py-1.5 rounded-lg hover:bg-stone-100 transition-colors">Autores</a>
+            </div>
 
             <!-- Hamburger Button -->
-            <button id="mobile-menu-btn" type="button" class="lg:hidden w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-300/80 text-stone-900 flex items-center justify-center text-2xl transition-all duration-300 active:scale-95 cursor-pointer" aria-label="Abrir Menu">
+            <button id="mobile-menu-btn" type="button" class="lg:hidden w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-300/80 text-stone-900 flex items-center justify-center text-xl transition-all duration-300 active:scale-95 cursor-pointer" aria-label="Abrir Menu">
                 <iconify-icon id="mobile-menu-icon" icon="solar:hamburger-menu-linear"></iconify-icon>
             </button>
         </div>
