@@ -13,27 +13,44 @@
     <style>
         body { font-family: 'Inter', sans-serif; background: #EAEAE5; color: #1C1917; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .btn-gold-spin {
+            position: relative;
+            display: inline-flex;
+            overflow: hidden;
+            border-radius: 9999px;
+            padding: 1.5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-gold-spin:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.5);
+        }
+        .btn-gold-spin span.spin-border {
+            position: absolute;
+            inset: -1000%;
+            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, rgba(214, 188, 140, 0.95) 50%, transparent 100%);
+            animation: spin 3s linear infinite;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex items-center justify-center p-4">
     <div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl border border-stone-300 shadow-xl">
-        <a href="../index.html" class="inline-block mb-4">
+        <a href="../index.html" class="inline-flex items-center gap-2 mb-4">
             <img src="../static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-10 object-contain" style="filter: brightness(0);"/>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-stone-900">BIO PREMIUM</span>
         </a>
 
         <div class="mb-4">
-            <span class="text-[10.5px] font-mono font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
-                ✦ SETUP FEITO POR NÓS EM ATÉ 24H
-            </span>
-            <h1 class="text-2xl font-bold font-display text-stone-950 mt-2">Garanta sua Bio Pronta em 24h</h1>
+            <h1 class="text-2xl font-bold font-display text-stone-950 mt-1">Garanta seu ELOOO BIO em 24h</h1>
             <p class="text-xs text-stone-500 mt-1">
-                Após assinar, nossa equipe entrará em contato para receber seus links e colocar sua bio de luxo no ar.
+                Após assinar, nossa equipe entrará em contato para receber seus dados e colocar sua bio no ar.
             </p>
         </div>
 
-        <!-- Plan Selector Bar (Starter 127 / Pro 147 / Elite 497) -->
+        <!-- Plan Selector Bar (Basic 127 / Pro 147 / Elite 497) -->
         <div class="mb-5 p-1 rounded-2xl bg-stone-100 grid grid-cols-3 gap-1 text-xs font-bold text-center">
-            <button type="button" onclick="selectPlan('starter')" id="btn-starter" class="py-2 rounded-xl transition-colors text-stone-600">Starter R$127</button>
+            <button type="button" onclick="selectPlan('basic')" id="btn-basic" class="py-2 rounded-xl transition-colors text-stone-600">Basic R$127</button>
             <button type="button" onclick="selectPlan('pro')" id="btn-pro" class="py-2 rounded-xl bg-stone-950 text-white shadow-sm transition-colors">Pró R$147</button>
             <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2 rounded-xl transition-colors text-stone-600">Elite R$497</button>
         </div>
@@ -62,8 +79,11 @@
                 <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
-            <button type="submit" class="w-full py-4 rounded-full bg-stone-950 text-white font-bold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors mt-2 shadow-xl">
-                Contratar e Iniciar Implementação (24h) →
+            <button type="submit" class="btn-gold-spin w-full mt-2">
+                <span class="spin-border"></span>
+                <span class="relative block w-full py-4 rounded-full bg-[#0a0a0a] text-white font-bold text-xs uppercase tracking-widest text-center shadow-xl">
+                    Contratar e Iniciar Implementação (24h) →
+                </span>
             </button>
         </form>
 
@@ -75,7 +95,7 @@
     <script>
         function selectPlan(plan) {
             const btns = {
-                starter: document.getElementById('btn-starter'),
+                basic: document.getElementById('btn-basic'),
                 pro: document.getElementById('btn-pro'),
                 elite: document.getElementById('btn-elite')
             };
@@ -87,8 +107,9 @@
             }
         }
         const urlParams = new URLSearchParams(window.location.search);
-        const planParam = urlParams.get('plan');
-        if (planParam && ['starter', 'pro', 'elite'].includes(planParam)) {
+        let planParam = urlParams.get('plan');
+        if (planParam === 'starter') planParam = 'basic';
+        if (planParam && ['basic', 'pro', 'elite'].includes(planParam)) {
             selectPlan(planParam);
         }
     </script>
