@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="pt-BR">
+<html class="scroll-smooth h-full" lang="pt-BR">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Editora | ELOOO International Group</title>
+    <title>Elooo Editora | Autoridade, Propósito, Lucro e Legado Através de Livros</title>
+    <meta name="description" content="Elooo Editora — Autoridade, Propósito, Lucro e Legado Através de Livros. Um autógrafo seu representa muito mais do que você imagina. Brasil, Portugal e Espanha.">
+    <meta property="og:title" content="Elooo Editora | Autoridade, Propósito, Lucro e Legado Através de Livros">
+    <meta property="og:description" content="Um autógrafo seu representa muito mais do que você imagina. Faça parte da elite autoral global da Elooo.">
+    <meta property="og:image" content="static/images/og-share.png">
+    <meta property="og:type" content="website">
 
-    <!-- Fonts -->
+    <!-- Fonts: Space Grotesk + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Iconify -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-
-    <!-- GSAP & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -42,8 +43,17 @@
                             700: '#44403c',
                             800: '#292524',
                             900: '#1c1917',
+                            950: '#0a0a0c',
                         },
-                        'surface-light': '#EAEAE5',
+                        gold: {
+                            100: '#fdf6e7',
+                            200: '#faeac7',
+                            300: '#f5dc9e',
+                            400: '#e5be63',
+                            500: '#d6bc8c',
+                            600: '#b89445',
+                            700: '#8c6e26',
+                        }
                     },
                     backgroundImage: {
                         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
@@ -54,197 +64,376 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #EAEAE5;
-            color: #1C1917;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .text-outline {
-            -webkit-text-stroke: 1px #1C1917;
-            color: transparent;
-            transition: all 0.5s ease;
-        }
-
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* FLASHLIGHT EFFECT */
-        .flashlight-card {
-            position: relative;
-            background: rgba(28, 25, 23, 0.02);
-            border: 1px solid rgba(28, 25, 23, 0.08);
-            border-radius: 24px;
+        html, body {
+            height: 100%;
             overflow: hidden;
-            transition: all 0.4s ease;
+            background-color: #070709;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        .flashlight-card::before {
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Continuous shimmering liquid gold text sweep effect */
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #faeac7 25%, #d6bc8c 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldSweep 5s linear infinite;
+        }
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+
+        /* ABSOLUTELY GOLD SUPER-PREMIUM BUTTON */
+        @keyframes goldGleam {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes goldShimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+
+        .btn-gold-luxury {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #d6bc8c 0%, #faeac7 25%, #c5a870 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background-size: 250% 250%;
+            animation: goldGleam 4s ease infinite;
+            color: #12100e !important;
+            font-weight: 800;
+            border-radius: 9999px;
+            border: 1.5px solid #faeac7;
+            box-shadow: 0 10px 30px -5px rgba(214, 188, 140, 0.7), 0 0 20px rgba(214, 188, 140, 0.4);
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            text-decoration: none;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-gold-luxury::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+            transform: translateX(-150%) skewX(-20deg);
+            animation: goldShimmerSweep 3.5s infinite;
+            pointer-events: none;
+        }
+
+        .btn-gold-luxury:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 40px -5px rgba(214, 188, 140, 0.95), 0 0 30px rgba(250, 234, 199, 0.8);
+            border-color: #ffffff;
+            color: #000000 !important;
+        }
+
+        /* 3D PERSPECTIVE STAGE FOR FLYING CARDS INTO DEPTH */
+        .stage-3d {
+            perspective: 1100px;
+            perspective-origin: 50% 50%;
+            transform-style: preserve-3d;
+            position: relative;
             width: 100%;
             height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(28, 25, 23, 0.04), transparent 40%);
-            z-index: 1;
+        }
+
+        .author-card-3d {
+            position: absolute;
+            width: 240px;
+            height: 330px;
+            border-radius: 24px;
+            background: linear-gradient(165deg, rgba(28, 25, 24, 0.95) 0%, rgba(12, 10, 9, 0.98) 100%);
+            border: 1.5px solid rgba(214, 188, 140, 0.45);
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 30px rgba(214, 188, 140, 0.25);
+            overflow: hidden;
+            backface-visibility: hidden;
+            will-change: transform, opacity;
+            animation: flyToDepth 16s infinite cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes flyToDepth {
+            0% {
+                transform: translate3d(var(--x-start, 0px), var(--y-start, 0px), 160px) rotateY(var(--rot-y, -10deg)) rotateX(var(--rot-x, 6deg)) scale(1.08);
+                opacity: 0;
+                filter: blur(0px);
+            }
+            8% {
+                opacity: 1;
+            }
+            75% {
+                opacity: 0.85;
+                filter: blur(1px);
+            }
+            100% {
+                transform: translate3d(var(--x-end, -40px), var(--y-end, -20px), -1000px) rotateY(calc(var(--rot-y, -10deg) * 1.6)) rotateX(calc(var(--rot-x, 6deg) * 1.4)) scale(0.25);
+                opacity: 0;
+                filter: blur(4px);
+            }
+        }
+
+        /* Ambient Glow */
+        .ambient-gold-glow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.14) 0%, transparent 70%);
             pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .flashlight-card:hover::before {
-            opacity: 1;
-        }
-
-        /* SPINNING BORDER CTA */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            filter: blur(60px);
         }
     </style>
 </head>
 
-<body>
-    <!-- NOISE OVERLAY -->
-    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.02] pointer-events-none z-50"></div>
+<body class="h-full flex flex-col justify-between relative selection:bg-[#d6bc8c] selection:text-black">
 
-    <!-- INCLUDE_NAVBAR -->
+    <!-- NOISE GRAIN OVERLAY -->
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.035] pointer-events-none z-50"></div>
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen w-full flex items-center justify-center pt-32 pb-20 bg-stone-900 text-white overflow-hidden">
-        <!-- Background decorative details -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(120,113,108,0.15),transparent_50%)]"></div>
-        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-stone-800/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- AMBIENT BACKGROUND GLOWS -->
+    <div class="ambient-gold-glow top-0 right-1/4 w-[600px] h-[600px]"></div>
+    <div class="ambient-gold-glow bottom-0 left-10 w-[500px] h-[500px] opacity-50"></div>
 
-        <div class="relative z-10 max-w-[1440px] mx-auto px-6 md:px-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+    <!-- MINIMALIST LUXURY HEADER / NAVBAR -->
+    <header class="relative z-30 w-full px-6 sm:px-12 py-5 flex items-center justify-between">
+        <!-- Logo ELOOO -->
+        <a href="index.html" class="flex items-center gap-3 group">
+            <img src="static/images/ELOOO LOGO.png" alt="ELOOO International Group" class="h-8 sm:h-10 object-contain filter brightness-0 invert transition-transform group-hover:scale-105">
+            <span class="hidden sm:inline-block text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c] border-l border-white/20 pl-3">
+                EDITORA
+            </span>
+        </a>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-4">
+            <a href="autores.html" class="text-xs font-mono font-semibold uppercase tracking-widest text-stone-300 hover:text-white transition-colors hidden sm:block">
+                Autores
+            </a>
+            <a href="livros.html" class="text-xs font-mono font-semibold uppercase tracking-widest text-stone-300 hover:text-white transition-colors hidden sm:block">
+                Livros
+            </a>
+            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20pela%20Elooo%20Editora%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20editoriais." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 hover:border-[#d6bc8c] text-stone-200 hover:text-white text-xs font-mono uppercase tracking-wider transition-all flex items-center gap-2">
+                <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-sm"></iconify-icon>
+                <span>Falar com Editor</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (100% MINIMALIST & NO-SCROLL) -->
+    <main class="relative z-20 flex-1 flex items-center px-6 sm:px-12 lg:px-20 max-w-[1560px] mx-auto w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full h-full py-4">
             
-            <div class="lg:col-span-8 flex flex-col justify-center text-left">
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-800/60 border border-stone-700/50 rounded-full w-fit reveal-up">
-                    <img src="static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
-                    <div class="w-px h-3 bg-stone-700"></div>
-                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Editora Internacional</span>
+            <!-- LEFT COLUMN: TITLES, BADGES & CTA -->
+            <div class="lg:col-span-7 flex flex-col justify-center text-left">
+                
+                <!-- TOP BADGE WITH INTERNATIONAL FLAGS -->
+                <div class="inline-flex items-center gap-3 mb-5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10 w-fit backdrop-blur-md">
+                    <span class="text-sm">🇧🇷</span>
+                    <span class="text-sm">🇵🇹</span>
+                    <span class="text-sm">🇪🇸</span>
+                    <div class="w-px h-3.5 bg-white/20"></div>
+                    <span class="text-[10.5px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">
+                        BRASIL · CASCAIS · MADRID
+                    </span>
                 </div>
 
-                <h1 class="font-display text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[0.9] mb-8 reveal-up delay-100">
-                    Propósito e<br>
-                    <span class="text-outline text-transparent">Liberdade para</span><br>
-                    Profissionais.
+                <!-- H1: MAIN STATEMENT -->
+                <h1 class="font-display text-3xl sm:text-5xl lg:text-[52px] xl:text-[58px] font-bold tracking-tight text-white leading-[1.12] mb-4">
+                    Elooo Editora — <span class="gold-text-sweep">Autoridade, Propósito, Lucro e Legado</span> Através de Livros.
                 </h1>
 
-                <p class="text-lg md:text-xl text-stone-400 max-w-2xl leading-relaxed font-light mb-12 reveal-up delay-200">
-                    A Editora ELOOO publica os guias de maior autoridade e impacto do mercado, conectando profissionais de elite à sua liberdade de tempo, financeira e geográfica.
-                </p>
+                <!-- H2: EMOTIONAL AUTOGRAPH STATEMENT -->
+                <h2 class="font-sans text-lg sm:text-2xl text-stone-300 font-light italic leading-relaxed mb-8 max-w-2xl text-stone-200">
+                    “Um autógrafo seu representa muito mais do que você imagina...”
+                </h2>
 
-                <div class="flex flex-wrap gap-4 reveal-up delay-300">
-                    <a href="autores.html" class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                            Conhecer Autores
-                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80"></iconify-icon>
-                        </span>
-                    </a>
-                    <a href="livros.html" class="px-8 py-4 border border-stone-700 hover:border-white rounded-full font-medium text-sm text-stone-300 hover:text-white uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
-                        Ver Livros
-                        <iconify-icon icon="solar:arrow-down-linear" class="text-lg"></iconify-icon>
+                <!-- PRIMARY GOLD CTA BUTTON -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20vim%20pela%20Elooo%20Editora%20e%20quero%20fazer%20parte%20da%20elite%20autoral%20global." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-10 py-4 sm:py-4.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl">
+                        <span>Faça parte da elite autoral global da Elooo</span>
+                        <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
                     </a>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Scroll hint -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-40">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400">Explore</span>
-            <div class="w-px h-8 bg-stone-700 overflow-hidden relative">
-                <div class="absolute top-0 left-0 w-full h-full bg-white animate-scroll-line" style="animation: scroll-line 2s infinite;"></div>
-            </div>
-        </div>
-    </section>
 
-    <!-- PORTAL NAVIGATION HIGHLIGHTS -->
-    <section class="py-32 bg-stone-100 text-stone-900 relative z-10 overflow-hidden">
-        <div class="max-w-[1440px] mx-auto px-6 md:px-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                
-                <!-- Authors Portal Block -->
-                <div class="flashlight-card group p-12 bg-white flex flex-col justify-between min-h-[400px] reveal-up delay-100 border border-stone-200/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500" onmousemove="updateFlashlight(event, this)">
-                    <div>
-                        <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 bg-stone-100 border border-stone-200 rounded-full">
-                            <iconify-icon icon="solar:users-group-rounded-linear" class="text-stone-500"></iconify-icon>
-                            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Mentes Brilhantes</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 mb-6">Autores ELOOO</h3>
-                        <p class="font-sans text-stone-500 leading-relaxed mb-6 font-light">
-                            Conheça o pódio de mentores, especialistas e autores de elite que assinam as publicações exclusivas do ELOOO International Group. Acesse o Leaderboard completo e suas páginas oficiais.
-                        </p>
+                <!-- Subtle Author Stats Ribbon -->
+                <div class="mt-8 pt-6 border-t border-white/10 flex items-center gap-8 text-xs font-mono text-stone-400">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-bold text-sm">31+</span>
+                        <span>Autores no Pódio</span>
                     </div>
-                    <a href="autores.html" class="mt-8 relative group/btn rounded-full p-[1px] overflow-hidden bg-stone-800 shadow-md w-fit">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.2)_50%,transparent_100%)] opacity-100 group-hover/btn:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 bg-[#0a0a0a] px-8 py-3 rounded-full font-medium text-xs text-white tracking-widest uppercase transition-colors duration-500 group-hover/btn:bg-[#111]">
-                            Ver Leaderboard de Autores
-                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                        </span>
-                    </a>
-                </div>
-
-                <!-- Books Portal Block -->
-                <div class="flashlight-card group p-12 bg-white flex flex-col justify-between min-h-[400px] reveal-up delay-200 border border-stone-200/60 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500" onmousemove="updateFlashlight(event, this)">
-                    <div>
-                        <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 bg-stone-100 border border-stone-200 rounded-full">
-                            <iconify-icon icon="solar:book-bookmark-linear" class="text-stone-500"></iconify-icon>
-                            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Coleções de Impacto</span>
-                        </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 mb-6">Nossas Obras</h3>
-                        <p class="font-sans text-stone-500 leading-relaxed mb-6 font-light">
-                            Explore o catálogo de livros publicados pela editora ELOOO, focados em autonomia profissional, inteligência financeira, vitalidade e desenvolvimento de negócios.
-                        </p>
+                    <div class="w-px h-3 bg-white/10"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-bold text-sm">+3.500</span>
+                        <span>Livros Distribuídos</span>
                     </div>
-                    <a href="livros.html" class="mt-8 relative group/btn rounded-full p-[1px] overflow-hidden bg-stone-800 shadow-md w-fit">
-                        <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.2)_50%,transparent_100%)] opacity-100 group-hover/btn:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] transition-colors duration-500"></span>
-                        <span class="relative flex items-center justify-center gap-3 bg-[#0a0a0a] px-8 py-3 rounded-full font-medium text-xs text-white tracking-widest uppercase transition-colors duration-500 group-hover/btn:bg-[#111]">
-                            Explorar Catálogo de Livros
-                            <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
-                        </span>
-                    </a>
+                    <div class="w-px h-3 bg-white/10"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[#d6bc8c] font-bold text-sm">3 Países</span>
+                        <span>Presença Física</span>
+                    </div>
                 </div>
 
             </div>
-        </div>
-    </section>
-<!-- INCLUDE_FOOTER -->
 
+            <!-- RIGHT COLUMN: 3D CARDS GLIDING INTO DEPTH -->
+            <div class="lg:col-span-5 relative h-[380px] sm:h-[460px] lg:h-[540px] flex items-center justify-center pointer-events-none select-none">
+                <div class="stage-3d flex items-center justify-center" id="cardStreamStage">
+                    
+                    <!-- CARD 1: Bruno Barros -->
+                    <div class="author-card-3d" style="--x-start: -20px; --y-start: 10px; --x-end: -60px; --y-end: -40px; --rot-y: -12deg; --rot-x: 6deg; animation-delay: 0s;">
+                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
+                            <img src="static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop';"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
+                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
+                                Fundador
+                            </span>
+                        </div>
+                        <div class="p-4 text-left">
+                            <h3 class="font-display font-bold text-sm text-white leading-tight">Bruno Barros</h3>
+                            <p class="text-[10px] text-stone-400 mt-0.5">Recalculando a Rota</p>
+                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
+                                <span>✦ Autor ELOOO</span>
+                                <span>Brasil / Cascais</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2: Sérgio Caniço -->
+                    <div class="author-card-3d" style="--x-start: 30px; --y-start: -15px; --x-end: 20px; --y-end: -60px; --rot-y: 10deg; --rot-x: -4deg; animation-delay: 2.6s;">
+                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
+                            <img src="static/images/sergio-canico.png" alt="Sérgio Caniço" class="w-full h-full object-cover object-top"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
+                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
+                                Portugal
+                            </span>
+                        </div>
+                        <div class="p-4 text-left">
+                            <h3 class="font-display font-bold text-sm text-white leading-tight">Sérgio Caniço</h3>
+                            <p class="text-[10px] text-stone-400 mt-0.5">Autoridade Internacional</p>
+                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
+                                <span>✦ Autor ELOOO</span>
+                                <span>Cascais</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3: Vanessa Rodrigues -->
+                    <div class="author-card-3d" style="--x-start: -35px; --y-start: 25px; --x-end: -80px; --y-end: -10px; --rot-y: -8deg; --rot-x: 5deg; animation-delay: 5.2s;">
+                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
+                            <img src="static/images/vanessa-rodrigues.png" alt="Vanessa Rodrigues" class="w-full h-full object-cover object-top"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
+                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
+                                Autora
+                            </span>
+                        </div>
+                        <div class="p-4 text-left">
+                            <h3 class="font-display font-bold text-sm text-white leading-tight">Vanessa Rodrigues</h3>
+                            <p class="text-[10px] text-stone-400 mt-0.5">Liderança & Propósito</p>
+                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
+                                <span>✦ Autora ELOOO</span>
+                                <span>Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4: Diego Arcas -->
+                    <div class="author-card-3d" style="--x-start: 25px; --y-start: 5px; --x-end: 50px; --y-end: -45px; --rot-y: 12deg; --rot-x: -6deg; animation-delay: 7.8s;">
+                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
+                            <img src="static/images/diego-arcas.png" alt="Diego Arcas" class="w-full h-full object-cover object-top"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
+                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
+                                Autor
+                            </span>
+                        </div>
+                        <div class="p-4 text-left">
+                            <h3 class="font-display font-bold text-sm text-white leading-tight">Diego Arcas</h3>
+                            <p class="text-[10px] text-stone-400 mt-0.5">Inteligência Financeira</p>
+                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
+                                <span>✦ Autor ELOOO</span>
+                                <span>Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 5: Tatiana Fonseca -->
+                    <div class="author-card-3d" style="--x-start: -15px; --y-start: -20px; --x-end: -50px; --y-end: -70px; --rot-y: -10deg; --rot-x: 4deg; animation-delay: 10.4s;">
+                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
+                            <img src="static/images/tatiana-fonseca.png" alt="Tatiana Fonseca" class="w-full h-full object-cover object-top"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
+                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
+                                Autora
+                            </span>
+                        </div>
+                        <div class="p-4 text-left">
+                            <h3 class="font-display font-bold text-sm text-white leading-tight">Tatiana Fonseca</h3>
+                            <p class="text-[10px] text-stone-400 mt-0.5">Gestão & Governança</p>
+                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
+                                <span>✦ Autora ELOOO</span>
+                                <span>Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 6: Douglas Vacilotto -->
+                    <div class="author-card-3d" style="--x-start: 15px; --y-start: 20px; --x-end: 35px; --y-end: -25px; --rot-y: 8deg; --rot-x: -5deg; animation-delay: 13.0s;">
+                        <div class="h-[210px] w-full overflow-hidden bg-stone-900 relative">
+                            <img src="static/images/douglas-vacilotto.png" alt="Douglas Vacilotto" class="w-full h-full object-cover object-top"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-transparent to-transparent"></div>
+                            <span class="absolute top-3 right-3 text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 text-[#d6bc8c] border border-[#d6bc8c]/40">
+                                Autor
+                            </span>
+                        </div>
+                        <div class="p-4 text-left">
+                            <h3 class="font-display font-bold text-sm text-white leading-tight">Douglas Vacilotto</h3>
+                            <p class="text-[10px] text-stone-400 mt-0.5">Mentalidade & Execução</p>
+                            <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-[#d6bc8c]">
+                                <span>✦ Autor ELOOO</span>
+                                <span>Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- MINIMALIST FOOTER STRIP -->
+    <footer class="relative z-30 w-full px-6 sm:px-12 py-4 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-stone-500 border-t border-white/5">
+        <div>
+            © 2026 <strong class="text-stone-300">ELOOO EDITORA</strong> · Brasil, Cascais & Madrid.
+        </div>
+        <div class="flex items-center gap-6 mt-2 sm:mt-0">
+            <a href="autores.html" class="hover:text-stone-300 transition-colors">Pódio de Autores</a>
+            <a href="livros.html" class="hover:text-stone-300 transition-colors">Catálogo de Livros</a>
+            <a href="termos.html" class="hover:text-stone-300 transition-colors">Termos</a>
+            <a href="privacidade.html" class="hover:text-stone-300 transition-colors">Privacidade</a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE 3D PARALLAX EFFECT -->
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        document.addEventListener("DOMContentLoaded", () => {
-            gsap.utils.toArray('.reveal-up').forEach(function (elem) {
-                ScrollTrigger.create({
-                    trigger: elem,
-                    start: "top 85%",
-                    onEnter: function () {
-                        elem.classList.add('active');
-                    }
-                });
-            });
-
-            window.updateFlashlight = function (e, card) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            }
+        const stage = document.getElementById('cardStreamStage');
+        window.addEventListener('mousemove', (e) => {
+            if (!stage) return;
+            const x = (e.clientX / window.innerWidth - 0.5) * 15;
+            const y = (e.clientY / window.innerHeight - 0.5) * 15;
+            stage.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
         });
     </script>
 </body>
