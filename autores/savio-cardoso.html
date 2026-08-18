@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Dr. Sávio Cardoso | O Código da Vitalidade Masculina & Longevidade | ELOOO Editora</title>
+    <title>Dr. Sávio Cardoso | O Código da Vitalidade Masculina | Elooo Editora</title>
     <meta name="description" content="Página oficial do Dr. Sávio Cardoso — Médico, Autor e Especialista em Longevidade, Saúde Metabólica e Vitalidade Masculina no Brasil e em Portugal. Livro oficial publicado pela Elooo Editora.">
-    <meta property="og:title" content="Dr. Sávio Cardoso | O Código da Vitalidade Masculina | ELOOO Editora">
+    <meta property="og:title" content="Dr. Sávio Cardoso | O Código da Vitalidade Masculina | Elooo Editora">
     <meta property="og:description" content="Conheça a trajetória e a obra do Dr. Sávio Cardoso. A ciência médica e os hábitos de elite para viver com energia máxima e longevidade.">
     <meta property="og:image" content="../static/images/savio-cardoso.png">
     <meta property="og:type" content="website">
@@ -68,12 +68,16 @@
     </script>
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: #0c0a09;
+            background-color: #070709;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            text-rendering: optimizeLegibility;
         }
 
         .font-display {
@@ -118,7 +122,7 @@
             font-weight: 800;
             border-radius: 9999px;
             border: 1.5px solid #faeac7;
-            box-shadow: 0 10px 30px -5px rgba(214, 188, 140, 0.7), 0 0 20px rgba(214, 188, 140, 0.4);
+            box-shadow: 0 10px 35px -5px rgba(214, 188, 140, 0.75), 0 0 25px rgba(214, 188, 140, 0.4);
             overflow: hidden;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
@@ -141,7 +145,7 @@
 
         .btn-gold-luxury:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 15px 40px -5px rgba(214, 188, 140, 0.95), 0 0 30px rgba(250, 234, 199, 0.8);
+            box-shadow: 0 18px 45px -5px rgba(214, 188, 140, 0.95), 0 0 35px rgba(250, 234, 199, 0.8);
             border-color: #ffffff;
             color: #000000 !important;
         }
@@ -149,12 +153,12 @@
         /* FLASHLIGHT EFFECT */
         .flashlight-card {
             position: relative;
-            background: rgba(28, 25, 23, 0.6);
-            border: 1px solid rgba(214, 188, 140, 0.2);
+            background: rgba(22, 20, 18, 0.7);
+            border: 1px solid rgba(214, 188, 140, 0.22);
             border-radius: 28px;
             overflow: hidden;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(16px);
         }
 
         .flashlight-card::before {
@@ -164,7 +168,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(214, 188, 140, 0.12), transparent 45%);
+            background: radial-gradient(650px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(214, 188, 140, 0.16), transparent 45%);
             z-index: 1;
             pointer-events: none;
             opacity: 0;
@@ -176,29 +180,85 @@
         }
 
         .flashlight-card:hover {
-            border-color: rgba(214, 188, 140, 0.45);
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(214, 188, 140, 0.1);
+            border-color: rgba(214, 188, 140, 0.55);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(214, 188, 140, 0.15);
         }
 
         /* Ambient Glow */
         .ambient-gold-glow {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(214, 188, 140, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.18) 0%, transparent 70%);
             pointer-events: none;
-            filter: blur(80px);
+            filter: blur(90px);
         }
 
-        /* 3D Book Spine Effect */
-        .book-card-3d {
-            box-shadow: -15px 20px 50px -10px rgba(0, 0, 0, 0.9), 0 0 35px rgba(214, 188, 140, 0.2);
-            transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        /* 3D Book Floating Showcase */
+        .book-3d-wrap {
+            perspective: 1200px;
+            transform-style: preserve-3d;
         }
-        .book-card-3d:hover {
-            transform: perspective(1000px) rotateY(-2deg) rotateX(0deg) scale(1.02);
-            box-shadow: -20px 30px 60px -10px rgba(0, 0, 0, 0.95), 0 0 45px rgba(214, 188, 140, 0.35);
+
+        .book-3d-object {
+            transform: rotateY(-18deg) rotateX(8deg) rotateZ(-2deg);
+            box-shadow: -25px 35px 70px -10px rgba(0, 0, 0, 0.95), 0 0 40px rgba(214, 188, 140, 0.25);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .book-3d-wrap:hover .book-3d-object {
+            transform: rotateY(-6deg) rotateX(2deg) rotateZ(0deg) translateY(-8px) scale(1.03);
+            box-shadow: -35px 45px 90px -10px rgba(0, 0, 0, 0.98), 0 0 60px rgba(214, 188, 140, 0.45);
+        }
+
+        /* Giant Portrait Seamless Cutout Blend */
+        .portrait-seamless-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 580px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .portrait-seamless-wrapper::after {
+            content: '';
+            position: absolute;
+            inset-x: 0;
+            bottom: -2px;
+            height: 180px;
+            background: linear-gradient(to top, #070709 15%, rgba(7,7,9,0.85) 45%, transparent 100%);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .portrait-halo {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.22) 0%, rgba(214, 188, 140, 0.06) 45%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .portrait-img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-height: 720px;
+            object-fit: contain;
+            object-position: top center;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portrait-seamless-wrapper:hover .portrait-img {
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -513,106 +573,95 @@
 
 
     <!-- ========================================================================= -->
-    <!-- HERO SECTION: FOTO GRANDE À ESQUERDA | NOME GRANDE À DIREITA -->
+    <!-- HERO MASTERPIECE: AUTOR SEM MOLDURA (ROSTO GRANDE E CENTRO DAS ATENÇÕES) -->
     <!-- ========================================================================= -->
-    <section class="relative min-h-screen w-full flex items-center justify-center pt-28 pb-16 px-6 sm:px-12 lg:px-20 overflow-hidden">
+    <section class="relative min-h-screen w-full flex items-center justify-center pt-28 pb-12 px-6 sm:px-12 lg:px-20 overflow-hidden">
         
-        <!-- Ambient Atmospheric Glows -->
-        <div class="ambient-gold-glow top-20 left-10 w-[650px] h-[650px]"></div>
-        <div class="ambient-gold-glow bottom-10 right-10 w-[550px] h-[550px] opacity-40"></div>
+        <!-- Ambient Stage Lighting -->
+        <div class="ambient-gold-glow top-10 left-1/4 w-[750px] h-[750px]"></div>
+        <div class="ambient-gold-glow bottom-0 right-10 w-[600px] h-[600px] opacity-35"></div>
 
-        <div class="relative z-10 max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="relative z-10 max-w-[1520px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            <!-- LEFT COLUMN: FOTO GRANDE COM MOLDURA NOBRE 3D -->
-            <div class="lg:col-span-5 flex justify-center items-center">
-                <div class="relative group w-full max-w-[460px]">
-                    <!-- Outer Halo Gold Border -->
-                    <div class="absolute -inset-1 rounded-[36px] bg-gradient-to-b from-[#d6bc8c]/40 via-[#faeac7]/10 to-transparent blur-md group-hover:blur-lg transition-all duration-500"></div>
-                    
-                    <!-- Main Author Card -->
-                    <div class="relative rounded-[32px] overflow-hidden bg-gradient-to-b from-stone-900 to-stone-950 border-2 border-[#d6bc8c]/40 shadow-2xl">
-                        <!-- High Resolution Author Photo -->
-                        <div class="relative h-[480px] sm:h-[540px] w-full overflow-hidden bg-stone-950">
-                            <img src="../static/images/savio-cardoso.png" alt="Dr. Sávio Cardoso" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105">
-                            
-                            <!-- Dramatic dark vignette gradient at bottom -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/20 to-transparent"></div>
-                            
-                            <!-- Badges on photo -->
-                            <div class="absolute top-5 left-5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 border border-[#d6bc8c]/40 backdrop-blur-md">
-                                <span class="w-2 h-2 rounded-full bg-[#d6bc8c] animate-pulse"></span>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-[#faeac7]">Autor Oficial ELOOO</span>
-                            </div>
+            <!-- LEFT COLUMN: O AUTOR SEM MOLDURA (GIGANTE, MAJESTOSO & NÍTIDO) -->
+            <div class="lg:col-span-6 flex justify-center items-end relative min-h-[520px] sm:min-h-[640px] lg:min-h-[720px]">
+                <div class="portrait-seamless-wrapper">
+                    <!-- Halo de luz dourada atrás da cabeça do autor -->
+                    <div class="portrait-halo"></div>
 
-                            <div class="absolute top-5 right-5 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 border border-white/15 backdrop-blur-md">
-                                <iconify-icon icon="circle-flags:br" class="text-sm"></iconify-icon>
-                                <iconify-icon icon="circle-flags:pt" class="text-sm"></iconify-icon>
-                            </div>
-
-                            <!-- Bottom Floating Details on Image -->
-                            <div class="absolute bottom-5 inset-x-5 text-left">
-                                <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#d6bc8c]">Medicina de Alta Performance</span>
-                                <p class="text-sm font-semibold text-white/90">Longevidade, Reposição Hormonal & Vitalidade</p>
-                            </div>
-                        </div>
+                    <!-- Floating Badges in Depth -->
+                    <div class="absolute top-8 left-0 sm:left-4 z-20 flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#141210]/80 border border-[#d6bc8c]/40 backdrop-blur-md shadow-2xl">
+                        <span class="w-2 h-2 rounded-full bg-[#d6bc8c] animate-ping"></span>
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#faeac7]">Autor Oficial ELOOO</span>
                     </div>
+
+                    <div class="absolute top-8 right-0 sm:right-4 z-20 flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#141210]/80 border border-white/20 backdrop-blur-md shadow-2xl">
+                        <iconify-icon icon="circle-flags:br" class="text-base"></iconify-icon>
+                        <iconify-icon icon="circle-flags:pt" class="text-base"></iconify-icon>
+                        <span class="text-[10px] font-mono font-bold text-stone-300">BR · PT</span>
+                    </div>
+
+                    <!-- FOTO GIGANTE DO AUTOR (SEM BORDAS OU MOLDURAS QUADRADAS) -->
+                    <img src="../static/images/savio-cardoso.png" alt="Dr. Sávio Cardoso" class="portrait-img">
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: NOME GRANDE & DECLARAÇÃO DE IMPACTO -->
-            <div class="lg:col-span-7 flex flex-col justify-center text-left">
+            <!-- RIGHT COLUMN: NOME GIGANTE & COPY EDITORIAL DE ALTO IMPACTO -->
+            <div class="lg:col-span-6 flex flex-col justify-center text-left py-4">
                 
-                <!-- Hub & Category Tag -->
-                <div class="flex items-center gap-3 mb-4 text-xs font-mono font-bold tracking-[0.2em] text-[#d6bc8c]">
-                    <div class="flex items-center gap-1.5">
-                        <iconify-icon icon="circle-flags:br" class="text-base"></iconify-icon>
-                        <iconify-icon icon="circle-flags:pt" class="text-base"></iconify-icon>
-                    </div>
-                    <div class="w-px h-3.5 bg-white/20"></div>
-                    <span class="uppercase">BRASIL & PORTUGAL (CASCAIS)</span>
+                <!-- Category Sub-tag -->
+                <div class="inline-flex items-center gap-3 mb-4">
+                    <span class="text-[11px] font-mono font-bold uppercase tracking-[0.28em] text-[#d6bc8c]">
+                        MEDICINA DE LONGEVIDADE & ALTA PERFORMANCE
+                    </span>
                 </div>
 
-                <!-- NOME GRANDE DO AUTOR -->
-                <h1 class="font-display text-5xl sm:text-7xl lg:text-[76px] font-extrabold tracking-tight text-white leading-[1.02] mb-4">
+                <!-- NOME DO AUTOR (GIGANTE & DOMINANTE) -->
+                <h1 class="font-display text-5xl sm:text-7xl lg:text-[80px] font-extrabold tracking-tight text-white leading-[0.98] mb-4">
                     Dr. Sávio Cardoso
                 </h1>
 
-                <!-- SUBTÍTULO / SLOGAN DA OBRA COM SWEEP DOURADO -->
-                <p class="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-stone-200 leading-snug mb-6">
+                <!-- TÍTULO DA OBRA COM SWEEP DOURADO -->
+                <p class="font-display text-2xl sm:text-3xl lg:text-[36px] font-bold text-stone-100 leading-snug mb-6">
                     <span class="gold-text-sweep">O Código da Vitalidade Masculina</span> & Longevidade Ativa.
                 </p>
 
-                <!-- CITAÇÃO REFLEXIVA -->
-                <blockquote class="text-base sm:text-lg text-stone-300 font-light italic leading-relaxed mb-8 border-l-2 border-[#d6bc8c] pl-4">
-                    “A longevidade que vale a pena viver não é medida apenas em anos de existência, mas na intensidade de energia, clareza mental e vitalidade com que você lidera cada dia.”
-                </blockquote>
+                <!-- EDITORIAL MANIFESTO -->
+                <div class="relative mb-8 p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
+                    <p class="text-base sm:text-lg text-stone-300 font-light italic leading-relaxed text-stone-200">
+                        “A longevidade que vale a pena não é contada apenas nos anos vividos, mas no vigor celular, na clareza mental e na vitalidade diária com que você lidera seu propósito.”
+                    </p>
+                    <div class="mt-2 text-right">
+                        <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest">— Dr. Sávio Cardoso</span>
+                    </div>
+                </div>
 
-                <!-- BOTÕES DE CTA: COMPRA DO LIVRO E CONTATO -->
+                <!-- PRIMARY & SECONDARY ACTION BUTTONS -->
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-10 py-4 sm:py-4.5 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
                         <iconify-icon icon="solar:book-bookmark-linear" class="text-lg"></iconify-icon>
-                        <span>Adquirir Livro Oficial</span>
+                        <span>Adquirir Livro Oficial Autografado</span>
                     </a>
 
-                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
-                        <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-base"></iconify-icon>
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2.5">
+                        <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
                         <span>Falar com o Autor</span>
                     </a>
                 </div>
 
-                <!-- STATS DE AUTORIDADE MÉDICA -->
-                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 text-left">
+                <!-- AUTHORITY STATS RIBBON -->
+                <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 text-left">
                     <div>
                         <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">+10 Anos</p>
-                        <p class="text-[10px] sm:text-xs font-mono text-stone-400 uppercase tracking-wider mt-0.5">Prática Médica</p>
+                        <p class="text-[10.5px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Prática Clínica</p>
                     </div>
                     <div>
                         <p class="text-2xl sm:text-3xl font-extrabold font-display text-[#d6bc8c]">+3.000</p>
-                        <p class="text-[10px] sm:text-xs font-mono text-stone-400 uppercase tracking-wider mt-0.5">Vidas Impactadas</p>
+                        <p class="text-[10.5px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Vidas Impactadas</p>
                     </div>
                     <div>
-                        <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">BR & PT</p>
-                        <p class="text-[10px] sm:text-xs font-mono text-stone-400 uppercase tracking-wider mt-0.5">Atuação Global</p>
+                        <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">Brasil & PT</p>
+                        <p class="text-[10.5px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Cascais & São Paulo</p>
                     </div>
                 </div>
 
@@ -623,64 +672,70 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO: A TRAJETÓRIA E HISTÓRIA DO AUTOR -->
+    <!-- SEÇÃO 2: A HISTÓRIA & AUTORIDADE MÉDICA (EDITORIAL STORYTELLING) -->
     <!-- ========================================================================= -->
-    <section class="py-24 bg-stone-900/60 border-y border-stone-800/80 relative z-20">
+    <section class="py-28 bg-[#0e0c0b] border-y border-stone-800/80 relative z-20">
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20">
             
             <div class="max-w-3xl mb-16 text-left">
-                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Autoridade & Propósito</span>
-                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2 mb-6">
-                    A Trajetória do Dr. Sávio Cardoso
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Trajetória & Autoridade</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+                    A Ciência Médica a Serviço da Alta Performance
                 </h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-[#d6bc8c] to-transparent rounded-full"></div>
+                <div class="w-20 h-1 bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-transparent rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 
-                <!-- Story Text -->
+                <!-- Story Narrative -->
                 <div class="lg:col-span-7 space-y-6 text-stone-300 text-base sm:text-lg leading-relaxed font-light text-left">
-                    <p>
-                        O <strong class="text-white font-medium">Dr. Sávio Cardoso</strong> consolidou sua carreira médica na vanguarda da <span class="text-[#d6bc8c] font-medium">medicina preventiva, otimização metabólica e longevidade saudável</span>. Com atuação de destaque no Brasil e em Portugal, ele se tornou uma das principais referências para executivos, empresários e profissionais que não aceitam o declínio de performance como uma consequência natural do tempo.
+                    <p class="first-letter:text-5xl first-letter:font-display first-letter:font-extrabold first-letter:text-[#d6bc8c] first-letter:mr-3 first-letter:float-left">
+                        O <strong class="text-white font-medium">Dr. Sávio Cardoso</strong> construiu sua reputação internacional conectando o que há de mais avançado na <span class="text-[#d6bc8c] font-medium">medicina preventiva, otimização celular e reposição hormonal estratégica</span>. Com consultórios ativos no Brasil e em Cascais (Portugal), ele atende executivos, empresários e profissionais que recusam o declínio físico e mental como destino inevitável.
                     </p>
                     <p>
-                        Sua abordagem combina rigor científico internacional com protocolos práticos e personalizados. Dr. Sávio compreendeu precocemente que a verdadeira liderança e a realização de grandes propósitos exigem um alicerce biológico inabalável: equilíbrio hormonal, metabolismo eficiente, clareza neural e restauração de energia vital.
+                        Ao longo de mais de uma década de prática clínica intensiva, Dr. Sávio percebeu que a maioria dos líderes perde sua vitalidade não por falta de vontade, mas por desequilíbrios bioquímicos silenciosos: inflamação subclínica, exaustão das glândulas adrenais, estresse oxidativo e queda hormonal precoce.
                     </p>
                     <p>
-                        Como autor do catálogo de elite da <strong class="text-white">Elooo Editora</strong>, sua obra <em class="text-[#faeac7]">“O Código da Vitalidade Masculina”</em> sintetiza anos de pesquisa e consultoria clínica em um guia transformador para quem deseja atingir a longevidade com vigor, força e plenitude.
+                        Sua metodologia não oferece paliativos temporários. Trata-se de um sistema completo de reestruturação biológica que capacita o corpo a sustentar altos níveis de energia, concentração afiada e resiliência imunológica ao longo de décadas.
                     </p>
                 </div>
 
-                <!-- Credential Cards -->
+                <!-- 3 Pillars Cards -->
                 <div class="lg:col-span-5 grid grid-cols-1 gap-5">
                     
-                    <div class="flashlight-card p-6" onmousemove="updateFlashlight(event, this)">
-                        <div class="w-10 h-10 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
-                            <iconify-icon icon="solar:stethoscope-linear"></iconify-icon>
+                    <div class="flashlight-card p-6 sm:p-7" onmousemove="updateFlashlight(event, this)">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-11 h-11 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0">
+                                <iconify-icon icon="solar:shield-check-linear"></iconify-icon>
+                            </div>
+                            <h3 class="font-display text-lg font-bold text-white leading-tight">Medicina Preventiva de Precisão</h3>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white mb-2">Medicina Preventiva & Longevidade</h3>
-                        <p class="text-xs font-sans text-stone-400 leading-relaxed">
-                            Foco no diagnóstico precoce, preservação celular e desaceleração do envelhecimento biológico.
+                        <p class="text-xs font-sans text-stone-400 leading-relaxed font-light">
+                            Diagnóstico metabólico celular antecipado para prevenir patologias degenerativas e desacelerar a idade biológica real.
                         </p>
                     </div>
 
-                    <div class="flashlight-card p-6" onmousemove="updateFlashlight(event, this)">
-                        <div class="w-10 h-10 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
-                            <iconify-icon icon="solar:bolt-linear"></iconify-icon>
+                    <div class="flashlight-card p-6 sm:p-7" onmousemove="updateFlashlight(event, this)">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-11 h-11 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0">
+                                <iconify-icon icon="solar:bolt-linear"></iconify-icon>
+                            </div>
+                            <h3 class="font-display text-lg font-bold text-white leading-tight">Otimização Endócrina & Força</h3>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white mb-2">Modulação Hormonal & Vitalidade</h3>
-                        <p class="text-xs font-sans text-stone-400 leading-relaxed">
-                            Restauração dos níveis hormonais ótimos para energia máxima, composição corporal e foco executivo.
+                        <p class="text-xs font-sans text-stone-400 leading-relaxed font-light">
+                            Modulação hormonal segura e respaldada por literatura médica global para restauração de vigor, foco e recomposição corporal.
                         </p>
                     </div>
 
-                    <div class="flashlight-card p-6" onmousemove="updateFlashlight(event, this)">
-                        <div class="w-10 h-10 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
-                            <iconify-icon icon="solar:global-linear"></iconify-icon>
+                    <div class="flashlight-card p-6 sm:p-7" onmousemove="updateFlashlight(event, this)">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-11 h-11 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0">
+                                <iconify-icon icon="solar:crown-line-duotone"></iconify-icon>
+                            </div>
+                            <h3 class="font-display text-lg font-bold text-white leading-tight">Presença Internacional</h3>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-white mb-2">Consultoria Internacional</h3>
-                        <p class="text-xs font-sans text-stone-400 leading-relaxed">
-                            Pacientes e mentorados nos principais centros do Brasil e na Europa (Portugal / Cascais).
+                        <p class="text-xs font-sans text-stone-400 leading-relaxed font-light">
+                            Pioneirismo em conectar pacientes do polo de Cascais/Lisboa e dos grandes centros brasileiros à medicina de elite.
                         </p>
                     </div>
 
@@ -692,57 +747,58 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO: O LIVRO E SEUS DIFERENCIAIS -->
+    <!-- SEÇÃO 3: O LIVRO & OS 4 DIFERENCIAIS DA OBRA -->
     <!-- ========================================================================= -->
-    <section class="py-28 bg-[#0c0a09] relative z-20 overflow-hidden">
+    <section class="py-28 bg-[#070709] relative z-20 overflow-hidden">
         
-        <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-20"></div>
+        <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] opacity-15"></div>
 
         <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
             
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Obra Exclusiva</span>
-                <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-2 mb-6">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Obra Literária Exclusiva</span>
+                <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-2 mb-4">
                     O Livro: <span class="gold-text-sweep">O Código da Vitalidade Masculina</span>
                 </h2>
                 <p class="text-base sm:text-lg text-stone-400 font-light leading-relaxed">
-                    Um manual prático e científico que destrava os segredos biológicos da longevidade de alta performance.
+                    A bíblia prática e científica que desvenda as engrenagens biológicas para viver no topo da sua capacidade.
                 </p>
             </div>
 
-            <!-- BOOK SHOWCASE & 4 DIFERENCIAIS -->
+            <!-- SHOWCASE: LIVRO 3D + 4 PILARES DA OBRA -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
-                <!-- 3D Book Presentation Card -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="book-card-3d relative w-[300px] sm:w-[340px] rounded-[24px] bg-gradient-to-br from-[#1c1917] to-[#0a0a0c] border-2 border-[#d6bc8c]/60 p-8 text-left overflow-hidden">
+                <!-- 3D Book Presentation -->
+                <div class="lg:col-span-5 flex justify-center book-3d-wrap">
+                    <div class="book-3d-object relative w-[310px] sm:w-[350px] rounded-[24px] bg-gradient-to-br from-[#1c1917] via-[#12100e] to-[#0a0a0c] border-2 border-[#d6bc8c]/70 p-8 text-left overflow-hidden">
                         
-                        <!-- Top Book Ribbon -->
+                        <!-- Book Header Ribbon -->
                         <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-                            <span class="text-[10px] font-mono uppercase tracking-widest text-[#d6bc8c]">Elooo Editora</span>
-                            <span class="text-[10px] font-mono text-stone-400">Edição Oficial</span>
+                            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] font-bold">Elooo Editora</span>
+                            <span class="text-[10px] font-mono text-stone-400">Edição de Luxo</span>
                         </div>
 
-                        <!-- Book Title Spine Simulation -->
+                        <!-- Book Spine & Title -->
                         <div class="my-6">
-                            <span class="text-xs font-mono uppercase tracking-[0.2em] text-[#d6bc8c]">Dr. Sávio Cardoso</span>
-                            <h3 class="font-display text-2xl font-bold text-white mt-2 leading-tight">
+                            <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-[#faeac7]">Dr. Sávio Cardoso</span>
+                            <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-2 leading-tight">
                                 O CÓDIGO DA VITALIDADE MASCULINA
                             </h3>
-                            <p class="text-xs text-stone-400 mt-2 font-light italic">
+                            <p class="text-xs text-stone-400 mt-2.5 font-light italic">
                                 Longevidade, Saúde Metabólica e Alta Performance
                             </p>
                         </div>
 
-                        <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-400">
-                            <span>✦ Capa Nobre</span>
-                            <span>✦ Tiragem Limitada</span>
+                        <!-- Book Specs -->
+                        <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-300">
+                            <span class="text-[#d6bc8c]">✦ Capa Nobre</span>
+                            <span>✦ Tiragem Oficial</span>
                         </div>
 
-                        <!-- CTA to buy inside card -->
+                        <!-- Purchase Button inside Mockup -->
                         <div class="mt-8">
-                            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury w-full py-3 text-xs font-mono font-bold uppercase tracking-wider text-center">
-                                Comprar Exemplar
+                            <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury w-full py-3.5 text-xs font-mono font-bold uppercase tracking-wider text-center">
+                                Comprar Livro Oficial
                             </a>
                         </div>
                     </div>
@@ -753,37 +809,37 @@
                     
                     <!-- Pilar 1 -->
                     <div class="flashlight-card p-7" onmousemove="updateFlashlight(event, this)">
-                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-3">01</div>
+                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">01</div>
                         <h4 class="font-display text-lg font-bold text-white mb-2">Bioquímica da Energia</h4>
                         <p class="text-xs text-stone-400 leading-relaxed font-light">
-                            Compreenda como suas células geram ATP e descubra estratégias para extinguir a fadiga crônica e o cansaço diário.
+                            Compreenda como suas mitocôndrias geram energia celular e como extinguir a névoa mental e o cansaço crônico da sua rotina.
                         </p>
                     </div>
 
                     <!-- Pilar 2 -->
                     <div class="flashlight-card p-7" onmousemove="updateFlashlight(event, this)">
-                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-3">02</div>
+                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">02</div>
                         <h4 class="font-display text-lg font-bold text-white mb-2">Equilíbrio Hormonal</h4>
                         <p class="text-xs text-stone-400 leading-relaxed font-light">
-                            Protocolos fundamentados para otimizar testosterona, cortisol, tireoide e insulina com segurança e acompanhamento médico.
+                            Protocolos comprovados para otimização de testosterona, cortisol, tireoide e metabolismo com segurança e supervisão médica.
                         </p>
                     </div>
 
                     <!-- Pilar 3 -->
                     <div class="flashlight-card p-7" onmousemove="updateFlashlight(event, this)">
-                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-3">03</div>
-                        <h4 class="font-display text-lg font-bold text-white mb-2">Sono & Regeneração Neural</h4>
+                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">03</div>
+                        <h4 class="font-display text-lg font-bold text-white mb-2">Sono & Neuroproteção</h4>
                         <p class="text-xs text-stone-400 leading-relaxed font-light">
-                            Técnicas clínicas para restaurar o ciclo circadiano, amplificando a recuperação muscular e a velocidade de raciocínio.
+                            Ajustes circadianos de precisão para induzir sono profundo reparador, acelerar regeneração neural e potencializar o raciocínio.
                         </p>
                     </div>
 
                     <!-- Pilar 4 -->
                     <div class="flashlight-card p-7" onmousemove="updateFlashlight(event, this)">
-                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-3">04</div>
+                        <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-2">04</div>
                         <h4 class="font-display text-lg font-bold text-white mb-2">Longevidade Produtiva</h4>
                         <p class="text-xs text-stone-400 leading-relaxed font-light">
-                            Como construir uma reserva biológica capaz de sustentar décadas de produtividade executiva sem perda de qualidade de vida.
+                            Construa uma reserva biológica robusta para manter vitalidade, força muscular e vigor sexual ao longo de todas as décadas da vida.
                         </p>
                     </div>
 
@@ -795,34 +851,96 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- FINAL HERO CTA SECTION -->
+    <!-- SEÇÃO 4: PARA QUEM FOI ESCRITA ESTA OBRA -->
     <!-- ========================================================================= -->
-    <section class="py-24 bg-gradient-to-b from-stone-900 to-stone-950 border-t border-stone-800 text-center relative z-20">
+    <section class="py-24 bg-[#0e0c0b] border-t border-stone-800/80 relative z-20">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 text-center">
+            
+            <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Público-Alvo</span>
+            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-12">
+                Para Quem é Este Livro?
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+                
+                <div class="flashlight-card p-6" onmousemove="updateFlashlight(event, this)">
+                    <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                        <iconify-icon icon="solar:user-bold-duotone"></iconify-icon>
+                    </div>
+                    <h3 class="font-display text-base font-bold text-white mb-2">Empresários & Líderes</h3>
+                    <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        Profissionais que precisam de clareza mental extrema e energia constante para tomada de decisões diárias.
+                    </p>
+                </div>
+
+                <div class="flashlight-card p-6" onmousemove="updateFlashlight(event, this)">
+                    <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                        <iconify-icon icon="solar:dumbbell-large-linear"></iconify-icon>
+                    </div>
+                    <h3 class="font-display text-base font-bold text-white mb-2">Busca por Vigor Físico</h3>
+                    <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        Homens e mulheres que desejam recomposição corporal, força muscular e vitalidade sem estresse oxidativo.
+                    </p>
+                </div>
+
+                <div class="flashlight-card p-6" onmousemove="updateFlashlight(event, this)">
+                    <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                        <iconify-icon icon="solar:heart-pulse-linear"></iconify-icon>
+                    </div>
+                    <h3 class="font-display text-base font-bold text-white mb-2">Longevidade Consciente</h3>
+                    <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        Pessoas que compreendem que investir na saúde hoje é a melhor garantia de independência e produtividade no futuro.
+                    </p>
+                </div>
+
+                <div class="flashlight-card p-6" onmousemove="updateFlashlight(event, this)">
+                    <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-xl mb-4">
+                        <iconify-icon icon="solar:book-bookmark-linear"></iconify-icon>
+                    </div>
+                    <h3 class="font-display text-base font-bold text-white mb-2">Entusiastas da Medicina</h3>
+                    <p class="text-xs text-stone-400 font-light leading-relaxed">
+                        Leitores que exigem conteúdo embasado na ciência mais recente e com aplicabilidade imediata e comprovada.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- FINAL CONVERSION HERO (COMPRA & CONTATO OFICIAL) -->
+    <!-- ========================================================================= -->
+    <section class="py-28 bg-gradient-to-b from-[#070709] via-[#12100e] to-[#070709] border-t border-stone-800 text-center relative z-20">
         <div class="max-w-4xl mx-auto px-6">
             
-            <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Faça Parte Deste Movimento</span>
-            
-            <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-white mt-3 mb-6">
-                Transforme sua Vitalidade com a Obra do Dr. Sávio Cardoso
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/15 mb-6 backdrop-blur-md">
+                <iconify-icon icon="circle-flags:br" class="text-sm"></iconify-icon>
+                <iconify-icon icon="circle-flags:pt" class="text-sm"></iconify-icon>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-[#d6bc8c]">Elooo Editora Internacional</span>
+            </div>
+
+            <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-2 mb-6 leading-tight">
+                Garanta Seu Exemplar com Dedicatória Oficial do <span class="gold-text-sweep">Dr. Sávio Cardoso</span>
             </h2>
             
             <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-                Garanta seu exemplar autografado e tenha acesso direto aos ensinamentos de um dos médicos mais respeitados em longevidade do Brasil e de Portugal.
+                Adquira diretamente pela editora o livro que está transformando a compreensão de longevidade, vigor e medicina de alta performance no Brasil e em Portugal.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20S%C3%A1vio%20Cardoso%20(O%20C%C3%B3digo%20da%20Vitalidade%20Masculina)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl w-full sm:w-auto">
-                    <span>Garantir Meu Exemplar Oficial →</span>
+                    <span>Garantir Meu Livro Autografado →</span>
                 </a>
 
                 <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimentos%20e%20mentorias%20com%20o%20Dr.%20S%C3%A1vio%20Cardoso." target="_blank" rel="noopener noreferrer" class="px-8 py-5 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2">
                     <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
-                    <span>Falar com o Autor</span>
+                    <span>Falar com a Equipe do Autor</span>
                 </a>
             </div>
 
             <!-- Back to authors link -->
-            <div class="mt-12">
+            <div class="mt-14">
                 <a href="../autores.html" class="inline-flex items-center gap-2 text-xs font-mono text-stone-500 hover:text-white uppercase tracking-widest transition-colors">
                     <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
                     <span>Voltar para o Pódio de Autores ELOOO</span>
