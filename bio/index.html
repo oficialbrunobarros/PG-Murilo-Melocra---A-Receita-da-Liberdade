@@ -3,28 +3,26 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>ELOOO BIO PREMIUM | Nós Construímos Tudo Para Você — No Ar em 24 Horas</title>
-    <meta name="description" content="Nós construímos sua Bio Inteligente completa com Concierge de IA. Você só nos envia suas informações e em 24 horas ela estará pronta e no ar."/>
+    <title>ELOOO VITRINE PREMIUM | Vitrine de Luxo + IA que Atende e Vende 24h por Dia</title>
+    <meta name="description" content="As redes sociais são lojas. Tenha uma Vitrine Premium impecável e uma IA que atende seus clientes e vende 24h por dia. Construída pela equipe ELOOO em 24h."/>
     
     <!-- Open Graph / Meta -->
-    <meta property="og:title" content="ELOOO BIO PREMIUM | Sua Bio Inteligente Pronta em 24h"/>
-    <meta property="og:description" content="Implementação 100% feita por nossa equipe. Você nos envia suas informações e nós configuramos tudo: Concierge de IA, vitrine e agendamento em até 24 horas."/>
+    <meta property="og:title" content="ELOOO VITRINE PREMIUM | Vitrine de Luxo + IA Vendedora 24h"/>
+    <meta property="og:description" content="Seu Instagram é a sua loja. Criamos sua Vitrine Premium e treinamos sua IA que atende e vende no automático. No ar em 24h."/>
     <meta property="og:image" content="../static/images/og-share.png"/>
     <meta property="og:type" content="website"/>
     <meta name="theme-color" content="#EAEAE5"/>
 
-    <!-- Exact Fonts from ELOOO Website: Space Grotesk + Inter + JetBrains Mono -->
+    <!-- High-Performance Font Loading: Preconnect & display=swap (Grade A Speed) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Iconify -->
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- Iconify (Deferred for speed) -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../static/css/linkcommerce_1.css"/>
-    <link rel="stylesheet" href="../static/css/linkcommerce_2.css"/>
 
     <script>
         tailwind.config = {
@@ -74,6 +72,7 @@
             color: #1C1917;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
         .font-display {
@@ -82,9 +81,9 @@
 
         /* FLOATING PILL NAVBAR */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(28, 25, 23, 0.1);
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
         }
@@ -95,7 +94,7 @@
             background: #FFFFFF;
             border: 1px solid rgba(28, 25, 23, 0.08);
             border-radius: 24px;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .flashlight-card::before {
             content: '';
@@ -108,7 +107,7 @@
             z-index: 1;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
             border-radius: inherit;
         }
         .flashlight-card:hover {
@@ -147,7 +146,7 @@
             border: 1.5px solid #faeac7;
             box-shadow: 0 10px 25px -5px rgba(214, 188, 140, 0.65), 0 0 15px rgba(214, 188, 140, 0.4);
             overflow: hidden;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             text-decoration: none;
             text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
@@ -187,7 +186,7 @@
             border-bottom: 1px solid rgba(214, 188, 140, 0.4);
         }
 
-        /* SMARTPHONE FRAME 3D */
+        /* SMARTPHONE FRAME 3D - ULTRA FAST CSS NATIVE */
         .phone-mockup-wrapper {
             position: relative;
             border-radius: 46px;
@@ -196,6 +195,14 @@
             box-shadow: 0 30px 70px -15px rgba(28, 25, 23, 0.35), 0 0 30px rgba(214, 188, 140, 0.2);
             border: 2px solid rgba(214, 188, 140, 0.5);
         }
+
+        .netflix-scroll-mini {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .netflix-scroll-mini::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body class="antialiased selection:bg-stone-900 selection:text-white">
@@ -205,16 +212,16 @@
         <nav class="pointer-events-auto flex items-center justify-between gap-4 pl-4 pr-3 sm:pl-6 sm:pr-3 py-2.5 rounded-full w-full max-w-4xl glass-nav relative">
             <!-- Brand Logo & Product Name Always Linked -->
             <a class="inline-flex items-center flex-none group cursor-pointer" href="../index.html">
-                <img src="../static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-9 sm:h-11 object-contain transition-transform group-hover:scale-105" style="filter: brightness(0);"/>
+                <img src="../static/images/ELOOO LOGO.png" alt="ELOOO VITRINE PREMIUM" class="h-9 sm:h-11 object-contain transition-transform group-hover:scale-105" style="filter: brightness(0);"/>
                 <span class="ml-3 text-[11.5px] font-mono font-bold uppercase tracking-[0.2em] text-stone-900 border-l border-stone-300 pl-3">
-                    BIO PREMIUM
+                    VITRINE PREMIUM
                 </span>
             </a>
 
             <!-- Right Action: Hamburger + Gold CTA -->
             <div class="flex items-center gap-2.5 flex-none">
                 <a href="cadastrar.html" class="btn-gold-luxury px-5 py-2.5 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-widest">
-                    <span>Quero Minha Bio</span>
+                    <span>Quero Minha Vitrine</span>
                     <iconify-icon icon="solar:arrow-right-linear" class="text-sm"></iconify-icon>
                 </a>
 
@@ -233,8 +240,8 @@
                 <!-- Drawer Header -->
                 <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-6">
                     <div class="flex items-center gap-2">
-                        <img src="../static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-8 object-contain" style="filter: brightness(0);"/>
-                        <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-stone-900">BIO PREMIUM</span>
+                        <img src="../static/images/ELOOO LOGO.png" alt="ELOOO VITRINE PREMIUM" class="h-8 object-contain" style="filter: brightness(0);"/>
+                        <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-stone-900">VITRINE PREMIUM</span>
                     </div>
                     <button id="luxury-drawer-close" class="w-8 h-8 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center text-lg hover:bg-stone-200 transition-colors">
                         <iconify-icon icon="solar:close-circle-linear"></iconify-icon>
@@ -243,13 +250,14 @@
 
                 <!-- Navigation Links -->
                 <nav class="space-y-2 font-sans font-bold text-xs uppercase tracking-wider text-stone-700">
-                    <a href="#problema" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Por que a ELOOO BIO</a>
-                    <a href="#como" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Como Nós Fazemos Tudo</a>
-                    <a href="#demo" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Concierge com IA</a>
-                    <a href="#agenda" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Agenda (Plano Elite)</a>
-                    <a href="#planos" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Planos & Implementação</a>
+                    <a href="#entregaveis" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Os 2 Entregáveis</a>
+                    <a href="#problema" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Sua Rede é uma Loja</a>
+                    <a href="#como" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Nós Fazemos Tudo em 24h</a>
+                    <a href="#demo" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">IA que Atende e Vende</a>
+                    <a href="#agenda" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Agenda Integrada (Plano Elite)</a>
+                    <a href="#planos" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Planos & Valores</a>
                     <a href="brunobarros.html" target="_blank" class="drawer-link block px-4 py-3 rounded-2xl bg-stone-900 text-white font-bold flex items-center justify-between border border-[#d6bc8c]">
-                        <span>Bio Modelo Bruno Barros</span>
+                        <span>Vitrine Modelo Bruno Barros</span>
                         <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
                     </a>
                 </nav>
@@ -261,7 +269,7 @@
                     Fazer Login
                 </a>
                 <a href="cadastrar.html" class="btn-gold-luxury w-full py-3.5 text-xs font-mono font-bold uppercase tracking-widest text-center">
-                    Contratar Implementação 24h →
+                    Contratar Vitrine em 24h →
                 </a>
             </div>
         </div>
@@ -270,46 +278,101 @@
     <!-- MAIN CONTENT -->
     <main class="relative z-10">
 
-        <!-- HERO SECTION (Done-For-You 24h Positioning) -->
+        <!-- HERO SECTION (Rate A Fast Render + Direct 2 Deliverables Positioning) -->
         <section class="relative pt-28 pb-10 sm:pt-32 sm:pb-12 overflow-hidden">
             <div class="max-w-4xl mx-auto px-5 text-center relative z-10">
                 
                 <!-- Main Headline -->
                 <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-bold font-display tracking-tight text-stone-900 leading-[1.1] mb-3">
-                    O link na bio que entende seu cliente e vende. Nós fazemos tudo por você.
+                    Sua Vitrine Premium com Inteligência Artificial que Atende e Vende 24h por dia.
                 </h1>
 
                 <!-- Subtitle -->
-                <p class="text-sm sm:text-base text-stone-600 max-w-xl mx-auto mb-6 leading-relaxed">
-                    Não perca tempo configurando ferramentas, design ou programação. Você apenas nos envia suas informações e <strong class="text-stone-950 font-semibold">nossa equipe entrega seu ELOOO BIO PREMIUM com IA 100% pronto e rodando em 24h</strong>.
+                <p class="text-sm sm:text-base text-stone-600 max-w-2xl mx-auto mb-6 leading-relaxed">
+                    As redes sociais são lojas. Nós construímos a sua <strong class="text-stone-950 font-semibold">Vitrine Premium de Ultra Luxo</strong> e treinamos a sua <strong class="text-stone-950 font-semibold">IA Vendedora que atende e fecha vendas 24h por dia</strong>. Tudo 100% configurado e no ar em até 24 horas.
                 </p>
 
-                <!-- Hero Action Buttons (Both Super-Premium Gold) -->
+                <!-- Hero Action Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
                     <a href="cadastrar.html" class="btn-gold-luxury w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-xl">
-                        <span>Quero Minha Bio Pronta em 24h</span>
+                        <span>Quero Minha Vitrine Pronta em 24h</span>
                         <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
                     </a>
                     
                     <a href="brunobarros.html" target="_blank" class="w-full sm:w-auto px-7 py-4 rounded-full bg-white text-stone-900 border-2 border-[#d6bc8c] hover:border-[#b89445] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm">
-                        <span>Ver Exemplo de Bruno Barros</span>
+                        <span>Ver Vitrine de Bruno Barros</span>
                         <iconify-icon icon="solar:arrow-right-up-linear" class="text-base text-[#b89445]"></iconify-icon>
                     </a>
                 </div>
 
-                <!-- SMARTPHONE MOCKUP -->
+                <!-- SMARTPHONE MOCKUP (NATIVE HIGH PERFORMANCE CSS - ZERO LAG) -->
                 <div class="flex justify-center mb-10">
-                    <div class="w-full max-w-[310px] phone-mockup-wrapper relative">
+                    <div class="w-full max-w-[320px] phone-mockup-wrapper relative">
                         <!-- Dynamic Island -->
                         <div class="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-20 flex items-center justify-end pr-2">
                             <div class="w-2 h-2 rounded-full bg-[#222]"></div>
                         </div>
                         
-                        <!-- Interactive Screen -->
-                        <div class="relative rounded-[38px] overflow-hidden h-[540px] bg-stone-950">
-                            <iframe src="brunobarros.html" title="Bio Bruno Barros Ao Vivo" class="w-full h-full border-0"></iframe>
-                            <a href="brunobarros.html" target="_blank" class="absolute inset-x-0 bottom-0 py-3 bg-gradient-to-t from-black/95 via-black/70 to-transparent backdrop-blur-sm text-center text-xs font-mono font-bold uppercase tracking-widest text-[#f6e3c5] hover:text-white transition-colors">
-                                Abrir bio oficial completa →
+                        <!-- Interactive Screen Native Content -->
+                        <div class="relative rounded-[38px] overflow-hidden bg-[#0E0D0C] text-white p-5 pt-8 text-left shadow-inner flex flex-col justify-between min-h-[480px]">
+                            <div>
+                                <!-- Profile -->
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-14 h-14 rounded-full overflow-hidden border border-[#d6bc8c] bg-stone-900 flex-none">
+                                        <img src="../static/images/bruno-barros.png" alt="Bruno Barros" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop';"/>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-display font-bold text-sm text-white">Bruno Barros</h4>
+                                        <p class="text-[10px] text-stone-400">Autor, Mentor & Fundador</p>
+                                        <span class="inline-block mt-0.5 text-[8.5px] font-mono text-[#d6bc8c] bg-[#d6bc8c]/15 px-2 py-0.5 rounded">✦ Vitrine Oficial ELOOO</span>
+                                    </div>
+                                </div>
+
+                                <!-- IA Vendedora Feature Banner -->
+                                <div class="p-3 rounded-xl bg-gradient-to-r from-stone-900 to-stone-850 border border-amber-400/40 mb-3 shadow-sm">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-6 h-6 rounded-lg bg-[#d6bc8c]/20 text-[#d6bc8c] flex items-center justify-center text-sm">
+                                                <iconify-icon icon="solar:bolt-circle-bold"></iconify-icon>
+                                            </div>
+                                            <span class="text-[11px] font-bold font-display text-[#f6e3c5]">IA Vendedora Ativa 24h</span>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-emerald-400 font-bold">ONLINE</span>
+                                    </div>
+                                    <p class="text-[9.5px] text-stone-400 mt-1">Diagnostica cada seguidor e recomenda o produto certo para compra direta.</p>
+                                </div>
+
+                                <!-- Vitrine Carousel -->
+                                <p class="text-[9.5px] font-mono font-bold uppercase tracking-wider text-stone-400 mb-1.5">
+                                    VITRINE DE PRODUTOS & LIVROS
+                                </p>
+                                <div class="netflix-scroll-mini pb-2">
+                                    <div class="w-[100px] flex-none rounded-xl bg-stone-900 border border-white/10 p-2 text-center">
+                                        <div class="w-full aspect-square rounded-lg bg-stone-800 mb-1.5 flex items-center justify-center overflow-hidden">
+                                            <img src="../static/images/recalculando-cover.png" onerror="this.src='static/images/bruno-barros.png';" class="w-full h-full object-cover"/>
+                                        </div>
+                                        <p class="text-[9px] font-bold truncate text-white">Vidanova</p>
+                                        <span class="text-[8px] font-mono text-[#d6bc8c]">R$ 89</span>
+                                    </div>
+                                    <div class="w-[100px] flex-none rounded-xl bg-stone-900 border border-white/10 p-2 text-center">
+                                        <div class="w-full aspect-square rounded-lg bg-stone-800 mb-1.5 flex items-center justify-center p-2">
+                                            <img src="../static/images/ELOOO LOGO.png" class="w-full object-contain filter brightness-0 invert"/>
+                                        </div>
+                                        <p class="text-[9px] font-bold truncate text-white">Editora</p>
+                                        <span class="text-[8px] font-mono text-[#d6bc8c]">Publicação</span>
+                                    </div>
+                                    <div class="w-[100px] flex-none rounded-xl bg-stone-900 border border-white/10 p-2 text-center">
+                                        <div class="w-full aspect-square rounded-lg bg-stone-800 mb-1.5 flex items-center justify-center text-[#d6bc8c] text-xl">
+                                            <iconify-icon icon="solar:crown-line-duotone"></iconify-icon>
+                                        </div>
+                                        <p class="text-[9px] font-bold truncate text-white">Mentoria</p>
+                                        <span class="text-[8px] font-mono text-[#d6bc8c]">VIP</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="brunobarros.html" target="_blank" class="w-full py-2 rounded-xl bg-[#d6bc8c] text-stone-950 text-center font-bold text-[10.5px] uppercase tracking-wider hover:bg-[#faeac7] transition-colors mt-2 shadow-md">
+                                Abrir Vitrine Completa →
                             </a>
                         </div>
                     </div>
@@ -350,15 +413,113 @@
             </div>
         </section>
 
-        <!-- O PROBLEMA (Antes vs Depois) -->
-        <section class="py-12 sm:py-16 px-5 bg-white border-t border-b border-stone-300" id="problema">
+        <!-- OS 2 ENTREGÁVEIS PRINCIPAIS (VITRINE PREMIUM + IA QUE ATENDE E VENDE) -->
+        <section class="py-12 sm:py-16 px-5 section-gold-warm border-t border-b border-stone-300" id="entregaveis">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#8c6e26] block mb-1">
+                        A COMBINAÇÃO PERFEITA DE CONVERSÃO
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-bold font-display text-stone-950 leading-tight">
+                        Dois entregáveis essenciais para sua presença de elite.
+                    </h2>
+                    <p class="text-xs sm:text-sm mt-1.5 max-w-xl mx-auto text-stone-600">
+                        Sua rede social é a sua loja física no digital. Ela precisa de uma vitrine impecável e de uma vendedora de alto nível disponível 24 horas por dia.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                    <!-- Entregável 01: Vitrine Premium -->
+                    <div class="flashlight-card p-7 sm:p-8 bg-white border border-[#d6bc8c]/60 shadow-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/20 text-[#8c6e26] flex items-center justify-center text-2xl">
+                                    <iconify-icon icon="solar:shop-2-bold"></iconify-icon>
+                                </div>
+                                <span class="text-[10.5px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-stone-100 text-stone-700">
+                                    ENTREGÁVEL 01
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold font-display text-stone-950 mb-2">
+                                VITRINE PREMIUM
+                            </h3>
+                            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-6">
+                                Uma vitrine de altíssimo padrão visual onde seus livros, mentorias, consultas e serviços ganham autoridade imediata. Seus seguidores entram na sua loja e enxergam valor instantâneo.
+                            </p>
+
+                            <ul class="space-y-2 text-xs font-medium text-stone-700">
+                                <li class="flex items-center gap-2 text-stone-900">
+                                    <span class="text-[#8c6e26] font-bold">✦</span>
+                                    <span>Design de luxo editorial padrão internacional</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-stone-900">
+                                    <span class="text-[#8c6e26] font-bold">✦</span>
+                                    <span>Carrossel estilo Netflix de produtos & serviços</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-stone-900">
+                                    <span class="text-[#8c6e26] font-bold">✦</span>
+                                    <span>Zero poluição de links feios e desorganizados</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Entregável 02: IA Que Atende e Vende -->
+                    <div class="flashlight-card p-7 sm:p-8 bg-[#12110e] text-white border-2 border-[#d6bc8c] shadow-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/25 text-[#d6bc8c] flex items-center justify-center text-2xl">
+                                    <iconify-icon icon="solar:chat-round-dots-bold"></iconify-icon>
+                                </div>
+                                <span class="text-[10.5px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#d6bc8c]/20 text-[#f6e3c5]">
+                                    ENTREGÁVEL 02
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold font-display text-white mb-2">
+                                IA QUE ATENDE E VENDE
+                            </h3>
+                            <p class="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
+                                Sua consultora e vendedora de elite que nunca descansa. A IA recebe cada visitante, faz 3 perguntas estratégicas para entender o momento dele e recomenda a solução exata com compra direta.
+                            </p>
+
+                            <ul class="space-y-2 text-xs font-medium text-stone-200">
+                                <li class="flex items-center gap-2">
+                                    <span class="text-[#d6bc8c] font-bold">✦</span>
+                                    <span>Atendimento e qualificação ativa 24 horas por dia</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-[#d6bc8c] font-bold">✦</span>
+                                    <span>Treinada com as regras e produtos do seu negócio</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-[#d6bc8c] font-bold">✦</span>
+                                    <span>Conduz o cliente até a decisão de compra sem travar</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Action CTA Button (Dourado Super-Premium) -->
+                <div class="mt-10 text-center">
+                    <a href="cadastrar.html" class="btn-gold-luxury px-9 py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-xl">
+                        <span>Quero Minha Vitrine Premium + IA 24h →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- O PROBLEMA (Sua Rede é uma Loja) -->
+        <section class="py-12 sm:py-16 px-5 bg-white" id="problema">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-8">
                     <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                        Você não precisa perder tempo tentando criar sozinho.
+                        Você deixaria sua loja sem vitrine e sem vendedor?
                     </h2>
                     <p class="text-xs sm:text-sm mt-1.5 max-w-lg mx-auto text-stone-600">
-                        Chega de quebrar a cabeça com plataformas complicadas. Nós assumimos toda a parte técnica, design e inteligência para você.
+                        A maioria dos profissionais coloca uma lista confusa de botões na bio e perde mais de 80% das vendas. Nós transformamos seu perfil em uma loja irresistível.
                     </p>
                 </div>
 
@@ -366,21 +527,21 @@
                     <!-- Antes Card -->
                     <div class="flashlight-card p-6 sm:p-7 bg-stone-50 border border-stone-200">
                         <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-stone-500 block mb-3">
-                            ✕ Fazer por conta própria
+                            ✕ Como a maioria faz hoje
                         </span>
-                        <h3 class="text-lg font-bold font-display mb-3 text-stone-950">Horas perdidas e resultado amador.</h3>
+                        <h3 class="text-lg font-bold font-display mb-3 text-stone-950">Vinte links empilhados e cliente perdido.</h3>
                         <ul class="space-y-2 text-xs sm:text-sm text-stone-600">
                             <li class="flex items-start gap-2">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>Perder dias tentando configurar ferramentas e links confusos</span>
+                                <span>O seguidor clica no link e não sabe para onde olhar</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>Páginas sem autoridade visual que não passam credibilidade</span>
+                                <span>Ninguém atende ou tira as dúvidas dele na hora</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>Visitantes chegam perdidos e você não converte em vendas</span>
+                                <span>A pessoa fecha a página e você perde o cliente para sempre</span>
                             </li>
                         </ul>
                     </div>
@@ -388,21 +549,21 @@
                     <!-- Depois Card -->
                     <div class="flashlight-card p-6 sm:p-7 bg-[#141311] text-white border border-[#d6bc8c]/50 shadow-lg">
                         <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#d6bc8c] block mb-3">
-                            ✓ Com ELOOO BIO PREMIUM
+                            ✓ Com ELOOO VITRINE PREMIUM
                         </span>
-                        <h3 class="text-lg font-bold font-display mb-3 text-[#f6e3c5]">Nós fazemos tudo. No ar em 24h.</h3>
+                        <h3 class="text-lg font-bold font-display mb-3 text-[#f6e3c5]">Vitrine impecável + IA Vendedora 24h.</h3>
                         <ul class="space-y-2 text-xs sm:text-sm text-stone-200">
                             <li class="flex items-start gap-2">
                                 <span class="text-[#d6bc8c] font-bold">✓</span>
-                                <span>Você apenas nos envia suas fotos, links e produtos</span>
+                                <span>Vitrine de ultra luxo que valoriza seus produtos</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-[#d6bc8c] font-bold">✓</span>
-                                <span>Nossa equipe projeta seu design e treina seu Concierge de IA</span>
+                                <span>IA que atende o cliente, qualifica e fecha a venda</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-[#d6bc8c] font-bold">✓</span>
-                                <span>Em até 24 horas sua bio de luxo está ativa e pronta para faturar</span>
+                                <span>Configuração 100% feita por nossa equipe em 24h</span>
                             </li>
                         </ul>
                     </div>
@@ -411,7 +572,7 @@
                 <!-- Section Action CTA Button (Dourado Super-Premium) -->
                 <div class="mt-8 text-center">
                     <a href="cadastrar.html" class="btn-gold-luxury px-8 py-3.5 text-xs font-mono font-bold uppercase tracking-widest">
-                        <span>Quero que a equipe ELOOO monte minha bio →</span>
+                        <span>Quero a equipe ELOOO montando minha vitrine →</span>
                     </a>
                 </div>
             </div>
@@ -422,7 +583,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-8">
                     <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                        Como funciona o processo de entrega em 24 horas.
+                        Como funciona a entrega da sua Vitrine em 24 horas.
                     </h2>
                     <p class="text-xs sm:text-sm mt-1 text-stone-600 font-medium">
                         Zero esforço técnico para você. Toda a execução profissional é por nossa conta.
@@ -435,7 +596,7 @@
                         <div class="text-xl font-display font-bold text-[#b89445] mb-2">01</div>
                         <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Você envia os dados</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
-                            Você nos passa suas informações: foto, produtos, livros, serviços e links de venda.
+                            Você nos passa suas fotos, produtos, livros, serviços e links de venda em 2 minutos.
                         </p>
                     </div>
 
@@ -444,7 +605,7 @@
                         <div class="text-xl font-display font-bold text-[#b89445] mb-2">02</div>
                         <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Nós criamos tudo</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
-                            Nossa equipe técnica monta o design, cadastra seu catálogo e treina sua IA com precisão.
+                            Nossa equipe monta sua Vitrine Premium e treina sua IA Vendedora com precisão.
                         </p>
                     </div>
 
@@ -453,16 +614,16 @@
                         <div class="text-xl font-display font-bold text-[#d6bc8c] mb-2">03</div>
                         <h3 class="text-sm font-bold font-display text-white mb-1">No ar em 24h</h3>
                         <p class="text-xs text-stone-300 leading-relaxed">
-                            Em até 24 horas entregamos seu link oficial de elite pronto para você colocar na sua bio.
+                            Em até 24 horas sua Vitrine Oficial de Luxo está pronta para receber visitas.
                         </p>
                     </div>
 
                     <!-- Passo 4 -->
                     <div class="flashlight-card p-5 bg-white">
                         <div class="text-xl font-display font-bold text-[#b89445] mb-2">04</div>
-                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Você vende no auto</h3>
+                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">A IA vende 24h</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
-                            Seus seguidores são qualificados pela IA e tomam decisões de compra 24h por dia.
+                            Seus visitantes são atendidos e tomam decisões de compra dia e noite no automático.
                         </p>
                     </div>
                 </div>
@@ -470,27 +631,27 @@
                 <!-- Section Action CTA Button (Dourado Super-Premium) -->
                 <div class="mt-8 text-center">
                     <a href="cadastrar.html" class="btn-gold-luxury px-8 py-3.5 text-xs font-mono font-bold uppercase tracking-widest">
-                        <span>Iniciar Minha Implementação em 24h →</span>
+                        <span>Iniciar Minha Vitrine Premium em 24h →</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- DEMO INTERATIVA (Concierge IA em Tempo Real) -->
+        <!-- DEMO INTERATIVA (IA QUE ATENDE E VENDE) -->
         <section class="py-12 sm:py-16 px-5 bg-white border-t border-b border-stone-300" id="demo">
             <div class="max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
                     <div>
                         <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                            Nós treinamos seu Concierge de IA sob medida.
+                            Experimente a IA que atende e vende no automático.
                         </h2>
                         <p class="text-xs sm:text-sm mt-3 text-stone-600 leading-relaxed">
-                            O Concierge de IA analisa o momento de cada visitante e prescreve a melhor solução do seu catálogo. Nossa equipe cuida de todo o treinamento com as respostas certas do seu negócio.
+                            Veja como sua IA Vendedora atua com cada seguidor. Ela qualifica a dor de cada pessoa e indica exatamente o seu produto ou mentoria que vai resolver o problema dela.
                         </p>
 
                         <div class="mt-6">
                             <a href="cadastrar.html" class="btn-gold-luxury px-8 py-3.5 text-xs font-mono font-bold uppercase tracking-widest">
-                                <span>Quero meu Concierge IA treinado →</span>
+                                <span>Quero Minha IA Vendedora Treinada →</span>
                             </a>
                         </div>
                     </div>
@@ -554,9 +715,9 @@
                             <div class="w-10 h-10 rounded-full bg-amber-100 text-stone-900 flex items-center justify-center mx-auto mb-2 text-xl border border-amber-300">
                                 <iconify-icon icon="solar:check-circle-bold" class="text-amber-700"></iconify-icon>
                             </div>
-                            <h4 class="text-base font-bold font-display text-stone-950">Plano Recomendado: ELOOO BIO Pró (R$ 147/mês)</h4>
+                            <h4 class="text-base font-bold font-display text-stone-950">Plano Recomendado: ELOOO VITRINE Pró (R$ 147/mês)</h4>
                             <p class="text-xs text-stone-600 mt-1 mb-4">
-                                Com Concierge de Inteligência Artificial implementado e treinado pela nossa equipe em até 24 horas.
+                                Vitrine Premium + IA que Atende e Vende implementada e treinada por nossa equipe em até 24 horas.
                             </p>
                             <a href="cadastrar.html?plan=pro" class="btn-gold-luxury w-full py-4 text-xs font-mono font-bold uppercase tracking-widest text-center shadow-lg">
                                 Contratar Plano Pró (Entrega 24h) →
@@ -585,7 +746,7 @@
                             Nós configuramos sua agenda completa.
                         </h2>
                         <p class="text-xs sm:text-sm mt-3 text-stone-300 leading-relaxed font-light">
-                            No <strong class="text-[#d6bc8c] font-semibold">Plano Elite</strong>, nossa equipe cadastra seus horários disponíveis, tipos de consultas e valores. O cliente marca a sessão diretamente na sua bio de forma 100% automatizada.
+                            No <strong class="text-[#d6bc8c] font-semibold">Plano Elite</strong>, além da Vitrine Premium e da IA Vendedora, nossa equipe cadastra seus horários disponíveis e valores. O cliente escolhe a data e marca a consulta direto na sua vitrine.
                         </p>
 
                         <div class="mt-6">
@@ -640,25 +801,25 @@
         <section class="py-12 sm:py-20 px-5 bg-white" id="planos">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-10">
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#b89445] block mb-1">
-                        IMPLEMENTAÇÃO 100% FEITA PELA NOSSA EQUIPE
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#8c6e26] block mb-1">
+                        IMPLEMENTAÇÃO 100% FEITA PELA NOSSA EQUIPE EM 24 HORAS
                     </span>
                     <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                        Escolha seu plano. Nós entregamos tudo em 24h.
+                        Escolha seu plano. Sua Vitrine no ar em 24h.
                     </h2>
                     <p class="text-xs sm:text-sm mt-1 text-stone-600">
-                        Você fornece os dados e nós configuramos tudo. Sem dor de cabeça técnica e com 7 dias de garantia incondicional.
+                        Você fornece os dados e nós configuramos tudo. Sem esforço técnico e com 7 dias de garantia incondicional.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto items-stretch">
                     
-                    <!-- Basic 127 (SUBSTITUINDO STARTER) -->
+                    <!-- Basic 127 -->
                     <div class="flashlight-card p-6 sm:p-7 flex flex-col justify-between border border-stone-200">
                         <div>
-                            <span class="text-[10.5px] font-mono uppercase font-bold text-stone-400">Implementação Básica</span>
+                            <span class="text-[10.5px] font-mono uppercase font-bold text-stone-400">Vitrine Premium Básica</span>
                             <h3 class="text-xl font-bold font-display text-stone-950 mt-0.5">Basic</h3>
-                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Sua presença montada por nós.</p>
+                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Sua vitrine montada por nós.</p>
                             
                             <div class="mb-4">
                                 <div class="flex items-baseline gap-1">
@@ -669,7 +830,7 @@
                             </div>
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-700">
-                                <li class="flex items-center gap-2 font-semibold text-stone-900">✓ Nós montamos sua bio completa</li>
+                                <li class="flex items-center gap-2 font-semibold text-stone-900">✓ Nós montamos sua Vitrine Premium</li>
                                 <li class="flex items-center gap-2">✓ Cadastro de produtos & serviços</li>
                                 <li class="flex items-center gap-2">✓ Direcionamento para link de vendas</li>
                                 <li class="flex items-center gap-2">✓ Zero trabalho técnico para você</li>
@@ -681,11 +842,11 @@
                         </a>
                     </div>
 
-                    <!-- Pro 147 (MAIS VENDIDO - DESTAQUE VISÍVEL E UNCLIPPED) -->
+                    <!-- Pro 147 (MAIS VENDIDO - VITRINE + IA QUE ATENDE E VENDE) -->
                     <div class="flashlight-card p-6 sm:p-7 flex flex-col justify-between bg-[#11100E] text-white relative shadow-2xl scale-[1.02] border-2 border-[#d6bc8c]">
                         
                         <div>
-                            <!-- MAIS VENDIDO BADGE (PROMINENT & FULLY VISIBLE) -->
+                            <!-- MAIS VENDIDO BADGE -->
                             <div class="mb-3">
                                 <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10.5px] font-mono font-bold uppercase tracking-wider bg-gradient-to-r from-[#d6bc8c] via-[#faeac7] to-[#d6bc8c] text-stone-950 shadow-md">
                                     <iconify-icon icon="solar:star-bold" class="text-stone-950"></iconify-icon>
@@ -693,9 +854,9 @@
                                 </div>
                             </div>
 
-                            <span class="text-[10.5px] font-mono uppercase font-bold text-[#d6bc8c]">Implementação + Treinamento IA</span>
+                            <span class="text-[10.5px] font-mono uppercase font-bold text-[#d6bc8c]">Vitrine + IA Vendedora 24h</span>
                             <h3 class="text-2xl font-bold font-display text-white mt-0.5">Pró</h3>
-                            <p class="text-xs text-stone-400 mt-0.5 mb-4">A IA configurada por especialistas.</p>
+                            <p class="text-xs text-stone-400 mt-0.5 mb-4">Vitrine Premium + IA treinada por especialistas.</p>
                             
                             <div class="mb-4">
                                 <div class="flex items-baseline gap-1">
@@ -707,9 +868,9 @@
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-200">
                                 <li class="flex items-center gap-2 font-bold text-[#d6bc8c]">✓ Tudo do Plano Basic</li>
-                                <li class="flex items-center gap-2 font-semibold text-white">✓ Nós treinamos seu Concierge de IA</li>
-                                <li class="flex items-center gap-2">✓ Qualificação estratégica de público</li>
-                                <li class="flex items-center gap-2">✓ Relatórios e métricas de conversão</li>
+                                <li class="flex items-center gap-2 font-semibold text-white">✓ IA que Atende e Vende 24h/dia</li>
+                                <li class="flex items-center gap-2">✓ Qualificação automática de seguidores</li>
+                                <li class="flex items-center gap-2">✓ Métricas e relatórios de conversão</li>
                             </ul>
                         </div>
 
@@ -718,12 +879,12 @@
                         </a>
                     </div>
 
-                    <!-- Elite 497 (COM AGENDA INTEGRADA) -->
+                    <!-- Elite 497 (VITRINE + IA + AGENDA INTEGRADA) -->
                     <div class="flashlight-card p-6 sm:p-7 flex flex-col justify-between border border-stone-200">
                         <div>
                             <span class="text-[10.5px] font-mono uppercase font-bold text-[#b89445]">Setup Executivo Total</span>
                             <h3 class="text-xl font-bold font-display text-stone-950 mt-0.5">Elite</h3>
-                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Automação total e agenda marcada.</p>
+                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Vitrine + IA Vendedora + Agenda Marcada.</p>
                             
                             <div class="mb-4">
                                 <div class="flex items-baseline gap-1">
@@ -736,7 +897,7 @@
                             <ul class="space-y-2 mb-6 text-xs text-stone-700">
                                 <li class="flex items-center gap-2 font-semibold text-stone-900">✓ Tudo do Plano Pró</li>
                                 <li class="flex items-center gap-2 font-bold text-[#8c6e26]">✓ Nós configuramos sua Agenda Integrada</li>
-                                <li class="flex items-center gap-2">✓ Concierge com IA estendida</li>
+                                <li class="flex items-center gap-2">✓ IA Vendedora com regras estendidas</li>
                                 <li class="flex items-center gap-2">✓ Suporte prioritário via WhatsApp</li>
                             </ul>
                         </div>
@@ -752,7 +913,7 @@
                 <div class="max-w-4xl mx-auto mt-8 text-center">
                     <p class="text-xs text-stone-600 font-medium flex items-center justify-center gap-2">
                         <iconify-icon icon="solar:shield-check-bold" class="text-stone-800 text-base"></iconify-icon>
-                        <span>Garantia incondicional de 7 dias — receba sua bio pronta e se não amar, devolvemos 100% do valor.</span>
+                        <span>Garantia incondicional de 7 dias — receba sua vitrine pronta e se não amar, devolvemos 100% do valor.</span>
                     </p>
                 </div>
             </div>
@@ -762,7 +923,7 @@
 
     <!-- FOOTER -->
     <footer class="py-8 px-6 text-center text-xs text-stone-500 bg-white border-t border-stone-300">
-        <p>© 2026 <strong class="text-stone-900">ELOOO BIO PREMIUM</strong> · Ecossistema <strong class="text-stone-900">ELOOO International Group</strong>.</p>
+        <p>© 2026 <strong class="text-stone-900">ELOOO VITRINE PREMIUM</strong> · Ecossistema <strong class="text-stone-900">ELOOO International Group</strong>.</p>
         <div class="flex items-center justify-center gap-6 mt-2.5 font-mono">
             <a class="hover:text-stone-900 transition-colors" href="../termos.html">Termos</a>
             <a class="hover:text-stone-900 transition-colors" href="../privacidade.html">Privacidade</a>
@@ -771,20 +932,18 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE SCRIPTS -->
+    <!-- LIGHTWEIGHT SCRIPT (GRADE A SPEED) -->
     <script>
         // Flashlight mouse tracking on cards
         document.querySelectorAll('.flashlight-card').forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
             });
         });
 
-        // Luxury Drawer Toggle (Works on Desktop & Mobile)
+        // Luxury Drawer Toggle
         const drawer = document.getElementById('luxury-drawer');
         const drawerContent = document.getElementById('luxury-drawer-content');
         const openBtn = document.getElementById('menu-hamburger-btn');
