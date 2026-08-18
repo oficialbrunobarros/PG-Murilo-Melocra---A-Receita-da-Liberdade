@@ -15,12 +15,12 @@ LANDING_HTML = """<!DOCTYPE html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>ELOOO BIO PREMIUM | O Link na Bio Inteligente que Conduz Decisões e Vende no Automático</title>
-    <meta name="description" content="Pare de perder vendas com links confusos. O ELOOO BIO PREMIUM qualifica seus visitantes com Inteligência Artificial e recomenda o produto certo."/>
+    <title>ELOOO BIO PREMIUM | Nós Construímos Tudo Para Você — No Ar em 24 Horas</title>
+    <meta name="description" content="Nós construímos sua Bio Inteligente completa com Concierge de IA. Você só nos envia suas informações e em 24 horas ela estará pronta e no ar."/>
     
     <!-- Open Graph / Meta -->
-    <meta property="og:title" content="ELOOO BIO PREMIUM | O Link na Bio que Vende"/>
-    <meta property="og:description" content="Página de link na bio de alta conversão. Concierge de IA, vitrine inteligente e agendamento para o plano Elite."/>
+    <meta property="og:title" content="ELOOO BIO PREMIUM | Sua Bio Inteligente Pronta em 24h"/>
+    <meta property="og:description" content="Implementação 100% feita por nossa equipe. Você nos envia suas informações e nós configuramos tudo: Concierge de IA, vitrine e agendamento em até 24 horas."/>
     <meta property="og:image" content="static/images/og-share.png"/>
     <meta property="og:type" content="website"/>
     <meta name="theme-color" content="#EAEAE5"/>
@@ -92,7 +92,7 @@ LANDING_HTML = """<!DOCTYPE html>
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* FLOATING PILL NAVBAR - ULTRA MINIMALIST */
+        /* FLOATING PILL NAVBAR */
         .glass-nav {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(20px) saturate(180%);
@@ -101,7 +101,7 @@ LANDING_HTML = """<!DOCTYPE html>
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
         }
 
-        /* FLASHLIGHT HOVER CARD (EXACT ELOOO STANDARD) */
+        /* FLASHLIGHT HOVER CARD */
         .flashlight-card {
             position: relative;
             background: #FFFFFF;
@@ -183,10 +183,10 @@ LANDING_HTML = """<!DOCTYPE html>
 </head>
 <body class="antialiased selection:bg-stone-900 selection:text-white">
 
-    <!-- FLOATING MINIMALIST TOP NAVBAR (DESKTOP & MOBILE HAMBURGER) -->
+    <!-- FLOATING TOP NAVBAR -->
     <div class="fixed top-3 sm:top-4 inset-x-3 sm:inset-x-6 z-50 flex justify-center pointer-events-none">
         <nav class="pointer-events-auto flex items-center justify-between gap-4 pl-4 pr-3 sm:pl-6 sm:pr-3 py-2.5 rounded-full w-full max-w-4xl glass-nav relative">
-            <!-- Brand Logo (Enlarged) -->
+            <!-- Brand Logo -->
             <a class="inline-flex items-center flex-none group" href="index.html">
                 <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-9 sm:h-11 object-contain transition-transform group-hover:scale-105" style="filter: brightness(0);"/>
                 <span class="ml-3 text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-stone-600 border-l border-stone-300 pl-3">
@@ -194,12 +194,12 @@ LANDING_HTML = """<!DOCTYPE html>
                 </span>
             </a>
 
-            <!-- Right Action: Hamburger + Gold CTA (Sleek on Desktop & Mobile) -->
+            <!-- Right Action: Hamburger + Gold CTA -->
             <div class="flex items-center gap-2.5 flex-none">
                 <a href="cadastrar.html" class="btn-gold-spin">
                     <span class="spin-border"></span>
                     <span class="relative flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-[#0a0a0a] text-white text-[11px] sm:text-[12px] font-bold uppercase tracking-widest hover:bg-[#151515] transition-colors">
-                        <span>Começar</span>
+                        <span>Quero Minha Bio</span>
                         <iconify-icon icon="solar:arrow-right-linear" class="text-sm text-amber-300"></iconify-icon>
                     </span>
                 </a>
@@ -227,12 +227,12 @@ LANDING_HTML = """<!DOCTYPE html>
                 <!-- Navigation Links -->
                 <nav class="space-y-2 font-sans font-bold text-xs uppercase tracking-wider text-stone-700">
                     <a href="#problema" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Por que</a>
-                    <a href="#como" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Como funciona</a>
+                    <a href="#como" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Como Nós Fazemos Tudo</a>
                     <a href="#demo" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Concierge com IA</a>
                     <a href="#agenda" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Agenda (Plano Elite)</a>
-                    <a href="#planos" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Planos & Preços</a>
+                    <a href="#planos" class="drawer-link block px-4 py-3 rounded-2xl hover:bg-stone-100 hover:text-stone-950 transition-colors">Planos & Implementação</a>
                     <a href="brunobarros.html" target="_blank" class="drawer-link block px-4 py-3 rounded-2xl bg-stone-900 text-white font-bold flex items-center justify-between border border-[#d6bc8c]">
-                        <span>Bio Oficial Bruno Barros</span>
+                        <span>Bio Modelo Bruno Barros</span>
                         <iconify-icon icon="solar:arrow-right-up-linear"></iconify-icon>
                     </a>
                 </nav>
@@ -246,7 +246,7 @@ LANDING_HTML = """<!DOCTYPE html>
                 <a href="cadastrar.html" class="btn-gold-spin w-full">
                     <span class="spin-border"></span>
                     <span class="relative block w-full py-3.5 rounded-full bg-[#0a0a0a] text-white font-bold text-xs uppercase tracking-widest text-center">
-                        Criar Conta Agora →
+                        Contratar Implementação 24h →
                     </span>
                 </a>
             </div>
@@ -256,18 +256,24 @@ LANDING_HTML = """<!DOCTYPE html>
     <!-- MAIN CONTENT -->
     <main class="relative z-10">
 
-        <!-- HERO SECTION (Tight, Direct & SMARTPHONE MOCKUP RIGHT BELOW) -->
+        <!-- HERO SECTION (Done-For-You 24h Positioning) -->
         <section class="relative pt-24 pb-10 sm:pt-28 sm:pb-12 overflow-hidden">
             <div class="max-w-4xl mx-auto px-5 text-center relative z-10">
                 
+                <!-- 24h Done-For-You Tagline -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-stone-100 border border-stone-300 text-[10.5px] font-mono font-bold uppercase tracking-wider text-stone-700 mb-3 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>NÓS CONSTRUÍMOS TUDO · SUA BIO NO AR EM ATÉ 24 HORAS</span>
+                </div>
+
                 <!-- Main Headline -->
                 <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-bold font-display tracking-tight text-stone-900 leading-[1.1] mb-3">
-                    O link na bio que entende seu cliente e conduz a venda.
+                    O link na bio que entende seu cliente e vende. Nós fazemos tudo por você.
                 </h1>
 
                 <!-- Subtitle -->
                 <p class="text-sm sm:text-base text-stone-600 max-w-xl mx-auto mb-6 leading-relaxed">
-                    Pare de empilhar vinte botões confusos. O <strong class="text-stone-950 font-semibold">ELOOO BIO PREMIUM</strong> qualifica o momento do visitante e recomenda a solução exata com botão de compra direto.
+                    Não perca tempo configurando ferramentas, design ou programação. Você apenas nos envia suas informações e <strong class="text-stone-950 font-semibold">nossa equipe entrega sua Bio Inteligente com IA 100% pronta e rodando em 24h</strong>.
                 </p>
 
                 <!-- Hero Action Buttons -->
@@ -275,18 +281,18 @@ LANDING_HTML = """<!DOCTYPE html>
                     <a href="cadastrar.html" class="btn-gold-spin w-full sm:w-auto shadow-xl">
                         <span class="spin-border"></span>
                         <span class="relative flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#0a0a0a] text-white text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-[#151515] transition-colors">
-                            <span>Quero vender no automático</span>
+                            <span>Quero Minha Bio Pronta em 24h</span>
                             <iconify-icon icon="solar:arrow-right-linear" class="text-base text-amber-300"></iconify-icon>
                         </span>
                     </a>
                     
                     <a href="brunobarros.html" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white text-stone-900 border border-stone-300 hover:border-[#d6bc8c] text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm">
-                        <span>Ver Bio de Bruno Barros</span>
+                        <span>Ver Exemplo de Bruno Barros</span>
                         <iconify-icon icon="solar:arrow-right-up-linear" class="text-base text-stone-600"></iconify-icon>
                     </a>
                 </div>
 
-                <!-- SMARTPHONE MOCKUP (ELEVATED PROMINENTLY) -->
+                <!-- SMARTPHONE MOCKUP -->
                 <div class="flex justify-center mb-10">
                     <div class="w-full max-w-[310px] phone-mockup-wrapper relative">
                         <!-- Dynamic Island -->
@@ -304,7 +310,7 @@ LANDING_HTML = """<!DOCTYPE html>
                     </div>
                 </div>
 
-                <!-- Updated Credibility Stats (10 Anos / 1.1 Bi / 10.000 Alunos) -->
+                <!-- Credibility Stats (10 Anos / 1.1 Bi / 10.000 Alunos) -->
                 <div class="pt-6 border-t border-stone-300 max-w-3xl mx-auto">
                     <div class="grid grid-cols-3 gap-3 sm:gap-5">
                         <div class="flashlight-card p-3 sm:p-4 text-center">
@@ -339,15 +345,15 @@ LANDING_HTML = """<!DOCTYPE html>
             </div>
         </section>
 
-        <!-- O PROBLEMA (Antes vs Depois) - WITH GOLD ACTION CTA -->
+        <!-- O PROBLEMA (Antes vs Depois - Zero Trabalho Técnico) -->
         <section class="py-12 sm:py-16 px-5 bg-white border-t border-b border-stone-300" id="problema">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-8">
                     <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                        Mostrar tudo é o mesmo que não mostrar nada.
+                        Você não precisa perder tempo tentando criar sozinho.
                     </h2>
                     <p class="text-xs sm:text-sm mt-1.5 max-w-lg mx-auto text-stone-600">
-                        Quanto mais opções empilhadas, mais o cliente trava. O ELOOO BIO PREMIUM <strong class="text-stone-950 font-semibold">conduz</strong> a decisão.
+                        Chega de quebrar a cabeça com plataformas complicadas. Nós assumimos toda a parte técnica, design e inteligência para você.
                     </p>
                 </div>
 
@@ -355,21 +361,21 @@ LANDING_HTML = """<!DOCTYPE html>
                     <!-- Antes Card -->
                     <div class="flashlight-card p-6 sm:p-7 bg-stone-50 border border-stone-200">
                         <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-stone-500 block mb-3">
-                            ✕ Como a maioria faz hoje
+                            ✕ Fazer por conta própria
                         </span>
-                        <h3 class="text-lg font-bold font-display mb-3 text-stone-950">Vinte links confusos e sem direção.</h3>
+                        <h3 class="text-lg font-bold font-display mb-3 text-stone-950">Horas perdidas e resultado amador.</h3>
                         <ul class="space-y-2 text-xs sm:text-sm text-stone-600">
                             <li class="flex items-start gap-2">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>Opções competindo entre si ao mesmo tempo</span>
+                                <span>Perder dias tentando configurar ferramentas e links confusos</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>O visitante não sabe o que faz sentido para ele</span>
+                                <span>Páginas sem autoridade visual que não passam credibilidade</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-red-500 font-bold">✕</span>
-                                <span>Mais de 80% abandonam sem tomar decisão</span>
+                                <span>Visitantes chegam perdidos e você não converte em vendas</span>
                             </li>
                         </ul>
                     </div>
@@ -379,19 +385,19 @@ LANDING_HTML = """<!DOCTYPE html>
                         <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-300 block mb-3">
                             ✓ Com ELOOO BIO PREMIUM
                         </span>
-                        <h3 class="text-lg font-bold font-display mb-3 text-[#f6e3c5]">Diagnóstico rápido e recomendação certa.</h3>
+                        <h3 class="text-lg font-bold font-display mb-3 text-[#f6e3c5]">Nós fazemos tudo. No ar em 24h.</h3>
                         <ul class="space-y-2 text-xs sm:text-sm text-stone-200">
                             <li class="flex items-start gap-2">
                                 <span class="text-emerald-400 font-bold">✓</span>
-                                <span>3 perguntas rápidas qualificam o visitante</span>
+                                <span>Você apenas nos envia suas fotos, links e produtos</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-emerald-400 font-bold">✓</span>
-                                <span>1 recomendação exata com botão de compra direto</span>
+                                <span>Nossa equipe projeta seu design e treina seu Concierge de IA</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-emerald-400 font-bold">✓</span>
-                                <span>Vendas no automático 24h por dia</span>
+                                <span>Em até 24 horas sua bio de luxo está ativa e pronta para faturar</span>
                             </li>
                         </ul>
                     </div>
@@ -402,55 +408,59 @@ LANDING_HTML = """<!DOCTYPE html>
                     <a href="cadastrar.html" class="btn-gold-spin">
                         <span class="spin-border"></span>
                         <span class="relative flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
-                            <span>Quero conduzir minhas vendas →</span>
+                            <span>Quero que a equipe ELOOO monte minha bio →</span>
                         </span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- COMO FUNCIONA (4 Passos) - WITH GOLD LUXURY BACKGROUND & ACTION CTA -->
+        <!-- COMO FUNCIONA (4 Passos do Done-For-You em 24h) -->
         <section class="py-12 sm:py-16 px-5 section-gold-warm" id="como">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-8">
                     <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                        Quatro passos. Uma máquina de conversão.
+                        Como funciona o processo de entrega em 24 horas.
                     </h2>
                     <p class="text-xs sm:text-sm mt-1 text-stone-600 font-medium">
-                        Simples de configurar. Extremamente poderoso para vender.
+                        Zero esforço técnico para você. Toda a execução profissional é por nossa conta.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <!-- Passo 1 -->
                     <div class="flashlight-card p-5 bg-white">
                         <div class="text-xl font-display font-bold text-[#b89445] mb-2">01</div>
-                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Você cadastra</h3>
+                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Você envia os dados</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
-                            Produtos, livros e mentorias com faixas de preço e dor que resolve.
+                            Você nos passa suas informações: foto, produtos, livros, serviços e links de venda.
                         </p>
                     </div>
 
+                    <!-- Passo 2 -->
                     <div class="flashlight-card p-5 bg-white">
                         <div class="text-xl font-display font-bold text-[#b89445] mb-2">02</div>
-                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">O cliente responde</h3>
+                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Nós criamos tudo</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
-                            3 perguntas rápidas e intuitivas direto na sua bio.
+                            Nossa equipe técnica monta o design, cadastra seu catálogo e treina sua IA com precisão.
                         </p>
                     </div>
 
+                    <!-- Passo 3 -->
                     <div class="flashlight-card p-5 bg-stone-900 text-white border-[#d6bc8c]/60">
                         <div class="text-xl font-display font-bold text-amber-300 mb-2">03</div>
-                        <h3 class="text-sm font-bold font-display text-white mb-1">A IA recomenda</h3>
+                        <h3 class="text-sm font-bold font-display text-white mb-1">No ar em 24h</h3>
                         <p class="text-xs text-stone-300 leading-relaxed">
-                            A IA cruza as variáveis e entrega a melhor opção com motivo claro.
+                            Em até 24 horas entregamos seu link oficial de elite pronto para você colocar na sua bio.
                         </p>
                     </div>
 
+                    <!-- Passo 4 -->
                     <div class="flashlight-card p-5 bg-white">
                         <div class="text-xl font-display font-bold text-[#b89445] mb-2">04</div>
-                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Você converte</h3>
+                        <h3 class="text-sm font-bold font-display text-stone-950 mb-1">Você vende no auto</h3>
                         <p class="text-xs text-stone-600 leading-relaxed">
-                            O cliente toma a decisão e fecha a compra imediatamente.
+                            Seus seguidores são qualificados pela IA e tomam decisões de compra 24h por dia.
                         </p>
                     </div>
                 </div>
@@ -460,7 +470,7 @@ LANDING_HTML = """<!DOCTYPE html>
                     <a href="cadastrar.html" class="btn-gold-spin">
                         <span class="spin-border"></span>
                         <span class="relative flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
-                            <span>Criar minha bio agora →</span>
+                            <span>Iniciar Minha Implementação em 24h →</span>
                         </span>
                     </a>
                 </div>
@@ -473,17 +483,17 @@ LANDING_HTML = """<!DOCTYPE html>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
                     <div>
                         <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                            Diagnostica, qualifica e recomenda em segundos.
+                            Nós treinamos seu Concierge de IA sob medida.
                         </h2>
                         <p class="text-xs sm:text-sm mt-3 text-stone-600 leading-relaxed">
-                            Experimente como o Concierge de IA funciona na prática. Ele entende a resposta de cada visitante e entrega a solução exata com argumento de valor.
+                            O Concierge de IA analisa o momento de cada visitante e prescreve a melhor solução do seu catálogo. Nossa equipe cuida de todo o treinamento com as respostas certas do seu negócio.
                         </p>
 
                         <div class="mt-6">
                             <a href="cadastrar.html" class="btn-gold-spin">
                                 <span class="spin-border"></span>
                                 <span class="relative flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest">
-                                    <span>Montar meu concierge agora →</span>
+                                    <span>Quero meu Concierge IA treinado →</span>
                                 </span>
                             </a>
                         </div>
@@ -548,14 +558,14 @@ LANDING_HTML = """<!DOCTYPE html>
                             <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-2 text-xl">
                                 <iconify-icon icon="solar:check-circle-bold"></iconify-icon>
                             </div>
-                            <h4 class="text-base font-bold font-display text-stone-950">Plano Recomendado: ELOOO BIO Pro (R$ 147/mês)</h4>
+                            <h4 class="text-base font-bold font-display text-stone-950">Plano Recomendado: ELOOO BIO Pró (R$ 147/mês)</h4>
                             <p class="text-xs text-stone-600 mt-1 mb-4">
-                                A IA identificou que seu maior gargalo é a automação e qualificação de visitantes.
+                                Com Concierge de Inteligência Artificial implementado e treinado pela nossa equipe em até 24 horas.
                             </p>
                             <a href="cadastrar.html?plan=pro" class="btn-gold-spin w-full">
                                 <span class="spin-border"></span>
                                 <span class="relative block w-full py-3 rounded-full bg-[#0a0a0a] text-white text-xs font-bold uppercase tracking-widest text-center">
-                                    Ativar Plano Pro →
+                                    Contratar Plano Pró (Entrega 24h) →
                                 </span>
                             </a>
                             <button onclick="resetQuiz()" class="mt-2.5 text-[11px] text-stone-500 hover:text-stone-950 underline">
@@ -567,7 +577,7 @@ LANDING_HTML = """<!DOCTYPE html>
             </div>
         </section>
 
-        <!-- AGENDA INTEGRADA - (CLARO QUE SÓ ESTÁ INCLUSA NO PLANO ELITE) - GOLD LUXURY SECTION -->
+        <!-- AGENDA INTEGRADA (EXCLUSIVO PLANO ELITE 497 - CONFIGURADO POR NÓS) -->
         <section class="py-12 sm:py-16 px-5 section-gold-luxury" id="agenda">
             <div class="max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
@@ -579,17 +589,17 @@ LANDING_HTML = """<!DOCTYPE html>
                         </div>
 
                         <h2 class="text-2xl sm:text-3xl font-bold font-display text-white leading-tight">
-                            Da qualificação ao horário marcado.
+                            Nós configuramos sua agenda completa.
                         </h2>
                         <p class="text-xs sm:text-sm mt-3 text-stone-300 leading-relaxed font-light">
-                            O recurso de agendamento integrado é exclusivo para assinantes do <strong class="text-amber-300 font-semibold">Plano Elite</strong>. O cliente escolhe dia e horário disponível e confirma a consulta direto na sua bio, sem atritos.
+                            No <strong class="text-amber-300 font-semibold">Plano Elite</strong>, nossa equipe cadastra seus horários disponíveis, tipos de consultas e valores. O cliente marca a sessão diretamente na sua bio de forma 100% automatizada.
                         </p>
 
                         <div class="mt-6">
                             <a href="cadastrar.html?plan=elite" class="btn-gold-spin">
                                 <span class="spin-border"></span>
                                 <span class="relative flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#121215] text-[#f6e3c5] text-xs font-bold uppercase tracking-widest">
-                                    <span>Ativar Agenda no Plano Elite →</span>
+                                    <span>Contratar Plano Elite (Setup 24h) →</span>
                                 </span>
                             </a>
                         </div>
@@ -636,15 +646,18 @@ LANDING_HTML = """<!DOCTYPE html>
             </div>
         </section>
 
-        <!-- PLANOS & PREÇOS (STARTER 127 / PRÓ 147 / ELITE 497) -->
+        <!-- PLANOS & PREÇOS (TODOS COM IMPLEMENTAÇÃO COMPLETA EM 24H) -->
         <section class="py-12 sm:py-20 px-5 bg-white" id="planos">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-10">
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#b89445] block mb-1">
+                        IMPLEMENTAÇÃO 100% FEITA PELA NOSSA EQUIPE
+                    </span>
                     <h2 class="text-2xl sm:text-3xl font-bold font-display text-stone-950 leading-tight">
-                        Escolha seu plano e comece hoje.
+                        Escolha seu plano. Nós entregamos tudo em 24h.
                     </h2>
                     <p class="text-xs sm:text-sm mt-1 text-stone-600">
-                        Investimento claro, sem contratos longos e com garantia incondicional de 7 dias.
+                        Você fornece os dados e nós configuramos tudo. Sem dor de cabeça técnica e com 7 dias de garantia incondicional.
                     </p>
                 </div>
 
@@ -653,85 +666,91 @@ LANDING_HTML = """<!DOCTYPE html>
                     <!-- Starter 127 -->
                     <div class="flashlight-card p-6 flex flex-col justify-between border border-stone-200">
                         <div>
-                            <h3 class="text-lg font-bold font-display text-stone-950">Starter</h3>
-                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Sua presença pronta pra vender.</p>
+                            <span class="text-[10.5px] font-mono uppercase font-bold text-stone-400">Implementação Básica</span>
+                            <h3 class="text-lg font-bold font-display text-stone-950 mt-0.5">Starter</h3>
+                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Sua presença montada por nós.</p>
                             
                             <div class="mb-4">
                                 <div class="flex items-baseline gap-1">
                                     <span class="text-3xl font-extrabold font-display text-stone-950">R$ 127</span>
                                     <span class="text-xs text-stone-500 font-medium">/mês</span>
                                 </div>
+                                <p class="text-[10px] text-emerald-600 font-bold mt-0.5">✦ Entrega completa em até 24h</p>
                             </div>
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-700">
-                                <li class="flex items-center gap-2">✓ Bio profissional de alta velocidade</li>
-                                <li class="flex items-center gap-2">✓ Vitrine inteligente de produtos & serviços</li>
-                                <li class="flex items-center gap-2">✓ Direcionamento direto para link de vendas</li>
-                                <li class="flex items-center gap-2">✓ Setup guiado em minutos</li>
+                                <li class="flex items-center gap-2 font-semibold text-stone-900">✓ Nós montamos sua bio completa</li>
+                                <li class="flex items-center gap-2">✓ Cadastro de produtos & serviços</li>
+                                <li class="flex items-center gap-2">✓ Direcionamento para link de vendas</li>
+                                <li class="flex items-center gap-2">✓ Zero trabalho técnico para você</li>
                             </ul>
                         </div>
 
                         <a href="cadastrar.html?plan=starter" class="block w-full py-2.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-center text-xs uppercase tracking-wider transition-colors">
-                            Começar Starter
+                            Contratar Starter (24h)
                         </a>
                     </div>
 
-                    <!-- Pro 147 (MAIS ESCOLHIDO - DESTAQUE) -->
+                    <!-- Pro 147 (MAIS ESCOLHIDO - COM CONCIERGE IA IMPLEMENTADO) -->
                     <div class="flashlight-card p-6 flex flex-col justify-between bg-[#11100E] text-white relative shadow-xl scale-[1.02] border-2 border-[#d6bc8c]">
                         <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#d6bc8c] text-stone-950 shadow-md">
                             ★ Mais Escolhido
                         </span>
 
                         <div>
-                            <h3 class="text-xl font-bold font-display text-white mt-1">Pró</h3>
-                            <p class="text-xs text-stone-400 mt-0.5 mb-4">A IA que qualifica e vende 24h.</p>
+                            <span class="text-[10.5px] font-mono uppercase font-bold text-amber-300">Implementação + Treinamento IA</span>
+                            <h3 class="text-xl font-bold font-display text-white mt-0.5">Pró</h3>
+                            <p class="text-xs text-stone-400 mt-0.5 mb-4">A IA configurada por especialistas.</p>
                             
                             <div class="mb-4">
                                 <div class="flex items-baseline gap-1">
                                     <span class="text-4xl font-extrabold font-display text-white">R$ 147</span>
                                     <span class="text-xs text-stone-400 font-medium">/mês</span>
                                 </div>
+                                <p class="text-[10px] text-amber-300 font-bold mt-0.5">✦ Entrega completa em até 24h</p>
                             </div>
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-200">
                                 <li class="flex items-center gap-2 font-bold text-amber-300">✓ Tudo do Plano Starter</li>
-                                <li class="flex items-center gap-2 font-semibold text-white">✓ Concierge com Inteligência Artificial</li>
-                                <li class="flex items-center gap-2">✓ Qualificação automática de público</li>
-                                <li class="flex items-center gap-2">✓ Métricas e analytics de conversão</li>
+                                <li class="flex items-center gap-2 font-semibold text-white">✓ Nós treinamos seu Concierge de IA</li>
+                                <li class="flex items-center gap-2">✓ Qualificação estratégica de público</li>
+                                <li class="flex items-center gap-2">✓ Relatórios e métricas de conversão</li>
                             </ul>
                         </div>
 
                         <a href="cadastrar.html?plan=pro" class="btn-gold-spin w-full">
                             <span class="spin-border"></span>
                             <span class="relative block w-full py-3 rounded-full bg-[#1c1917] text-white font-bold text-xs uppercase tracking-widest text-center">
-                                Assinar Plano Pró →
+                                Contratar Plano Pró (24h) →
                             </span>
                         </a>
                     </div>
 
-                    <!-- Elite 497 (INCLUI AGENDA) -->
+                    <!-- Elite 497 (COM AGENDA INTEGRADA) -->
                     <div class="flashlight-card p-6 flex flex-col justify-between border border-stone-200">
                         <div>
-                            <h3 class="text-lg font-bold font-display text-stone-950">Elite</h3>
-                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Para quem quer automação total.</p>
+                            <span class="text-[10.5px] font-mono uppercase font-bold text-[#b89445]">Setup Executivo Total</span>
+                            <h3 class="text-lg font-bold font-display text-stone-950 mt-0.5">Elite</h3>
+                            <p class="text-xs text-stone-500 mt-0.5 mb-4">Automação total e agenda marcada.</p>
                             
                             <div class="mb-4">
                                 <div class="flex items-baseline gap-1">
                                     <span class="text-3xl font-extrabold font-display text-stone-950">R$ 497</span>
                                     <span class="text-xs text-stone-500 font-medium">/mês</span>
                                 </div>
+                                <p class="text-[10px] text-emerald-600 font-bold mt-0.5">✦ Entrega completa em até 24h</p>
                             </div>
 
                             <ul class="space-y-2 mb-6 text-xs text-stone-700">
                                 <li class="flex items-center gap-2 font-semibold text-stone-900">✓ Tudo do Plano Pró</li>
-                                <li class="flex items-center gap-2 font-bold text-amber-800">✓ Agendamento Integrado de Consultas</li>
+                                <li class="flex items-center gap-2 font-bold text-amber-800">✓ Nós configuramos sua Agenda Integrada</li>
                                 <li class="flex items-center gap-2">✓ Concierge com IA estendida</li>
                                 <li class="flex items-center gap-2">✓ Suporte prioritário via WhatsApp</li>
                             </ul>
                         </div>
 
                         <a href="cadastrar.html?plan=elite" class="block w-full py-2.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-900 font-bold text-center text-xs uppercase tracking-wider transition-colors">
-                            Começar Elite
+                            Contratar Elite (24h)
                         </a>
                     </div>
 
@@ -741,7 +760,7 @@ LANDING_HTML = """<!DOCTYPE html>
                 <div class="max-w-4xl mx-auto mt-8 text-center">
                     <p class="text-xs text-stone-600 font-medium flex items-center justify-center gap-2">
                         <iconify-icon icon="solar:shield-check-bold" class="text-emerald-600 text-base"></iconify-icon>
-                        <span>Garantia incondicional de 7 dias — não gostou, devolvemos 100% do seu dinheiro.</span>
+                        <span>Garantia incondicional de 7 dias — receba sua bio pronta e se não amar, devolvemos 100% do valor.</span>
                     </p>
                 </div>
             </div>
@@ -872,9 +891,9 @@ ENTRAR_HTML = """<!DOCTYPE html>
             <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-10 object-contain" style="filter: brightness(0);"/>
         </a>
 
-        <h1 class="text-2xl font-bold font-display text-stone-950">Entrar na sua conta</h1>
+        <h1 class="text-2xl font-bold font-display text-stone-950">Acessar sua conta</h1>
         <p class="text-xs text-stone-500 mt-1 mb-6">
-            Não tem conta? <a href="cadastrar.html" class="font-bold underline text-stone-900">Criar conta</a>
+            Ainda não tem sua bio pronta? <a href="cadastrar.html" class="font-bold underline text-stone-900">Contratar em 24h</a>
         </p>
 
         <form class="space-y-4" onsubmit="event.preventDefault(); alert('Login efetuado com sucesso! Redirecionando...');">
@@ -912,7 +931,7 @@ CADASTRAR_HTML = """<!DOCTYPE html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Criar Conta — ELOOO BIO PREMIUM</title>
+    <title>Contratar Implementação — ELOOO BIO PREMIUM (No Ar em 24h)</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -926,14 +945,19 @@ CADASTRAR_HTML = """<!DOCTYPE html>
 </head>
 <body class="antialiased min-h-screen flex items-center justify-center p-4">
     <div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl border border-stone-300 shadow-xl">
-        <a href="index.html" class="inline-block mb-6">
+        <a href="index.html" class="inline-block mb-4">
             <img src="static/images/ELOOO LOGO.png" alt="ELOOO BIO PREMIUM" class="h-10 object-contain" style="filter: brightness(0);"/>
         </a>
 
-        <h1 class="text-2xl font-bold font-display text-stone-950">Criar sua conta</h1>
-        <p class="text-xs text-stone-500 mt-1 mb-5">
-            Já tem conta? <a href="entrar.html" class="font-bold underline text-stone-900">Fazer login</a>
-        </p>
+        <div class="mb-4">
+            <span class="text-[10.5px] font-mono font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+                ✦ SETUP FEITO POR NÓS EM ATÉ 24H
+            </span>
+            <h1 class="text-2xl font-bold font-display text-stone-950 mt-2">Garanta sua Bio Pronta em 24h</h1>
+            <p class="text-xs text-stone-500 mt-1">
+                Após assinar, nossa equipe entrará em contato para receber seus links e colocar sua bio de luxo no ar.
+            </p>
+        </div>
 
         <!-- Plan Selector Bar (Starter 127 / Pro 147 / Elite 497) -->
         <div class="mb-5 p-1 rounded-2xl bg-stone-100 grid grid-cols-3 gap-1 text-xs font-bold text-center">
@@ -942,14 +966,14 @@ CADASTRAR_HTML = """<!DOCTYPE html>
             <button type="button" onclick="selectPlan('elite')" id="btn-elite" class="py-2 rounded-xl transition-colors text-stone-600">Elite R$497</button>
         </div>
 
-        <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='https://wa.me/5547988660791?text=Ol%C3%A1%2C%20acabei%20de%20me%20cadastrar%20no%20ELOOO%20BIO%20PREMIUM%20e%20quero%20ativar%20minha%20conta.';">
+        <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='https://wa.me/5547988660791?text=Ol%C3%A1%2C%20acabei%20de%20assinar%20o%20ELOOO%20BIO%20PREMIUM%20e%20quero%20enviar%20minhas%20informa%C3%A7%C3%B5es%20para%20colocar%20minha%20bio%20no%20ar%20em%2024h.';">
             <div>
                 <label class="block text-xs font-bold text-stone-700 mb-1">Nome Completo</label>
-                <input type="text" required placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
+                <input type="text" required placeholder="Seu nome completo" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-stone-700 mb-1">Usuário da sua Bio</label>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Usuário desejado na sua Bio</label>
                 <div class="flex items-center rounded-xl bg-stone-50 border border-stone-300 focus-within:border-stone-900 overflow-hidden">
                     <span class="px-3 text-xs text-stone-400 font-mono">bio.elooo.com.br/</span>
                     <input type="text" required placeholder="seunome" class="w-full py-3 pr-4 text-sm bg-transparent outline-none"/>
@@ -957,17 +981,17 @@ CADASTRAR_HTML = """<!DOCTYPE html>
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-stone-700 mb-1">E-mail</label>
-                <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Seu WhatsApp</label>
+                <input type="tel" required placeholder="(DDD) 99999-9999" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-stone-700 mb-1">Senha</label>
-                <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
+                <label class="block text-xs font-bold text-stone-700 mb-1">E-mail de Contato</label>
+                <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 border border-stone-300 focus:border-stone-900 outline-none transition-colors"/>
             </div>
 
-            <button type="submit" class="w-full py-3.5 rounded-full bg-stone-950 text-white font-bold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors mt-2 shadow-md">
-                Criar Conta e Começar →
+            <button type="submit" class="w-full py-4 rounded-full bg-stone-950 text-white font-bold text-xs uppercase tracking-wider hover:bg-stone-800 transition-colors mt-2 shadow-xl">
+                Contratar e Iniciar Implementação (24h) →
             </button>
         </form>
 
@@ -1025,17 +1049,17 @@ TERMOS_HTML = """<!DOCTYPE html>
     </header>
 
     <main class="max-w-2xl mx-auto px-6 py-12">
-        <h1 class="text-2xl font-bold font-display text-stone-950 mb-1">Termos de Uso</h1>
+        <h1 class="text-2xl font-bold font-display text-stone-950 mb-1">Termos de Uso & Entrega em 24h</h1>
         <p class="text-xs text-stone-500 mb-6 font-mono">Última atualização: 18 de agosto de 2026</p>
 
         <div class="space-y-6 text-sm text-stone-700 leading-relaxed bg-white p-8 rounded-3xl border border-stone-300 shadow-sm">
             <section>
-                <h2 class="font-bold font-display text-stone-950 mb-1">1. Aceitação</h2>
-                <p>Ao utilizar a plataforma ELOOO BIO PREMIUM da ELOOO International Group, você concorda com estes termos.</p>
+                <h2 class="font-bold font-display text-stone-950 mb-1">1. Serviço de Implementação</h2>
+                <p>O serviço do ELOOO BIO PREMIUM inclui a implementação técnica completa, design e configuração da sua bio por nossa equipe especializada no prazo de até 24 horas úteis após o envio das informações.</p>
             </section>
             <section>
                 <h2 class="font-bold font-display text-stone-950 mb-1">2. Garantia de 7 Dias</h2>
-                <p>Todos os planos contam com garantia incondicional de reembolso total em até 7 dias.</p>
+                <p>Todos os planos contam com garantia incondicional de reembolso total em até 7 dias a contar da ativação.</p>
             </section>
             <section>
                 <h2 class="font-bold font-display text-stone-950 mb-1">3. Suporte</h2>
@@ -1261,7 +1285,7 @@ BRUNO_BARROS_BIO_HTML = """<!DOCTYPE html>
 """
 
 def generate_all():
-    print("Generating refined ELOOO BIO PREMIUM pages with tighter spacing, gold CTA buttons in every section, new metrics, updated plans and minimal navbar...")
+    print("Generating Done-For-You 24h ELOOO BIO PREMIUM pages...")
     save("src/bio/index.html", LANDING_HTML)
     save("src/bio/entrar.html", ENTRAR_HTML)
     save("src/bio/cadastrar.html", CADASTRAR_HTML)
@@ -1271,7 +1295,7 @@ def generate_all():
     save("src/bio/leticia-vaz.html", BRUNO_BARROS_BIO_HTML)
     save("src/bio/demo.html", BRUNO_BARROS_BIO_HTML)
     save("src/bio.html", LANDING_HTML)
-    print("All bio pages updated successfully!")
+    print("All pages updated successfully with Done-For-You 24h delivery copy!")
 
 if __name__ == "__main__":
     generate_all()
