@@ -4,14 +4,17 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>A Receita da Liberdade | Dr. Murilo Melocra</title>
+    <title>Dr. Murilo Melocra | A Receita da Liberdade | Elooo Editora</title>
+    <meta name="description" content="Página oficial do Dr. Murilo Melocra — Médico, Investidor, Fundador da ELOOO e Autor de 'A Receita da Liberdade'. Livro oficial publicado pela Elooo Editora.">
+    <meta property="og:title" content="Dr. Murilo Melocra | A Receita da Liberdade | Elooo Editora">
+    <meta property="og:description" content="Conheça a trajetória e a obra do Dr. Murilo Melocra. A estratégia definitiva de soberania patrimonial e investimentos para médicos e executivos.">
+    <meta property="og:image" content="../static/images/FOTO MURILO.jpeg">
+    <meta property="og:type" content="website">
 
-    <!-- Fonts -->
+    <!-- Fonts: Space Grotesk + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -44,21 +47,20 @@
                             700: '#44403c',
                             800: '#292524',
                             900: '#1c1917',
+                            950: '#0c0a09',
                         },
-                        'surface-light': '#EAEAE5',
+                        gold: {
+                            100: '#fdf6e7',
+                            200: '#faeac7',
+                            300: '#f5dc9e',
+                            400: '#e5be63',
+                            500: '#d6bc8c',
+                            600: '#b89445',
+                            700: '#8c6e26',
+                        }
                     },
                     backgroundImage: {
                         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
-                    },
-                    animation: {
-                        'spin-slow': 'spin 8s linear infinite',
-                        'shimmer': 'shimmer 2s linear infinite',
-                    },
-                    keyframes: {
-                        shimmer: {
-                            from: { backgroundPosition: '0 0' },
-                            to: { backgroundPosition: '-200% 0' }
-                        }
                     }
                 }
             }
@@ -66,158 +68,322 @@
     </script>
 
     <style>
-        /* BASE STYLES */
         body {
+            background-color: #0c0a09;
+            color: #ffffff;
             font-family: 'Inter', sans-serif;
-            background-color: #EAEAE5;
-            color: #1C1917;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
         }
 
-        /* TEXT OUTLINE */
-        .text-outline {
-            -webkit-text-stroke: 1px #1C1917;
-            color: transparent;
-            transition: all 0.5s ease;
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* BEAM BUTTON ANIMATION */
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+        /* Continuous shimmering liquid gold text sweep effect */
+        .gold-text-sweep {
+            background: linear-gradient(90deg, #d6bc8c 0%, #f6e3c5 25%, #d6bc8c 50%, #f6e3c5 75%, #d6bc8c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldSweep 6s linear infinite;
+        }
+        @keyframes goldSweep {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
         }
 
-        .btn-beam {
+        /* ABSOLUTELY GOLD SUPER-PREMIUM BUTTON */
+        @keyframes goldGleam {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes goldShimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+
+        .btn-gold-luxury {
             position: relative;
-            z-index: 10;
-            overflow: hidden;
-        }
-
-        .btn-beam::before {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            z-index: -1;
-            background: conic-gradient(from 90deg at 50% 50%, #E2E8F0 0%, #000000 50%, #E2E8F0 100%);
-            animation: spin 4s linear infinite;
-            border-radius: inherit;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .btn-beam:hover::before {
-            opacity: 1;
-        }
-
-        .btn-beam-content {
-            background-color: #1c1917;
-            color: white;
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            height: 100%;
-            border-radius: inherit;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 10px;
+            background: linear-gradient(135deg, #d6bc8c 0%, #faeac7 25%, #c5a870 50%, #f5dc9e 75%, #d6bc8c 100%);
+            background-size: 250% 250%;
+            animation: goldGleam 4s ease infinite;
+            color: #12100e !important;
+            font-weight: 800;
+            border-radius: 9999px;
+            border: 1.5px solid #faeac7;
+            box-shadow: 0 10px 35px -5px rgba(214, 188, 140, 0.75), 0 0 25px rgba(214, 188, 140, 0.4);
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            text-decoration: none;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
         }
 
-        /* NOISE Overlay */
-        .noise-overlay {
-            position: fixed;
+        .btn-gold-luxury::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+            transform: translateX(-150%) skewX(-20deg);
+            animation: goldShimmerSweep 3.5s infinite;
+            pointer-events: none;
+        }
+
+        .btn-gold-luxury:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 18px 45px -5px rgba(214, 188, 140, 0.95), 0 0 35px rgba(250, 234, 199, 0.8);
+            border-color: #ffffff;
+            color: #000000 !important;
+        }
+
+        /* FLASHLIGHT CARDS */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .flashlight-card {
+            position: relative;
+            background: rgba(28, 25, 23, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 26px;
+            overflow: hidden;
+            transition: border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
+        .flashlight-card span.spin-border {
+            animation: none !important;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        .flashlight-card:hover span.spin-border {
+            animation: spin 4s linear infinite !important;
+            opacity: 1 !important;
+        }
+
+        .flashlight-card-inner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            width: 100%;
+            height: 100%;
+            background: rgba(16, 14, 12, 0.94);
+            backdrop-filter: blur(16px);
+            transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .flashlight-card-inner::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.04;
+            background: radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(214, 188, 140, 0.45), transparent 60%);
+            z-index: 1;
             pointer-events: none;
-            z-index: 9999;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #EAEAE5;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #d6d3d1;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a8a29e;
-        }
-
-        /* Reveal Animations */
-        .reveal-up {
             opacity: 0;
-            transform: translateY(30px);
-            filter: blur(15px);
-            will-change: transform, opacity, filter;
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.4s ease;
         }
 
-        .reveal-up.active {
+        .flashlight-card-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(214, 188, 140, 0.12), transparent);
+            transform: skewX(-25deg);
+            z-index: 2;
+            pointer-events: none;
+            transition: none;
+        }
+
+        .flashlight-card:hover {
+            transform: translateY(-5px) scale(1.015);
+            border-color: transparent;
+            background-color: rgba(28, 25, 23, 0.75);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(214, 188, 140, 0.25);
+        }
+
+        .flashlight-card:hover .flashlight-card-inner {
+            background-color: rgba(14, 12, 10, 0.98);
+        }
+
+        .flashlight-card:hover .flashlight-card-inner::before {
+            opacity: 1;
+        }
+
+        .flashlight-card:hover .flashlight-card-inner::after {
+            left: 150%;
+            transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .flashlight-card:hover h3,
+        .flashlight-card:hover h4 {
+            color: #d6bc8c !important;
+            text-shadow: 0 0 10px rgba(214, 188, 140, 0.6), 0 0 2px rgba(214, 188, 140, 0.8);
+        }
+
+        /* LUXURY NUMERIC EFFECT */
+        .luxury-num-badge {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(180deg, #faeac7 0%, #d6bc8c 50%, rgba(214, 188, 140, 0.25) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-shadow: 0 0 25px rgba(214, 188, 140, 0.25);
+        }
+
+        .flashlight-card:hover .luxury-num-badge {
+            transform: scale(1.08) translateY(-2px);
+            text-shadow: 0 0 35px rgba(250, 234, 199, 0.7), 0 0 15px rgba(214, 188, 140, 0.9);
+        }
+
+        /* HIGH-SPEED GLOWING LASER PULSE FIRING EFFECTS */
+        .tech-pulse-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f6e3c5;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #d6bc8c, 0 0 20px #d6bc8c, 0 0 35px #d6bc8c;
+            pointer-events: none;
+            z-index: 50;
+            transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1), top 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+            will-change: left, top, transform, opacity;
+        }
+
+        .tech-pulse-trail {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 10%, rgba(214,188,140,0.6) 50%, #f6e3c5 90%);
+            pointer-events: none;
+            z-index: 49;
+            transform-origin: left center;
+            transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+            will-change: width, opacity;
+        }
+
+        /* SCROLL REVEAL (CRISP, SHARP, NO BLUR) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .scroll-reveal.in-view {
             opacity: 1;
             transform: translateY(0);
-            filter: blur(0);
         }
 
-        /* Scrubber Height */
-        .hero-scrub-container {
-            height: 300vh;
+        /* Pure Artist Portrait */
+        .portrait-artist-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 620px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            will-change: transform, opacity;
         }
 
-        /* Zoom Reveal */
-        .reveal-zoom {
-            opacity: 0;
-            transform: scale(0.95);
-            filter: blur(10px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        .portrait-artist-wrapper::after {
+            content: '';
+            position: absolute;
+            inset-x: 0;
+            bottom: -2px;
+            height: 150px;
+            background: linear-gradient(to top, #0c0a09 25%, rgba(12,10,9,0.85) 60%, transparent 100%);
+            pointer-events: none;
+            z-index: 10;
         }
 
-        .reveal-zoom.active {
-            opacity: 1;
-            transform: scale(1);
-            filter: blur(0);
+        .portrait-halo-light {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -25%);
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.26) 0%, rgba(214, 188, 140, 0.08) 45%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(65px);
+            pointer-events: none;
+            z-index: 1;
         }
 
-        /* Floating Animation */
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+        .portrait-artist-img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-height: 740px;
+            object-fit: contain;
+            object-position: top center;
+            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.85));
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        .portrait-artist-wrapper:hover .portrait-artist-img {
+            transform: scale(1.025);
+        }
+
+        /* 3D Book Floating Showcase */
+        .book-3d-wrap {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        .book-3d-object {
+            transform: rotateY(-16deg) rotateX(6deg);
+            box-shadow: -25px 35px 70px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(214, 188, 140, 0.25);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .book-3d-wrap:hover .book-3d-object {
+            transform: rotateY(-4deg) rotateX(2deg) translateY(-8px) scale(1.02);
+            box-shadow: -35px 45px 90px -10px rgba(0, 0, 0, 0.98), 0 0 60px rgba(214, 188, 140, 0.45);
+        }
+
+        /* Ambient Glow */
+        .ambient-gold-glow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 188, 140, 0.14) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(90px);
         }
     </style>
 </head>
 
-<body class="antialiased min-h-screen relative selection:bg-stone-800 selection:text-white">
+<body class="selection:bg-[#d6bc8c] selection:text-black">
 
-    <div class="noise-overlay"></div>
+    <!-- NOISE GRAIN OVERLAY -->
+    <div class="fixed inset-0 w-full h-full bg-noise opacity-[0.025] pointer-events-none z-50"></div>
 
-        <!-- NAVBAR -->
+    <!-- NAVBAR -->
 <header class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
     <div class="absolute inset-0 bg-white/80 backdrop-blur-md border-b border-stone-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.03)]"></div>
     <div class="max-w-[1440px] mx-auto px-5 sm:px-8 py-3 relative flex justify-between items-center">
@@ -521,358 +687,511 @@
 </script>
 
 
-    <!-- 1. AUTOR (MINIMALIST LETTERING / CANVAS VIDEO SCRUB) -->
-    <div class="autor-scrub-container relative bg-stone-950" style="height: 300vh;">
-        <section class="sticky top-0 h-screen w-full relative overflow-hidden flex flex-col md:flex-row pt-20">
-            <!-- Left Photo (Canvas Video) -->
-            <div class="w-full md:w-1/2 h-[50vh] md:h-full relative overflow-hidden group bg-stone-900">
-                <canvas id="autor-canvas" width="1280" height="720" class="absolute inset-0 w-full h-full object-cover object-top opacity-80 grayscale contrast-125"></canvas>
-                <!-- Fade into the right side -->
-                <div class="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-stone-950 to-transparent hidden md:block z-10 pointer-events-none"></div>
-                <!-- Fade into the bottom on mobile -->
-                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-stone-950 to-transparent md:hidden z-10 pointer-events-none"></div>
+    <!-- ========================================================================= -->
+    <!-- HERO SECTION: 100% CRISTALINO, NÍTIDO E SEM DESFOQUES -->
+    <!-- ========================================================================= -->
+    <section id="heroSection" class="relative min-h-[92vh] sm:min-h-screen w-full flex items-center justify-center pt-24 pb-6 px-6 sm:px-12 lg:px-20 overflow-hidden">
+        
+        <!-- Ambient Stage Lighting -->
+        <div class="ambient-gold-glow top-10 left-1/4 w-[750px] h-[750px]"></div>
+        <div class="ambient-gold-glow bottom-0 right-10 w-[550px] h-[550px] opacity-35"></div>
+
+        <div class="relative z-10 max-w-[1540px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- LEFT COLUMN: O AUTOR SEM MOLDURA (GIGANTE, LIMPO, ARTISTA) -->
+            <div class="lg:col-span-6 flex justify-center items-end relative min-h-[500px] sm:min-h-[620px] lg:min-h-[720px]" id="heroAuthorCol">
+                <div class="portrait-artist-wrapper" id="authorHeroPortrait">
+                    <!-- Halo de iluminação cinematográfica dourada -->
+                    <div class="portrait-halo-light"></div>
+
+                    <!-- FOTO GIGANTE DO AUTOR (100% LIMPA, NÍTIDA) -->
+                    <img src="../static/images/FOTO MURILO.jpeg" alt="Dr. Murilo Melocra" class="portrait-artist-img">
+                </div>
             </div>
 
-            <!-- Right Text -->
-            <div class="w-full md:w-1/2 flex items-start pt-12 md:pt-[25vh] px-8 md:px-16 lg:px-24 z-20 autor-text-reveal">
-                <h2 class="font-sans text-3xl md:text-5xl lg:text-6xl font-light text-white/90 tracking-[0.4em] leading-[1.8] uppercase">
-                    Dr. Murilo<br>
-                    Melocra
+            <!-- RIGHT COLUMN: NOME GIGANTE & COPY EDITORIAL DE ALTO IMPACTO -->
+            <div class="lg:col-span-6 flex flex-col justify-center text-left py-2" id="heroTextCol">
+                
+                <!-- Category Sub-tag -->
+                <div class="inline-flex items-center gap-3 mb-3">
+                    <span class="text-[11px] font-mono font-bold uppercase tracking-[0.28em] text-[#d6bc8c]">
+                        SOBERANIA FINANCEIRA, BITCOIN & PATRIMÔNIO MÉDICO
+                    </span>
+                </div>
+
+                <!-- NOME DO AUTOR (GIGANTE & DOMINANTE) -->
+                <h1 class="font-display text-5xl sm:text-7xl lg:text-[84px] font-extrabold tracking-tight text-white leading-[0.96] mb-3">
+                    Dr. Murilo Melocra
+                </h1>
+
+                <!-- TÍTULO DA OBRA COM SWEEP DOURADO -->
+                <p class="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-stone-100 leading-snug mb-5">
+                    <span class="gold-text-sweep">A Receita da Liberdade</span> & Patrimônio Escasso.
+                </p>
+
+                <!-- EDITORIAL MANIFESTO -->
+                <div class="relative mb-6 p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
+                    <p class="text-base sm:text-lg text-stone-200 font-light italic leading-relaxed">
+                        “Trocar horas de plantão por moeda fiduciária que derrete todo ano é uma armadilha. A verdadeira liberdade médica nasce quando seu patrimônio é protegido por ativos escassos e matematicamente soberanos.”
+                    </p>
+                    <div class="mt-2 text-right">
+                        <span class="text-xs font-mono text-[#d6bc8c] uppercase tracking-widest">— Dr. Murilo Melocra</span>
+                    </div>
+                </div>
+
+                <!-- PRIMARY & SECONDARY ACTION BUTTONS -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-7">
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20Murilo%20Melocra%20(A%20Receita%20da%20Liberdade)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-8 sm:px-10 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
+                        <iconify-icon icon="solar:book-bookmark-linear" class="text-lg"></iconify-icon>
+                        <span>Adquirir Livro Oficial Autografado</span>
+                    </a>
+
+                    <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20mentorias%20com%20o%20Dr.%20Murilo%20Melocra." target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2.5">
+                        <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
+                        <span>Falar com o Autor</span>
+                    </a>
+                </div>
+
+                <!-- AUTHORITY STATS RIBBON -->
+                <div class="grid grid-cols-3 gap-6 pt-5 border-t border-white/10 text-left">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">ELOOO</p>
+                        <p class="text-[10px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Fundador & Idealizador</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold font-display text-[#d6bc8c]">+Centenas</p>
+                        <p class="text-[10px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Médicos Mentorados</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold font-display text-white">BTC</p>
+                        <p class="text-[10px] font-mono text-stone-400 uppercase tracking-wider mt-0.5">Soberania Financeira</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SEÇÃO 2: TRAJETÓRIA & AUTORIDADE (COM EFEITO DE DISPARO DE LASER) -->
+    <!-- ========================================================================= -->
+    <section id="trajetoriaSection" class="py-12 sm:py-16 bg-[#080706] border-y border-stone-800/80 relative z-20 overflow-hidden">
+        
+        <!-- Laser Pulse Effects Container for Section 2 -->
+        <div id="section2-laser-container" class="absolute inset-0 w-full h-full pointer-events-none z-40 overflow-hidden"></div>
+
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
+            
+            <div class="max-w-3xl mb-10 text-left scroll-reveal">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Trajetória & Autoridade</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-1.5 mb-2">
+                    A Trajetória do Dr. Murilo Melocra
                 </h2>
-            </div>
-        </section>
-    </div>
-
-    <!-- 1.5. SOBRE O AUTOR (TRANSIÇÃO) -->
-    <section class="relative z-10 pt-32 pb-48 md:pt-48 md:pb-64 overflow-hidden bg-gradient-to-b from-stone-950 via-stone-800 to-white">
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
-            
-            <div class="inline-flex items-center gap-3 mb-10 px-5 py-2 border border-stone-700/50 rounded-full shadow-sm bg-stone-900/50 backdrop-blur-sm reveal-up">
-                <img src="../static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0) invert(1);">
-                <div class="w-px h-3 bg-stone-700"></div>
-                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-300">Sobre o Autor</span>
-            </div>
-
-            <h3 class="font-display text-3xl md:text-5xl font-light text-white leading-tight mb-8 reveal-up delay-100">
-                Ajudando médicos a conquistarem a <span class="font-medium text-stone-200">liberdade financeira</span> com segurança e autonomia absoluta.
-            </h3>
-            
-        </div>
-
-        <!-- Premium Cards Container (Efeito Espelho) -->
-        <div class="max-w-[1440px] mx-auto px-6 md:px-24 mt-20 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <!-- Card 1 -->
-            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-200" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
-                    <iconify-icon icon="solar:star-fall-linear" class="text-2xl"></iconify-icon>
-                </div>
-                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Dupla Expertise</h4>
-                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
-                    Combina anos de linha de frente na medicina com um profundo domínio analítico no mercado financeiro.
+                <p class="text-sm font-mono text-stone-400 uppercase tracking-wider">
+                    Médico · Fundador da ELOOO · Especialista em Liberdade Financeira Médica
                 </p>
-                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-300" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
-                    <iconify-icon icon="solar:target-bold-duotone" class="text-2xl"></iconify-icon>
+            <!-- EXECUTIVE SPLIT: LEFT TIMELINE CARDS (TARGETS) / RIGHT MASTER CARD (EMITTER) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Left Column: 3 Milestone Cards (Targets of the Laser Pulse) -->
+                <div class="lg:col-span-7 flex flex-col justify-between gap-4">
+                    
+                    <!-- Milestone 1 Target -->
+                    <div id="target-card-1" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec2(1)">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6 flex items-start gap-4" onmousemove="updateFlashlight(event, this)">
+                            <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0 z-10 relative">
+                                <iconify-icon icon="solar:lock-keyhole-linear"></iconify-icon>
+                            </div>
+                            <div class="z-10 relative">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Soberania Pura</span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-stone-400">Bitcoin & Escassez</span>
+                                </div>
+                                <h3 class="font-display text-lg font-bold text-white mb-1">Proteção Patrimonial Antifrágil</h3>
+                                <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                    Fundamentos para acumular reservas em ativos incensuráveis, protegendo o patrimônio familiar contra inflação e confisco estatal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2 Target -->
+                    <div id="target-card-2" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec2(2)">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6 flex items-start gap-4" onmousemove="updateFlashlight(event, this)">
+                            <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0 z-10 relative">
+                                <iconify-icon icon="solar:clock-circle-linear"></iconify-icon>
+                            </div>
+                            <div class="z-10 relative">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Quebra de Algemas</span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-stone-400">Fim dos Plantões</span>
+                                </div>
+                                <h3 class="font-display text-lg font-bold text-white mb-1">Desconexão Horas x Renda</h3>
+                                <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                    O plano estruturado para médicos reduzirem a carga exaustiva de plantões e consultas, gerando renda passiva com segurança matemática.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3 Target -->
+                    <div id="target-card-3" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec2(3)">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6 flex items-start gap-4" onmousemove="updateFlashlight(event, this)">
+                            <div class="w-12 h-12 rounded-2xl bg-[#d6bc8c]/15 text-[#d6bc8c] flex items-center justify-center text-2xl shrink-0 z-10 relative">
+                                <iconify-icon icon="solar:buildings-3-linear"></iconify-icon>
+                            </div>
+                            <div class="z-10 relative">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-[10px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold">Ecossistema ELOOO</span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-stone-400">Autoridade & Negócios</span>
+                                </div>
+                                <h3 class="font-display text-lg font-bold text-white mb-1">Fundação do Ecossistema ELOOO</h3>
+                                <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                    Criação da plataforma de editoração e tecnologia que capacita autores e médicos de elite a expandirem seu legado e autoridade internacional.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Método Exclusivo</h4>
-                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
-                    Estratégias financeiras desenhadas cirurgicamente para a carga horária e tributação da área da saúde.
-                </p>
-                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-400" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
-                    <iconify-icon icon="solar:shield-check-linear" class="text-2xl"></iconify-icon>
+                <!-- Right Column: Executive Master Card (Laser Emitter on Hover / Click) -->
+                <div class="lg:col-span-5 flex flex-col justify-between">
+                    <div id="emitter-card-sec2" class="flashlight-card group p-[1.5px] h-full scroll-reveal cursor-pointer" onmouseenter="fireRandomLaserSec2()" onclick="fireAllLasersSec2()">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.9)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-8 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                            <div class="z-10 relative">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-[#d6bc8c]/20 text-[#d6bc8c] flex items-center justify-center text-xl">
+                                        <iconify-icon icon="solar:crown-line-duotone"></iconify-icon>
+                                    </div>
+                                    <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] px-3 py-1 rounded-full bg-[#d6bc8c]/10 border border-[#d6bc8c]/30">
+                                        ✦ Método Melocra
+                                    </span>
+                                </div>
+                                
+                                <h3 class="font-display text-2xl font-extrabold text-white mb-3 leading-tight">
+                                    A Filosofia do Dr. Murilo Melocra
+                                </h3>
+                                <p class="text-sm text-stone-300 font-light leading-relaxed mb-6">
+                                    “A medicina me ensinou a salvar vidas. Mas foi o estudo dos ativos escassos que me permitiu salvar o tempo dos meus colegas médicos, construindo verdadeira paz para suas famílias.”
+                                </p>
+                                <div class="border-t border-white/10 pt-4 flex items-center justify-between text-xs font-mono text-[#d6bc8c]">
+                                    <span>✦ Fundador do Ecossistema ELOOO</span>
+                                    <span>✦ Autor Elooo Editora</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-6 z-10 relative">
+                                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20mentorias%20com%20o%20Dr.%20Murilo%20Melocra." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury w-full py-4 text-xs font-mono font-bold uppercase tracking-widest text-center shadow-xl">
+                                    <span>Agendar Mentoria com o Autor →</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Patrimônio Inabalável</h4>
-                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
-                    Técnicas avançadas para transformar plantões exaustivos em construção de renda passiva sólida e blindada.
-                </p>
-                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
             </div>
 
-            <!-- Card 4 -->
-            <div class="flashlight-card relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-8 text-left transition-all duration-700 hover:bg-white/[0.06] hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.15)] group reveal-up delay-500" onmousemove="updateFlashlight(event, this)">
-                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white mb-6 backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-500">
-                    <iconify-icon icon="solar:crown-linear" class="text-2xl"></iconify-icon>
-                </div>
-                <h4 class="font-display text-xl font-medium text-white mb-3 tracking-wide">Autonomia Absoluta</h4>
-                <p class="font-sans text-sm text-stone-400 leading-relaxed group-hover:text-stone-300 transition-colors">
-                    A liberdade para voltar a exercer a medicina por vocação e paixão, nunca mais por obrigação ou necessidade.
-                </p>
-                <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-            </div>
-        </div>
-
-        <!-- Buttons Container (Premium Animated) -->
-        <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 reveal-up delay-600 w-full relative z-20 px-6 max-w-[1440px] mx-auto">
-            
-            <!-- Button 1: Garantir o Livro -->
-            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
-                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
-                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                    Garantir o Livro
-                    <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                </span>
-            </button>
-
-            <!-- Button 2: Conhecer a Mentoria -->
-            <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
-                <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
-                <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                    Conhecer a Mentoria
-                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                </span>
-            </button>
         </div>
     </section>
 
-    <!-- 2. O LIVRO (HERO SECTION) -->
-    <main class="hero-scrub-container relative bg-white">
-        <div class="sticky top-0 h-screen w-full overflow-hidden">
+    <!-- ========================================================================= -->
+    <!-- SEÇÃO 3: O LIVRO & OS 4 DIFERENCIAIS DA OBRA (COM BOTÃO ABAIXO DO MOCKUP & DISPARO) -->
+    <!-- ========================================================================= -->
+    <section id="livroSection" class="py-12 sm:py-16 bg-[#0c0a09] relative z-20 overflow-hidden">
+        
+        <!-- Laser Pulse Effects Container for Section 3 -->
+        <div id="section3-laser-container" class="absolute inset-0 w-full h-full pointer-events-none z-40 overflow-hidden"></div>
+        <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] opacity-15"></div>
 
-            <!-- VIDEO CENTERPIECE (Canvas Background) -->
-            <div class="absolute inset-0 z-0 flex items-center justify-center bg-white">
-                <!-- Canvas for Image Sequence -->
-                <canvas id="hero-canvas" width="1280" height="720"
-                    class="w-full h-full object-cover relative z-10"></canvas>
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 scroll-reveal">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Obra Literária Exclusiva</span>
+                <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white mt-1.5 mb-2">
+                    O Livro: <span class="gold-text-sweep">A Receita da Liberdade</span>
+                </h2>
+                <p class="text-base sm:text-lg text-stone-400 font-light leading-relaxed">
+                    O roteiro financeiro comprovado para médicos e profissionais liberais protegerem seu patrimônio e viverem livres da escravidão de plantões.
+                </p>
             </div>
 
-            <!-- OVERLAY CONTENT (Text Layer) -->
-            <div
-                class="relative z-10 w-full h-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 pointer-events-none">
+            <!-- SHOWCASE: LIVRO 3D (EMITTER) + 4 PILARES DA OBRA (TARGETS) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Column: 3D Book Mockup + Clean Purchase Button BELOW the Book -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center scroll-reveal">
+                    
+                    <!-- 3D Book Mockup Container (Laser Emitter) -->
+                    <div id="book-emitter-card" class="book-3d-wrap w-full flex justify-center cursor-pointer" onmouseenter="fireRandomLaserSec3()" onclick="fireAllLasersSec3()">
+                        <div class="flashlight-card group p-[1.5px] w-[310px] sm:w-[350px]">
+                            <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.9)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                            <div class="flashlight-card-inner p-8 text-left book-3d-object" onmousemove="updateFlashlight(event, this)">
+                                
+                                <!-- Book Header Ribbon -->
+                                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5 z-10 relative">
+                                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#d6bc8c] font-bold">Elooo Editora</span>
+                                    <span class="text-[10px] font-mono text-stone-400">Edição de Luxo</span>
+                                </div>
 
-                <!-- Headline Group (Left aligned) -->
-                <div
-                    class="col-span-1 md:col-span-10 lg:col-span-7 h-full flex flex-col justify-center px-6 md:pl-24 text-left pointer-events-auto">
-                    <!-- Badge -->
-                    <div class="inline-flex items-center gap-3 mb-4 reveal-up delay-100 border border-stone-900/10 px-4 py-2 rounded-full bg-white/40 backdrop-blur-sm">
-                        <img src="../static/images/ELOOO LOGO.png" class="h-2.5 object-contain" style="filter: brightness(0);">
-                        <div class="w-px h-3 bg-stone-900/20"></div>
-                        <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-700 font-medium">Lançamento
-                            Exclusivo</span>
+                                <!-- Book Spine & Title (Ready for real cover image) -->
+                                <div class="my-6 z-10 relative">
+                                    <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-[#faeac7]">Dr. Murilo Melocra</span>
+                                    <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1.5 leading-tight">
+                                        A RECEITA DA LIBERDADE
+                                    </h3>
+                                    <p class="text-xs text-stone-400 mt-2 font-light italic">
+                                        Bitcoin, Ativos Escassos e Liberdade Médica
+                                    </p>
+                                </div>
+
+                                <!-- Book Specs -->
+                                <div class="pt-5 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-300 z-10 relative">
+                                    <span class="text-[#d6bc8c]">✦ Capa Nobre</span>
+                                    <span>✦ Tiragem Oficial</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Headline -->
-                    <h1
-                        class="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[0.8] mb-5 text-stone-900 -ml-1 md:-ml-1">
-                        <div class="reveal-up delay-100 block">A receita</div>
-                        <div class="reveal-up delay-200 block text-outline text-transparent">da liberdade</div>
-                        <div class="reveal-up delay-300 block">para médicos.</div>
-                    </h1>
+                    <!-- BOTÃO DOURADO ABAIXO DO MOCKUP (ISOLADO PARA RECEBER A CAPA REAL) -->
+                    <div class="w-full max-w-[350px] mt-6">
+                        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20Murilo%20Melocra%20(A%20Receita%20da%20Liberdade)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury w-full py-4 text-xs font-mono font-bold uppercase tracking-wider text-center shadow-2xl">
+                            <iconify-icon icon="solar:book-bookmark-linear" class="text-lg"></iconify-icon>
+                            <span>Comprar Exemplar Oficial</span>
+                        </a>
+                    </div>
 
-                    <!-- Subtext -->
-                    <p
-                        class="text-lg md:text-xl text-stone-600 max-w-lg leading-relaxed reveal-up delay-500 mb-8 font-light">
-                        O guia definitivo para médicos conquistarem a liberdade financeira com segurança e autonomia
-                        absoluta.
+                </div>
+
+                <!-- Right Column: The 4 Differentials / Pillars (Targets of Book Laser) -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    
+                    <!-- Pilar 1 Target -->
+                    <div id="book-target-1" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(1)">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">01</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1 z-10 relative">A Ilusão do Dinheiro Fiat</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
+                                Entenda por que trabalhar mais plantões não resolve a perda de poder de compra causada pela emissão desenfreada de moeda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 2 Target -->
+                    <div id="book-target-2" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(2)">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">02</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1 z-10 relative">O Padrão Bitcoin</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
+                                Como a matemática do Bitcoin oferece a mais segura e previsível reserva de valor da história para proteger o futuro dos seus filhos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 3 Target -->
+                    <div id="book-target-3" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(3)">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">03</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1 z-10 relative">Custódia & Segurança</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
+                                Protocolos passo a passo de autocustódia para armazenar seus ativos com blindagem absoluta e total soberania privada.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 4 Target -->
+                    <div id="book-target-4" class="flashlight-card group p-[1.5px] scroll-reveal cursor-pointer transition-all duration-500" onclick="triggerLaserSec3(4)">
+                        <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                        <div class="flashlight-card-inner p-6" onmousemove="updateFlashlight(event, this)">
+                            <div class="text-[#d6bc8c] text-3xl font-display font-extrabold mb-1 z-10 relative">04</div>
+                            <h4 class="font-display text-lg font-bold text-white mb-1 z-10 relative">Aposentadoria Antecipada</h4>
+                            <p class="text-xs text-stone-400 leading-relaxed font-light z-10 relative">
+                                A rota de acumulação estratégica para conquistar tempo livre e independência financeira plena muito antes da velhice.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SECTION 3 BOTTOM ACTION BUTTON -->
+            <div class="mt-10 text-center scroll-reveal">
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20Murilo%20Melocra%20(A%20Receita%20da%20Liberdade)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-4.5 text-xs font-mono font-bold uppercase tracking-widest shadow-2xl">
+                    <span>Garantir Meu Livro com Dedicatória Especial →</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SEÇÃO 4: DIAGNÓSTICO & APLICAÇÃO (EFEITO GLOW NOS NÚMEROS, ZERO EMOJIS) -->
+    <!-- ========================================================================= -->
+    <section id="publicoSection" class="py-12 sm:py-16 bg-[#080706] border-t border-stone-800/80 relative z-20">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 text-center">
+            
+            <div class="max-w-3xl mx-auto mb-10 scroll-reveal">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-[#d6bc8c] font-bold">Diagnóstico & Aplicação</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-1.5 mb-2">
+                    Para Quem Foi Escrita Esta Obra?
+                </h2>
+                <p class="text-sm text-stone-400 font-light max-w-xl mx-auto">
+                    Desenvolvido para médicos, dentistas e profissionais liberais que geram alta renda mas estão exaustos de trocar tempo por dinheiro.
+                </p>
+            </div>
+
+            <!-- 4 Cards with High-End Glowing Numeric Badges and Zero Emojis -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
+                
+                <!-- Card 1 -->
+                <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">01</span>
+                            </div>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Profissionais da Saúde</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Médicos & Plantonistas</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Médicos que trabalham 60+ horas por semana e precisam transformar sua renda ativa em patrimônio soberano que trabalha por eles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">02</span>
+                            </div>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Proteção Patrimonial</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Investidores Conscientes</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Pessoas que desconfiam de bancos e da moeda fiduciária e querem alocar em ativos que nenhum governo pode imprimir ou congelar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">03</span>
+                            </div>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Resgate de Família</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Pais de Família</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Profissionais liberais que desejam passar mais tempo com os filhos, acompanhando o crescimento familiar sem abrir mão do conforto.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="flashlight-card group p-[1.5px] scroll-reveal">
+                    <span class="spin-border absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(214,188,140,0.8)_50%,transparent_100%)] opacity-0 pointer-events-none transition-opacity duration-500"></span>
+                    <div class="flashlight-card-inner p-7 flex flex-col justify-between h-full" onmousemove="updateFlashlight(event, this)">
+                        <div class="z-10 relative">
+                            <div class="mb-4">
+                                <span class="luxury-num-badge inline-block">04</span>
+                            </div>
+                            <span class="text-[9.5px] font-mono text-[#d6bc8c] uppercase tracking-widest font-bold block mb-1">Liberdade Geográfica</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Cidadãos Globais</h3>
+                            <p class="text-xs text-stone-400 font-light leading-relaxed">
+                                Empreendedores que procuram internacionalizar seus recursos com liquidez imediata em qualquer lugar do mundo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SECTION 4 ACTION BUTTON -->
+            <div class="mt-10 scroll-reveal">
+                <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20quero%20adquirir%20o%20livro%20do%20Dr.%20Murilo%20Melocra%20para%20conquistar%20minha%20liberdade%20financeira." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-9 py-4 text-xs font-mono font-bold uppercase tracking-widest shadow-xl">
+                    <span>Quero Conquistar Minha Liberdade Financeira →</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- FINAL CONVERSION STAGE: FOTO DO AUTOR VISÍVEL & IMPOSTA -->
+    <!-- ========================================================================= -->
+    <section id="finalSection" class="relative py-16 sm:py-24 bg-[#0c0a09] border-t border-stone-800 overflow-hidden z-20">
+        
+        <div class="ambient-gold-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-15"></div>
+
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- LEFT COLUMN: FOTO DO AUTOR NÍTIDA, VISÍVEL E IMPOSTA -->
+                <div class="lg:col-span-5 flex justify-center items-end scroll-reveal">
+                    <div class="relative w-full max-w-[420px] flex justify-center items-end">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-radial from-[#d6bc8c]/25 to-transparent rounded-full filter blur-[50px] pointer-events-none"></div>
+                        <img src="../static/images/FOTO MURILO.jpeg" alt="Dr. Murilo Melocra" class="relative z-10 w-full max-h-[500px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]">
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: H1 DIRETO NO TOPO & CTAs DE CONVERSÃO -->
+                <div class="lg:col-span-7 flex flex-col justify-center text-left py-4 scroll-reveal">
+                    
+                    <!-- H1 OFICIAL DIRETO (ZERO RETÂNGULOS OU BADGES ANTERIORES) -->
+                    <h2 class="font-display text-4xl sm:text-6xl font-extrabold text-white leading-tight mb-4">
+                        Garanta Seu Exemplar com Dedicatória Oficial do <span class="gold-text-sweep">Dr. Murilo Melocra</span>
+                    </h2>
+                    
+                    <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-2xl">
+                        Adquira diretamente pela editora o livro que está abrindo os olhos de centenas de médicos e executivos sobre como escapar da esteira de plantões e construir riqueza imutável.
                     </p>
 
-                    <!-- Buttons -->
-                    <div class="flex flex-wrap gap-4 reveal-up delay-700">
-                        <!-- Button 1: Garantir o Livro -->
-                        <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
-                            <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
-                            <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                                Garantir o Livro
-                                <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                            </span>
-                        </button>
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8">
+                        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20livro%20oficial%20do%20Dr.%20Murilo%20Melocra%20(A%20Receita%20da%20Liberdade)." target="_blank" rel="noopener noreferrer" class="btn-gold-luxury px-10 py-4.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest shadow-2xl text-center">
+                            <span>Garantir Meu Livro Autografado →</span>
+                        </a>
 
-                        <!-- Button 2: Conhecer a Mentoria -->
-                        <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
-                            <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
-                            <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                                Conhecer a Mentoria
-                                <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- RIGHT SIDE CONTROLS -->
-            <div
-                class="absolute right-8 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-8 z-30 mix-blend-difference text-stone-400">
-                <div class="text-xs font-mono">01</div>
-                <div class="w-px h-12 bg-stone-300"></div>
-                <!-- Controls -->
-            </div>
-
-            <!-- SCROLL HINT -->
-            <div
-                class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-60 pointer-events-none">
-                <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Scroll to Explore</span>
-                <div class="w-px h-8 bg-stone-400 overflow-hidden relative">
-                    <div class="absolute top-0 left-0 w-full h-full bg-stone-900 animate-scroll-line"></div>
-                </div>
-            </div>
-
-            <!-- Gradient Fade to Next Section -->
-            <div
-                class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-stone-50 to-transparent pointer-events-none z-10">
-            </div>
-        </div>
-    </main>
-
-    <!-- 2. TECH SPECS SECTION (LIGHT) -->
-    <section
-        class="relative z-20 bg-stone-50 text-stone-900 py-24 md:py-32 overflow-hidden border-t border-stone-200 bg-grid selection:bg-stone-900 selection:text-white"
-        id="tech-specs">
-        <!-- Noise Overlay -->
-        <div
-            class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]">
-        </div>
-
-        <div class="max-w-[1440px] mx-auto px-6 md:px-24 relative z-10">
-
-            <!-- Watermark Text -->
-            <div
-                class="absolute top-0 right-0 -mr-24 -mt-24 pointer-events-none select-none opacity-[0.03] z-0 overflow-hidden">
-                <span class="font-display font-bold text-[15rem] leading-none text-stone-900">LIBERDADE</span>
-            </div>
-
-            <!-- Header -->
-            <div class="mb-24 reveal-up relative z-10">
-                <div class="inline-flex items-center gap-3 mb-6 px-4 py-1.5 bg-stone-200/50 rounded-full border border-stone-300/50">
-                    <img src="../static/images/ELOOO LOGO.png" class="h-2 object-contain opacity-60" style="filter: brightness(0);">
-                    <div class="w-px h-3 bg-stone-400/50"></div>
-                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">O Método</span>
-                </div>
-                <h2
-                    class="font-display text-5xl md:text-7xl font-medium tracking-tight leading-none text-stone-900 max-w-4xl mix-blend-darken">
-                    Independência Financeira.<br>
-                    <span class="text-stone-400">Autonomia Médica.</span>
-                </h2>
-                <p class="mt-8 text-lg text-stone-500 max-w-2xl font-light leading-relaxed text-balance">
-                    Descubra o passo a passo validado para construir um patrimônio sólido, proteger sua renda e alcançar
-                    a verdadeira liberdade sem depender exclusivamente de plantões ou convênios.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-
-                <!-- Left Visual (Breathtaking Lettering) -->
-                <div class="lg:col-span-7 relative flex items-center justify-center min-h-[500px] metodo-left-container">
-                    
-                    <!-- Atmospheric Background Glow -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-stone-300 via-stone-100 to-transparent blur-3xl opacity-40 mix-blend-multiply rounded-full pointer-events-none"></div>
-                    
-                    <div class="relative z-10 w-full flex flex-col justify-center lg:pr-12 text-center lg:text-left">
-                        <span class="font-mono text-[10px] md:text-xs uppercase tracking-[0.4em] text-stone-400 mb-6 block ml-2">A Verdadeira Riqueza</span>
-                        
-                        <h3 class="font-display text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] leading-[0.85] tracking-tighter text-stone-900 mb-8">
-                            <span class="block">Medicina</span>
-                            <span class="block font-light italic text-stone-500 mt-2 lg:ml-12 text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">por vocação,</span>
-                            <span class="block text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] mt-6 tracking-[-0.05em]">LIBERDADE</span>
-                            <span class="block font-serif italic text-stone-400 text-[2.5rem] md:text-[4.5rem] lg:text-[5.5rem] -mt-4 lg:text-right">por escolha.</span>
-                        </h3>
-                        
-                        <div class="flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-end gap-6 mt-8">
-                            <div class="h-px w-16 bg-stone-300 hidden lg:block"></div>
-                            <span class="font-sans text-[10px] md:text-xs uppercase tracking-[0.3em] text-stone-500 font-medium">O fim dos plantões exaustivos</span>
-                        </div>
+                        <a href="https://wa.me/5547988660791?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20mentorias%20com%20o%20Dr.%20Murilo%20Melocra." target="_blank" rel="noopener noreferrer" class="px-8 py-4.5 rounded-full bg-white/[0.06] border border-white/20 hover:border-[#d6bc8c] text-white hover:text-[#d6bc8c] text-xs font-mono font-semibold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2">
+                            <iconify-icon icon="ic:baseline-whatsapp" class="text-emerald-400 text-lg"></iconify-icon>
+                            <span>Falar com o Autor</span>
+                        </a>
                     </div>
 
-                    <!-- Subtle Floating Elements -->
-                    <iconify-icon icon="solar:star-fall-linear" class="absolute top-0 right-10 lg:right-20 text-stone-300 text-3xl animate-pulse opacity-60"></iconify-icon>
-                    <iconify-icon icon="solar:infinity-line-duotone" class="absolute bottom-10 left-0 lg:left-10 text-stone-200 text-5xl opacity-40"></iconify-icon>
-                </div>
-
-                <!-- Right Content (List) -->
-                <div class="lg:col-span-5 space-y-8">
-
-                    <!-- Feature 01 -->
-                    <div
-                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
-                        <div class="flex items-baseline gap-4 mb-3">
-                            <span
-                                class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">01</span>
-                            <h3
-                                class="text-2xl font-display font-medium text-stone-900 group-hover:translate-x-1 transition-transform duration-300">
-                                Mentalidade Vencedora</h3>
-                        </div>
-                        <p
-                            class="pl-8 text-stone-500 text-sm leading-relaxed group-hover:text-stone-600 transition-colors border-l border-stone-200 group-hover:border-stone-900 pl-4">
-                            Aprenda a pensar como um investidor e elimine as crenças limitantes que impedem a grande
-                            maioria dos médicos de enriquecer de verdade.
-                        </p>
-                    </div>
-
-                    <!-- Feature 02 -->
-                    <div
-                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
-                        <div class="flex items-baseline gap-4 mb-3">
-                            <span
-                                class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">02</span>
-                            <h3
-                                class="text-2xl font-display font-medium text-stone-900 group-hover:translate-x-1 transition-transform duration-300">
-                                Gestão Inteligente</h3>
-                        </div>
-                        <p
-                            class="pl-8 text-stone-500 text-sm leading-relaxed group-hover:text-stone-600 transition-colors border-l border-stone-200 group-hover:border-stone-900 pl-4">
-                            Transforme seu conhecimento médico em um negócio altamente rentável, otimizando os processos
-                            e multiplicando a sua renda.
-                        </p>
-                    </div>
-
-                    <!-- Feature 03 -->
-                    <div
-                        class="metodo-feature-box group cursor-crosshair p-6 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 border border-transparent hover:border-stone-100">
-                        <div class="flex items-baseline gap-4 mb-3">
-                            <span
-                                class="text-xs font-mono text-stone-400 group-hover:text-stone-900 group-hover:scale-110 transition-all duration-300">03</span>
-                            <h3
-                                class="text-2xl font-display font-medium text-stone-900 group-hover:translate-x-1 transition-transform duration-300">
-                                Investimentos Seguros</h3>
-                        </div>
-                        <p
-                            class="pl-8 text-stone-500 text-sm leading-relaxed group-hover:text-stone-600 transition-colors border-l border-stone-200 group-hover:border-stone-900 pl-4">
-                            Estratégias claras, práticas e seguras para fazer o seu dinheiro trabalhar por você,
-                            garantindo tranquilidade no seu futuro.
-                        </p>
+                    <!-- Back to authors link -->
+                    <div>
+                        <a href="../autores.html" class="inline-flex items-center gap-2 text-xs font-mono text-stone-500 hover:text-white uppercase tracking-widest transition-colors">
+                            <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+                            <span>Voltar para o Pódio de Autores ELOOO</span>
+                        </a>
                     </div>
 
                 </div>
-            </div>
 
-            <!-- Buttons Container (Premium Animated) -->
-            <div class="mt-24 flex flex-col md:flex-row items-center justify-center gap-6 reveal-up delay-400 w-full relative z-20 border-t border-stone-200 pt-16">
-                
-                <!-- Button 1: Garantir o Livro -->
-                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
-                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500"></span>
-                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                        Garantir o Livro
-                        <iconify-icon icon="solar:book-bookmark-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                    </span>
-                </button>
-
-                <!-- Button 2: Conhecer a Mentoria -->
-                <button class="relative group rounded-full p-[1px] overflow-hidden hover:scale-[1.02] transition-transform duration-500 w-full md:w-auto bg-stone-800 shadow-md hover:shadow-xl">
-                    <span class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] opacity-100 group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,rgba(255,255,255,0.8)_50%,transparent_100%)] transition-colors duration-500" style="animation-delay: -1.5s;"></span>
-                    <span class="relative flex items-center justify-center gap-3 h-full w-full bg-[#0a0a0a] px-8 py-4 rounded-full font-medium text-sm text-white tracking-widest uppercase transition-colors duration-500 group-hover:bg-[#111]">
-                        Conhecer a Mentoria
-                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                    </span>
-                </button>
             </div>
         </div>
     </section>
 
-
-
-
-
-        <!-- FOOTER -->
+    <!-- FOOTER -->
 <footer class="bg-stone-950 text-stone-500 py-12 border-t border-stone-800 relative z-20">
     <div class="max-w-[1440px] mx-auto px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
 
@@ -912,244 +1231,202 @@
 </div>
 
 
+    <!-- Interactive GSAP Scroll, Flashlight & Dynamic Laser Pulses Scripts -->
     <script>
-        // Register ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
 
+        // =========================================================================
+        // LASER PULSE SHOOTING FUNCTION (MATCHING QUEM-SOMOS LOGIC)
+        // =========================================================================
+        function shootLaserPulse(containerId, sourceElem, targetElem) {
+            const container = document.getElementById(containerId);
+            if (!container || !sourceElem || !targetElem) return;
+
+            const containerRect = container.getBoundingClientRect();
+            const srcRect = sourceElem.getBoundingClientRect();
+            const tgtRect = targetElem.getBoundingClientRect();
+
+            // Source coordinate (middle edge closest to target)
+            const isSourceRight = srcRect.left > tgtRect.left;
+            const x1 = isSourceRight ? (srcRect.left - containerRect.left) : (srcRect.right - containerRect.left);
+            const y1 = (srcRect.top + srcRect.bottom) / 2 - containerRect.top;
+
+            // Target coordinate
+            const x2 = isSourceRight ? (tgtRect.right - containerRect.left) : (tgtRect.left - containerRect.left);
+            const y2 = (tgtRect.top + tgtRect.bottom) / 2 - containerRect.top;
+
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+            // Create Trail Line
+            const trail = document.createElement('div');
+            trail.className = 'tech-pulse-trail';
+            trail.style.left = `${x1}px`;
+            trail.style.top = `${y1}px`;
+            trail.style.width = '0px';
+            trail.style.transform = `rotate(${angle}deg)`;
+            container.appendChild(trail);
+
+            // Create Particle Seed
+            const seed = document.createElement('div');
+            seed.className = 'tech-pulse-particle';
+            seed.style.left = `${x1}px`;
+            seed.style.top = `${y1}px`;
+            seed.style.transform = 'translate(-50%, -50%) scale(1)';
+            container.appendChild(seed);
+
+            // Trigger animation
+            requestAnimationFrame(() => {
+                trail.style.width = `${dist}px`;
+                seed.style.left = `${x2}px`;
+                seed.style.top = `${y2}px`;
+                seed.style.transform = 'translate(-50%, -50%) scale(1.3)';
+            });
+
+            // Splash feedback on target card
+            setTimeout(() => {
+                targetElem.style.boxShadow = '0 0 35px rgba(214, 188, 140, 0.6), 0 20px 40px rgba(0,0,0,0.9)';
+                targetElem.style.borderColor = 'rgba(214, 188, 140, 0.8)';
+                setTimeout(() => {
+                    targetElem.style.boxShadow = '';
+                    targetElem.style.borderColor = '';
+                }, 450);
+            }, 300);
+
+            // Cleanup
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                seed.style.opacity = '0';
+                setTimeout(() => {
+                    trail.remove();
+                    seed.remove();
+                }, 300);
+            }, 550);
+        }
+
+        // Section 2 Laser Triggers (From Right Master Card to Left 3 Cards)
+        window.triggerLaserSec2 = function(cardNum) {
+            const emitter = document.getElementById('emitter-card-sec2');
+            const target = document.getElementById(`target-card-${cardNum}`);
+            if (emitter && target) {
+                shootLaserPulse('section2-laser-container', emitter, target);
+            }
+        };
+
+        window.fireRandomLaserSec2 = function() {
+            const rand = Math.floor(Math.random() * 3) + 1;
+            window.triggerLaserSec2(rand);
+        };
+
+        window.fireAllLasersSec2 = function() {
+            [1, 2, 3].forEach((num, idx) => {
+                setTimeout(() => window.triggerLaserSec2(num), idx * 140);
+            });
+        };
+
+        // Section 3 Laser Triggers (From 3D Book Mockup on Left to 4 Pillar Cards on Right)
+        window.triggerLaserSec3 = function(pillarNum) {
+            const bookEmitter = document.getElementById('book-emitter-card');
+            const target = document.getElementById(`book-target-${pillarNum}`);
+            if (bookEmitter && target) {
+                shootLaserPulse('section3-laser-container', bookEmitter, target);
+            }
+        };
+
+        window.fireRandomLaserSec3 = function() {
+            const rand = Math.floor(Math.random() * 4) + 1;
+            window.triggerLaserSec3(rand);
+        };
+
+        window.fireAllLasersSec3 = function() {
+            [1, 2, 3, 4].forEach((num, idx) => {
+                setTimeout(() => window.triggerLaserSec3(num), idx * 120);
+            });
+        };
+
+        // DOM Ready Initializations
         document.addEventListener("DOMContentLoaded", () => {
-
-            // ==========================================
-            // AUTOR CANVAS (FOLD 1)
-            // ==========================================
-            const autorCanvas = document.getElementById("autor-canvas");
-            const autorContext = autorCanvas.getContext("2d");
-            const autorFrameCount = 192;
-            const autorCurrentFrame = { index: 0 };
-            const autorImages = [];
-
-            const preloadAutorImages = () => {
-                for (let i = 1; i <= autorFrameCount; i++) {
-                    const img = new Image();
-                    const frameNumber = i.toString().padStart(4, '0');
-                    img.src = `../static/assets/video_frames_murilo/frame_${frameNumber}.jpg`;
-                    autorImages.push(img);
-                }
-            };
-
-            const renderAutor = () => {
-                const frameIndex = Math.floor(autorCurrentFrame.index);
-                const img = autorImages[frameIndex];
-                if (img && img.complete) {
-                    autorContext.clearRect(0, 0, autorCanvas.width, autorCanvas.height);
-                    autorContext.drawImage(img, 0, 0, autorCanvas.width, autorCanvas.height);
-                }
-            };
-
-            preloadAutorImages();
-
-            if (autorImages[0]) {
-                autorImages[0].onload = renderAutor;
-            }
-
-            gsap.to(autorCurrentFrame, {
-                index: autorFrameCount - 1,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".autor-scrub-container",
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: 0,
-                    onUpdate: () => {
-                        requestAnimationFrame(renderAutor);
-                    }
-                }
-            });
-
-            ScrollTrigger.create({
-                trigger: ".autor-scrub-container",
-                start: "top 80%",
-                onEnter: () => {
-                    gsap.fromTo(autorCanvas,
-                        { opacity: 0, scale: 1.1 },
-                        { opacity: 0.8, scale: 1, duration: 1.5, ease: "power3.out" }
-                    );
-                    
-                    gsap.fromTo(".autor-scrub-container .autor-text-reveal",
-                        { opacity: 0, y: 30, filter: "blur(15px)" },
-                        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.2, delay: 0.2, ease: "power3.out" }
-                    );
-                },
-                once: true
-            });
-
-            gsap.to(".autor-scrub-container .autor-text-reveal", {
-                y: -60,
-                opacity: 0,
-                filter: "blur(15px)",
-                stagger: 0.05,
-                scrollTrigger: {
-                    trigger: ".autor-scrub-container",
-                    start: "10% top",
-                    end: "40% top",
-                    scrub: true
-                }
-            });
-            const canvas = document.getElementById("hero-canvas");
-            const context = canvas.getContext("2d");
-
-            // Configuration
-            const frameCount = 192;
-            const currentFrame = { index: 0 };
-            const images = [];
-
-            // Preload Images
-            // Uses a promise to maybe show loading state if needed, but for now just eager load
-            const preloadImages = () => {
-                for (let i = 1; i <= frameCount; i++) {
-                    const img = new Image();
-                    // Pad with leading zeros: 0001, 0002...
-                    const frameNumber = i.toString().padStart(4, '0');
-                    img.src = `../static/assets/video_frames/frame_${frameNumber}.jpg`;
-                    images.push(img);
-                }
-            };
-
-            // Render function
-            const render = () => {
-                // Determine which frame to draw
-                const frameIndex = Math.floor(currentFrame.index);
-                const img = images[frameIndex];
-
-                if (img && img.complete) {
-                    // Draw image to cover canvas
-                    // Since canvas resolution is fixed (1280x720) and we use CSS object-cover,
-                    // we can just draw the image full size on the canvas coordinates.
-                    context.clearRect(0, 0, canvas.width, canvas.height);
-                    context.drawImage(img, 0, 0, canvas.width, canvas.height);
-                }
-            };
-
-            // Start Preloading
-            preloadImages();
-
-            // Set Initial Frame
-            // Wait for the first image to load before rendering it
-            if (images[0]) {
-                images[0].onload = render;
-            }
-
-
-            // Intro Animation for Canvas and Hero Text when scrolling into the section
-            ScrollTrigger.create({
-                trigger: ".hero-scrub-container",
-                start: "top 60%",
-                onEnter: () => {
-                    // Canvas Intro Animation
-                    gsap.fromTo(canvas,
-                        { opacity: 0, scale: 1.1 },
-                        { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" }
-                    );
-
-                    // Hero Text Reveal
-                    const heroReveals = document.querySelectorAll('.hero-scrub-container .reveal-up');
-                    heroReveals.forEach((el, index) => {
-                        setTimeout(() => {
-                            el.classList.add('active');
-                        }, 100 * index);
-                    });
-                },
-                once: true
-            });
-
-            // Parallax Effects for Hero Text (Blur Out on Scroll)
-            gsap.to(".hero-scrub-container .reveal-up", {
-                y: -60,
-                opacity: 0,
-                filter: "blur(15px)",
-                stagger: 0.05,
-                scrollTrigger: {
-                    trigger: ".hero-scrub-container",
-                    start: "10% top",
-                    end: "40% top",
-                    scrub: true
-                }
-            });
-
-            // Reveal Animation for generic sections (Tech Specs, etc)
-            gsap.utils.toArray('section .reveal-up, section .reveal-zoom, main .reveal-up').forEach(function (elem) {
-                if(elem.closest('.hero-scrub-container')) return; // handled above
-
+            
+            // 1. DYNAMIC SCROLL REVEAL (Crisp, sharp, no blur)
+            gsap.utils.toArray('.scroll-reveal').forEach((elem) => {
                 ScrollTrigger.create({
                     trigger: elem,
-                    start: "top 85%",
-                    onEnter: function () {
-                        elem.classList.add('active');
-                    }
+                    start: "top 88%",
+                    end: "bottom 10%",
+                    onEnter: () => elem.classList.add('in-view'),
+                    onEnterBack: () => elem.classList.add('in-view'),
+                    onLeave: () => elem.classList.remove('in-view'),
+                    onLeaveBack: () => elem.classList.remove('in-view')
                 });
             });
 
-            // ==========================================
-            // O MÉTODO SECTION (SCROLL ANIMATIONS)
-            // ==========================================
-            const metodoSection = document.getElementById("tech-specs");
-            if (metodoSection) {
-                // 1. Lettering Parallax & Blur scrub
-                const letteringWords = metodoSection.querySelectorAll('.metodo-left-container h3 span');
-                gsap.fromTo(letteringWords, 
-                    { opacity: 0, filter: "blur(20px)", y: 80, scale: 0.9, rotationX: 20 },
-                    {
-                        opacity: 1,
-                        filter: "blur(0px)",
-                        y: 0,
-                        scale: 1,
-                        rotationX: 0,
-                        stagger: 0.1,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: metodoSection,
-                            start: "top 65%",
-                            end: "top 15%",
-                            scrub: 1.5 // Adds a highly premium, smooth lagging effect to the scroll
-                        }
+            // 2. PARALLAX ON HERO (Crystal clear, smooth parallax without blur)
+            const heroCol = document.getElementById('heroAuthorCol');
+            const heroText = document.getElementById('heroTextCol');
+            
+            if (heroCol && heroText) {
+                gsap.to(heroCol, {
+                    y: -50,
+                    scale: 0.96,
+                    opacity: 0.4,
+                    scrollTrigger: {
+                        trigger: "#heroSection",
+                        start: "30% top",
+                        end: "bottom top",
+                        scrub: 1
                     }
-                );
+                });
 
-                // 2. Right Side Features (Boxes) Glassmorphism cascade
-                const methodFeatures = metodoSection.querySelectorAll('.metodo-feature-box');
-                gsap.fromTo(methodFeatures,
-                    { opacity: 0, x: 50, filter: "blur(15px)" },
-                    {
-                        opacity: 1,
-                        x: 0,
-                        filter: "blur(0px)",
-                        stagger: 0.2,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: metodoSection,
-                            start: "top 50%",
-                            end: "top 5%",
-                            scrub: 1.2
-                        }
+                gsap.to(heroText, {
+                    y: -35,
+                    opacity: 0.3,
+                    scrollTrigger: {
+                        trigger: "#heroSection",
+                        start: "30% top",
+                        end: "bottom top",
+                        scrub: 1
                     }
-                );
-                
-                // 3. Background Aura Parallax
-                const metodoAura = metodoSection.querySelector('.metodo-left-container .absolute.inset-0');
-                if(metodoAura) {
-                    gsap.to(metodoAura, {
-                        scale: 1.8,
-                        opacity: 0.8,
-                        scrollTrigger: {
-                            trigger: metodoSection,
-                            start: "top 80%",
-                            end: "bottom top",
-                            scrub: true
-                        }
-                    });
-                }
+                });
             }
 
-            // Flashlight Effect Function
+            // 3. 3D BOOK DYNAMIC ROTATION ON SCROLL
+            const bookObject = document.querySelector('.book-3d-object');
+            if (bookObject) {
+                gsap.to(bookObject, {
+                    rotateY: -2,
+                    rotateX: 0,
+                    scale: 1.04,
+                    scrollTrigger: {
+                        trigger: "#livroSection",
+                        start: "top 70%",
+                        end: "center center",
+                        scrub: 1.5
+                    }
+                });
+            }
+
+            // 4. Auto-fire initial welcome lasers on scroll into sections
+            ScrollTrigger.create({
+                trigger: "#trajetoriaSection",
+                start: "top 60%",
+                once: true,
+                onEnter: () => {
+                    setTimeout(() => window.fireAllLasersSec2(), 300);
+                }
+            });
+
+            ScrollTrigger.create({
+                trigger: "#livroSection",
+                start: "top 60%",
+                once: true,
+                onEnter: () => {
+                    setTimeout(() => window.fireAllLasersSec3(), 400);
+                }
+            });
+
+            // 5. Flashlight mouse tracking
             window.updateFlashlight = function (e, card) {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -1157,36 +1434,7 @@
                 card.style.setProperty("--mouse-x", `${x}px`);
                 card.style.setProperty("--mouse-y", `${y}px`);
             }
-
-            // GSAP Scroll Animation
-            // We animate the 'index' property of currentFrame object from 0 to 191
-            gsap.to(currentFrame, {
-                index: frameCount - 1,
-                ease: "none", // Linear scrub
-                scrollTrigger: {
-                    trigger: ".hero-scrub-container",
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: 0, // Instant response (canvas is fast enough)
-                    onUpdate: () => {
-                        requestAnimationFrame(render);
-                    }
-                }
-            });
         });
-
-        // Add custom keyframe for scroll line
-        const styleSheet = document.createElement("style");
-        styleSheet.innerText = `
-            @keyframes scroll-line {
-                0% { transform: translateY(-100%); }
-                100% { transform: translateY(100%); }
-            }
-            .animate-scroll-line {
-                animation: scroll-line 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
-            }
-        `;
-        document.head.appendChild(styleSheet);
     </script>
 </body>
 
