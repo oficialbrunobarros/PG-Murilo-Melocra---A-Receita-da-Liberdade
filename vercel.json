@@ -7,10 +7,30 @@
       "has": [
         {
           "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/index"
+    },
+    {
+      "source": "/inicio",
+      "has": [
+        {
+          "type": "host",
           "value": "bio.elooo.com.br"
         }
       ],
       "destination": "/bio/index"
+    },
+    {
+      "source": "/entrar",
+      "has": [
+        {
+          "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/entrar"
     },
     {
       "source": "/entrar",
@@ -27,10 +47,30 @@
       "has": [
         {
           "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/cadastrar"
+    },
+    {
+      "source": "/cadastrar",
+      "has": [
+        {
+          "type": "host",
           "value": "bio.elooo.com.br"
         }
       ],
       "destination": "/bio/cadastrar"
+    },
+    {
+      "source": "/termos",
+      "has": [
+        {
+          "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/termos"
     },
     {
       "source": "/termos",
@@ -47,10 +87,70 @@
       "has": [
         {
           "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/privacidade"
+    },
+    {
+      "source": "/privacidade",
+      "has": [
+        {
+          "type": "host",
           "value": "bio.elooo.com.br"
         }
       ],
       "destination": "/bio/privacidade"
+    },
+    {
+      "source": "/brunobarros",
+      "has": [
+        {
+          "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/brunobarros"
+    },
+    {
+      "source": "/brunobarros",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/brunobarros"
+    },
+    {
+      "source": "/leticia-vaz",
+      "has": [
+        {
+          "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/leticia-vaz"
+    },
+    {
+      "source": "/leticia-vaz",
+      "has": [
+        {
+          "type": "host",
+          "value": "bio.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/leticia-vaz"
+    },
+    {
+      "source": "/demo",
+      "has": [
+        {
+          "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/brunobarros"
     },
     {
       "source": "/demo",
@@ -67,6 +167,16 @@
       "has": [
         {
           "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "https://app.elooo.com.br/api/midia"
+    },
+    {
+      "source": "/api/midia",
+      "has": [
+        {
+          "type": "host",
           "value": "bio.elooo.com.br"
         }
       ],
@@ -77,10 +187,30 @@
       "has": [
         {
           "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "https://app.elooo.com.br/api/midia?bio=1&slug=:slug"
+    },
+    {
+      "source": "/:slug([a-z0-9][a-z0-9-]{1,58}[a-z0-9])",
+      "has": [
+        {
+          "type": "host",
           "value": "bio.elooo.com.br"
         }
       ],
       "destination": "https://app.elooo.com.br/api/midia?bio=1&slug=:slug"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "premium.elooo.com.br"
+        }
+      ],
+      "destination": "/bio/:path*"
     },
     {
       "source": "/:path*",
@@ -152,22 +282,11 @@
       "has": [
         {
           "type": "host",
-          "value": "pg-murilo-melocra-a-receita-da-libe.vercel.app"
+          "value": "premium.elooo.com.br"
         }
       ],
-      "destination": "https://bio.elooo.com.br/",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "eloooeditora.vercel.app"
-        }
-      ],
-      "destination": "https://editora.elooo.com.br/",
-      "permanent": true
+      "destination": "/inicio",
+      "permanent": false
     },
     {
       "source": "/",
@@ -212,28 +331,6 @@
       ],
       "destination": "/academy",
       "permanent": false
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "eloooeditora.vercel.app"
-        }
-      ],
-      "destination": "https://editora.elooo.com.br/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "pg-murilo-melocra-a-receita-da-libe.vercel.app"
-        }
-      ],
-      "destination": "https://bio.elooo.com.br/:path*",
-      "permanent": true
     }
   ]
 }

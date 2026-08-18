@@ -319,7 +319,7 @@ LANDING_HTML = """<!DOCTYPE html>
                         
                         <!-- Interactive Screen Loading Bruno Barros Live Vitrine -->
                         <div class="relative rounded-[38px] overflow-hidden h-[540px] bg-stone-950">
-                            <iframe src="brunobarros.html" title="Vitrine Bruno Barros Ao Vivo - epremium.elooo.com.br/brunobarros" class="w-full h-full border-0"></iframe>
+                            <iframe src="brunobarros.html" title="Vitrine Bruno Barros Ao Vivo - premium.elooo.com.br/brunobarros" class="w-full h-full border-0"></iframe>
                             <a href="brunobarros.html" target="_blank" class="absolute inset-x-0 bottom-0 py-3 bg-gradient-to-t from-black/95 via-black/70 to-transparent backdrop-blur-sm text-center text-xs font-mono font-bold uppercase tracking-widest text-[#f6e3c5] hover:text-white transition-colors">
                                 Abrir vitrine oficial completa →
                             </a>
@@ -1166,7 +1166,7 @@ CADASTRAR_HTML = """<!DOCTYPE html>
             <div>
                 <label class="block text-xs font-bold text-stone-700 mb-1">Usuário desejado na sua Vitrine</label>
                 <div class="flex items-center rounded-xl bg-stone-50 border border-stone-300 focus-within:border-stone-900 overflow-hidden">
-                    <span class="px-3 text-xs text-stone-400 font-mono">epremium.elooo.com.br/</span>
+                    <span class="px-3 text-xs text-stone-400 font-mono">premium.elooo.com.br/</span>
                     <input type="text" required placeholder="seunome" class="w-full py-3 pr-4 text-sm bg-transparent outline-none"/>
                 </div>
             </div>

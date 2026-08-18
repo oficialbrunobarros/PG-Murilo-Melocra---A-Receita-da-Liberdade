@@ -8,8 +8,8 @@
     <meta name="description" content="Bem-vindos ao Ecossistema ELOOO Global. Os 4 pilares de alta performance: Editora Internacional, Academy, Bio Premium e Content.">
 
     <script>
-        // If accessed via epremium or bio subdomain, immediately forward to bio landing page
-        if (window.location.hostname.startsWith('epremium.') || window.location.hostname.startsWith('bio.') || window.location.hostname.includes('epremium.elooo') || window.location.hostname.includes('bio.elooo')) {
+        // If accessed via premium or bio subdomain, immediately forward to bio landing page
+        if (window.location.hostname.startsWith('premium.') || window.location.hostname.startsWith('bio.') || window.location.hostname.includes('premium.elooo') || window.location.hostname.includes('bio.elooo')) {
             var p = window.location.pathname;
             if (!p.startsWith('/bio')) {
                 window.location.replace('/bio' + (p === '/' ? '' : p) + window.location.search + window.location.hash);

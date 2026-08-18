@@ -6,8 +6,8 @@
     <title>404 - Página Não Encontrada | ELOOO International Group</title>
 
     <script>
-        // If accessed via bio subdomain and route is not found (wrong username or invalid link), redirect to bio home
-        if (window.location.hostname.startsWith('bio.') || window.location.hostname.includes('bio.elooo')) {
+        // If accessed via premium or bio subdomain and route is not found (wrong username or invalid link), redirect to home
+        if (window.location.hostname.startsWith('premium.') || window.location.hostname.startsWith('bio.') || window.location.hostname.includes('premium.elooo') || window.location.hostname.includes('bio.elooo')) {
             window.location.replace('/');
         }
     </script>
