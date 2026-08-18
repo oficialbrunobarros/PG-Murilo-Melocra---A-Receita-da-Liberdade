@@ -137,7 +137,7 @@ authors_data = [
     {
         "slug": "marcio-lira",
         "name": "Marcio Lira",
-        "book": "Liderança Inquestionável",
+        "book": "Profissional Inquestionável",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/eusoumarciolira/",
         "bio": "Empresário, diretor de operações e sócio da Partner PSE. Focado no desenvolvimento de negócios e processos comerciais, capacita líderes e equipes a evoluírem de forma contínua e responsável."
@@ -161,7 +161,7 @@ authors_data = [
     {
         "slug": "gabriela-mendes",
         "name": "Dra. Gabriela Mendes",
-        "book": "Segredos da Saúde Integrativa",
+        "book": "Além das Patas",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/gabrielamendes.oficial/",
         "bio": "Médica-veterinária, empresária e sócia da VITA 24h. Cofundou e gerencia a estrutura hospitalar voltada ao cuidado animal, unindo conhecimento técnico, sensibilidade e liderança."
@@ -177,7 +177,7 @@ authors_data = [
     {
         "slug": "gustavo-da-silva",
         "name": "Dr. Gustavo Silva",
-        "book": "Segredos da Ortopedia Esportiva",
+        "book": "Uma Mente Mais Leve",
         "flag": "circle-flags:br",
         "instagram": "https://www.instagram.com/drgustavo.silva/",
         "bio": "Médico com atuação na área de saúde mental. Aborda de forma humana e acessível temas como ansiedade, depressão, pânico e insônia, orientando sobre a importância do cuidado profissional."

@@ -110,7 +110,7 @@ authors = [
         "slug": "marcio-lira",
         "name": "Marcio Lira",
         "title_br": "Marcio<br>Lira",
-        "book": "Liderança Inquestionável",
+        "book": "Profissional Inquestionável",
         "category": "VIP",
         "points": "408"
     },
@@ -134,7 +134,7 @@ authors = [
         "slug": "gabriela-mendes",
         "name": "Dra. Gabriela Mendes",
         "title_br": "Dra. Gabriela<br>Mendes",
-        "book": "Segredos da Saúde Integrativa",
+        "book": "Além das Patas",
         "category": "VIP",
         "points": "408"
     },
@@ -150,7 +150,7 @@ authors = [
         "slug": "gustavo-da-silva",
         "name": "Dr. Gustavo Silva",
         "title_br": "Dr. Gustavo<br>Silva",
-        "book": "Segredos da Ortopedia Esportiva",
+        "book": "Uma Mente Mais Leve",
         "category": "VIP",
         "points": "408"
     },
